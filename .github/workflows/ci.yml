@@ -27,6 +27,8 @@ jobs:
 
       - run: corepack enable && yarn install --immutable
 
+      - run: yarn run lint:ci
+
       - run: yarn run build
 
       - name: Deploy
