@@ -1,0 +1,40 @@
+---
+title: Custom properties
+order: 1
+---
+
+export const meta = {
+  title: "Custom properties",
+  description:
+    "Custom properties are predefined metadata fields that users can associate with a resource in Foxglove Data Platform. They are set by organization admins for their team.",
+};
+
+> Custom properties are predefined metadata fields that users can associate with a resource in Foxglove Data Platform. They are set by organization admins for their team.
+
+To include contextual and auxiliary information directly in your data recordings, you can [import MCAP files with metadata records and attachments](/docs/data-platform/importing-data#import-data).
+
+### Creating properties
+
+Foxglove organization admins can go into their [Custom properties settings](/settings/custom-properties) to create and configure custom properties for their team's resources.
+
+Custom properties are currently supported only for devices.
+
+Every custom property must consist each of the following components:
+
+- **Key** – Used for identification (e.g. `hardwareRevision`)
+- **Resource type** – Data model associated with property (e.g. "device")
+- **Value type** – Enforced type for the custom property's value (e.g. "Single-line text")
+
+For example, admins can create a custom device property called `hardwareRevision`, with numeric values. This means that any member of their organization can add a `hardwareRevision` number to any device to keep track of their robots' hardware versions.
+
+### Adding properties to resources
+
+Once admins have created a custom property for a resource (e.g. `hardwareRevision` for devices), all organization members can now navigate to that resource's page to add custom property keys and values.
+
+For example, users can navigate to a specific device's page to add a `hardwareRevision` of `123`.
+
+### Querying by properties
+
+After assigning custom property values to various resources, you can then navigate to the associated resource's index page to query by those values.
+
+For example, users can navigate to the devices index page to search for devices with a `hardwareRevision` of `123`.

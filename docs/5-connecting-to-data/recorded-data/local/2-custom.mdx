@@ -1,0 +1,189 @@
+---
+title: Custom
+---
+import CorsDirections from "../../../../src/components/docs/CorsDirections";
+
+import FoxgloveWebSocketResetDirections from "../../../../src/components/docs/FoxgloveWebSocketResetDirections";
+
+export const meta = {
+  title: "Custom",
+  description:
+    "Foxglove Studio can load your custom data (i.e. Protobuf, JSON, FlatBuffers) as local or remote MCAP files. It can also connect directly to your live custom data with the Foxglove WebSocket, an encoding-agnostic WebSocket connection.",
+  heroImage: "/img/docs/studio/connection/live-connection/rosbridge-dialog.webp",
+};
+
+Foxglove Studio can load your custom data (i.e. [Protobuf](https://developers.google.com/protocol-buffers), [JSON](http://jsonschema.org/), [FlatBuffers](https://google.github.io/flatbuffers)) as local or remote [MCAP](https://mcap.dev) files. It can also connect directly to your live custom data with the Foxglove WebSocket, an encoding-agnostic WebSocket connection.
+
+## Files
+
+Load custom data into Foxglove Studio by first encoding it in [MCAP](https://mcap.dev) (`.mcap`) files.
+
+MCAP supports the following serialization formats:
+
+- [Protobuf](https://mcap.dev/guides/getting-started/protobuf)
+- [JSON](https://mcap.dev/guides/getting-started/json)
+- [FlatBuffers](https://mcap.dev/guides/getting-started/flatbuffers)
+
+Please [get in touch](/contact) if there are other data formats that your team would like to see supported.
+
+### Local file
+
+Once you have your local MCAP file, follow the MCAP directions for [loading it in Studio](/docs/studio/connection/mcap#local).
+
+### Cloud data
+
+#### Foxglove Data Platform
+
+Once you've [recorded your custom data to MCAP (`.mcap`) files](/docs/studio/connection/custom#local-file), you can upload them to [Foxglove Data Platform](/data-platform)'s [web console](https://console.foxglove.dev) and stream them directly into Foxglove Studio.
+
+Check out the [Data Platform docs](/docs/data-platform/exporting-and-visualizing-data) for more information on how to export and visualize your robotics data.
+
+#### By URL
+
+Once you have an MCAP file in remote storage, follow the MCAP directions for [opening it via URL in Studio](/docs/studio/connection/mcap#remote).
+
+<CorsDirections />
+
+## Live connection
+
+Connect directly to your live custom data (i.e. Protobuf, JSON, FlatBuffers) with an encoding-agnostic WebSocket connection.
+
+### Foxglove WebSocket
+
+First, you'll need to create your own server to start publishing your custom data.
+
+The [`foxglove/ws-protocol` repo](https://github.com/foxglove/ws-protocol) provides:
+
+- Package for building custom servers and clients ([C++](https://github.com/foxglove/ws-protocol/tree/main/cpp), [Python](https://github.com/foxglove/ws-protocol/tree/main/python), [JavaScript/TypeScript](https://github.com/foxglove/ws-protocol/tree/main/typescript/ws-protocol))
+- Templates for custom servers ([C++](https://github.com/foxglove/ws-protocol/tree/main/cpp/examples), [Python](https://github.com/foxglove/ws-protocol/tree/main/python#example-servers), [JavaScript/TypeScript](https://github.com/foxglove/ws-protocol/tree/main/typescript/ws-protocol#server-template)) and clients ([JavaScript/TypeScript](https://github.com/foxglove/ws-protocol/tree/main/typescript/ws-protocol#client-template))
+
+The [`@foxglove/ws-protocol-examples`](https://github.com/foxglove/ws-protocol/tree/main/typescript/ws-protocol-examples) npm package also provides example servers and clients that you can run to see how Studio can receive system stats and image data from a custom WebSocket server:
+
+```bash
+$ npx @foxglove/ws-protocol-examples sysmon
+$ npx @foxglove/ws-protocol-examples image-server
+```
+
+#### Connecting to data
+
+_Open connection_ in the _Data source_ dialog, select _Foxglove WebSocket_, and enter the URL to your WebSocket server:
+
+![Foxglove WebSocket dialog](/img/docs/studio/connection/live-connection/foxglove-websocket-dialog.webp)
+
+<FoxgloveWebSocketResetDirections />
+
+## Schema encodings
+
+Both MCAP-based and Foxglove WebSocket sources support several message and schema encodings.
+
+#### JSON
+
+For JSON data, use schema encoding `"jsonschema"` and message encoding `"json"`.
+
+Schemas are required for Foxglove WebSocket, and must be a [JSON Schema](https://json-schema.org/) definition with `"type": "object"`.
+
+Each message should be UTF8-encoded JSON representing an object. Binary data should be represented as a base64-encoded string in the JSON object, and should use [`"contentEncoding": "base64"`](https://json-schema.org/draft/2020-12/json-schema-validation.html#rfc.section.8.3) (e.g. `{ "type": "string", "contentEncoding": "base64" }`) in the schema.
+
+#### Protobuf
+
+For Protobuf data, use schema encoding `"protobuf"` and message encoding `"protobuf"`.
+
+Studio expects the schema data to be a binary [FileDescriptorSet](https://developers.google.com/protocol-buffers/docs/techniques#self-description). For Foxglove WebSocket connections, the schema must additionally be base64-encoded because it is represented as a string.
+
+You can generate the FileDescriptorSet at runtime using Python:
+
+```python
+from typing import Any, Set
+from google.protobuf.descriptor import FileDescriptor
+from google.protobuf.descriptor_pb2 import FileDescriptorSet
+
+def build_file_descriptor_set(message_class: Any) -> FileDescriptorSet:
+  file_descriptor_set = FileDescriptorSet()
+  seen_dependencies: Set[str] = set()
+
+  def append_file_descriptor(file_descriptor: FileDescriptor):
+    for dep in file_descriptor.dependencies:
+      if dep.name not in seen_dependencies:
+        seen_dependencies.add(dep.name)
+        append_file_descriptor(dep)
+    file_descriptor.CopyToProto(file_descriptor_set.file.add())
+
+  append_file_descriptor(message_class.DESCRIPTOR.file)
+  return file_descriptor_set
+```
+
+Or C++:
+
+```cpp
+#include <google/protobuf/descriptor.pb.h>
+
+// Writes the FileDescriptor of this descriptor and all transitive dependencies
+// to a string, for use as a channel schema.
+std::string SerializeFdSet(const google::protobuf::Descriptor* toplevelDescriptor) {
+  google::protobuf::FileDescriptorSet fdSet;
+  std::queue<const google::protobuf::FileDescriptor*> toAdd;
+  toAdd.push(toplevelDescriptor->file());
+  std::unordered_set<std::string> added;
+  while (!toAdd.empty()) {
+    const google::protobuf::FileDescriptor* next = toAdd.front();
+    toAdd.pop();
+    next->CopyTo(fdSet.add_file());
+    added.insert(next->name());
+    for (int i = 0; i < next->dependency_count(); ++i) {
+      const auto& dep = next->dependency(i);
+      if (added.find(dep->name()) == added.end()) {
+        toAdd.push(dep);
+      }
+    }
+  }
+  return fdSet.SerializeAsString();
+}
+```
+
+Studio also expects `schemaName` to be one of the message types defined in the FileDescriptorSet.
+
+Each message should be encoded in the [Protobuf binary wire format](https://developers.google.com/protocol-buffers/docs/encoding) – we provide `.proto` files compatible with Foxglove Studio in our [`foxglove/schemas` repo](https://github.com/foxglove/schemas).
+
+_NOTE: For Protobuf data, time values of type [`google.protobuf.Timestamp`](https://protobuf.dev/reference/protobuf/google.protobuf/#timestamp) or [`google.protobuf.Duration`](https://protobuf.dev/reference/protobuf/google.protobuf/#duration) will appear with `sec` and `nsec` fields (instead of `seconds` and `nanos`) in [user scripts](/docs/studio/panels/user-scripts), [message converters](/docs/studio/extensions/getting-started#message-converters), and the rest of Foxglove Studio, for consistency with time and duration types in other data formats._
+
+#### FlatBuffers
+
+For FlatBuffers data, use schema encoding `"flatbuffer"` and message encoding `"flatbuffer"`.
+
+Studio expects the schema data to be a [binary-encoded FlatBuffers schema](https://google.github.io/flatbuffers/intermediate_representation.html) (`.bfbs`) file, compiled from the source FlatBuffers schema (`.fbs`) file. For Foxglove WebSocket connections, the schema must additionally be base64-encoded because it is represented as a string. Use the [FlatBuffers schema compiler](https://google.github.io/flatbuffers/flatbuffers_guide_using_schema_compiler.html) to generate the `.bfbs` files:
+
+```bash
+$ flatc --schema -b -o <PATH_TO_BFBS_OUTPUT_DIR> <PATH_TO_FBS_INPUT_DIR>
+```
+
+We provide `.fbs` files compatible with Foxglove Studio in our [`foxglove/schemas` repo](https://github.com/foxglove/schemas/tree/main/schemas/flatbuffer).
+
+Check out [this example that uses Foxglove schemas to write FlatBuffers-encoded data to an MCAP file](https://github.com/foxglove/mcap/blob/main/typescript/examples/flatbufferswriter/scripts/main.ts) for more details.
+
+#### ROS 1 and ROS 2
+
+For ROS 1 data, use schema encoding `"ros1msg"` and message encoding `"ros1"`.
+
+For ROS 2 data, use schema encoding `"ros2msg"` or `"ros2idl"` and message encoding `"cdr"`.
+
+Studio expects the schema data to be a concatenation of the referenced `.msg` or `.idl` file and its dependencies. For more information about the concatenated format, see the [MCAP specification appendix](https://mcap.dev/specification/appendix.html#ros1msg-data-format).
+
+#### OMG IDL
+
+For IDL schemas with CDR data, use schema encoding `"omgidl"` and message encoding `"cdr"`.
+
+For encoding OMG IDL schemas into MCAP, use the conventions listed in the [MCAP Format Registry](https://mcap.dev/spec/registry#omgidl).
+
+
+Known limitations can be found here in `foxglove/omgidl` library internally used by Studio:
+ - [IDL Grammar Limitations](https://github.com/foxglove/omgidl/blob/main/packages/omgidl-parser/README.md#omg-idl-subset-support)
+ - [CDR and CDR2 Deserialization Limitations](https://github.com/foxglove/omgidl/blob/main/packages/omgidl-serialization/README.md#known-limitations)
+
+ If there's a feature of IDL that you want to see supported, please file an issue on the [Foxglove Studio repo](https://github.com/foxglove/studio/issues) or the [Foxglove OMG IDL repo](https://github.com/foxglove/omgidl/issues).
+
+## Additional resources
+
+- [MCAP docs and guides](https://mcap.dev)
+- [WebSocket protocol specification](https://github.com/foxglove/ws-protocol/blob/main/docs/spec.md)
+- [Use Protobuf data with the Foxglove WebSocket connection](/blog/using-protobuf-data-with-the-foxglove-websocket-connection)
+- [Use FlatBuffers data in Foxglove Studio](/blog/announcing-flatbuffers-support-in-foxglove)

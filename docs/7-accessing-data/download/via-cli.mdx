@@ -1,0 +1,48 @@
+---
+title: Via CLI
+---
+
+export const meta = {
+  title: "CLI",
+  description: "Foxglove Data Platform provides a CLI tool to manage your robotics data.",
+};
+
+The [`foxglove` CLI tool](https://github.com/foxglove/foxglove-cli) helps you import, export, and interact with your Foxglove Data Platform data directly from your command line.
+
+## Installation
+
+To download the latest release, run one of the following commands in your terminal:
+
+| OS      | architecture | command                                                                                                                  |
+| ------- | ------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| linux   |
+|         | amd64        | `$ curl -L https://github.com/foxglove/foxglove-cli/releases/latest/download/foxglove-linux-amd64 -o foxglove`           |
+|         | arm64        | `$ curl -L https://github.com/foxglove/foxglove-cli/releases/latest/download/foxglove-linux-arm64 -o foxglove`           |
+| darwin  |
+|         | amd64        | `$ curl -L https://github.com/foxglove/foxglove-cli/releases/latest/download/foxglove-darwin-amd64 -o foxglove`          |
+|         | arm64        | `$ curl -L https://github.com/foxglove/foxglove-cli/releases/latest/download/foxglove-darwin-arm64 -o foxglove`          |
+| windows |
+|         | amd64        | `$ curl -L https://github.com/foxglove/foxglove-cli/releases/latest/download/foxglove-windows-amd64.exe -o foxglove.exe` |
+|         | arm64        | `$ curl -L https://github.com/foxglove/foxglove-cli/releases/latest/download/foxglove-windows-arm64.exe -o foxglove.exe` |
+
+To install a specific release, see the [releases page](https://github.com/foxglove/foxglove-cli/releases).
+
+## Getting started
+
+Before you can run any commands to interact with your data, you must authenticate with your [Foxglove account](/docs/data-platform/signing-in):
+
+```bash
+$ foxglove auth login
+```
+
+For a list of all available CLI commands:
+
+```bash
+$ foxglove -h
+```
+
+To enable shell autocompletion for subcommands and parameters, run the following command to get the relevant instructions for your shell (`bash`, `zsh`, `fish`, and `PowerShell` are supported):
+
+```bash
+$ foxglove completion <shell> -h
+```

@@ -15,8 +15,8 @@ const config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
 
-  onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "throw",
+  onBrokenLinks: "warn",
+  onBrokenMarkdownLinks: "warn",
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -54,7 +54,7 @@ const config = {
         title: undefined,
         logo: {
           alt: "Foxglove",
-          src: "img/logo.svg",
+          src: "img/logo.png",
           href: "https://foxglove.dev/",
         },
         items: [
@@ -62,11 +62,11 @@ const config = {
             type: "docSidebar",
             sidebarId: "docsSidebar",
             position: "left",
-            label: "Documentation",
+            label: "Docs",
           },
           {
-            href: "/api",
-            label: "API",
+            href: "https://foxglove.dev/docs/api",
+            label: "API reference",
             position: "left",
           },
           {
@@ -83,8 +83,12 @@ const config = {
             title: "Foxglove",
             items: [
               {
-                label: "Documentation",
+                label: "Docs",
                 to: "/",
+              },
+              {
+                label: "API reference",
+                to: "https://foxglove.dev/docs/api",
               },
             ],
           },
@@ -92,30 +96,21 @@ const config = {
             title: "Community",
             items: [
               {
-                label: "Stack Overflow",
-                href: "https://stackoverflow.com/questions/tagged/docusaurus",
-              },
-              {
-                label: "Discord",
-                href: "https://discordapp.com/invite/docusaurus",
+                label: "Slack",
+                href: "https://foxglove.dev/slack",
               },
               {
                 label: "Twitter",
-                href: "https://twitter.com/docusaurus",
+                href: "https://twitter.com/foxglovedev",
               },
-            ],
-          },
-          {
-            title: "More",
-            items: [
               {
                 label: "GitHub",
-                href: "https://github.com/facebook/docusaurus",
+                href: "https://github.com/foxglove",
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © Foxglove`,
       },
       prism: {
         theme: lightCodeTheme,

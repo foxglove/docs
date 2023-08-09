@@ -1,0 +1,20 @@
+---
+title: Monitoring
+---
+
+export const meta = {
+  title: "Monitoring",
+  description: "Primary site monitoring.",
+}
+
+## Prometheus
+The primary site services expose processing and memory metrics on a
+[Prometheus](https://prometheus.io) metrics scraping endpoint called "metrics"
+on port 6001.
+
+Integration will depend on the specifics of your Kubernetes setup. For more information see,
+* GCP: [Google Cloud Managed Service for Prometheus](https://cloud.google.com/stackdriver/docs/managed-prometheus)
+* AWS: [Amazon Managed Service for Prometheus](https://aws.amazon.com/prometheus/)
+* Azure: [Azure Monitor Managed Service for Prometheus](https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/prometheus-metrics-overview)
+
+for integrating these metrics with the metrics platform of your cloud provider.

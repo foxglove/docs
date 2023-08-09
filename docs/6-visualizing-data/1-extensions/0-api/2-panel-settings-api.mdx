@@ -1,0 +1,112 @@
+---
+title: Panel settings
+---
+
+export const meta = {
+  title: "Panel settings API",
+  description: "Build a settings interface for your extension panels.",
+};
+
+> Use the panel settings API to build a settings interface for your extension panels.
+
+The panel settings API allows you to define configurable settings for your extension, and render them in a way that matches Foxglove Studio's appearance – all without having to write any custom UI code.
+
+The `PanelExtensionContext` exposes methods for the business logic of your custom panel – including one to define your settings interface and to configure its values. Check out [`@foxglove/studio`](https://github.com/foxglove/studio/blob/main/packages/studio/index.d.ts) for full type descriptions on all possible configuration values.
+
+## `updatePanelSettingsEditor`
+
+> `updatePanelSettingsEditor: (settings: Readonly<SettingsTree>) => void`
+
+Invoke the `updatePanelSettingsEditor` on your panel's `PanelExtensionContext` instance to define or update its settings.
+
+```typescript
+const panelSettings: SettingsTree = {
+  nodes: { ... },
+  actionHandler: (action: SettingsTreeAction) { ... }
+};
+
+context.updatePanelSettingsEditor(panelSettings);
+```
+
+### `SettingsTree`
+
+The `settings` argument must be a valid `SettingsTree` and include 2 mandatory properties – `nodes` and `actionHandler`:
+
+- `nodes` - Hierarchical structure where each node can contain input fields, display fields, or even other nodes
+- `actionHandler` - Function that is invoked when the user interacts with the settings UI; contains logic to process the interactions and update the panel or settings tree
+
+It can also include the following optional properties:
+
+- `enableFilter` – Whether the settings should show the filter control
+- `focusedPath` – Node to scroll to (transient one-time effect)
+
+The example tree below has a `title` text input field inside a `General` section along with an `actionHandler` to respond to updates for the `title` field.
+
+```tsx
+const panelSettings: SettingsTree = {
+  nodes: {
+    general: {
+      label: "General",
+      fields: {
+        title: "{
+          label: "Title",
+          input: "string",
+          // `panelTitle` refers to a value in your extension panel's config
+          value: panelTitle,
+        },
+      },
+    },
+  },
+  actionHandler: (action: SettingsTreeAction) {
+    switch (action.action) {
+      case "perform-node-action":
+        // Handle user-defined actions for nodes in the settings tree
+        break;
+      case "update":
+        if (action.payload.path[0] === "general" && action.payload.path[1] === "title") {
+          // Read action.payload.value for the new panel title value
+          panelTitle = action.payload.value;
+
+          // Update your panel's state accordingly
+        }
+        break;
+    }
+  },
+}
+
+context.updatePanelSettingsEditor(panelSettings);
+```
+
+### `SettingsTreeAction`
+
+A `SettingsTreeAction` describes how the settings UI should update when a user interacts with its fields.
+
+Each `SettingsTreeAction` has a `payload` with a `path` to the settings field to update (e.g. `["general", "title"]`).
+
+The `update` action corresponds to a user setting a new value for a field (e.g. "My new title").
+
+### Special node properties
+
+There are two special node properties, `label` and `visibility`. The value you specify for `label` will control the label displayed in the settings editor. If you set the `renamable` node property to `true`, the user can edit the node `label` – you will receive a `SettingsTreeAction` of `update` with a path ending in `label`.
+
+In addition, if you specify a boolean value for `visibility` of the node then the settings editor will provide a button to toggle the visibility of the node and you will receive an `update` action with `visibility` as the final element in the path.
+
+For an example of how to use these special properties, check out the [panel settings example extension](https://github.com/foxglove/create-foxglove-extension/tree/main/examples/panel-settings).
+
+### Input types
+
+In addition to the `string` input type in the example above, the panel API provides a wide array of types for your extension panel input fields.
+
+Each input type has different properties that you can configure:
+
+- `autocomplete`
+- `boolean`
+- `rgb`
+- `rgba`
+- `gradient`
+- `messagepath`
+- `select`
+- `string`
+- `toggle`
+- `vec3`
+- `vec2`

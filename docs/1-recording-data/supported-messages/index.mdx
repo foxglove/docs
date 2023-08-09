@@ -1,0 +1,94 @@
+---
+title: Supported messages
+---
+
+export const meta = {
+  title: "Introduction",
+  description:
+    "Certain Foxglove Studio panels must receive messages that adhere to a specific schema to visualize them correctly.",
+};
+
+> Certain Foxglove Studio panels must receive messages that adhere to a specific schema to visualize them correctly.
+
+While some Foxglove Studio panels, like the [Raw Messages](/docs/studio/panels/raw-messages) and [Plot](/docs/studio/panels/plot) panels, are able to display data of any type from any topic, **other panels require incoming messages to conform to a known schema**. For example, the [Map](/docs/studio/panels/map) and [3D](/docs/studio/panels/3d) panels both have a specific list of supported schemas that they can visualize.
+
+Foxglove Studio's [extensions](/docs/studio/extensions/getting-started) also make it possible for you to write your own [message converters](/docs/studio/extensions/getting-started#message-converters) to transform your custom messages from one schema to another supported by Foxglove Studio's panels.
+
+See the [panels documentation](/docs/studio/panels/introduction) for each panel's supported messages.
+
+## Using Foxglove schemas
+
+Reference the Foxglove schema files in the [`@foxglove/schemas` repo](https://github.com/foxglove/schemas) to write structured messages in any of the following formats:
+
+- [Protobuf](https://github.com/foxglove/schemas/tree/main/schemas/proto/foxglove)
+- [JSON Schema](https://github.com/foxglove/schemas/tree/main/schemas/jsonschema)
+- [ROS 1](https://github.com/foxglove/schemas/tree/main/schemas/ros1)
+- [ROS 2](https://github.com/foxglove/schemas/tree/main/schemas/ros2)
+- [TypeScript](https://github.com/foxglove/schemas/tree/main/schemas/typescript)
+- [FlatBuffers](https://github.com/foxglove/schemas/tree/main/schemas/flatbuffer)
+
+Having your data adhere to these outlined schemas will help you take full advantage of Studio's built-in visualizations.
+
+## Protobuf and JSON Schema
+
+Copy the [`.proto` files](https://github.com/foxglove/schemas/tree/main/schemas/proto/foxglove) or [`.json` files](https://github.com/foxglove/schemas/tree/main/schemas/jsonschema) you need directly into your project, and use them to start publishing data via a [live Foxglove WebSocket connection](/docs/studio/connection/foxglove-websocket) or logging data to an [MCAP file](https://mcap.dev).
+
+_NOTE: For Protobuf data, time values of type [`google.protobuf.Timestamp`](https://protobuf.dev/reference/protobuf/google.protobuf/#timestamp) or [`google.protobuf.Duration`](https://protobuf.dev/reference/protobuf/google.protobuf/#duration) will appear with `sec` and `nsec` fields (instead of `seconds` and `nanos`) in [user scripts](/docs/studio/panels/user-scripts), [message converters](/docs/studio/extensions/getting-started#message-converters), and the rest of Foxglove Studio, for consistency with time and duration types in other data formats._
+
+You can also import JSON schemas via the [`@foxglove/schemas` npm package](https://www.npmjs.com/package/@foxglove/schemas):
+
+```typescript
+import { CompressedImage } from "@foxglove/schemas/jsonschema";
+```
+
+We provide WebSocket libraries for live data ([Python](https://github.com/foxglove/ws-protocol/tree/main/python), [JavaScript](https://github.com/foxglove/ws-protocol/tree/main/typescript/ws-protocol-examples), [C++](https://github.com/foxglove/ws-protocol/tree/main/cpp)), as well as MCAP writers for pre-recorded data files ([Python](https://github.com/foxglove/mcap/tree/main/python), [JavaScript](https://github.com/foxglove/mcap/tree/main/typescript), [C++](https://github.com/foxglove/mcap/tree/main/cpp)).
+
+_Check out the blog post on [Recording Robocar Data with MCAP](/blog/recording-robocar-data-with-mcap) for an example on using an [MCAP](https://mcap.dev) C++ writer to record your Protobuf data._
+
+## ROS
+
+Install the [`foxglove_msgs` package](https://index.ros.org/r/foxglove_msgs/):
+
+```bash
+$ sudo apt install ros-noetic-foxglove-msgs # For ROS 1
+$ sudo apt install ros-galactic-foxglove-msgs # For ROS 2
+```
+
+Then, import the schemas you need inside your ROS project to start publishing data:
+
+```py
+from foxglove_msgs.msg import Vector2
+
+…
+msg = Vector2()
+msg.data = { x: 0.5, y: 0.7 }
+```
+
+## TypeScript
+
+Import Foxglove schemas as TypeScript types for type-checking purposes.
+
+In Foxglove Studio's [User Scripts panel](/docs/studio/panels/user-scripts), you can specify the schema you want with `Message<"foxglove.[SchemaName]">`:
+
+```typescript
+import { Input, Message } from "./types";
+
+type Output = Message<"foxglove.Point2">;
+
+export const inputs = ["/input/topic"];
+export const output = "/studio_script/output_topic";
+
+export default function script(event: Input<"/input/topic">): Output {
+  return { x: 1, y: 2 };
+}
+```
+
+For your own TypeScript project, you can import the type directly from the [`@foxglove/schemas`](https://www.npmjs.com/package/@foxglove/schemas) npm package:
+
+```typescript
+import { Point2 } from "@foxglove/schemas";
+
+const myImage: Point2 = { x: 1, y: 2 };
+```
+
+Import these types when working on a JavaScript WebSocket or [MCAP](https://mcap.dev) project, or when writing a custom data transformation script in Foxglove Studio’s [User Scripts panel](/docs/studio/panels/user-scripts).

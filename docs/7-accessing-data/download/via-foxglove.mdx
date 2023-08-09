@@ -1,0 +1,44 @@
+---
+title: Via Foxglove
+---
+
+export const meta = {
+  title: "Exporting data",
+  description:
+    "Use Foxglove Data Platform's web console to download your data as MCAP (.mcap) or ROS 1 (.bag) files.",
+};
+
+> Use Foxglove Data Platform's web console to export your data as [MCAP](https://mcap.dev) (`.mcap`) or ROS 1 (`.bag`) files and to visualize it in Foxglove Studio.
+
+Once you've imported recordings to Foxglove Data Platform, you can export parts of it as a file or stream the data directly to debugging and visualization tools like [Foxglove Studio](/studio).
+
+## Download a recording or event
+
+Select any recording from the _Recordings_ page or event on the _Events_ page to download it as an [MCAP](https://mcap.dev) (`.mcap`) or ROS 1 (`.bag`) file.
+
+When downloading MCAP files, all of its associated metadata records and attachments will be included in the donwload. You can also download MCAP files' attachments separately, under the recording details page's _Attachments_ tab.
+
+## Download a custom time range
+
+Use the _Timeline_ view to find the data you are interested in:
+
+![search](/img/docs/data-platform/search.webp)
+
+Use the date picker or the "year", "month", or "week" tabs to navigate to time ranges of interest. Click any column in the timeline to zoom in on the data you want.
+
+After locating the data you want in the "hour" view, click a coverage bar or select a time range by dragging and clicking the selected region:
+
+![export via Timeline](/img/docs/data-platform/timeline-export.webp)
+
+Download this data as an `.mcap` or `.bag` file, or launch it in Studio for immediate visualization.
+
+### CLI
+
+```bash
+$ foxglove data export \
+  --device-id dev_flm75pLkfzUBX2DH \
+  --start 2001-01-01T00:00:00Z \
+  --end 2022-01-01T00:00:00Z \
+  --output-format mcap0 \
+  --topics /gps/fix,/gps/fix_velocity > output.mcap
+```
