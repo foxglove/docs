@@ -1,5 +1,5 @@
 ---
-title: Recorded data
+title: Local data
 ---
 export const meta = {
   title: "Introduction",

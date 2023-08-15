@@ -1,5 +1,5 @@
 ---
-title: Introducing Foxglove
+title: Introduction
 ---
 Foxglove is the leading observability platform for robotics developers.
 

@@ -1,6 +1,6 @@
 ---
 slug: data-visualization
-title: Visualizing
+title: Visualizing data
 order: 1
 ---
 

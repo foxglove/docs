@@ -1,6 +1,39 @@
 ---
-title: From local storage
+title: Uploaded data
 ---
+
+export const meta = {
+  title: "Visualizing data",
+  description:
+    "Use Foxglove Data Platform's web console to visualize your data recordings in Foxglove Studio.",
+};
+
+> Use Foxglove Data Platform's web console to export your data as [MCAP](https://mcap.dev) (`.mcap`) or ROS 1 (`.bag`) files and to visualize it in Foxglove Studio.
+
+Once you've imported recordings to Foxglove Data Platform, you can export parts of it as a file or stream the data directly to debugging and visualization tools like [Foxglove Studio](/studio).
+
+## Visualize a recording or event
+
+Select any recording from the _Recordings_ page or event on the _Events_ page to "View in Studio":
+
+![view in Foxglove Studio](/img/docs/data-platform/view-in-studio.webp)
+
+## Visualize a custom time range
+
+Use the _Timeline_ view to find the data you are interested in:
+
+![search](/img/docs/data-platform/search.webp)
+
+Use the date picker or the "year", "month", or "week" tabs to navigate to time ranges of interest. Click any column in the timeline to zoom in on the data you want.
+
+After locating the data you want in the "hour" view, click a coverage bar or select a time range by dragging and clicking the selected region:
+
+![export via Timeline](/img/docs/data-platform/timeline-export.webp)
+
+Launch this data in Studio for immediate visualization.
+
+## Uplaoding from local storage
+
 
 > Use Foxglove Data Platform's web console to import and interact with your robotics data.
 

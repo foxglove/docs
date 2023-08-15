@@ -1,5 +1,5 @@
 ---
-title: Create an account
+title: Quick start
 order: 1
 ---
 

@@ -1,2 +1,0 @@
----
-title: From local storage
