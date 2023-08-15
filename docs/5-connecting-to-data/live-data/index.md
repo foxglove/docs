@@ -1,3 +1,0 @@
----
-title: Live data
----

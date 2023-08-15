@@ -1,5 +1,5 @@
 ---
-title: Importing data
+title: Importing
 ---
 
 export const meta = {
@@ -7,4 +7,3 @@ export const meta = {
   description:
     "Use Foxglove Data Platform's web console to import and interact with your robotics data.",
 };
-  

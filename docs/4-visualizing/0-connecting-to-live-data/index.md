@@ -1,5 +1,5 @@
 ---
-title: Connecting to data
+title: Live data
 ---
 
 export const meta = {

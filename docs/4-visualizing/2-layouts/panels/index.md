@@ -1,5 +1,5 @@
 ---
-title: Panels"
+title: Panels
 ---
 
 export const meta = {
