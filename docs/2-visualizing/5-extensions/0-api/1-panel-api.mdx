@@ -1,0 +1,271 @@
+---
+title: Custom panel
+---
+
+export const meta = {
+  title: "PanelExtensionContext",
+  description: "Use the PanelExtensionContext to implement your custom panel.",
+};
+
+The `PanelExtensionContext` exposes properties and methods for writing a custom panel. The context has methods to subscribe for messages, receive updates, configure your panel's settings, and render your panel to the UI.
+
+The more common methods and properties are described below. For full type docs on the `PanelExtensionContext` and `RenderState` types, see [`@foxglove/studio`](https://github.com/foxglove/studio/blob/main/packages/studio/index.d.ts).
+
+> The `initPanel` function used in the [`registerPanel` method](/docs/studio/extensions/extension-context#registerpanel) accepts a `PanelExtensionContext` argument. This argument contains properties and methods for accessing panel data and rendering UI updates. The `initPanel` function also returns an optional cleanup function to run when the extension `panelElement` unmounts.
+
+## `panelElement`
+
+> `panelElement: HTMLDivElement`
+
+The root DOM element for your panel. Add any panel UI to this DOM element or pass this element as the root of your UI framework.
+
+## `onRender`
+
+> `onRender(renderState: Readonly<RenderState>, done: () => void)`
+
+Studio will run `context.onRender` whenever your panel needs to re-render during playback. The function accepts `renderState` and a `done` callback as its arguments.
+
+**Note**: Your `onRender` function **must** call `done` after rendering to indicate that the panel is ready to render the next set of data. The exact placement of this `done` invocation will vary between frameworks and different extensions' logic.
+
+```tsx
+context.onRender = (renderState: RenderState, done) => {
+  // Render your UI updates with fields from RenderState
+
+  // Call done when you've rendered all the UI for this renderState. If your UI framework delays rendering, call done when rendering has actaully happened.
+  done();
+};
+```
+
+## `watch`
+
+> `watch(field: keyof RenderState)`
+
+Use `context.watch` to indicate which fields in `renderState` (e.g. `allFrames`, [`appSettings`](https://github.com/foxglove/studio/blob/main/packages/studio-base/src/AppSetting.ts), `currentFrame`, `currentTime`, `previewTime`, `parameters`, `topics`) should trigger panel re-renders when their contained values change.
+
+```tsx
+context.watch("topics");
+context.watch("currentFrame");
+context.watch("parameters");
+context.watch("currentTime");
+```
+
+## `subscribe`
+
+> `subscribe(subscriptions: { topic: string, preload?: boolean, convertTo?: string }[])`
+
+Use `context.subscribe` to indicate the topics your panel wants to receive messages for. The messages are provided during render in `renderState.currentFrame` and `renderState.allFrames`.
+
+```tsx
+context.subscribe([{ topic: "/some/topic" }, { topic: "/another/topic", preload: true }]);
+```
+
+`context.subscribe([]);` will unsubscribe from all topics.
+
+### Preloading
+
+Most panels display data from the current frame; examples of built-in panels that display the current frame are `3D`, `Image`, and `Raw Message`, however some panels can display data for multiple messages or even the entire dataset duration (`Plot`, `Map`, `State transitions`).
+
+By default, subscriptions will provide only the messages for the current frame. If your panel would like to receive all the available messages on a topic, set the `preload` option to `true`. Preloaded messages are available in `renderState.allFrames`.
+
+> NOTE: Message preloading is done on a best-effort basis. If your preloaded messages exceed available memory limits for the browser or desktop app, then the preloaded data may not represent the full dataset range. Preloading results in more data transfer and memory use and is recommended only for panels which should display the entire dataset (e.g. the [Plot panel](/docs/studio/panels/plot)) rather than the current frame.
+
+### Message Converters
+
+Users may have one or more message converters registered. Message converters can convert messages from one schema to another. For example, user might register a message converter to convert their custom `MyGps` message into `foxglove.LocationFix` so the Map panel can visualize it.
+
+If your panel expects messages with specific schema names you can leverage registered message converters to convert from one schema to another.
+
+Specify the `convertTo` option to enable message conversion on a topic. When conversion is enabled for a subscription, the `currentFrame` and `allFrame` message events will contain `message` entries with the converted message rather than the original message on the topic. The original message is available in the `originalMessageEvent` field in the message event.
+
+```tsx
+context.subscribe([{ topic: "/some/topic", convertTo: "foxglove.LocationFix" }]);
+```
+
+> The `convertibleTo` field within `renderState.topics` will contain the names of schemas you can convert this topic into.
+
+## `advertise`
+
+> `advertise(topic: string, datatype: string, options?: Record<string, unknown>)`
+
+Use `context.advertise` to indicate an intent to publish a specific datatype on a topic. A panel must call `context.advertise` before being able to publish on the topic (`context.publish`). Options are specific to the data source - some make use of options; others do not.
+
+```tsx
+context.advertise("/my_image_topic", "sensor_msgs/Image");
+```
+
+`options` are specific to each data source - see documentation below for supported data sources.
+
+### [Native (ROS 1)](/docs/studio/connection/ros1#native)
+
+| field     | type             | description                                                                                                                                                            |
+| --------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| datatypes | `Map<string, T>` | JavaScript map of datatype names and [`MessageDefinition`](https://github.com/foxglove/message-definition/blob/main/src/index.d.ts#L185) definitions for a given topic |
+
+Common datatype definitions are available in the `@foxglove/rosmsg-msgs-common` package.
+
+```tsx
+import { ros1 } from "@foxglove/rosmsg-msgs-common";
+```
+
+```tsx
+context.advertise?.(currentTopic, "sensor_msgs/Joy", {
+  datatypes: new Map([
+    ["std_msgs/Header", ros1["std_msgs/Header"]],
+    ["std_msgs/Float32", ros1["std_msgs/Float32"]],
+    ["std_msgs/Int32", ros1["std_msgs/Int32"]],
+    ["sensor_msgs/Joy", ros1["sensor_msgs/Joy"]],
+  ]),
+});
+```
+
+### [Foxglove WebSocket](/docs/studio/connection/custom#foxglove-websocket)
+
+`options` depend on the server implementation.
+
+#### [Foxglove Bridge](/docs/studio/connection/using-foxglove-bridge)
+
+When using the Foxglove Bridge with ROS data, use `context.dataSourceProfile` to determine the ROS version.
+
+For ROS 1 data, pass datatypes the same way you would for a [native ROS 1](#native-ros-1) connection.
+
+For ROS 2 data, pass datatypes using the following fields:
+
+| field     | type             | description                                                                                                                                                            |
+| --------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| datatypes | `Map<string, T>` | JavaScript map of datatype names and [`MessageDefinition`](https://github.com/foxglove/message-definition/blob/main/src/index.d.ts#L185) definitions for a given topic |
+
+Common datatype definitions are available in the `@foxglove/rosmsg-msgs-common` package.
+
+```tsx
+import { ros2humble as ros2 } from "@foxglove/rosmsg-msgs-common";
+// For Galactic and lower, use:
+// import { ros2galactic as ros2 } from "@foxglove/rosmsg-msgs-common";
+```
+
+```tsx
+context.advertise?.(currentTopic, "sensor_msgs/Joy", {
+  datatypes: new Map([
+    ["std_msgs/Header", ros2["std_msgs/Header"]],
+    ["std_msgs/Float32", ros2["std_msgs/Float32"]],
+    ["std_msgs/Int32", ros2["std_msgs/Int32"]],
+    ["sensor_msgs/Joy", ros2["sensor_msgs/Joy"]],
+  ]),
+});
+```
+
+### [Rosbridge](/docs/studio/connection/rosbridge)
+
+No `options` required. Simply publish a JSON message with fields conforming to the advertised datatype, and the bridge node will serialize it according to the datatype.
+
+## `unadvertise`
+
+> `unadvertise(topic: string)`
+
+Use `context.unadvertise` to remove advertising for a topic.
+
+```tsx
+context.unadvertise("/my_image_topic");
+```
+
+## `publish`
+
+> `publish(topic: string, message: Record<string, unknown>)`
+
+Use `context.publish` to publish a message on a previously advertised topic. If the topic is not advertised or otherwise malformed, the function will throw an error.
+
+```tsx
+context.advertise("/my_color_topic", "std_msgs/ColorRGBA");
+context.publish("/my_color_topic", { r: 0, g: 1, b: 0, a: 1 });
+```
+
+## `setParameter`
+
+> `setParameter: (name: string, value: ParameterValue)`
+
+Use `context.setParameter` to set a parameter `name` to any valid `value` (i.e. primitives, dates, `Uint8Array`s, and arrays or objects containing these values).
+
+```tsx
+context.setParameter("/param1", "value1");
+```
+
+## `setVariable`
+
+> `setVariable: (name: string, value: VariableValue)`
+
+Use `context.setVariable` to set a [variable](/docs/studio/app-concepts/variables) `name` to any valid variable `value`.
+
+```tsx
+context.setVariable("myVar", 55);
+
+context.onRender = (renderState: RenderState, done) => {
+  // Read variable values from the renderState
+  const variableValues = renderState.variables;
+  const myVarValue = variableValues.myVar;
+
+  // Call done when you've rendered all the UI for this renderState. If your UI framework delays rendering, call done when rendering has actaully happened.
+  done();
+};
+```
+
+## `callService`
+
+> `callService: (service: string, request: unknown) => Promise<unknown>`
+
+Use `context.callService` to make a `service` call to the specified service with a request payload.
+
+```tsx
+context.callService("my_service", { foo: "bar" });
+```
+
+## `saveState`
+
+> `saveState(state: Partial<unknown>)`
+
+Use `context.saveState` to save an arbitrary object as persisted panel state in the Foxglove Studio layout.
+
+```tsx
+context.initialState = undefined; // your panel's initial state
+
+context.saveState({ myNum: 2, myBool: false, myStr: "abc" });
+```
+
+## `setDefaultPanelTitle`
+
+> `setDefaultPanelTitle("My panel title")`
+
+Use `context.setDefaultPanelTitle` to override a panel's default title, usually determined by its configured message path.
+
+If no override or default title is set, the panel will simply display its type (e.g. "Image").
+
+```tsx
+// Override the default panel title
+context.setDefaultPanelTitle("Camera Calibration");
+```
+
+## `addPanel`
+
+> `addPanel({ position: "sibling", type: string, updateIfExists: boolean, getState(existingState?: unknown): unknown; })`
+
+Use `context.layout.addPanel` to add a sibling panel of a given panel type (e.g. `"RawMessages"`) to the layout. All panel types can be referenced [here](https://github.com/foxglove/studio/blob/main/packages/studio-base/src/panels/index.ts).
+
+If `updateIfExists` is set to true, this will update a sibling panel of the same panel type, if it already exists in the layout.
+
+`getState` is set to a function that returns the state for the added or updated panel. When updating an existing panel, the existing state will be passed in as `getState`'s first argument.
+
+```tsx
+// Add new panel
+context.layout.addPanel({
+  position: "sibling",
+  type: "RawMessages",
+  updateIfExists: false,
+  getState: () => {},
+});
+
+// Update existing panel
+context.layout.addPanel({
+  position: "sibling",
+  type: "RawMessages",
+  updateIfExists: true,
+  getState: ((existingState) =>  { topicPath: "/some_new_path", ...existingState }),
+});
+```

@@ -1,0 +1,14 @@
+---
+title: Upgrade version
+---
+
+  description: "Upgrade your Primary Site version."
+ 
+
+Use Helm to perform in-place upgrades of the Primary Site software – these commands will use values configured during installation:
+
+```shell
+$ helm repo update
+$ helm upgrade foxglove-primary-site foxglove/primary-site \
+    --namespace foxglove
+```

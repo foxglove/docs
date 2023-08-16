@@ -1,0 +1,40 @@
+---
+title: Setting up CORS
+---
+
+export const meta = {
+  title: "Setting up CORS",
+  description:
+    "To load remote data into Foxglove Studio, you must host your files in a server or cloud provider that supports Cross-Origin Resource Sharing (CORS) and accepts range requests.",
+};
+
+When loading remote data into Foxglove Studio for playback and analysis, we recommend hosting your files in a cloud provider like [Amazon Simple Storage Service (S3)](https://aws.amazon.com/pm/serv-s3/), [Google Cloud Storage (GCS)](https://cloud.google.com/storage), or [Azure Storage](https://azure.microsoft.com/en-us/product-categories/storage/). You can also host files on your own server, but it may be difficult and time-consuming to set up support for [Cross-Origin Resource Sharing (CORS)](https://web.dev/cross-origin-resource-sharing/) and [range requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests).
+
+If your data is sensitive, generate and use a signed URL – make sure that you point to the resource directly, as redirects will not work with CORS:
+
+- For S3 – [Sharing objects using presigned URLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ShareObjectPreSignedURL.html)
+- For GCS – [Signed URLS](https://cloud.google.com/storage/docs/access-control/signed-urls)
+- For Azure Storage – [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)
+
+This signed URL will work for a limited period of time, and you can set up your server to only sign URLs for authenticated users.
+
+Finally, set up your CORS configuration. Check out the following example of a [Terraform](https://www.terraform.io/) config for an S3 bucket ([documentation here](https://registry.terraform.io/providers/hashicorp%20%20/aws/latest/docs/resources/s3_bucket_cors_configuration)):
+
+```
+cors_rule {
+  allowed_methods = ["GET", "HEAD", "OPTIONS"]
+  allowed_origins = ["https://studio.foxglove.dev"]
+  allowed_headers = ["*"]
+  expose_headers = ["ETag", "Content-Type", "Accept-Ranges", "Content-Length"]
+}
+```
+
+And a Terraform config for a GCS bucket ([documentation here](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket#cors)):
+
+```
+cors {
+  origin = ["https://studio.foxglove.dev"]
+  method = ["GET", "HEAD", "OPTIONS"]
+  response_header = ["ETag", "Content-Type", "Accept-Ranges", "Content-Length"]
+}
+```

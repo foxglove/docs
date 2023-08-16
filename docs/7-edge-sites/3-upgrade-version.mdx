@@ -1,0 +1,16 @@
+---
+title: Upgrade version
+---
+
+export const meta = {
+  title: "Upgrade version",
+  description: "Upgrade your Edge Site version.",
+};
+
+Use Helm to perform in-place upgrades of the Edge Site software – these commands will use values configured during installation:
+
+```shell
+$ helm repo update
+$ helm upgrade foxglove-edge-site foxglove/edge-site \
+    --namespace foxglove
+```

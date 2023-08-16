@@ -1,0 +1,60 @@
+---
+title: Monitoring
+---
+
+export const meta = {
+  title: "Monitoring",
+  description: "Edge site monitoring.",
+};
+
+## Online status
+
+The Edge Site performs periodic pings to the Foxglove API control plane to report health. Organization admins can see this status on Foxglove web console's [_Settings_ page](https://console.foxglove.dev/settings/sites).
+
+## Prometheus
+
+The Edge Site service exposes processing and memory statistics on a [Prometheus](https://prometheus.io) metrics scraping endpoint on port 6002.
+
+Check out the [Prometheus documentation](https://prometheus.io/docs/introduction/overview) for more information.
+
+### Available metrics
+
+- `recordings_indexed` – Number of recordings indexed by the service
+- `recordings_imported` – Number of recordings imported to a Primary Site
+- `recordings_deleted` – Number of recordings deleted from the edge
+- `recordings_gigabytes` – Volume in recordings (GB)
+- `imports_gigabytes` – Volume of imported recordings (GB)
+- `import_time_seconds` – Histogram of import times to the Primary Site
+- `import_throughput_mbps` – Histogram of upload throughput to a Primary Site, when uploads are in progress
+- `recording_summary_read_ms` – Histogram of timings for reading MCAP summary sections from storage
+- `recording_stat_ms` – Histogram of timings for calling "Stat()" on MCAP files in storage
+- `recording_index_ms` – Histogram of timings for indexing recordings in the sqlite database
+- `deletion_mark_ms` – Histogram of timings for marking recordings for garbage collection in the index
+- `deletion_sweep_ms` – Histogram of timings for physical deletion of recordings from disk
+- `control_plane_patch_recordings_deleted_ms` – Histogram of timings for reporting garbage collections to the control plane
+- `control_plane_post_recordings_ms` – Histogram of timings for the (async) report of recording availability to console
+- `recording_upload_ms` – Histogram of timings for upload of a recording file to the configured inbox bucket
+- `control_plane_patch_recordings_imported_ms` – Histogram of timings for batched status updates issued to console after submission of recordings
+- `pending_import_request_poll_ms` – Histogram of timings for requests against the web console for pending import requests
+* `database_recordings_count`: Count of recordings indexed in the database.
+* `database_topics_count`: Count of unique topics/schemas indexed in the database.
+* `database_recording_reports_count`: Count of recording reports indexed in the database.
+* `database_size_bytes`: Total size of database in bytes.
+
+To see a list of available metrics in your Terminal, use the `kubectl` command to forward the Prometheus port:
+
+```shell
+$ kubectl port-forward -n foxglove service/edge-controller 6002:6002
+```
+
+```shell
+$ curl -X GET http://localhost:6002/metrics
+```
+
+## Slow query logging
+
+Slow query logging in the edge site can be enabled by supplying the following environment variables. Using these should have negligible performance impact.
+* `SLOW_QUERY_LOG_MIN_DURATION`: A positive integer indicating the minimum execution time in milliseconds for a query to be considered "slow". Queries slower than this will be written to logs.
+* `SLOW_QUERY_LOG_PARAMETERS`: A boolean indicating whether parameters should be logged, defaulting to "false".
+
+These environment variables can be supplied in the "edgeController.env" section of the helm chart.

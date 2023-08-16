@@ -1,0 +1,59 @@
+---
+title: Publish
+---
+
+import AccountRequiredHeader from "../../../src/components/docs/icons/AccountRequiredHeader";
+
+export const meta = {
+  title: "Publish",
+  description: "Write and publish custom extensions to use in Foxglove Studio.",
+};
+
+> Publish your extension to help other Studio users and other members of your Foxglove Studio organization leverage your custom panel.
+
+## Defining metadata
+
+Set your extension's metadata fields in the `package.json` file:
+
+- `name`
+- `publisher`
+- `version`
+- `description`
+
+## Packaging your extension
+
+When you're ready to distribute your extension, run `npm run package` to produce a ZIP archive with a `.foxe` extension that contains your extension manifest and compiled code — e.g. `myExtensionName-0.0.0.foxe`.
+
+<AccountRequiredHeader
+  headerId="sharing-with-your-team"
+  headerText="Sharing with your team"
+  badgeText="Requires Team plan or above"
+/>
+
+Publish your extension [with the `foxglove` CLI](https://github.com/foxglove/foxglove-cli#foxglove-cli) for the rest of your organization to use in Foxglove Studio:
+
+```bash
+$ foxglove extensions publish ./my-extension.1.0.0.foxe
+```
+
+All extensions are installed automatically to every organization member's Studio instance, and any existing extensions that are no longer listed in the organization registry are uninstalled.
+
+Only admins can view an organization's extensions in the [Foxglove web console](https://console.foxglove.dev) or via the `foxglove` CLI.
+
+```bash
+$ foxglove extensions list
+```
+
+Admins can also un-publish an extension from the web interface or via the CLI. Unpublished extensions are removed from Studio installations.
+
+```bash
+$ foxglove extensions unpublish [ID]
+```
+
+## Sharing publicly
+
+Share your extension with all Foxglove Studio users by adding it to the [`studio-extension-marketplace`](https://github.com/foxglove/studio-extension-marketplace).
+
+Publish your `.foxe` file somewhere public – we recommend GitHub releases alongside your code. Then, open a PR in the repo to update extensions.json and this README's "Extensions" section with your extension information.
+
+Once we merge your PR, your extension will be available for anyone to install in Foxglove Studio's [_Settings_](/docs/studio/app-concepts/preferences#extensions).

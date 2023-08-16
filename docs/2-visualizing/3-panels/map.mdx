@@ -1,0 +1,79 @@
+export const meta = {
+  title: "Map",
+  description: "Display points on a world map, using topics that contain LocationFix messages.",
+  heroImage: "/img/docs/studio/panels/map/panel.webp",
+};
+
+> Display points on a world map, using topics that contain [`LocationFix`](#locationfix) messages.
+
+![map panel](/img/docs/studio/panels/map/panel.webp)
+
+These points may be surrounded by circles that represent their accuracy - i.e. the larger the circle, the less accurate the coordinates. Points generated while the GPS receiver does not have a fix are displayed in a darker red, to denote that their coordinates are likely invalid
+
+### User interactions
+
+- Hover over the playback bar to highlight map points corresponding to that time
+- Hover over a point on the map to highlight its corresponding time in the playback bar
+- Click a map point to seek playback to that time
+- Scroll over the map to zoom; drag the map to pan (zoom and pan levels will be persisted to the layout)
+
+## Settings
+
+| General                 |                                                                                                                                                                                                                                                     |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Tile Layer**          | "Map", "Satellite", or "Custom" view                                                                                                                                                                                                                |
+| **Custom map tile URL** | Displayed only when the "Custom" tile layer is selected; URL to your custom map tiles, in `https://my.custom.url/{x}/{y}/{z}.png` format following the [Time Map Service specification](https://wiki.osgeo.org/wiki/Tile_Map_Service_Specification) |
+| **Max tile level**      | Displayed only when the "Custom" tile layer is selected; highest zoom supported by the custom map source. See [leaflet documentation](https://leafletjs.com/examples/zoom-levels/) for more information.                                            |
+| **Follow topic**        | Topic with [`LocationFix`](#locationfix) schema to follow in the panel viewport                                                                                                                                                                     |
+
+The `Topics` section allows you to toggle visibility and set colors for [`LocationFix`](#locationfix) or [`GeoJSON`](#geojson) topics when superimposed on the map.
+
+### Custom map layers
+
+Load custom map layers by pointing to a URL that serves rasterized slippy tiles following the [Tile Map Service](https://wiki.osgeo.org/wiki/Tile_Map_Service_Specification) specification with [Web Mercator projection](https://gisgeography.com/web-mercator-projection/). See Leaflet's `TileLayer` [documentation](https://leafletjs.com/reference.html#tilelayer) for more information on URL template construction. Most [Open Street Map based services](https://wiki.openstreetmap.org/wiki/List_of_OSM-based_services) will work for this. See [Switch2OSM](https://switch2osm.org/serving-tiles/) for more information on serving your own tiles.
+
+## Supported messages
+
+To use this panel, your data source must provide messages conforming to one of the following supported schemas.
+
+### `LocationFix`
+
+| framework | schema                                                                                                             |
+| --------- | ------------------------------------------------------------------------------------------------------------------ |
+| ROS 1     | [`sensor_msgs/NavSatFix`](https://docs.ros.org/en/api/sensor_msgs/html/msg/NavSatFix.html)                         |
+| ROS 2     | [`sensor_msgs/msg/NavSatFix`](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/NavSatFix.msg) |
+| Custom    | [`foxglove.LocationFix`](/docs/studio/messages/location-fix)                                                       |
+
+### `GeoJSON`
+
+| framework | schema                                               |
+| --------- | ---------------------------------------------------- |
+| Custom    | [`foxglove.GeoJSON`](/docs/studio/messages/geo-json) |
+
+The Map panel can recognize special `name` and `style` fields for the `properties` field of each feature in a GeoJSON message. The panel will use these to label and style features on the map. For example, the message below will be labelled "Named Polygon" and have the specified styling:
+
+```json
+{
+  type: "FeatureCollection",
+  features: [{
+      type: "Feature",
+      properties: {
+        name: "Named Polygon",
+        style: {
+          color: "#ff0000",
+          dashArray: "4 4",
+          lineCap: "butt",
+          opacity: "1",
+          weight: 4,
+        },
+      },
+      geometry: ...
+  }]
+}
+```
+
+Check out the [leaflet documentation](https://leafletjs.com/reference.html#path) for the supported `style` attributes.
+
+## Additional resources
+
+- [Write a message converter extension (Map panel)](/blog/announcing-message-converter-extensions-in-foxglove-studio)

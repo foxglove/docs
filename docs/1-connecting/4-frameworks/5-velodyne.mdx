@@ -1,0 +1,25 @@
+---
+title: Velodyne
+---
+
+import DesktopAppOnlyBadge from "../../../src/components/docs/DesktopAppOnlyBadge";
+
+export const meta = {
+  title: "Velodyne",
+  description: "Connect directly to your Velodyne Lidar hardware to see its incoming data live.",
+  heroImage: "/img/docs/studio/connection/live-connection/rosbridge-dialog.webp",
+};
+
+<DesktopAppOnlyBadge style={{ marginTop: "20px" }} />
+
+Connect directly to your Velodyne Lidar hardware to see its incoming data live.
+
+_Open connection_ in the _Data source_ dialog, select the _Velodyne Lidar_ connection, then enter the local UDP port on which you want to listen for Velodyne packets:
+
+![velodyne Lidar dialog](/img/docs/studio/connection/live-connection/velodyne-dialog.webp)
+
+To test your connection, add a [3D panel](/docs/studio/panels/3d) to your layout, and open your panel settings to toggle on the velodyne topic. You should now see an interactive representation of your Lidar scan in a 3D scene.
+
+## Additional resources
+
+- [Open a Velodyne LIDAR connection](/blog/opening-a-velodyne-lidar-connection)

@@ -1,0 +1,55 @@
+export const meta = {
+  title: "Diagnostics (ROS)",
+  description:
+    "Display your ROS nodes' diagnostic status from a topic with a DiagnosticArray schema, and display the data for a given diagnostic's hardware_id.",
+  heroImage: "/img/docs/studio/panels/diagnostics/summary-panel.webp",
+};
+
+> Display the status of seen nodes (i.e. stale, error, warn, or OK) from a topic with a ROS [`DiagnosticArray`](#diagnosticarray) schema in a running feed, and display the diagnostics data for a given `diagnostic_name/hardware_id`.
+
+Open a Diagnostics – Summary (ROS) panel to see the status of seen nodes (i.e. stale, error, warn, or OK) in a running feed.
+
+![diagnostics summary panel](/img/docs/studio/panels/diagnostics/summary-panel.webp)
+
+To pin a node to the top of your feed, hover on an entry and click the pin icon that appears.
+
+![pin diagnostic](/img/docs/studio/panels/diagnostics/pin.webp)
+
+Use the dropdown menu to select the minimum level by which you want to filter your diagnostics.
+
+![filter by level](/img/docs/studio/panels/diagnostics/level.webp)
+
+Use the search field to fuzzy filter entries by `hardware_id` and node name. Results will be ordered by how early the search text appears in the matched label.
+
+![diagnostics summary search](/img/docs/studio/panels/diagnostics/search.webp)
+
+Click any entry to open a corresponding Diagnostics – Detail (ROS) panel with the clicked node’s relevant details. Alternatively, you can manually open a new Diagnostics – Detail (ROS) panel and input a diagnostic to inspect. The displayed keys and values support rich formatting with basic HTML tags – e.g. `<b>`, `<u>`, `<table>`, etc.
+
+![diagnostics summary and detail panels](/img/docs/studio/panels/diagnostics/with-detail-panel.webp)
+
+## Settings
+
+### Diagnostics – Summary (ROS)
+
+| General           |                                                                           |
+| ----------------- | ------------------------------------------------------------------------- |
+| **Topic**         | ROS [`DiagnosticArray`](#diagnosticarray) topic to subscribe to for nodes |
+| **Sort by level** | Toggle whether you want to sort seen nodes by level                       |
+
+### Diagnostics – Detail (ROS)
+
+| General               |                                                                           |
+| --------------------- | ------------------------------------------------------------------------- |
+| **Topic**             | ROS [`DiagnosticArray`](#diagnosticarray) topic to subscribe to for nodes |
+| **Numeric precision** | Number of digits to the right of the decimal point for displayed values   |
+
+## Supported messages
+
+To use this panel, your data source must provide messages conforming to one of the following supported schemas.
+
+### `DiagnosticArray`
+
+| framework | schema                                                                                                                                 |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| ROS 1     | [`diagnostic_msgs/DiagnosticArray`](https://docs.ros.org/en/noetic/api/diagnostic_msgs/html/msg/DiagnosticArray.html)                  |
+| ROS 2     | [`diagnostic_msgs/msg/DiagnosticArray`](https://github.com/ros2/common_interfaces/blob/master/diagnostic_msgs/msg/DiagnosticArray.msg) |
