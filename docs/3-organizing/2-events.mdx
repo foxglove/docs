@@ -1,67 +1,48 @@
 ---
-slug: events
 title: Events
-order: 1
 ---
 
-export const meta = {
-  title: "Events",
-  description: "Use Foxglove Data Platform's web console to add events of interest to your data.",
-};
+Events represent points or time ranges of interest in your organization's data. They help you quickly identify, categorize, and search for relevant subsets of your data.
 
-> Use Foxglove Data Platform's web console to add events of interest to your data.
 
-Adding events to your robotics data in Data Platform can help you quickly identify, categorize, and search for points of interest in your data. Each event is tied to a device and time, and can contain optional metadata.
+## Create event
 
-## View events
+Create an event to flag points or time ranges of interest in your organization's data.
 
-Go to the _Events_ page in Console to view all events, with their associated devices and metadata.
-
-You may also list your events using the foxglove CLI:
-
-```bash
-$ foxglove events list
-| ID                   | DEVICE ID            | TIMESTAMP           | DURATION    | CREATED AT               | UPDATED AT               | METADATA                                                                 |
-| -------------------- | -------------------- | ------------------- | ----------- | ------------------------ | ------------------------ | ------------------------------------------------------------------------ |
-| evt_PbkdOL8geyyXLIOr | dev_JtSXCGiM0RC2YHDO | 1532402927000000000 | 0           | 2022-02-24T15:22:25.154Z | 2022-02-24T15:22:25.154Z | {"position":"start"}                                                     |
-| evt_U0TCTtRbDb631tmI | dev_mHH1Cp4gPybCPR8y | 1532402927000000000 | 2000000000  | 2022-02-09T21:11:52.637Z | 2022-02-09T21:11:52.637Z | {"nuscene":"0061","startup":"yes"}                                       |
-| evt_9akLLRJRqp8jg1zq | dev_mHH1Cp4gPybCPR8y | 1532402927000000000 | 19000000000 | 2022-02-09T21:08:46.936Z | 2022-02-09T21:08:46.936Z | {"location":"singapore","nuscene":"0061","weather-laguna":"really-nice"} |
-```
-
-## Add an event
-
-Go to the _Devices_ page, and select the device to which you want to add an event.
-
-On the selected device's landing page, click "Create event" to create an event of interest for that device.
+Each event requires an associated device, timestamp, and duration (0 for an instantaneous event). It can also contain optional metadata.
 
 ![create event](/img/docs/data-platform/create-event.webp)
 
-Set the time of event, duration, and relevant metadata keys and values to that event to facilitate later searching. For an instantaneous event, the duration can be set to 0.
+|        |                                                                                                                         |
+| ------ | ----------------------------------------------------------------------------------------------------------------------- |
+| In app | <ul><li>Create at [Events](https://console.foxglove.dev/events) or select device at [Devices](https://console.foxglove.devices)</li><li>Add events directly on the playback bar during visualization</li></ul> |
+| CLI    | `$ foxglove TBD`                                                                                                        |
 
-_NOTE: You can also add events to your Foxglove Data Platform data when [playing it back in Foxglove Studio](/docs/studio/app-concepts/playback#user-interactions)._
+## List events
 
-```bash
-$ foxglove beta events add \
-  --device-id dev_flm75pLkfzUBX2DH \
-  --timestamp 2022-01-01T12:00:00Z \
-  --duration-nanos 0 \
-  --metadata 'someKey:someValue'
-```
+|        |                                                              |
+| ------ | ------------------------------------------------------------ |
+| In app | View list at [Events](https://console.foxglove.dev/events)   |
+| CLI    | `$ foxglove events list`                                     |
 
 ## Search events
 
-Use the search module on the _Events_ page to filter events by device, time range, and metadata keys and values.
+Search events by device, time range, and metadata.
 
-The metadata query field uses a specific syntax to filter down your events:
+The metadata field uses specific syntax to filter events:
 
 - `weather:rain` – Find events with a certain metadata key and corresponding value
 - `weather:*` – Find events with a certain metadata key and any value
 - `*:rain` – Find events with a certain metadata value and any key
 - `weather:rain weather:fog` – Find events with `weather` that matches both `rain` AND `fog`
-- `weather:rain,fog` – Find events with `weather` that matches `rain` OR `fog`
+- `weather:rain,fog,"mostly sunny"` – Find events with `weather` that matches `rain` OR `fog` OR `"mostly sunny"` (double quotes used for values with spaces)
 - `error` – Find events with either a key or value tagged “error”
 
-Values containing spaces can be wrapped in double quotes; e.g. `key:"value with spaces"`.
+|        |                                                         |
+| ------ | ------------------------------------------------------- |
+| In app | Search at [Events](https://console.foxglove.dev/events) |
+| CLI    | N/A                                                     |
+
 
 ## Additional resources
 
