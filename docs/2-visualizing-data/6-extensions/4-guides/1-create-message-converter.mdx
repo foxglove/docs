@@ -2,11 +2,6 @@
 title: Create message converter
 ---
 
-export const meta = {
-  title: "Guide: Create message converter",
-  description: "Extend Foxglove Studio with a custom message converter.",
-};
-
 This guide takes you through building an extension for a message converter. You'll learn how to setup your extension project and build a simple converter for a custom GPS message to `foxglove.LocationFix` for visualizing in the Map panel.
 
 ## Setting up
@@ -54,7 +49,7 @@ type MyGps = {
 
 To visualize GPS coordinates, the [Map panel](/docs/studio/panels/map) requires messages in the [`foxglove.LocationFix`](/docs/studio/messages/location-fix) format. In short, our converter needs to turn `MyGps` messages into messages that adhere to the `foxglove.LocationFix` schema.
 
-First, specify the _from_ schema (`sensors.MyGps`) and _to_ schema (`foxglove.LocationFix`), to inform Studio that our registered converter will turn `sensors.MyGps` messages into `foxglove.LocationFix` messages.
+First, specify the _from_ schema (`sensors.MyGps`) and _to_ schema (`foxglove.LocationFix`), to inform Foxglove that our registered converter will turn `sensors.MyGps` messages into `foxglove.LocationFix` messages.
 
 Then, write the `converter` function. In our example, we'll re-map the `lat` and `lon` fields to the `latitude` and `longitude` fields that the `foxglove.LocationFix` schema expects:
 
@@ -75,4 +70,4 @@ export function activate(extensionContext: ExtensionContext) {
 
 ## Testing
 
-Once we've packaged and installed our extension, load any data source containing `sensors.MyGps` messages in Studio and visualize them with the [Map panel](/docs/studio/panels/map).
+Once we've packaged and installed our extension, load any data source containing `sensors.MyGps` messages in Foxglove and visualize them with the [Map panel](/docs/studio/panels/map).

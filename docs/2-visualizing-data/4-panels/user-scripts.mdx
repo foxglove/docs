@@ -1,18 +1,16 @@
-export const meta = {
-  title: "User Scripts",
-  description:
-    "Use a code editor sandbox to write scripts that publish pseudo topics internally to Foxglove Studio. Manipulate, reduce, and filter existing messages and output them in a way that is useful to you.",
-};
+---
+title: User Scripts
+---
 
-> Use a code editor sandbox to write scripts that publish pseudo topics internally to Foxglove Studio. Manipulate, reduce, and filter existing messages and output them in a way that is useful to you.
+Use a code editor sandbox to write scripts that publish pseudo topics internally to Foxglove. Manipulate, reduce, and filter existing messages and output them in a way that is useful to you.
 
 You can write user scripts to transform both playback and preloaded data:
 
-- **Playback data** – Messages streaming frame-by-frame into Studio; e.g. data for the [Raw Messages](/docs/studio/panels/raw-messages) or [3D](/docs/studio/panels/3d) panel
+- **Playback data** – Messages streaming frame-by-frame into Foxglove; e.g. data for the [Raw Messages](/docs/studio/panels/raw-messages) or [3D](/docs/studio/panels/3d) panel
 
 - **[Preloaded data](/docs/studio/app-concepts/playback#preloading)** – Messages for the entire data range being played back; e.g. data for the [Plot](/docs/studio/panels/plot) or [State Transitions](/docs/studio/panels/state-transitions) panel
 
-When transforming preloaded data, Foxglove Studio creates two instances of the running user script – one handles the full data range, while the other handles just the current playback frame of messages. Each instance of the user script receives the messages in [receive time order](/docs/studio/app-concepts/playback#message-ordering).
+When transforming preloaded data, Foxglove creates two instances of the running user script – one handles the full data range, while the other handles just the current playback frame of messages. Each instance of the user script receives the messages in [receive time order](/docs/studio/app-concepts/playback#message-ordering).
 
 ## Getting started
 

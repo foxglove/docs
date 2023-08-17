@@ -1,24 +1,18 @@
 ---
-title: Supported messages
+title: Introduction
 ---
 
-export const meta = {
-  title: "Introduction",
-  description:
-    "Certain Foxglove Studio panels must receive messages that adhere to a specific schema to visualize them correctly.",
-};
+While some Foxglove panels (e.g. [Raw Messages](/docs/studio/panels/raw-messages) and [Plot](/docs/studio/panels/plot)) can display data of any type from any topic, others (e.g. [Map](/docs/studio/panels/map) and [3D](/docs/studio/panels/3d)) require incoming messages to conform to a known schema to visualize them properly.
 
-> Certain Foxglove Studio panels must receive messages that adhere to a specific schema to visualize them correctly.
+To transform custom messages into supported Foxglove schemas, you can write a [message converter](/docs/studio/extensions/getting-started#message-converters).
 
-While some Foxglove Studio panels, like the [Raw Messages](/docs/studio/panels/raw-messages) and [Plot](/docs/studio/panels/plot) panels, are able to display data of any type from any topic, **other panels require incoming messages to conform to a known schema**. For example, the [Map](/docs/studio/panels/map) and [3D](/docs/studio/panels/3d) panels both have a specific list of supported schemas that they can visualize.
-
-Foxglove Studio's [extensions](/docs/studio/extensions/getting-started) also make it possible for you to write your own [message converters](/docs/studio/extensions/getting-started#message-converters) to transform your custom messages from one schema to another supported by Foxglove Studio's panels.
-
-See the [panels documentation](/docs/studio/panels/introduction) for each panel's supported messages.
+See the [panels](TBD) for each panel's supported messages.
 
 ## Using Foxglove schemas
 
-Reference the Foxglove schema files in the [`@foxglove/schemas` repo](https://github.com/foxglove/schemas) to write structured messages in any of the following formats:
+Adhering to supported schemas will help you take full advantage of Foxglove's built-in visualizations.
+
+Use the schema files in [`@foxglove/schemas`](https://github.com/foxglove/schemas) to write structured messages in any of the following formats:
 
 - [Protobuf](https://github.com/foxglove/schemas/tree/main/schemas/proto/foxglove)
 - [JSON Schema](https://github.com/foxglove/schemas/tree/main/schemas/jsonschema)
@@ -27,13 +21,11 @@ Reference the Foxglove schema files in the [`@foxglove/schemas` repo](https://gi
 - [TypeScript](https://github.com/foxglove/schemas/tree/main/schemas/typescript)
 - [FlatBuffers](https://github.com/foxglove/schemas/tree/main/schemas/flatbuffer)
 
-Having your data adhere to these outlined schemas will help you take full advantage of Studio's built-in visualizations.
-
 ## Protobuf and JSON Schema
 
 Copy the [`.proto` files](https://github.com/foxglove/schemas/tree/main/schemas/proto/foxglove) or [`.json` files](https://github.com/foxglove/schemas/tree/main/schemas/jsonschema) you need directly into your project, and use them to start publishing data via a [live Foxglove WebSocket connection](/docs/studio/connection/foxglove-websocket) or logging data to an [MCAP file](https://mcap.dev).
 
-_NOTE: For Protobuf data, time values of type [`google.protobuf.Timestamp`](https://protobuf.dev/reference/protobuf/google.protobuf/#timestamp) or [`google.protobuf.Duration`](https://protobuf.dev/reference/protobuf/google.protobuf/#duration) will appear with `sec` and `nsec` fields (instead of `seconds` and `nanos`) in [user scripts](/docs/studio/panels/user-scripts), [message converters](/docs/studio/extensions/getting-started#message-converters), and the rest of Foxglove Studio, for consistency with time and duration types in other data formats._
+_NOTE: For Protobuf data, time values of type [`google.protobuf.Timestamp`](https://protobuf.dev/reference/protobuf/google.protobuf/#timestamp) or [`google.protobuf.Duration`](https://protobuf.dev/reference/protobuf/google.protobuf/#duration) will appear with `sec` and `nsec` fields (instead of `seconds` and `nanos`) in [user scripts](/docs/studio/panels/user-scripts), [message converters](/docs/studio/extensions/getting-started#message-converters), and the rest of Foxglove, for consistency with time and duration types in other data formats._
 
 You can also import JSON schemas via the [`@foxglove/schemas` npm package](https://www.npmjs.com/package/@foxglove/schemas):
 
@@ -68,7 +60,7 @@ msg.data = { x: 0.5, y: 0.7 }
 
 Import Foxglove schemas as TypeScript types for type-checking purposes.
 
-In Foxglove Studio's [User Scripts panel](/docs/studio/panels/user-scripts), you can specify the schema you want with `Message<"foxglove.[SchemaName]">`:
+In Foxglove's [User Scripts panel](/docs/studio/panels/user-scripts), you can specify the schema you want with `Message<"foxglove.[SchemaName]">`:
 
 ```typescript
 import { Input, Message } from "./types";
@@ -91,4 +83,4 @@ import { Point2 } from "@foxglove/schemas";
 const myImage: Point2 = { x: 1, y: 2 };
 ```
 
-Import these types when working on a JavaScript WebSocket or [MCAP](https://mcap.dev) project, or when writing a custom data transformation script in Foxglove Studio’s [User Scripts panel](/docs/studio/panels/user-scripts).
+Import these types when working on a JavaScript WebSocket or [MCAP](https://mcap.dev) project, or when writing a custom data transformation script in Foxglove's [User Scripts panel](/docs/studio/panels/user-scripts).

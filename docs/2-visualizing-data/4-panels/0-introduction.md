@@ -1,15 +1,8 @@
 ---
-title: Panels
+title: Introduction
 ---
 
-export const meta = {
-  title: "Introduction",
-  description:
-    "Panels are modular visualization interfaces that can be configured and arranged into Studio layouts.",
-  heroImage: "/img/docs/studio/panels/menu.webp",
-};
-
-> Panels are modular visualization interfaces that can be configured and arranged into Studio layouts.
+Panels are modular visualization interfaces that can be configured and arranged into Studio layouts.
 
 Find the full list of available panels in the sidebar's _Add panel_ tab.
 

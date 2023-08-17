@@ -2,15 +2,9 @@
 title: Shareable links
 ---
 
-export const meta = {
-  title: "Building and sharing links",
-  description:
-    "Build and share deep links with your teammates to open Foxglove Studio (either the desktop or web app) with specific layouts and data sources.",
-};
+Build and share deep links with your teammates to open Foxglove (on web or desktop) with specific layouts and data sources.
 
-> Build and share deep links with your teammates to open Foxglove Studio (on web or desktop) with specific layouts and data sources.
-
-To open Foxglove Studio using a specific layout or data source, construct a "deep link" URL using the format:
+To open Foxglove using a specific layout or data source, construct a "deep link" URL using the format:
 
 ```
 https://studio.foxglove.dev/?param1=value2&param2=value2
@@ -26,7 +20,7 @@ By default, links will open in the browser. You can open the desktop app instead
 | --------- | ------ | -------- | ----------------------------- |
 | `openIn`  | string |          | `web` (default)<br/>`desktop` |
 
-Using `openIn=desktop` will attempt to open the Foxglove Studio desktop app (assuming it is installed), while providing a landing page giving users the option to download the app (if it is not installed), or to open the link in their browser instead. This is the preferred approach to open the desktop app, as it provides a graceful browser fallback option.
+Using `openIn=desktop` will attempt to open the Foxglove desktop app (assuming it is installed), while providing a landing page giving users the option to download the app (if it is not installed), or to open the link in their browser instead. This is the preferred approach to open the desktop app, as it provides a graceful browser fallback option.
 
 Alternatively, if you are sure the user has the desktop app installed, you can use the `foxglove://` URL scheme to open it. This provides no browser fallback, and will fail silently if the desktop app is not installed.
 
