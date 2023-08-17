@@ -8,11 +8,11 @@ import FoxgloveWebSocketResetDirections from "../../../src/components/docs/Foxgl
 export const meta = {
   title: "ROS 1",
   description:
-    "Foxglove Studio can load local and remote ROS 1 (.bag) files, or connect directly to a running ROS stack using a Rosbridge (WebSockets) or native (TCP) connection.",
+    "Foxglove can load local and remote ROS 1 (.bag) files, or connect directly to a running ROS stack using a Rosbridge (WebSockets) or native (TCP) connection.",
   heroImage: "/img/docs/studio/connection/live-connection/rosbridge-dialog.webp",
 };
 
-Foxglove Studio can load local and remote [ROS 1](/tutorials/installing-ros1-on-ubuntu) (`.bag`) files, or connect directly to a running ROS stack using a Rosbridge (WebSockets) or native (TCP) connection.
+Foxglove can load local and remote [ROS 1](/tutorials/installing-ros1-on-ubuntu) (`.bag`) files, or connect directly to a running ROS stack using a Rosbridge (WebSockets) or native (TCP) connection.
 
 ## Files
 
@@ -28,7 +28,7 @@ To load a local ROS 1 `.bag` file, double-click it from your file manager, drag-
 
 #### Foxglove Data Platform
 
-Use [Foxglove Data Platform](/data-platform)'s [web console](https://console.foxglove.dev) to upload your ROS 1 `.bag` files and stream it directly into Foxglove Studio.
+Use [Foxglove Data Platform](/data-platform)'s [web console](https://console.foxglove.dev) to upload your ROS 1 `.bag` files and stream it directly into Foxglove.
 
 Check out the [Data Platform docs](/docs/data-platform/exporting-and-visualizing-data) for more information on how to export and visualize your robotics data.
 
@@ -44,7 +44,7 @@ For live connections, you must be on the same network as the robot. While we sup
 
 ### Foxglove WebSocket
 
-Connect directly to your running ROS stack using a Foxglove WebSocket connection. This connection uses a standard protocol to connect Studio to your ROS master over WebSockets. While it does require running an extra ROS node ([`foxglove_bridge`](https://index.ros.org/p/foxglove_bridge/)), we recommend this option if you have a network firewall between ROS and Studio, as it requires your ROS host to have only one port open.
+Connect directly to your running ROS stack using a Foxglove WebSocket connection. This connection uses a standard protocol to connect Foxglove to your ROS master over WebSockets. While it does require running an extra ROS node ([`foxglove_bridge`](https://index.ros.org/p/foxglove_bridge/)), we recommend this option if you have a network firewall between ROS and Foxglove, as it requires your ROS host to have only one port open.
 
 #### Connecting to data
 
@@ -64,9 +64,9 @@ Foxglove WebSocket connections support publishing back to your ROS stack, but no
 
 _NOTE: For performance reasons, we recommend using the [Foxglove WebSocket](#foxglove-websocket) connection instead._
 
-Connect directly to your running ROS stack via WebSockets using a Rosbridge connection. This connection option requires only a single open port between Studio and your robot.
+Connect directly to your running ROS stack via WebSockets using a Rosbridge connection. This connection option requires only a single open port between Foxglove and your robot.
 
-A [`rosbridge`](https://wiki.ros.org/rosbridge_suite) connection uses a standard protocol to connect Studio to your ROS master over WebSockets. While it does require running an extra ROS node ([`rosbridge_server`](https://wiki.ros.org/rosbridge_server)), we recommend this option if you have a network firewall between ROS and Studio, as it requires your ROS host to have only one port open.
+A [`rosbridge`](https://wiki.ros.org/rosbridge_suite) connection uses a standard protocol to connect Foxglove to your ROS master over WebSockets. While it does require running an extra ROS node ([`rosbridge_server`](https://wiki.ros.org/rosbridge_server)), we recommend this option if you have a network firewall between ROS and Foxglove, as it requires your ROS host to have only one port open.
 
 To open a Rosbridge connection, make sure you’ve [installed ROS 1](/tutorials/installing-ros1-on-ubuntu), as well as [`rosbridge-suite`](https://github.com/RobotWebTools/rosbridge_suite):
 
@@ -107,9 +107,9 @@ _Open connection_ via the _Data source_ dialog, select "ROS 1", and enter your [
 
 ![ros 1 dialog](/img/docs/studio/connection/live-connection/ros1-dialog.webp)
 
-If you're experiencing any issues, ensure you have unrestricted network connectivity between your ROS stack and Studio, as ROS uses multiple ports to communicate.
+If you're experiencing any issues, ensure you have unrestricted network connectivity between your ROS stack and Foxglove, as ROS uses multiple ports to communicate.
 
-If you're running ROS and Studio on different machines see the ROS 1 [Network Setup](http://wiki.ros.org/ROS/NetworkSetup) docs to make sure your environment is configured correctly.
+If you're running ROS and Foxglove on different machines see the ROS 1 [Network Setup](http://wiki.ros.org/ROS/NetworkSetup) docs to make sure your environment is configured correctly.
 
 #### Current limitations
 
