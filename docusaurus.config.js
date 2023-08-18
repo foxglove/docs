@@ -33,7 +33,6 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve("./navigation.js"),
-          routeBasePath: "/",
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl: "https://github.com/foxglove/docs/tree/main",
@@ -55,7 +54,7 @@ const config = {
         logo: {
           alt: "Foxglove",
           src: "img/logo.png",
-          href: "https://foxglove.dev/",
+          href: "/",
         },
         items: [
           {
@@ -66,7 +65,7 @@ const config = {
           },
           {
             href: "https://foxglove.dev/docs/api",
-            label: "API reference",
+            label: "API Reference",
             position: "left",
           },
           {
