@@ -7,7 +7,7 @@ export default function DesktopAppOnlyBadge({
   style: { [key: string]: string };
 }): ReactElement {
   return (
-    <div
+    <p
       style={{
         color: "rgba(139, 92, 246, 1)",
         display: "flex",
@@ -18,6 +18,6 @@ export default function DesktopAppOnlyBadge({
     >
       <Icon.ComputerDesktopIcon style={{ width: "24px", height: "24px", marginRight: "5px" }} />
       <span style={{ color: "rgba(139, 92, 246, 1)" }}>Desktop app only</span>
-    </div>
+    </p>
   );
 }

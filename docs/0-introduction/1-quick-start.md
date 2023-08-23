@@ -1,34 +1,46 @@
 ---
 title: Quick start
+description: Sign up for a free Foxglove account – either as an individual or with a team.
 ---
 
-## Signup
+Create [a free Foxglove account](https://console.foxglove.dev/signup) to get started.
 
-When first creating [a free Foxglove account](https://console.foxglove.dev/signup), be sure to select whether you'll be working alone or with a team:
+## Collaboration
 
-![select org](/img/docs/signing-in/org.webp)
+Share whether you plan to use Foxglove "As an individual" or "With a team", for more streamlined account setup.
 
-Once logged in, you can use the Foxglove dashboard to upload and explore data.
+### As an individual
 
-Use the following views to explore your organization's data:
-
-- **Devices** – Your tracked robots
-- **Recordings** - Data recorded by your robots
-- **Events** – Points or time ranges of interest in your data recordings
-- **Timeline** – Your data recordings, organized by device and displayed in chronological order
-
-### Solo user
-
-Enjoy the following benefits of a Foxglove account as a solo user:
-
-- Store and manage your data in one central repository
-- Create and save Foxglove layouts to your account, so you can access them across multiple devices
+- Store and manage data in one central repository
+- Create and save Foxglove layouts, and access them across multiple devices
 - Develop and install custom extensions for bespoke visualizations
 
-### Organization
+### With a team
 
-Enjoy the following benefits of a Foxglove account as a member of a larger organization:
-
+- Invite team members to collaborate with
 - Store and manage your team's data in one central repository
-- Create and save Foxglove layouts to your account, so you can access them across multiple devices and share them with teamamtes
-- Develop and install custom extensions for bespoke visualizations, and share them with other members of your organization
+- Create and save Foxglove layouts, access them across multiple devices, and share them with teammates
+- Develop and install custom extensions for bespoke visualizations, and share them with teammates
+
+## Storage region
+
+Set your data region to United States or Europe. By specifying where your data should live, you can ensure that it stays within your team's geography for compliance with GDPR and other security and privacy requirements.
+
+This selection applies only to imported data files – import metadata, user account data, and general app data are all stored in Foxglove's US-based servers.
+
+## Dashboard
+
+Once logged in, use the dashboard and other views to upload and explore your organization's data:
+
+- **Devices** – Tracked robots
+- **Recordings** - Data recorded by tracked robots
+- **Events** – Points or time ranges of interest in data recordings
+- **Timeline** – Data coverage, organized by device and displayed in chronological order
+
+## Links and resources
+
+- [Foxglove dashboard](https://console.foxglove.dev/dashboard)
+- Visualization
+  - [Hosted web app](https://studio.foxglove.dev/)
+  - [Desktop app](https://foxglove.dev/download) (for Linux, Windows, and macOS)
+  - [Self-hosting the web app](/self-hosting/introduction)
