@@ -2,7 +2,7 @@
 title: Introduction
 ---
 
-Panels are modular visualization interfaces that can be configured and arranged into Studio layouts.
+Panels are modular visualization interfaces that can be configured and arranged into Foxglove layouts.
 
 Find the full list of available panels in the sidebar's _Add panel_ tab.
 

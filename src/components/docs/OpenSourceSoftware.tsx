@@ -63,7 +63,7 @@ const otherPackages: Package[] = [
     description:
       "TypeScript library implementing an XMLRPC client and server with pluggable server backend",
   },
-  { name: "@foxglove/eslint-plugin", description: "ESLint configuration used in Foxglove Studio" },
+  { name: "@foxglove/eslint-plugin", description: "ESLint configuration used in Foxglove" },
 ];
 
 const Basics = (): ReactElement => (
