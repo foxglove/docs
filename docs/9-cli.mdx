@@ -2,16 +2,11 @@
 title: CLI
 ---
 
-export const meta = {
-  title: "CLI",
-  description: "Foxglove Data Platform provides a CLI tool to manage your robotics data.",
-};
-
-The [`foxglove` CLI tool](https://github.com/foxglove/foxglove-cli) helps you import, export, and interact with your Foxglove Data Platform data directly from your command line.
+The [`foxglove` CLI tool](https://github.com/foxglove/foxglove-cli) helps you import, export, and interact with your data from the command line.
 
 ## Installation
 
-To download the latest release, run one of the following commands in your terminal:
+Download the latest release from your command line.
 
 | OS      | architecture | command                                                                                                                  |
 | ------- | ------------ | ------------------------------------------------------------------------------------------------------------------------ |
@@ -29,7 +24,7 @@ To install a specific release, see the [releases page](https://github.com/foxglo
 
 ## Getting started
 
-Before you can run any commands to interact with your data, you must authenticate with your [Foxglove account](/docs/data-platform/signing-in):
+Before interacting with your data, you must first authenticate with your [Foxglove account](/docs/data-platform/signing-in):
 
 ```bash
 $ foxglove auth login
@@ -41,7 +36,7 @@ For a list of all available CLI commands:
 $ foxglove -h
 ```
 
-To enable shell autocompletion for subcommands and parameters, run the following command to get the relevant instructions for your shell (`bash`, `zsh`, `fish`, and `PowerShell` are supported):
+Enable shell autocompletion for subcommands and parameters (`bash`, `zsh`, `fish`, and `PowerShell` are supported):
 
 ```bash
 $ foxglove completion <shell> -h
