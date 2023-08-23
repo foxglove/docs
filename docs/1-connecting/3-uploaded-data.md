@@ -32,13 +32,11 @@ After locating the data you want in the "hour" view, click a coverage bar or sel
 
 Launch this data in Studio for immediate visualization.
 
-## Uplaoding from local storage
-
+## Uploading from local storage
 
 > Use Foxglove Data Platform's web console to import and interact with your robotics data.
 
-You can import your recordings either via the web console or the CLI. Before you can import your recordings, you'll need to create devices
-to associate with your recordings. These devices could represent real robots or simulated robots.
+You can import your recordings either via the web console or the CLI. Before you can import your recordings, you'll need to create devices to associate with your recordings. These devices could represent real robots or simulated robots.
 
 You can import ROS 1 [.bag](https://wiki.ros.org/Bags) files or [MCAP](https://mcap.dev/) files directly. Custom data or ROS 2 files must first be [converted](/blog/importing-your-ros2-data-into-foxglove-data-platform) to MCAP files.
 

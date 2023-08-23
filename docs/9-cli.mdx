@@ -41,3 +41,41 @@ Enable shell autocompletion for subcommands and parameters (`bash`, `zsh`, `fish
 ```bash
 $ foxglove completion <shell> -h
 ```
+
+## Devices
+
+### Create device
+
+`$ foxglove devices add --name "my device"`
+
+### List devices
+
+`$ foxglove devices list`
+
+## Delete device
+
+`$ foxglove devices delete --name "my device"`
+
+## Recordings
+
+### Import recording
+
+`$ TBD`
+
+### Delete recording
+
+`$ TBD`
+
+## Events
+
+### Create event
+
+`$ foxglove beta events add \
+  --device-id dev_flm75pLkfzUBX2DH \
+  --timestamp 2022-01-01T12:00:00Z \
+  --duration-nanos 0 \
+  --metadata 'someKey:someValue'`
+
+### Search events
+
+`$ TBD`
