@@ -1,49 +1,20 @@
 ---
 title: Custom
+description: Foxglove can load local and remote MCAP files containing custom data (i.e. Protobuf, JSON, FlatBuffers), or connect directly to live custom data via a Foxglove WebSocket connection.
 ---
 import CorsDirections from "../../../src/components/docs/CorsDirections";
 
 import FoxgloveWebSocketResetDirections from "../../../src/components/docs/FoxgloveWebSocketResetDirections";
 
-Foxglove can load custom data (i.e. [Protobuf](https://developers.google.com/protocol-buffers), [JSON](http://jsonschema.org/), [FlatBuffers](https://google.github.io/flatbuffers)) as local or remote [MCAP](https://mcap.dev) files. It can also connect directly to your live custom data with the Foxglove WebSocket, an encoding-agnostic WebSocket connection.
+Foxglove can load local or remote [MCAP](https://mcap.dev) files containing custom data (i.e. [Protobuf](https://developers.google.com/protocol-buffers), [JSON](http://jsonschema.org/), [FlatBuffers](https://google.github.io/flatbuffers)), or connect directly to live custom data via a Foxglove WebSocket connection.
 
-## Files
-
-Load custom data into Foxglove by first encoding it in [MCAP](https://mcap.dev) (`.mcap`) files.
-
-MCAP supports the following serialization formats:
-
-- [Protobuf](https://mcap.dev/guides/getting-started/protobuf)
-- [JSON](https://mcap.dev/guides/getting-started/json)
-- [FlatBuffers](https://mcap.dev/guides/getting-started/flatbuffers)
-
-Please [get in touch](/contact) if there are other data formats that your team would like to see supported.
-
-### Local file
-
-Once you have your local MCAP file, follow the MCAP directions for [loading it in Foxglove](/docs/studio/connection/mcap#local).
-
-### Cloud data
-
-#### Foxglove
-
-Once you've [recorded your custom data to MCAP (`.mcap`) files](/docs/studio/connection/custom#local-file), you can upload them to Foxglove's [web console](https://console.foxglove.dev) and stream them directly for visualization.
-
-Check out the [Data Platform docs](/docs/data-platform/exporting-and-visualizing-data) for more information on how to export and visualize your robotics data.
-
-#### By URL
-
-Once you have an MCAP file in remote storage, follow the MCAP directions for [opening it via URL in Foxglove](/docs/studio/connection/mcap#remote).
-
-<CorsDirections />
-
-## Live connection
+## Live data
 
 Connect directly to your live custom data (i.e. Protobuf, JSON, FlatBuffers) with an encoding-agnostic WebSocket connection.
 
 ### Foxglove WebSocket
 
-First, you'll need to create your own server to start publishing your custom data.
+Create your own server to start publishing your custom data.
 
 The [`foxglove/ws-protocol` repo](https://github.com/foxglove/ws-protocol) provides:
 
@@ -57,13 +28,37 @@ $ npx @foxglove/ws-protocol-examples sysmon
 $ npx @foxglove/ws-protocol-examples image-server
 ```
 
-#### Connecting to data
+#### Connect
 
 _Open connection_ in the _Data source_ dialog, select _Foxglove WebSocket_, and enter the URL to your WebSocket server:
 
 ![Foxglove WebSocket dialog](/img/docs/studio/connection/live-connection/foxglove-websocket-dialog.webp)
 
 <FoxgloveWebSocketResetDirections />
+
+### Remote file
+
+Once you have an MCAP file in remote storage, follow the MCAP directions for [opening it via URL in Foxglove](/docs/studio/connection/mcap#remote).
+
+<CorsDirections />
+
+## Local data
+
+Load custom data into Foxglove by first encoding it in [MCAP](https://mcap.dev) (`.mcap`) files.
+
+MCAP supports the following serialization formats:
+
+- [Protobuf](https://mcap.dev/guides/getting-started/protobuf)
+- [JSON](https://mcap.dev/guides/getting-started/json)
+- [FlatBuffers](https://mcap.dev/guides/getting-started/flatbuffers)
+
+Once you have your local MCAP file, follow the MCAP directions for [loading it in Foxglove](/docs/studio/connection/mcap#local).
+
+## Imported data
+
+Once converting yoru custom data to MCAP files and uploading them to Foxglove, you can stream them directly for visualization.
+
+[IMPORTED DATA PAGE SNIPPET]
 
 ## Schema encodings
 
@@ -174,7 +169,7 @@ Known limitations can be found here in `foxglove/omgidl` library internally used
 
  If there's a feature of IDL that you want to see supported, please file an issue on the [Foxglove repo](https://github.com/foxglove/studio/issues) or the [Foxglove OMG IDL repo](https://github.com/foxglove/omgidl/issues).
 
-## Additional resources
+## Links and resources
 
 - [MCAP docs and guides](https://mcap.dev)
 - [WebSocket protocol specification](https://github.com/foxglove/ws-protocol/blob/main/docs/spec.md)

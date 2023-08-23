@@ -1,63 +1,24 @@
 ---
 title: ROS 2
+description: Foxglove can load local and remote MCAP files containing ROS 2 data, or connect directly to a live ROS 2 stack.
 ---
-import CorsDirections from "../../../src/components/docs/CorsDirections";
 
+import CorsDirections from "../../../src/components/docs/CorsDirections";
 import FoxgloveWebSocketResetDirections from "../../../src/components/docs/FoxgloveWebSocketResetDirections";
 
-Foxglove can load local and remote [ROS 2](/blog/installing-ros2-humble-on-ubuntu) (`.db3`) files, or connect directly to a running ROS stack using a Rosbridge (WebSockets) or native (TCP) connection.
+Foxglove can load local and remote [MCAP](https://mcap.dev) files containing [ROS 2](/blog/installing-ros2-humble-on-ubuntu) data, or connect directly to a live ROS 2 stack.
 
-## Files
+## Live data
 
-Since ROS 2 (`.db3`) files [do not contain their message definitions](https://github.com/ros2/rosbag2/issues/782), we recommend first converting them into self-contained [MCAP](https://mcap.dev) files before loading them into Foxglove.
-
-You can use the [`mcap` CLI tool](https://github.com/foxglove/mcap/tree/main/go/cli/mcap) to help with this conversion:
-
-```bash
-$ mcap convert ros2_input.db3 ros2_output.mcap
-```
-
-`mcap` will search the path stored in your `$AMENT_PREFIX_PATH` environment variable to locate the ROS message definitions on your hard drive. You can also specify a colon-separated list of directories for the CLI tool to search using the `ament-prefix-path` flag:
-
-```bash
-$ mcap convert ros2_input.db3 ros2_output.mcap --ament-prefix-path=/your/first/directory;/your/second/directory
-```
-
-Once you have your MCAP (`.mcap`) files, you can open them from your local filesystem or a remote cloud storage solution.
-
-### Local file
-
-Once you have your MCAP (`.mcap`) file, double-click it from your file manager, drag-and-drop it directly into the app, or _Open local file_ via the _Data source_ dialog:
-
-![local file dialog](/img/docs/studio/connection/local-file/dialog.webp)
-
-### Cloud data
-
-#### Foxglove
-
-Once you [convert your ROS 2 `.db3` files to MCAP (`.mcap`) files](/docs/studio/connection/ros2#files), you can upload them to Foxglove's [web console](https://console.foxglove.dev) and stream them directly for visualization.
-
-Check out the [Data Platform docs](/docs/data-platform/exporting-and-visualizing-data) for more information on how to export and visualize your robotics data.
-
-#### By URL
-
-Remote ROS 2 `.db3` files are not supported, but you can convert them into MCAP files for remote file support.
-
-To load a remote MCAP (`.mcap`) file, select _Open file from URL_ in the _Data source_ dialog, and enter the URL to your remote file.
-
-![remote file dialog](/img/docs/studio/connection/remote-file/dialog.webp)
-
-<CorsDirections />
-
-## Live connection
-
-For live connections, you must be on the same network as the robot. While we support multiple options, we recommend [Foxglove WebSocket](#foxglove-websocket) as the easiest option to get started.
+For live connections, you must be on the same network as the robot.
 
 ### Foxglove WebSocket
 
-Connect directly to your running ROS stack using a Foxglove WebSocket connection. This connection uses a standard protocol to connect Foxglove to your ROS master over WebSockets. While it does require running an extra ROS node ([`foxglove_bridge`](https://index.ros.org/p/foxglove_bridge/)), we recommend this option if you have a network firewall between ROS and Foxglove, as it requires your ROS host to have only one port open.
+We recommend [Foxglove WebSocket](#foxglove-websocket) as the easiest way to get connected – especially if you have a network firewall between ROS and Foxglove, as it requires your ROS host to have only one port open.
 
-#### Connecting to data
+This option requires running an extra ROS node ([`foxglove_bridge`](https://index.ros.org/p/foxglove_bridge/)) – follow the [installation directions here](/docs/connecting-to-data/foxglove-bridge).
+
+#### Connect
 
 [Install ROS 2](/tutorials/installing-ros2-on-ubuntu) and follow the instructions for [setting up the Foxglove bridge](/docs/studio/connection/using-foxglove-bridge).
 
@@ -67,7 +28,7 @@ _Open connection_ in the _Data source_ dialog, select _Foxglove WebSocket_, then
 
 <FoxgloveWebSocketResetDirections />
 
-#### Current limitations
+#### Limitations
 
 Foxglove WebSocket connections support publishing back to your ROS stack, but not reading or setting ROS parameters.
 
@@ -100,10 +61,46 @@ You are now connected to ROS!
 
 To test your connection, add a [Raw Messages panel](/docs/studio/panels/raw-messages) to your layout, and see a list of available topics populate the dropdown. Check out the `/connected_clients` topic to see information `rosbridge` is publishing about your connection.
 
-#### Current limitations
+#### Limitations
 
 Rosbridge connections support publishing back to your ROS stack, but not reading or setting [ROS parameters](https://github.com/foxglove/studio/issues/1662).
 
-## Additional resources
+### Remote file
+
+Remote ROS 2 `.db3` files are not supported, but you can convert them into MCAP files for remote file support.
+
+To load a remote MCAP (`.mcap`) file, select _Open file from URL_ in the _Data source_ dialog, and enter the URL to your remote file.
+
+![remote file dialog](/img/docs/studio/connection/remote-file/dialog.webp)
+
+<CorsDirections />
+
+## Local data
+
+You must first convert ROS 2 (`.db3`) files into the supported MCAP file format before loading in Foxglove.
+
+Use the [`mcap` CLI tool](https://github.com/foxglove/mcap/tree/main/go/cli/mcap) to help with this conversion:
+
+```bash
+$ mcap convert ros2_input.db3 ros2_output.mcap
+```
+
+`mcap` will search the path stored in your `$AMENT_PREFIX_PATH` environment variable to locate the ROS message definitions on your hard drive. You can also specify a colon-separated list of directories for the CLI tool to search using the `ament-prefix-path` flag:
+
+```bash
+$ mcap convert ros2_input.db3 ros2_output.mcap --ament-prefix-path=/your/first/directory;/your/second/directory
+```
+
+Once you have your MCAP (`.mcap`) file, double-click it from your file manager, drag-and-drop it directly into the app, or _Open local file_ via the _Data source_ dialog:
+
+![local file dialog](/img/docs/studio/connection/local-file/dialog.webp)
+
+## Imported data
+
+Once you [convert your ROS 2 `.db3` files to MCAP (`.mcap`) files](/docs/studio/connection/ros2#files), you can upload them to Foxglove's [web console](https://console.foxglove.dev) and stream them directly for visualization.
+
+[IMPORTED DATA PAGE SNIPPET]
+
+## Links and resources
 
 - [Open a Foxglove bridge connection](/blog/announcing-the-new-foxglove-bridge-for-live-ros-data)

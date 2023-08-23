@@ -3,7 +3,7 @@ import React, { ReactElement } from "react";
 const FoxgloveWebSocketResetDirections = (): ReactElement => {
   return (
     <>
-      <h4>Resetting the connection</h4>
+      <h4>Reset connection</h4>
       <p>
         To reconnect to a Foxglove WebSocket in a different context, you must first clear out your
         most recently visualized data in Foxglove.

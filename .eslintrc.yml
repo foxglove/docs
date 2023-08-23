@@ -1,5 +1,8 @@
 extends:
   - plugin:@foxglove/base
+  - plugin:markdown/recommended
+
+plugins: ["markdown"]
 
 env:
   node: true
@@ -13,6 +16,9 @@ overrides:
       - plugin:@foxglove/typescript
     parserOptions:
       project: tsconfig.json
+
+  - files: ["*.md"]
+    processor: "markdown/markdown"
 
   - files: [docusaurus.config.js]
     rules:

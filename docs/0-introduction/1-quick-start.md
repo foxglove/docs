@@ -5,11 +5,11 @@ description: Sign up for a free Foxglove account – either as an individual or
 
 Create [a free Foxglove account](https://console.foxglove.dev/signup) to get started.
 
-Share whether you plan to use Foxglove "As an individual" or "With a team", so we can better help you set up your account
+## Collaboration
+
+Share whether you plan to use Foxglove "As an individual" or "With a team", for more streamlined account setup.
 
 ### As an individual
-
-As a solo user, you can:
 
 - Store and manage data in one central repository
 - Create and save Foxglove layouts, and access them across multiple devices
@@ -17,25 +17,30 @@ As a solo user, you can:
 
 ### With a team
 
-As an organization member, you can:
-
+- Invite team members to collaborate with
 - Store and manage your team's data in one central repository
 - Create and save Foxglove layouts, access them across multiple devices, and share them with teammates
 - Develop and install custom extensions for bespoke visualizations, and share them with teammates
+
+## Storage region
+
+Set your data region to United States or Europe. By specifying where your data should live, you can ensure that it stays within your team's geography for compliance with GDPR and other security and privacy requirements.
+
+This selection applies only to imported data files – import metadata, user account data, and general app data are all stored in Foxglove's US-based servers.
 
 ## Dashboard
 
 Once logged in, use the dashboard and other views to upload and explore your organization's data:
 
-- **Devices** – Your tracked robots
-- **Recordings** - Data recorded by your robots
-- **Events** – Points or time ranges of interest in your data recordings
-- **Timeline** – Your data recordings, organized by device and displayed in chronological order
+- **Devices** – Tracked robots
+- **Recordings** - Data recorded by tracked robots
+- **Events** – Points or time ranges of interest in data recordings
+- **Timeline** – Data coverage, organized by device and displayed in chronological order
 
-## Desktop app
+## Links and resources
 
-In addition to the [hosted web app](https://studio.foxglove.dev/), Foxglove is available as a [cross-platform desktop app](https://foxglove.dev/download) (Linux, Windows, and macOS).
-
-## Self-hosted web app
-
-To self-host Foxglove on your own domain, check out our [self-hosting documentation](/self-hosting/introduction).
+- [Foxglove dashboard](https://console.foxglove.dev/dashboard)
+- Visualization
+  - [Hosted web app](https://studio.foxglove.dev/)
+  - [Desktop app](https://foxglove.dev/download) (for Linux, Windows, and macOS)
+  - [Self-hosting the web app](/self-hosting/introduction)

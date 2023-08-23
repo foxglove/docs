@@ -1,45 +1,25 @@
 ---
 title: ROS 1
+description: Foxglove can load local and remote ROS 1 (`.bag`) files, or connect directly to a live ROS 1 stack.
 ---
+
 import CorsDirections from "../../../src/components/docs/CorsDirections";
 import DesktopAppOnlyBadge from "../../../src/components/docs/DesktopAppOnlyBadge";
 import FoxgloveWebSocketResetDirections from "../../../src/components/docs/FoxgloveWebSocketResetDirections";
 
-Foxglove can load local and remote [ROS 1](/tutorials/installing-ros1-on-ubuntu) (`.bag`) files, or connect directly to a running ROS stack using a Rosbridge (WebSockets) or native (TCP) connection.
+Foxglove can load local and remote [ROS 1](/tutorials/installing-ros1-on-ubuntu) (`.bag`) files, or connect directly to a live ROS 1 stack.
 
-## Files
+## Live data
 
-Open ROS 1 `.bag` files from your local filesystem or a remote cloud storage solution.
-
-### Local file
-
-To load a local ROS 1 `.bag` file, double-click it from your file manager, drag-and-drop the file directly into the app, or _Open local file_ via the _Data source_ dialog:
-
-![local file dialog](/img/docs/studio/connection/local-file/dialog.webp)
-
-### Cloud data
-
-#### Foxglove
-
-Use Foxglove's [web console](https://console.foxglove.dev) to upload your ROS 1 `.bag` files and stream it directly for visualization.
-
-Check out the [Data Platform docs](/docs/data-platform/exporting-and-visualizing-data) for more information on how to export and visualize your robotics data.
-
-#### By URL
-
-To load a remote ROS 1 (`.bag`) file, select _Open file from URL_ in the _Data source_ dialog, and enter the URL to your remote file.
-
-<CorsDirections />
-
-## Live connection
-
-For live connections, you must be on the same network as the robot. While we support multiple options, we recommend [Foxglove WebSocket](#foxglove-websocket) as the easiest option to get started.
+For live connections, you must be on the same network as the robot.
 
 ### Foxglove WebSocket
 
-Connect directly to your running ROS stack using a Foxglove WebSocket connection. This connection uses a standard protocol to connect Foxglove to your ROS master over WebSockets. While it does require running an extra ROS node ([`foxglove_bridge`](https://index.ros.org/p/foxglove_bridge/)), we recommend this option if you have a network firewall between ROS and Foxglove, as it requires your ROS host to have only one port open.
+We recommend [Foxglove WebSocket](#foxglove-websocket) as the easiest way to get connected – especially if you have a network firewall between ROS and Foxglove, as it requires your ROS host to have only one port open.
 
-#### Connecting to data
+This option requires running an extra ROS node ([`foxglove_bridge`](https://index.ros.org/p/foxglove_bridge/)) – follow the [installation directions here](/docs/connecting-to-data/foxglove-bridge).
+
+#### Connect
 
 [Install ROS 1](/tutorials/installing-ros1-on-ubuntu) and follow the instructions for [setting up the Foxglove bridge](/docs/studio/connection/using-foxglove-bridge).
 
@@ -49,7 +29,7 @@ _Open connection_ in the _Data source_ dialog, select _Foxglove WebSocket_, then
 
 <FoxgloveWebSocketResetDirections />
 
-#### Current limitations
+#### Limitations
 
 Foxglove WebSocket connections support publishing back to your ROS stack, but not reading or setting ROS parameters.
 
@@ -82,7 +62,7 @@ You are now connected to ROS!
 
 To test your connection, add a [Raw Messages panel](/docs/studio/panels/raw-messages) to your layout, and see a list of available topics populate the dropdown. Check out the `/connected_clients` topic to see information `rosbridge` is publishing about your connection.
 
-#### Current limitations
+#### Limitations
 
 Rosbridge connections support publishing back to your ROS stack, but not reading or setting [ROS parameters](https://github.com/foxglove/studio/issues/1662).
 
@@ -104,10 +84,26 @@ If you're experiencing any issues, ensure you have unrestricted network connecti
 
 If you're running ROS and Foxglove on different machines see the ROS 1 [Network Setup](http://wiki.ros.org/ROS/NetworkSetup) docs to make sure your environment is configured correctly.
 
-#### Current limitations
+#### Limitations
 
 ROS 1 connections do not yet support reading or setting [ROS parameters](https://github.com/foxglove/studio/issues/1662).
 
-## Additional resources
+### Remote file
+
+To load a remote ROS 1 (`.bag`) file, select _Open file from URL_ in the _Data source_ dialog, and enter the URL to your remote file.
+
+<CorsDirections />
+
+## Local data
+
+To load a local ROS 1 `.bag` file, double-click it from your file manager, drag-and-drop the file directly into the app, or _Open local file_ via the _Data source_ dialog:
+
+![local file dialog](/img/docs/studio/connection/local-file/dialog.webp)
+
+## Imported data
+
+[IMPORTED DATA PAGE SNIPPET]
+
+## Links and resources
 
 - [Open a Foxglove bridge connection](/blog/announcing-the-new-foxglove-bridge-for-live-ros-data)
