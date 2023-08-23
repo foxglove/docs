@@ -6,7 +6,7 @@ const FoxgloveWebSocketResetDirections = (): ReactElement => {
       <h4>Resetting the connection</h4>
       <p>
         To reconnect to a Foxglove WebSocket in a different context, you must first clear out your
-        most recently visualized data in Foxglove Studio.
+        most recently visualized data in Foxglove.
       </p>
       <p>
         To clear the state and reset your visualizations, resend the{" "}

@@ -30,7 +30,7 @@ $ gsutil -h "x-goog-meta-foxglove_device_id:<your device id>" cp <input.bag> gs:
 $ aws s3 cp input.bag s3://<inbox-bucket>/<path> --metadata '{"foxglove_device_id": "<your device ID>"}'
 ```
 
-You will see the pending import in the web console's [_Recordings_](https://console.foxglove.dev/recordings) page. Once processed, the uploaded data will be available and accessible via the API, CLI, and Foxglove Studio.
+You will see the pending import in the web console's [_Recordings_](https://console.foxglove.dev/recordings) page. Once processed, the uploaded data will be available via the API and CLI.
 
 ### Specifying a device in MCAP metadata
 
