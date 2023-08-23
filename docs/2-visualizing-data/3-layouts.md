@@ -2,25 +2,13 @@
 title: Layouts
 ---
 
+import AccountRequiredHeader from "../../src/components/docs/icons/AccountRequiredHeader";
 
-import AccountRequiredHeader from "../../../src/components/docs/icons/AccountRequiredHeader";
+Configure and arrange [Foxglove panels](TBD) into custom layouts to better tackle your visualization and debugging workflows.
 
-export const meta = {
-  title: "Layouts",
-  description:
-    "Arrange Studio panels into custom workspaces, called layouts, to assist with your unique visualization and debugging workflows.",
-  heroImage: "/img/docs/studio/layouts/menu.webp",
-};
+Layouts allow you to have the ideal tools ready for the task at hand. A perception engineer may develop layouts for calibrating various sensors, a planning engineer may have a few for visualizing different routing algorithm outputs, and a controls engineer may build one for plotting robot kinematics.
 
-> Arrange Studio panels into custom workspaces, called layouts, to assist with your unique visualization and debugging workflows.
-
-**Layouts allow you to configure and arrange any selection of [visualization and debugging panels](/docs/studio/panels/introduction) into an interactive workspace**, so you have the ideal tools ready for the task at hand. For example, a perception engineer may develop layouts for calibrating various sensors, a planning engineer may have a few for visualizing different routing algorithm outputs, and a controls engineer may build one for plotting robot kinematics.
-
-When you first create a layout via the sidebar's _Layouts_ tab, you can browse a glossary of all available panels to decide how you want to explore your data.
-
-![layouts glossary](/img/docs/studio/layouts/glossary.webp)
-
-By creating and sharing layouts designed to meet specific needs, **you can revisit a particular setup for a common task or share that setup with a teammate solving a similar problem**. [Sign up for a Foxglove organization](/docs/studio/signing-in) to make collaborating on layouts even easier.
+By creating and sharing layouts designed to meet specific needs, you can revisit a particular setup for a common task or share that setup with a teammate solving a similar problem.
 
 ## Personal layouts
 

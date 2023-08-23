@@ -1,17 +1,12 @@
 ---
-title: Extensions
+title: Introduction
 ---
 
+Extend Foxglove using the `@foxglove/studio` SDK and `create-foxglove-extension` CLI tool.
 
-export const meta = {
-  title: "Getting started",
-  description:
-    "Extend Foxglove Studio using the @foxglove/studio SDK and create-foxglove-extension.",
-};
+While Foxglove offers a suite of built-in panels for robotics data visualization and debugging, many users have domain-specific needs that our out-of-the-box offering does not address.
 
-While Studio offers a suite of built-in panels for robotics data visualization and debugging, many users have domain-specific needs that our out-of-the-box offering does not address.
-
-Foxglove Studio's extensions API provides an interface to extending Studio to better support your custom workflows – whether it's by creating a custom panel or a message converter.
+The extensions API provides an interface to extending Foxglove to better support your custom workflows – whether it's by creating a custom panel or a message converter.
 
 Once you've developed and installed your extension, you can open your [app settings](/docs/studio/app-concepts/preferences#extensions) to display all available and installed extensions.
 
@@ -28,7 +23,7 @@ Custom panels are ideal when your visualization or interaction needs are bespoke
 
 ### Message converters
 
-Message converter extensions allow you to convert messages from one schema to another. By transforming your custom messages to adhere to a Foxglove-supported schema, you can inspect them using Foxglove Studio's built-in visualization features.
+Message converter extensions allow you to convert messages from one schema to another. By transforming your custom messages to adhere to a Foxglove-supported schema, you can inspect them using Foxglove's built-in visualization features.
 
 For example, an extension could convert your custom GPS message into a [`foxglove.LocationFix`](/docs/studio/messages/location-fix) message to be displayed within the [Map panel](/docs/studio/panels/map).
 
@@ -40,7 +35,7 @@ For example, an extension could convert your custom GPS message into a [`foxglov
 
 ### Topic aliases
 
-Topic alias extensions allow you to alias topics in your data source to new topics. Foxglove Studio panels can subscribe to both the aliased topics and the original data source's topics.
+Topic alias extensions allow you to alias topics in your data source to new topics. Foxglove panels can subscribe to both the aliased topics and the original data source's topics.
 
 ## Writing an extension
 

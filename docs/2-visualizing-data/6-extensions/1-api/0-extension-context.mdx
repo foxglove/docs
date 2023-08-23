@@ -1,0 +1,33 @@
+---
+title: Extension context
+---
+
+`ExtensionContext` exposes available contribution points. The contribution points are how you extend Foxglove for your custom workflow.
+
+The first argument to your `activate` function is an `ExtensionContext`. My calling methods on the context you extend the capabilities of Foxglove.
+
+```typescript
+export function activate(extensionContext: ExtensionContext) {
+  // ... call methods on the extensionContext to extend Foxglove
+}
+```
+
+## registerPanel
+
+`registerPanel` adds a new panel to the Foxglove panel catalog. To register a panel you provide a `name` and an `initPanel` function.
+
+The `initPanel` function accepts a `PanelExtensionContext` argument, which contains properties and methods for accessing panel data and rendering UI updates. It also returns an optional cleanup function to run when the extension `panelElement` unmounts.
+
+See the [Creating a custom panel](guide-create-custom-panel) guide for more details.
+
+## registerMessageConverter
+
+`registerMessageConverter` register a function to convert messages from one schema to another.
+
+Message converters allow you to leverage the visualization features of built-in Foxglove panels for your own custom messages by writing a conversion from your custom message to a set of well-known messages supported within the panels.
+
+See the [Creating a message converter](guide-create-message-converter) guide for more details.
+
+## API Reference
+
+- [`@foxglove/studio`](https://github.com/foxglove/studio/blob/main/packages/studio)

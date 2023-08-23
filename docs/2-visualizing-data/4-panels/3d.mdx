@@ -1,10 +1,8 @@
-export const meta = {
-  title: "3D",
-  description: "Display markers, camera images, meshes, URDF models, and more in a 3D scene.",
-  heroImage: "/img/docs/studio/panels/3d/panel.webp",
-};
+---
+title: 3D
+---
 
-> Display markers, entities, camera images, meshes, URDF models, and more in a 3D scene.
+Display markers, entities, camera images, meshes, URDF models, and more in a 3D scene.
 
 ## Introduction
 
@@ -160,11 +158,11 @@ And file formats:
 
 This is the preferred format, as it enjoys the best performance of all supported file types.
 
-Binary glTF files bundle all required assets into a single file, with support for embedded meshes, compression, and the same physically-based material system used in Studio. As a result, your model should appear in Studio similarly to how it appears in other 3D programs.
+Binary glTF files bundle all required assets into a single file, with support for embedded meshes, compression, and the same physically-based material system used in Foxglove. As a result, your model should appear in Foxglove similarly to how it appears in other 3D programs.
 
 **STL (`.stl`)**
 
-STL files are well supported in Studio, but lack some of glTF's visualization features. The main advantage to STL is the ability to share the same files between your hardware manufacturing process and robot visualization tooling.
+STL files are well supported in Foxglove, but lack some of glTF's visualization features. The main advantage to STL is the ability to share the same files between your hardware manufacturing process and robot visualization tooling.
 
 STL was designed for 3D printing and CAD applications, and does not include materials or hierarchies of meshes. While they can be represented in a binary encoding, STL files are commonly represented with ASCII characters, which leads to larger files.
 
@@ -178,7 +176,7 @@ There is a [bug in RViz](https://github.com/ros-visualization/rviz/issues/1045) 
 
 OBJ is a simple ASCII format predating all other supported formats. It has large file sizes, no material support, no mesh hierarchies, no compression, and additional processing overhead.
 
-Material support was added to the OBJ format as separate `.mtl` files, which Studio does not read.
+Material support was added to the OBJ format as separate `.mtl` files, which Foxglove does not read.
 
 ### Path
 
@@ -276,7 +274,7 @@ A transform (translation and rotation) between two reference frames in 3D space.
 
 ### Velodyne scan
 
-Velodyne Lidar scan packets from the Velodyne ROS driver or the Foxglove Studio desktop app's [Velodyne connection](/docs/studio/connection/velodyne).
+Velodyne Lidar scan packets from the Velodyne ROS driver or the Foxglove desktop app's [Velodyne connection](/docs/studio/connection/velodyne).
 
 | framework | schema                                                                                                                   |
 | --------- | ------------------------------------------------------------------------------------------------------------------------ |

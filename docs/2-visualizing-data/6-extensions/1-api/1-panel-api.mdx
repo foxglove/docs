@@ -2,10 +2,7 @@
 title: Custom panel
 ---
 
-export const meta = {
-  title: "PanelExtensionContext",
-  description: "Use the PanelExtensionContext to implement your custom panel.",
-};
+Use the `PanelExtensionContext` to implement a custom panel.
 
 The `PanelExtensionContext` exposes properties and methods for writing a custom panel. The context has methods to subscribe for messages, receive updates, configure your panel's settings, and render your panel to the UI.
 
@@ -23,7 +20,7 @@ The root DOM element for your panel. Add any panel UI to this DOM element or pas
 
 > `onRender(renderState: Readonly<RenderState>, done: () => void)`
 
-Studio will run `context.onRender` whenever your panel needs to re-render during playback. The function accepts `renderState` and a `done` callback as its arguments.
+Foxglove will run `context.onRender` whenever your panel needs to re-render during playback. The function accepts `renderState` and a `done` callback as its arguments.
 
 **Note**: Your `onRender` function **must** call `done` after rendering to indicate that the panel is ready to render the next set of data. The exact placement of this `done` invocation will vary between frameworks and different extensions' logic.
 
@@ -221,7 +218,7 @@ context.callService("my_service", { foo: "bar" });
 
 > `saveState(state: Partial<unknown>)`
 
-Use `context.saveState` to save an arbitrary object as persisted panel state in the Foxglove Studio layout.
+Use `context.saveState` to save an arbitrary object as persisted panel state in the Foxglove layout.
 
 ```tsx
 context.initialState = undefined; // your panel's initial state
