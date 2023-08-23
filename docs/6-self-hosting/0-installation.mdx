@@ -2,10 +2,7 @@
 title: Installation
 ---
 
-  description: "Install and configure your Primary Site.",
-
-
-This guide helps you install and configure your self-managed Primary Site.
+Install and configure a self-managed Primary Site.
 
 ## Prerequisites
 
@@ -19,14 +16,14 @@ You will need to provision storage buckets, a Kubernetes cluster, and cloud cred
 
 Foxglove provides a set of [Terraform examples](https://github.com/foxglove/terraform-examples) to help with these initial provisioning steps.
 
-## 1. Create storage buckets
+## Create storage buckets
 
 Create two storage buckets for your Primary Site:
 
 - `inbox` – For all file uploads
 - `lake` – For processed and indexed versions of all files added to `inbox`
 
-## 2. Kubernetes cluster
+## Kubernetes cluster
 
 > We recommend creating this in the same region as your buckets to reduce access latency and cost.
 
@@ -38,13 +35,13 @@ Create a `foxglove` namespace in your cluster.
 $ kubectl create namespace foxglove
 ```
 
-## 3. Cloud credentials
+## Cloud credentials
 
 Create a service account with read and write access to the storage buckets. The Kubernetes workloads will use this service account.
 
 See [Configure cloud credentials](configure-cloud-credentials) for details on how to provide this credential to the deployment.
 
-## 4. Site token
+## Site token
 
 > Find your Primary Site's site token on the _Sites_ tab of Foxglove web console's [_Settings_ page](https://console.foxglove.dev/settings/sites).
 
@@ -57,7 +54,7 @@ $ kubectl create secret generic foxglove-site-token --from-literal=FOXGLOVE_SITE
 
 There are multiple other ways to create secrets that may be preferable. See [Create a Secret](https://kubernetes.io/docs/tasks/configmap-secret/managing-secret-using-kubectl/#create-a-secret) for more info.
 
-## 5. Install the release
+## Install the release
 
 The Primary Site is installed via Helm.
 
@@ -117,7 +114,7 @@ View info about the deployment:
 $ helm list -n foxglove
 ```
 
-## 6. Ingress for data access
+## Ingress for data access
 
 The deployment installs an [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) which exposes a REST API endpoint for accessing available data.
 
@@ -150,14 +147,14 @@ ingress:
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-west-1:xxxxxxxxxxxx:certificate/EXAMPLE-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
-## 7. Configure Console
+## Configure Console
 
 Once the site's ingress public URL is known, you can configure it on the Site details page, linked from Foxglove
 web console's [_Settings_ page](https://console.foxglove.dev/settings/sites).
 
 Under **Site URL**, enter the HTTPS URL you've assigned to the Ingress.
 
-## 8. Bucket push notification
+## Bucket push notification
 
 The site inbox processor needs to know when new files are uploaded to the inbox bucket. To notify of
 new uploads, configure a push notification to the foxglove data platform inbox-notifications
