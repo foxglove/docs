@@ -1,5 +1,6 @@
 ---
 title: Devices
+description: Devices represent every real and simulated robot that your organization wants to track.
 ---
 
 Devices represent every real and simulated robot that your organization wants to track.
