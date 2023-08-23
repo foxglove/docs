@@ -2,16 +2,9 @@
 title: Okta SSO
 ---
 
+> **Requires an Enterprise plan.**
 
-## Integrate with Okta Single Sign-On
-
-export const meta = {
-  title: "Okta Single Sign-On",
-  description: "Foxglove organizations can use Okta as authorization provider.",
-};
-
-> **This feature requires an Enterprise plan.**
-> To enable SSO for your organization, please contact [sales@foxglove.dev](mailto:sales@foxglove.dev)
+Foxglove organizations can use Okta as authorization provider. To enable SSO for your organization, contact [sales@foxglove.dev](mailto:sales@foxglove.dev)
 
 ### Create an Okta application
 
