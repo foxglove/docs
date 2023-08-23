@@ -1,8 +1,8 @@
 ---
-title: Introduction
+title: Why Foxglove?
 ---
 
-To iterate on your robots intelligently, you must first have a deep understanding of how they're currently navigating their world.
+To iterate on your robots, you must first understand how they're navigating their world.
 
 Foxglove helps robotics teams explore, visualize, and analyze their multimodal data efficiently. As a robotics observability platform, it streamlines development workflows to significantly accelerate your time to market.
 

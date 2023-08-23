@@ -1,9 +1,6 @@
 ---
-slug: data-visualization
-title: Visualizing data
-order: 1
+title: Introduction
 ---
-
 
 > Foxglove Studio is a visualization and debugging tool for your robotics data, conveniently packaged as desktop and web apps.
 
