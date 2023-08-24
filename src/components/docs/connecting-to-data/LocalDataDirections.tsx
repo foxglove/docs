@@ -10,9 +10,10 @@ const LocalDataDirections = (): ReactElement => {
           Drag-and-drop the file into <a href="https://studio.foxglove.dev">Foxglove</a> directly
         </li>
         <li>
-          <p>
+          <span style={{ display: "block" }}>
             "Open local file" in the "Open data source" dialog to select a file from your filesystem
-          </p>
+          </span>
+          <br />
           <img alt="Local file dialog" src="/img/docs/connecting-to-data/local-file.png" />
         </li>
       </ul>

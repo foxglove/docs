@@ -9,8 +9,10 @@ Foxglove can load imported Foxglove data files for visualization.
 
 ### Supported formats
 
-- ROS 1 (`.bag`) files
-- MCAP (`.mcap`) files
+|              | File extension |
+| ------------ | -------------- |
+| **ROS 1**    | `.bag`         |
+| **MCAP**     | `.mcap`        |
 
 ### Getting started
 

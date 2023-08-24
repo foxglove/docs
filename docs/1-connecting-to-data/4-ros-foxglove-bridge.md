@@ -7,11 +7,11 @@ The ROS Foxglove bridge connects to live ROS 1 and ROS 2 data via the Foxglove W
 
 Connect via the Foxglove WebSocket connection to visualize your live robotics data.
 
-#### Overview
+### Overview
 
 The `foxglove_bridge` uses the [Foxglove WebSocket protocol](https://github.com/foxglove/ws-protocol), a similar protocol to [`rosbridge`](https://github.com/RobotWebTools/rosbridge_suite), but with the ability to support additional schema formats such as ROS 2 `.msg` and ROS 2 `.idl`, parameters, graph introspection, and non-ROS systems. The bridge is written in C++ and designed for high performance with low overhead to minimize the impact to your robot stack.
 
-#### Installation
+### Installation
 
 The `foxglove_bridge` package is available for ROS 1 Melodic and Noetic, and ROS 2 Humble and Rolling. Earlier releases of ROS will not be supported due to API design and/or performance limitations. The package can be installed with the following command:
 
@@ -19,7 +19,7 @@ The `foxglove_bridge` package is available for ROS 1 Melodic and Noetic, and ROS
 $ sudo apt install ros-$ROS_DISTRO-foxglove-bridge
 ```
 
-#### Launch
+### Launch
 
 Start the `foxglove_bridge` from your ROS workspace using `roslaunch` in ROS 1 or `ros2 launch` in ROS 2. Optional configurations and their default values are below.
 
@@ -29,7 +29,7 @@ $ ros2 launch foxglove_bridge foxglove_bridge_launch.xml
 
 Add `foxglove_bridge` to your launch file if you plan to use it anytime your robot is online.
 
-##### Configuration
+#### Configuration
 
 Configure bridge behavior with the following parameters. Set parameters at initialization via a launch file or the command line – they cannot be modified at runtime.
 
@@ -44,6 +44,6 @@ Configure bridge behavior with the following parameters. Set parameters at initi
 - (ROS 2) **num_threads** – The number of threads to use for the ROS node executor. This controls the number of subscriptions that can be processed in parallel. 0 means one thread per CPU core. Defaults to `0`.
 - (ROS 2) **max_qos_depth** – Maximum depth used for the QoS profile of subscriptions. Defaults to `10`.
 
-#### Development
+### Development
 
 To build from source or to contribute to the project, check out the [`ros-foxglove-bridge` GitHub repo](https://github.com/foxglove/ros-foxglove-bridge/).
