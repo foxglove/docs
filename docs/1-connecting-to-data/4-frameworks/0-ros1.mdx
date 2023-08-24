@@ -25,7 +25,7 @@ This option requires running an extra ROS node ([`foxglove_bridge`](https://inde
 
 _Open connection_ in the _Data source_ dialog, select _Foxglove WebSocket_, then enter the URL to your Rosbridge server:
 
-![Foxglove WebSocket dialog](/img/docs/studio/connection/live-connection/foxglove-websocket-dialog.webp)
+![Foxglove WebSocket dialog](/img/docs/connecting-to-data/foxglove-websocket.png)
 
 <FoxgloveWebSocketResetDirections />
 
@@ -56,7 +56,7 @@ $ roslaunch rosbridge_server rosbridge_websocket.launch
 
 Click _Open connection_ in the _Data source_ dialog, select "Rosbridge (ROS 1 & 2)", then enter the URL to your Rosbridge server:
 
-![rosbridge dialog](/img/docs/studio/connection/live-connection/rosbridge-dialog.webp)
+![Rosbridge dialog](/img/docs/connecting-to-data/rosbridge.png)
 
 You are now connected to ROS!
 
@@ -78,7 +78,7 @@ Once you have a working [ROS 1](/tutorials/installing-ros1-on-ubuntu) setup on y
 
 _Open connection_ via the _Data source_ dialog, select "ROS 1", and enter your [`ROS_MASTER_URI`](https://wiki.ros.org/ROS/EnvironmentVariables#ROS_MASTER_URI) (ROS master's IP and port) and [`ROS_HOSTNAME`](https://wiki.ros.org/ROS/EnvironmentVariables#ROS_IP.2FROS_HOSTNAME):
 
-![ros 1 dialog](/img/docs/studio/connection/live-connection/ros1-dialog.webp)
+![ROS 1 dialog](/img/docs/connecting-to-data/ros1.png)
 
 If you're experiencing any issues, ensure you have unrestricted network connectivity between your ROS stack and Foxglove, as ROS uses multiple ports to communicate.
 
@@ -98,7 +98,7 @@ To load a remote ROS 1 (`.bag`) file, select _Open file from URL_ in the _Data s
 
 To load a local ROS 1 `.bag` file, double-click it from your file manager, drag-and-drop the file directly into the app, or _Open local file_ via the _Data source_ dialog:
 
-![local file dialog](/img/docs/studio/connection/local-file/dialog.webp)
+![Local file dialog](/img/docs/connecting-to-data/local-file.png)
 
 ## Imported data
 

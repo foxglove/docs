@@ -5,8 +5,6 @@ description: Foxglove can connect to a live data connection for real-time visual
 
 Foxglove can connect to a live data connection for real-time visualization, or load local and Foxglove-imported data files for visualization playback.
 
-## Data sources
-
 |               | Details                                                                                                        | Supported formats                      |
 | ------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
 | Sample data   | Load [sample data adapted from nuScenes](https://www.nuscenes.org/nuscenes) in an example layout (remote file) | N/A                                    |
@@ -14,10 +12,13 @@ Foxglove can connect to a live data connection for real-time visualization, or l
 | Local data    | Inspect data stored locally on your computer                                                                   | ROS 1, [MCAP](https://mcap.dev)        |
 | Imported data | Inspect data imported to the Foxglove platform                                                                 | ROS 1, [MCAP](https://mcap.dev)        |
 
-## Connect to a data source
 
-When you first open the [visualization interface](https://studio.foxglove.dev), you will see an introductory "Open data source" dialog:
+### Getting started
 
-![Data source dialog](/img/docs/studio/getting-started/dialog.webp)
+When you first open the [visualization interface](https://studio.foxglove.dev), you will see an "Open data source" dialog:
 
-Once connected, Foxglove will display information about the data source in the sidebar (e.g. start time, end time, list of topics).
+![Data source dialog](/img/docs/connecting-to-data/dialog.png)
+
+Once you've connected to a data source, Foxglove will display its topics (with schema names, message count, publish rates) in the sidebar:
+
+<img alt="sidebar" src="/img/docs/connecting-to-data/sidebar.png" width="300"/>

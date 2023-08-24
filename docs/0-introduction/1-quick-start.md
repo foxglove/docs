@@ -3,34 +3,33 @@ title: Quick start
 description: Sign up for a free Foxglove account – either as an individual or with a team.
 ---
 
-Create [a free Foxglove account](https://console.foxglove.dev/signup) to get started.
+[Sign up for a free Foxglove account](https://console.foxglove.dev/signup) to get started.
 
-## Collaboration
+![Individual vs team](/img/docs/introduction/signup.png)
 
-Share whether you plan to use Foxglove "As an individual" or "With a team", for more streamlined account setup.
-
-### As an individual
+If you sign up **as an individual**, you can:
 
 - Store and manage data in one central repository
 - Create and save Foxglove layouts, and access them across multiple devices
 - Develop and install custom extensions for bespoke visualizations
 
-### With a team
+If you sign up **with a team**, you can also:
 
-- Invite team members to collaborate with
-- Store and manage your team's data in one central repository
-- Create and save Foxglove layouts, access them across multiple devices, and share them with teammates
-- Develop and install custom extensions for bespoke visualizations, and share them with teammates
+- Invite team members to collaborate on data
+- Share Foxglove layouts with teammates
+- Share custom extensions with teammates
 
-## Storage region
+### Storage region
 
-Set your data region to United States or Europe. By specifying where your data should live, you can ensure that it stays within your team's geography for compliance with GDPR and other security and privacy requirements.
+Set your data region to United States or Europe. By specifying where your uploaded data should live, you can ensure that it stays within your team's geography for compliance with GDPR and other security and privacy requirements.
 
 This selection applies only to imported data files – import metadata, user account data, and general app data are all stored in Foxglove's US-based servers.
 
-## Dashboard
+### Dashboard
 
-Once logged in, use the dashboard and other views to upload and explore your organization's data:
+Once logged in, use the dashboard to track your organization's robots, upload data files, and load them for visualization.
+
+Explore your imported data via the following views:
 
 - **Devices** – Tracked robots
 - **Recordings** - Data recorded by tracked robots

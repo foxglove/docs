@@ -12,8 +12,8 @@ Foxglove supports importing files in the following formats:
 
 After [importing data to Foxglove](TBD), select individual resources to "Visualize" on the [Recordings](https://console.foxglove.dev/recordings) or [Events](https://console.foxglove.dev/events) pages:
 
-<!-- ![](TBD) -->
+![Visualize on Recordings page](/img/docs/connecting-to-data/visualize-recordings.png)
 
 Select a custom time range of data (can span multiple recordings and/or events) to "Visualize" on the [Timeline](https://console.foxglove.dev/timeline) page:
 
-<!-- ![](TBD) -->
+![Visualize on Timeline page](/img/docs/connecting-to-data/visualize-timeline.png)

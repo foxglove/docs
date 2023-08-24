@@ -1,9 +1,9 @@
 ---
 title: Foxglove bridge
-description: The Foxglove bridge allows you to connect to your live ROS 1 and ROS 2 data via the Foxglove WebSocket protocol. It is implemented as a C++ node for high performance and low overhead.
+description: The Foxglove bridge connects to live ROS 1 and ROS 2 data via the Foxglove WebSocket protocol. It is implemented as a C++ node for high performance and low overhead.
 ---
 
-The Foxglove bridge allows you to connect to your live ROS 1 and ROS 2 data via the Foxglove WebSocket protocol. It is implemented as a C++ node for high performance and low overhead.
+The Foxglove bridge connects to live ROS 1 and ROS 2 data via the Foxglove WebSocket protocol. It is implemented as a C++ node for high performance and low overhead.
 
 Connect via the Foxglove WebSocket connection to visualize your live robotics data.
 

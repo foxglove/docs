@@ -17,7 +17,7 @@ After [connecting to a data source](/docs/1-connecting-to-data/introduction), le
 
 ## Navigation
 
-![top nav](/img/docs/studio/getting-started/top-nav.jpeg)
+![top nav](/img/docs/visualizing/navigation.jpeg)
 
 - **App menu** – Connect to a [data source](/docs/studio/connection/data-sources), toggle the sidebars, or view resources
 - **Add panel** – Add a [panel](/docs/studio/panels/introduction) to the current layout
