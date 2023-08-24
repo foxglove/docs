@@ -7,12 +7,12 @@ Group related panels into tabs to organize your layout.
 
 <div className="flex flex-wrap">
   <img
-    src="/img/docs/studio/panels/tab/first.webp"
+    src="/img/docs/visualizing/panels/tab/first.webp"
     alt="first tab"
     style={{ width: "calc(50% - 5px)", marginRight: 10 }}
   />
   <img
-    src="/img/docs/studio/panels/tab/second.webp"
+    src="/img/docs/visualizing/panels/tab/second.webp"
     alt="second tab"
     style={{ width: "calc(50% - 5px)" }}
   />
@@ -24,7 +24,7 @@ Select panels to group using `Cmd` + click. Simply click a selected panel to des
 
 Hovering over a selected panel will present the following options:
 
-![selecting tab action](/img/docs/studio/panels/tab/selection.webp)
+![selecting tab action](/img/docs/visualizing/panels/tab/selection.webp)
 
 - **Group in tab**
   - Combines selected panels under a **single tab** in a new Tab panel

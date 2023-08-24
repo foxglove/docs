@@ -5,7 +5,7 @@ description: Teleoperate your robot by publishing `geometry_msgs/Twist` or `geom
 
 Teleoperate your robot by publishing [`geometry_msgs/Twist`](https://docs.ros.org/en/api/geometry_msgs/html/msg/Twist.html) or [`geometry_msgs/msg/Twist`](https://github.com/ros2/common_interfaces/blob/master/geometry_msgs/msg/Twist.msg) messages on a given topic back to your live ROS stack.
 
-![teleop panel](/img/docs/studio/panels/teleop/panel.webp)
+![teleop panel](/img/docs/visualizing/panels/teleop/panel.webp)
 
 To use the control pad to teleoperate your connected robot, you must be connected to your robot via a native or Rosbridge connection.
 

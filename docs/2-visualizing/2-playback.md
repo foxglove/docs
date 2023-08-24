@@ -7,7 +7,7 @@ When visualizing a local or rmote data file, you can navigate its contents using
 
 Format the current timestamp display, seek back and forth at increments of 100ms, loop playback, and configure playback speed.
 
-![playback bar](/img/docs/studio/app-concepts/playback/bar.webp)
+![playback bar](/img/docs/app-concepts/playback/bar.webp)
 
 **Note**: The playback bar is hidden when connected to live data.
 
@@ -67,11 +67,11 @@ Navigate to the [Foxglove console](https://console.foxglove.dev)’s [“Recordi
 
 The window that opens with your Foxglove data source will display a bookmark icon on the playback bar.
 
-![Event icon](/img/docs/studio/app-concepts/playback/event-icon.webp)
+![Event icon](/img/docs/app-concepts/playback/event-icon.webp)
 
 Seek to a point of interest in your data, then click that bookmark icon to add an event to your data at that point on the timeline.
 
-![Create event](/img/docs/studio/app-concepts/playback/create-event.webp)
+![Create event](/img/docs/app-concepts/playback/create-event.webp)
 
 These events will also persist to your Foxglove console account's [“Events” page](https://console.foxglove.dev/events).
 
@@ -81,11 +81,11 @@ Open the _Data source_ sidebar and select the “Events” tab to see a list of 
 
 When streaming Foxglove data, the playback bar will display events using blue bars. Hovering on a blue bar will display its metadata in a tooltip.
 
-![Event tooltip](/img/docs/studio/app-concepts/playback/event-tooltip.webp)
+![Event tooltip](/img/docs/app-concepts/playback/event-tooltip.webp)
 
 If the _Data source_ sidebar is open to your list of events, hovering on an event will also highlight the corresponding event metadata in that sidebar pane.
 
-![Event hover](/img/docs/studio/app-concepts/playback/event-hover.webp)
+![Event hover](/img/docs/app-concepts/playback/event-hover.webp)
 
 ### Searching events
 

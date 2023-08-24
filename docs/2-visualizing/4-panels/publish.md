@@ -13,7 +13,7 @@ Clicking into the schema name field will provide a dropdown list of common ROS s
 
 Edit the template to customize the message you want to send back to your ROS stack, before hitting "Publish".
 
-![publish panel](/img/docs/studio/panels/publish/panel.webp)
+![publish panel](/img/docs/visualizing/panels/publish/panel.webp)
 
 The "Publish" button will be disabled if Foxglove is not connected to a ROS source.
 

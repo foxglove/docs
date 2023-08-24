@@ -17,7 +17,7 @@ The graph will show nodes, topics, and services. Nodes implement services, and e
 
 If any items in the graph are overlapping, click and drag to reposition them for easier viewing.
 
-![topic graph panel](/img/docs/studio/panels/topic-graph/panel.webp)
+![topic graph panel](/img/docs/visualizing/panels/topic-graph/panel.webp)
 
 Use the available controls to accomplish the following:
 
@@ -26,7 +26,7 @@ Use the available controls to accomplish the following:
 - **Showing services / Hiding services** – Toggle the visibility of the services
 - **Showing x topics** – Toggle between displaying different groups of topics
 
-  ![topic groups to toggle](/img/docs/studio/panels/topic-graph/topic-groups.webp)
+  ![topic groups to toggle](/img/docs/visualizing/panels/topic-graph/topic-groups.webp)
 
 ## Shortcuts
 

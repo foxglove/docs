@@ -5,7 +5,7 @@ description: Use a customizable slider interface to quickly update a numerical v
 
 Use a customizable slider interface to quickly update a numerical [variable](/docs/studio/app-concepts/variables) value.
 
-![variable slider panel](/img/docs/studio/panels/variable-slider/panel.webp)
+![variable slider panel](/img/docs/visualizing/panels/variable-slider/panel.webp)
 
 ## Settings
 

@@ -11,14 +11,14 @@ When playing back a pre-recorded data source (e.g. a local or remote `.bag` file
 
 Current playback time will be indicated by a vertical gray bar.
 
-![add series](/img/docs/studio/panels/plot/panel.webp)
+![add series](/img/docs/visualizing/panels/plot/panel.webp)
 
 ## User interactions
 
 The plot panel can be configured via the [panel settings sidebar](/docs/studio/panels/introduction#panel-settings). Series can be added or removed
 via the action buttons in the `Series` section of the panel settings.
 
-![add series](/img/docs/studio/panels/plot/add-series.webp)
+![add series](/img/docs/visualizing/panels/plot/add-series.webp)
 
 ### Y-Axis
 
@@ -28,7 +28,7 @@ If you enter a message path that points to multiple values (e.g. `/some_topic/so
 
 Each series can be configured to display a descriptive label via the `Label` field in settings.
 
-![Plot panel settings](/img/docs/studio/panels/plot/settings.webp)
+![Plot panel settings](/img/docs/visualizing/panels/plot/settings.webp)
 
 ### X-Axis
 
@@ -44,7 +44,7 @@ All Plot panels with a time-based x-axis will automatically be synced with each 
 
 By default, the panel plots y-values against incoming messages' timestamp. It is possible to specify whether the timestamp is taken from a message's [receive time or header stamp](/docs/studio/app-concepts/playback#message-ordering) in each series' details menu. All Plot panels with timestamp x-axes in a given layout will be kept in sync for easy comparison.
 
-![plot with timestamp x-axis](/img/docs/studio/panels/plot/x-axis/timestamp.webp)
+![plot with timestamp x-axis](/img/docs/visualizing/panels/plot/x-axis/timestamp.webp)
 
 #### Index
 
@@ -52,15 +52,15 @@ In this mode, adding message path `/some_topic.some_array` as a new line in the 
 
 This plots just the data from the latest tick, and should always point to an array of values.
 
-![plot with index x-axis](/img/docs/studio/panels/plot/x-axis/index.webp)
+![plot with index x-axis](/img/docs/visualizing/panels/plot/x-axis/index.webp)
 
 #### Message path
 
 Using [message path syntax](/docs/studio/app-concepts/message-path-syntax), specify the path to the x-axis data you want to plot, e.g. `/some_topic.position.x`. You can choose to plot data from just the most recent tick (`"msg path (current)"`) or from all matching messages throughout playback (`"msg path (accumulated)"`).
 
-![plot with path x-axis - current](/img/docs/studio/panels/plot/x-axis/path-current.webp)
+![plot with path x-axis - current](/img/docs/visualizing/panels/plot/x-axis/path-current.webp)
 
-![plot with path x-axis - accumulated](/img/docs/studio/panels/plot/x-axis/path-accumulated.webp)
+![plot with path x-axis - accumulated](/img/docs/visualizing/panels/plot/x-axis/path-accumulated.webp)
 
 Click into the details menu for each data series in the legend to configure that series' line color and timestamp ordering method.
 
