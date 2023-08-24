@@ -19,14 +19,14 @@ Use each layout's details menu to **rename, duplicate, export, or delete any per
 
 Use the "Import layout" icon in the top right to load an exported layout file.
 
-![layouts tab](/img/docs/studio/layouts/tab.webp)
+![layouts tab](/img/docs/visualizing/layouts/tab.webp)
 
 **After editing a personal layout**, you can take either of the following actions:
 
 - Save your changes to the layout
 - Discard your changes and revert to the last explicitly saved version of the layout
 
-![modified personal layout options](/img/docs/studio/layouts/modified-personal.webp)
+![modified personal layout options](/img/docs/visualizing/layouts/modified-personal.webp)
 
 Taking any of the following actions will **automatically edit your loaded layout**:
 
@@ -39,13 +39,13 @@ Taking any of the following actions will **automatically edit your loaded layout
 
 Share any of your personal layouts with the members of your organization to make it a team layout. **Once shared, team layouts can be edited, renamed, or deleted by any member of that organization.**
 
-![team layouts](/img/docs/studio/layouts/team.webp)
+![team layouts](/img/docs/visualizing/layouts/team.webp)
 
 **This allows teams to curate a set of canonical layouts to accomplish common tasks** – e.g. for calibrating radar sensors, visualizing planning algorithm outputs, or viewing logs. Instead of maintaining marginally different setups for different tasks, teammates can use layouts preconfigured by workflow experts to avoid redundant work and accelerate development.
 
 Team layouts work very similarly to personal layouts – i.e. you can rename, copy, export, and delete them – but operate more as templates than evolving snapshots of a workspace.
 
-![team layout options](/img/docs/studio/layouts/team-options.webp)
+![team layout options](/img/docs/visualizing/layouts/team-options.webp)
 
 **If you edit a team layout and then try switching to another layout**, you'll be prompted to take one of the following actions:
 

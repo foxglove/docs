@@ -24,7 +24,7 @@ This option requires running an extra ROS node ([`foxglove_bridge`](https://inde
 
 _Open connection_ in the _Data source_ dialog, select _Foxglove WebSocket_, then enter the URL to your Rosbridge server:
 
-![Foxglove WebSocket dialog](/img/docs/studio/connection/live-connection/foxglove-websocket-dialog.webp)
+![Foxglove WebSocket dialog](/img/docs/connecting-to-data/foxglove-websocket.png)
 
 <FoxgloveWebSocketResetDirections />
 
@@ -55,7 +55,7 @@ $ ros2 launch rosbridge_server rosbridge_websocket_launch.xml
 
 Click _Open connection_ in the _Data source_ dialog, select "Rosbridge (ROS 1 & 2)", then enter the URL to your Rosbridge server:
 
-![rosbridge dialog](/img/docs/studio/connection/live-connection/rosbridge-dialog.webp)
+![Rosbridge dialog](/img/docs/connecting-to-data/rosbridge.png)
 
 You are now connected to ROS!
 
@@ -71,7 +71,7 @@ Remote ROS 2 `.db3` files are not supported, but you can convert them into MCAP 
 
 To load a remote MCAP (`.mcap`) file, select _Open file from URL_ in the _Data source_ dialog, and enter the URL to your remote file.
 
-![remote file dialog](/img/docs/studio/connection/remote-file/dialog.webp)
+![Remote file dialog](/img/docs/connecting-to-data/remote-file.png)
 
 <CorsDirections />
 
@@ -93,7 +93,7 @@ $ mcap convert ros2_input.db3 ros2_output.mcap --ament-prefix-path=/your/first/d
 
 Once you have your MCAP (`.mcap`) file, double-click it from your file manager, drag-and-drop it directly into the app, or _Open local file_ via the _Data source_ dialog:
 
-![local file dialog](/img/docs/studio/connection/local-file/dialog.webp)
+![Local file dialog](/img/docs/connecting-to-data/local-file.png)
 
 ## Imported data
 

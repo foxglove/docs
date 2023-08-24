@@ -5,7 +5,7 @@ description: Display playback and data-streaming performance statistics.
 
 Display playback and data-streaming performance statistics. Displayed only when the "Studio debug panels" [experimental feature](/docs/studio/app-concepts/preferences#experimental-features) is toggled on in the app settings.
 
-![playback performance panel](/img/docs/studio/panels/studio-playback-performance/panel.webp)
+![playback performance panel](/img/docs/visualizing/panels/studio-playback-performance/panel.webp)
 
 The following statistics are displayed for a given playback session. "Instantaneous" statistics are reported based on the most recent frame, and also are averaged over the last 5 seconds.
 

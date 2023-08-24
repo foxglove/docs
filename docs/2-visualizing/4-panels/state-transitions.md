@@ -9,7 +9,7 @@ When playing back a pre-recorded data source (e.g. a local or remote `.bag` file
 
 Current playback time will be indicated by a vertical gray bar.
 
-![state transitions panel](/img/docs/studio/panels/state-transitions/panel.webp)
+![state transitions panel](/img/docs/visualizing/panels/state-transitions/panel.webp)
 
 Paths can point to any primitive value (numbers, booleans, enums, etc.), but will be most useful for ["enums"](/docs/studio/annotating-data).
 
@@ -21,7 +21,7 @@ Scroll to zoom, and drag to pan. Double-click to reset the view.
 
 Hover over any point on a chart to see its details in a tooltip. You'll see a vertical yellow bar appear, as well as a corresponding yellow marker on the playback timeline.
 
-![hover on state transitions panel](/img/docs/studio/panels/state-transitions/hover.webp)
+![hover on state transitions panel](/img/docs/visualizing/panels/state-transitions/hover.webp)
 
 Click to seek playback to the yellow marker on the timeline.
 

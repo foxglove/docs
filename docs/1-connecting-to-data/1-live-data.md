@@ -6,8 +6,6 @@ description: Foxglove supports connecting to live data sources with the Foxglove
 Foxglove supports connecting to live data sources with the Foxglove WebSocket, Rosbridge, and Velodyne Lidar connections. You can also load remote data files via URL.
 
 
-## Connections
-
 |                    | Supported formats                                                                                                                                                                                                                                                                                                               | Configuration options                                      |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
 | Foxglove WebSocket | <ul><li>[ROS 1](/docs/connecting-to-data/frameworks/ros1#foxglove-websocket)</li><li>[ROS 2](/docs/connecting-to-data/frameworks/ros2#foxglove-websocket)</li><li>[Custom](/docs/connecting-to-data/frameworks/custom#foxglove-websocket)</li><li>[MCAP](/docs/connecting-to-data/frameworks/mcap#foxglove-websocket)</li></ul> | WebSocket URL                                              |
@@ -17,9 +15,9 @@ Foxglove supports connecting to live data sources with the Foxglove WebSocket, R
 | Remote file        | <ul><li>[ROS 1](/docs/connecting-to-data/frameworks/ros1)</li><li>[MCAP](/docs/connecting-to-data/frameworks/mcap)</li></ul>                                                                                                                                                                                                    | Requires [CORS setup](/docs/connecting-to-data/cors-setup) |
 
 
-## Limitations
+### Limitations
 
-When connecting to ROS data, each connection will have different capabilities.
+When connecting to live ROS data, each connection will have different capabilities.
 
 |                         | Foxglove WebSocket (recommended) | Rosbridge                                                       | ROS 1 |
 | ----------------------- | -------------------------------- | --------------------------------------------------------------- | ----- |

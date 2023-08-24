@@ -7,7 +7,7 @@ Variables are values that can be set globally for a Foxglove layout. They’re p
 
 Open the sidebar's _Variables_ tab to view, add, and update variables.
 
-![variables tab](/img/docs/studio/app-concepts/variables/tab.webp)
+![variables tab](/img/docs/app-concepts/variables/tab.webp)
 
 Certain panels like the [3D](/docs/studio/panels/3d) and [Variable Slider](/docs/studio/panels/variable-slider) panels have built-in ways to update variable values with user interactions. Panels that support [message path syntax](/docs/studio/app-concepts/message-path-syntax) – like [Raw Messages](/docs/studio/panels/raw-messages), [Plot](/docs/studio/panels/plot), and [State Transitions](/docs/studio/panels/state-transitions) – can reference variables to dynamically decide what to visualize.
 
