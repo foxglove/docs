@@ -1,17 +1,25 @@
 ---
 title: Local data
-description: Foxglove supports loading local ROS 1 (.bag) and MCAP (.mcap) files.
+description: Foxglove can load local ROS 1 (.bag) and MCAP (.mcap) files for visualization.
 ---
 
-Foxglove supports loading local files in the following formats:
+import LocalDataDirections from "../../src/components/docs/connecting-to-data/LocalDataDirections";
+
+Foxglove can load local files for visualization.
+
+### Supported formats
 
 - ROS 1 (`.bag`) files
+- ROS 2 (`.db3`) files
 - MCAP (`.mcap`) files
+- PX4 ULog (`.ulg`) files
 
-To load a local data file for visualization, you have several options:
 
-- Double-click it from file manager
-- Drag-and-drop the file into the [visualization interface](https://studio.foxglove.dev)
+Since ROS 2 `.db3` files do not contain their message definitions, we recommend first converting those into self-contained MCAP files before loading into Foxglove.
+
+### Getting started
+
+<LocalDataDirections/>
 
 ## Links and resources
 
