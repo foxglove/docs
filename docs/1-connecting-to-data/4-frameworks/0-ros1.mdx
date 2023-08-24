@@ -8,12 +8,13 @@ import DesktopAppOnlyBadge from "../../../src/components/docs/DesktopAppOnlyBadg
 import FoxgloveWebSocketResetDirections from "../../../src/components/docs/connecting-to-data/FoxgloveWebSocketResetDirections";
 import ImportedDataDirections from "../../../src/components/docs/connecting-to-data/ImportedDataDirections";
 import LocalDataDirections from "../../../src/components/docs/connecting-to-data/LocalDataDirections";
+import RosbridgeDirections from "../../../src/components/docs/connecting-to-data/RosbridgeDirections";
 
 Foxglove can load local and remote [ROS 1](/tutorials/installing-ros1-on-ubuntu) (`.bag`) files, or connect directly to a live ROS 1 stack.
 
 ## Live data
 
-For live connections, you must be on the same network as the robot.
+Install [ROS 1](https://foxglove.dev/blog/installing-ros1-on-ubuntu), and make sure you are on the same network as the robot.
 
 ### Foxglove WebSocket
 
@@ -23,7 +24,7 @@ This option requires running an extra ROS node ([`foxglove_bridge`](https://inde
 
 #### Connect
 
-[Install ROS 1](/tutorials/installing-ros1-on-ubuntu) and follow the instructions for [setting up the Foxglove bridge](/docs/studio/connection/using-foxglove-bridge).
+[Set up the Foxglove bridge](/docs/studio/connection/using-foxglove-bridge).
 
 _Open connection_ in the _Data source_ dialog, select _Foxglove WebSocket_, then enter the URL to your Rosbridge server:
 
@@ -36,33 +37,9 @@ _Open connection_ in the _Data source_ dialog, select _Foxglove WebSocket_, then
 Foxglove WebSocket connections support publishing back to your ROS stack, but not reading or setting ROS parameters.
 
 ### Rosbridge
-
 _NOTE: For performance reasons, we recommend using the [Foxglove WebSocket](#foxglove-websocket) connection instead._
 
-Connect directly to your running ROS stack via WebSockets using a Rosbridge connection. This connection option requires only a single open port between Foxglove and your robot.
-
-A [`rosbridge`](https://wiki.ros.org/rosbridge_suite) connection uses a standard protocol to connect Foxglove to your ROS master over WebSockets. While it does require running an extra ROS node ([`rosbridge_server`](https://wiki.ros.org/rosbridge_server)), we recommend this option if you have a network firewall between ROS and Foxglove, as it requires your ROS host to have only one port open.
-
-To open a Rosbridge connection, make sure you’ve [installed ROS 1](/tutorials/installing-ros1-on-ubuntu), as well as [`rosbridge-suite`](https://github.com/RobotWebTools/rosbridge_suite):
-
-```shell
-# For Noetic (ROS 1)
-$ sudo apt install ros-noetic-rosbridge-suite
-```
-
-Next, start the WebSocket server, and review the command printout to determine the port it is listening on (e.g. `ws://0.0.0.0:9090`):
-
-```shell
-$ roslaunch rosbridge_server rosbridge_websocket.launch
-```
-
-Click _Open connection_ in the _Data source_ dialog, select "Rosbridge (ROS 1 & 2)", then enter the URL to your Rosbridge server:
-
-![Rosbridge dialog](/img/docs/connecting-to-data/rosbridge.png)
-
-You are now connected to ROS!
-
-To test your connection, add a [Raw Messages panel](/docs/studio/panels/raw-messages) to your layout, and see a list of available topics populate the dropdown. Check out the `/connected_clients` topic to see information `rosbridge` is publishing about your connection.
+<RosbridgeDirections rosVersion={1}/>
 
 #### Limitations
 
