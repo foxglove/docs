@@ -5,7 +5,7 @@ description: Install and configure a self-hosted Primary Site.
 
 Install and configure a self-hosted Primary Site.
 
-## Prerequisites
+### Prerequisites
 
 - [Kubernetes](https://kubernetes.io/) cluster
 - [Kubectl](https://kubernetes.io/docs/tasks/tools/) - Kubernetes command line tool
@@ -17,37 +17,34 @@ You will need to provision storage buckets, a Kubernetes cluster, and cloud cred
 
 Foxglove provides a set of [Terraform examples](https://github.com/foxglove/terraform-examples) to help with these initial provisioning steps.
 
-## Create storage buckets
+### Create storage buckets
 
 Create two storage buckets for your Primary Site:
 
 - `inbox` – For all file uploads
 - `lake` – For processed and indexed versions of all files added to `inbox`
 
-## Kubernetes cluster
+### Create Kubernetes cluster
 
-> We recommend creating this in the same region as your buckets to reduce access latency and cost.
+Create a Kubernetes cluster to run your site workloads (e.g. processing inbox data, servicing data access requests from the lake) – we recommend doing this in the same region as your storage buckets, to reduce access latency and cost.
 
-Create a Kubernetes cluster to run your site workloads (e.g. processing inbox data, servicing data access requests from the lake).
-
-Create a `foxglove` namespace in your cluster.
+Create a `foxglove` namespace in your cluster:
 
 ```shell
 $ kubectl create namespace foxglove
 ```
 
-## Cloud credentials
+### Configure cloud credentials
 
 Create a service account with read and write access to the storage buckets. The Kubernetes workloads will use this service account.
 
 See [Configure cloud credentials](configure-cloud-credentials) for details on how to provide this credential to the deployment.
 
-## Site token
+### Create secret with site token
 
-> Find your Primary Site's site token on the _Sites_ tab of Foxglove web console's [_Settings_ page](https://console.foxglove.dev/settings/sites).
+Find your Primary Site token on the ["Sites" settings page](https://console.foxglove.dev/settings/sites).
 
-Install a [Secret](https://kubernetes.io/docs/concepts/configuration/secret/) named
-`foxglove-site-token` into the `foxglove` namespace containing your site token:
+Install a [Secret](https://kubernetes.io/docs/concepts/configuration/secret/) named `foxglove-site-token` into the `foxglove` namespace containing your site token:
 
 ```shell
 $ kubectl create secret generic foxglove-site-token --from-literal=FOXGLOVE_SITE_TOKEN='fox_sk_...' --namespace foxglove
@@ -55,15 +52,13 @@ $ kubectl create secret generic foxglove-site-token --from-literal=FOXGLOVE_SITE
 
 There are multiple other ways to create secrets that may be preferable. See [Create a Secret](https://kubernetes.io/docs/tasks/configmap-secret/managing-secret-using-kubectl/#create-a-secret) for more info.
 
-## Install the release
+### Install the release
 
-The Primary Site is installed via Helm.
+Install your Primary Site using Helm.
 
-### Prepare a values file
+#### Prepare a values file
 
-Create a `values.yaml` file to configure the installation. You'll need the names of your `lake` and 'inbox' buckets.
-
-Here is an example values file:
+Create a `values.yaml` file to configure the installation. You'll need to include a `storageProvider` (`aws`, `azure`, or `google_cloud`) and the names of your `lake` and `inbox` buckets:
 
 ```yaml
 globals:
@@ -74,8 +69,6 @@ globals:
     storageProvider: google_cloud
     bucketName: foxglove-inbox
 ```
-
-Accepted values for `storageProvider` are: `aws`, `azure`, or `google_cloud`.
 
 Be sure to include any additional values required by your storage provider:
 
@@ -96,9 +89,9 @@ globals:
     serviceUrl: "https://<resourcegroup>.blob.core.windows.net"
 ```
 
-### Install
+#### Install
 
-> Note: Helm will install the Primary Site deployment to your current Kubernetes [context](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#context)
+Helm will install the Primary Site deployment to your current Kubernetes [context](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#context).
 
 ```shell
 $ helm repo add foxglove https://helm-charts.foxglove.dev
@@ -115,7 +108,7 @@ View info about the deployment:
 $ helm list -n foxglove
 ```
 
-## Ingress for data access
+### Ingress for data access
 
 The deployment installs an [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) which exposes a REST API endpoint for accessing available data.
 
@@ -133,7 +126,7 @@ ingress:
   annotations: {}
 ```
 
-You can completely disable the ingress by setting `ingress.enabled` to false. However, you must provide an Ingress for the site to function.
+To completely disable the Ingress, set `ingress.enabled` to false. However, you must provide an Ingress for the site to function.
 
 Some cloud providers require configuring annotations for HTTPS certificates. Here's an example values file for AWS.
 
@@ -148,14 +141,13 @@ ingress:
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-west-1:xxxxxxxxxxxx:certificate/EXAMPLE-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
-## Configure Console
+### Configure Foxglove
 
-Once the site's ingress public URL is known, you can configure it on the Site details page, linked from Foxglove
-web console's [_Settings_ page](https://console.foxglove.dev/settings/sites).
+Once the site's ingress public URL is known, you can configure it on a Site page, linked from the ["Sites" settings page](https://console.foxglove.dev/settings/sites).
 
-Under **Site URL**, enter the HTTPS URL you've assigned to the Ingress.
+Under Site URL, enter the HTTPS URL you've assigned to the Ingress.
 
-## Bucket push notification
+### Bucket push notification
 
 The site inbox processor needs to know when new files are uploaded to the inbox bucket. To notify of
 new uploads, configure a push notification to the foxglove data platform inbox-notifications
@@ -171,7 +163,3 @@ The [Foxglove AWS Terraform examples](https://github.com/foxglove/terraform-exam
 - AWS: If you are using the [Foxglove AWS Terraform example](https://github.com/foxglove/terraform-examples/blob/main/primary-site/aws/README.md), this setup is done for you. You should see an SNS topic with an https subscription attached to the inbox bucket's `s3:ObjectCreated:*` events.
 
 > Org admins can find the inbox notification endpoint on the Foxglove web console's [_Settings_ page](https://console.foxglove.dev/settings/sites).
-
-## Next steps
-
-Congratulations! 🦊 Your Primary Site is setup and ready for use.

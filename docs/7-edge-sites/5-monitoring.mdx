@@ -1,21 +1,21 @@
 ---
 title: Monitoring
-desxcription: Monitor your Foxglove edge site.
+description: Monitor your Foxglove edge site.
 ---
 
 Monitor your Foxglove edge site.
 
-## Online status
+### Online status
 
 The edge site performs periodic pings to the Foxglove API control plane to report health. Organization admins can see this status on Foxglove web console's [_Settings_ page](https://console.foxglove.dev/settings/sites).
 
-## Prometheus
+### Prometheus
 
 The edge site service exposes processing and memory statistics on a [Prometheus](https://prometheus.io) metrics scraping endpoint on port 6002.
 
 Check out the [Prometheus documentation](https://prometheus.io/docs/introduction/overview) for more information.
 
-### Available metrics
+#### Available metrics
 
 - `recordings_indexed` – Number of recordings indexed by the service
 - `recordings_imported` – Number of recordings imported to a Primary Site
@@ -49,7 +49,7 @@ $ kubectl port-forward -n foxglove service/edge-controller 6002:6002
 $ curl -X GET http://localhost:6002/metrics
 ```
 
-## Slow query logging
+### Slow query logging
 
 Slow query logging in the edge site can be enabled by supplying the following environment variables. Using these should have negligible performance impact.
 * `SLOW_QUERY_LOG_MIN_DURATION`: A positive integer indicating the minimum execution time in milliseconds for a query to be considered "slow". Queries slower than this will be written to logs.

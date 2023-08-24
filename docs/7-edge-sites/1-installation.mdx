@@ -5,13 +5,13 @@ description: Install and configure a Foxglove edge site.
 
 Install and configure a Foxglove edge site.
 
-## Prerequisites
+### Prerequisites
 
 - [Kubernetes](https://kubernetes.io/) cluster
 - [Kubectl](https://kubernetes.io/docs/tasks/tools/) - Kubernetes command line tool
 - [Helm](https://helm.sh/) - Kubernetes package manager
 
-## Create a site
+### Create a site
 
 To create an edge site, navigate to the Foxglove web console's [_Settings_](https://console.foxglove.dev/settings/sites):
 
@@ -20,7 +20,7 @@ To create an edge site, navigate to the Foxglove web console's [_Settings_](http
 
 You're now ready to set up your cluster.
 
-## Configure cluster resources
+### Configure cluster resources
 
 Configure cluster resources required by the deployment – these are specific to your cluster and site setup.
 
@@ -30,14 +30,11 @@ Create a `foxglove` namespace in your cluster.
 $ kubectl create namesapce foxglove
 ```
 
-### Recording Storage
+#### Recording storage
 
-Your deployment needs access to storage containing your edge recordings. You can use a
-Kubernetes Persistent Volume or any S3-compatible object storage to store your recordings.
+Your deployment needs access to storage containing your edge recordings. You can use a Kubernetes Persistent Volume or any S3-compatible object storage to store your recordings.
 
-#### Using S3-Compatible Object Storage
-
-If storing recordings in an S3-compatible object store, you will need to set these config values:
+If storing recordings in an S3-compatible object store, you must set these config values:
 
 - `recordingStorage.provider`: Should be set to `s3_compatible`.
 - `recordingStorage.bucketName`: The bucket name where recordings will be stored.
@@ -45,11 +42,9 @@ If storing recordings in an S3-compatible object store, you will need to set the
 - `recordingStorage.s3CompatibleServiceRegion`: The region of your service. If your service is not
   configured with a region, leave this unconfigured.
 
-You will also need to configure credentials for your edge site to access these recordings.
+Configure credentials for your edge site to access these recordings.
 
-Install a [Secret](https://kubernetes.io/docs/concepts/configuration/secret/) named
-`recording-storage-credentials` into the `foxglove` namespace.
-This secret should contain an HMAC ID/secret pair to access your S3-compatible object store.
+Install a [Secret](https://kubernetes.io/docs/concepts/configuration/secret/) named `recording-storage-credentials` into the `foxglove` namespace. This secret should contain an HMAC ID/secret pair to access your S3-compatible object store.
 
 Check out the following example secret configuration file:
 
@@ -64,15 +59,13 @@ stringData:
   RECORDING_STORAGE_S3_COMPATIBLE_SECRET_ACCESS_KEY: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 ```
 
-#### Using a Persistent Volume
+##### Persistent Volume
 
-If storing recordings in a Persistent Volume, the `recordingStorage.provider` config value should
-be left unset. You will need a pre-configured
-[Persistent Volume Claim](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
-The default claim name is `edge-controller-storage-claim` however you can override this with the
-`edge_controller.storageClaim` config value.
+If storing recordings in a Persistent Volume, the `recordingStorage.provider` config value should be left unset. You will need a pre-configured [Persistent Volume Claim](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
 
-An example claim manifest is presented below – adjust this claim to reference volumes from your cluster:
+The default claim name is `edge-controller-storage-claim` however you can override this with the `edge_controller.storageClaim` config value.
+
+Example claim manifest:
 
 ```yaml
 apiVersion: v1
@@ -89,15 +82,14 @@ spec:
       storage: ...
 ```
 
-### Index Storage
+#### Index Storage
 
 You will need a pre-configured Persistent Volume Claim for storing database data.
-The default claim name is `edge-controller-index-claim` however you can override this with the
-`edge_controller.indexClaim` config value.
+The default claim name is `edge-controller-index-claim` however you can override this with the `edge_controller.indexClaim` config value.
 
-> Note the index claim should be backed by block storage rather than network storage for optimal performance.
+The index claim should be backed by block storage rather than network storage, for optimal performance.
 
-An example claim manifest is presented below – adjust thi claim to reference volumes from your cluster:
+Example claim manifest:
 
 ```yaml
 apiVersion: v1
@@ -114,10 +106,9 @@ spec:
       storage: ...
 ```
 
-### Secrets
+### Create secret with site token
 
-Install a [Secret](https://kubernetes.io/docs/concepts/configuration/secret/) named
-`foxglove-site-token` into the `foxglove` namespace containing your site token:
+Install a [Secret](https://kubernetes.io/docs/concepts/configuration/secret/) named `foxglove-site-token` into the `foxglove` namespace containing your site token:
 
 ```shell
 $ kubectl create secret generic foxglove-site-token --from-literal=FOXGLOVE_SITE_TOKEN='fox_sk_...' --namespace foxglove
@@ -127,11 +118,11 @@ There are multiple other ways to create secrets that may be preferable. See [Cre
 
 Additionally, your edge site will need cloud credentials to import data to the self-hosted Primary Site. See [Configure cloud credentials](configure-cloud-credentials) for more details.
 
-## Install the release
+### Install the release
 
-Use Helm to install the edge site deployment to your current Kubernetes [context](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#context).
+Install your Foxglove edge site deployment to your current Kubernetes [context](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#context) using Helm.
 
-### Prepare a values file
+#### Prepare a values file
 
 Create a `values.yaml` file to configure the installation. You'll need your edge site's site token, which can be found on the Foxglove web console's [_Settings_ page](https://console.foxglove.dev/settings/sites), and the name of your `inbox` bucket.
 
@@ -144,7 +135,7 @@ globals:
     bucketName: foxglove-inbox
 ```
 
-### Install
+#### Install
 
 ```shell
 $ helm repo add foxglove https://helm-charts.foxglove.dev
@@ -159,7 +150,7 @@ To view info about the deployment, run `$ helm list -n foxglove`.
 
 To test that the service is up, forward the service port to your machine with `$ kubectl port-forward -n foxglove service/edge-controller 8888:8888` and open `http://localhost:8888/v1/liveness`.
 
-## Create an Ingress
+### Create an Ingress
 
 The edge controller exposes a REST API service (`edge-controller`) for notifications of new
 recordings. To access this API outside of your cluster, you must create an
@@ -169,8 +160,6 @@ recordings. To access this API outside of your cluster, you must create an
 
 Visit `http://<cluster ip>:<port>/v1/liveness` in a web browser to confirm connectivity to the edge controller service via the Ingress.
 
-## Next steps
+### Next steps
 
-Congratulations! 🦊 Your edge site is setup and ready for use.
-
-For next steps on adding recordings to your site, see [Manage Data](manage-data).
+To add recordings to your site, see [Manage Data](/docs/edge-sites/manage-data).
