@@ -35,7 +35,7 @@ Hovering over a selected panel will present the following options:
   - Use to conserve space in a crowded layout
   - For panels that do not need to be visible all the time or all at once
 
-You can also create a Tab panel by adding a blank one to your layout from the sidebar's _Add panel_ tab. Add child panels directly from the _Add panel_ tab, or drag and drop existing panels in the layout into your Tab panel. Panels can also be dragged and dropped out of a Tab panel.
+You can also create a Tab panel by adding a blank one to your layout from the sidebar's "Add panel" menu. Add child panels directly from the "Add panel" menu, or drag and drop existing panels in the layout into your Tab panel. Panels can also be dragged and dropped out of a Tab panel.
 
 To name a tab, click into its default name to edit it. Add more tabs to an existing Tab panel using the plus icon. Drag and drop tabs to reorder them, either within their parent Tab panel and across multiple Tab panels.
 

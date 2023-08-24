@@ -5,17 +5,6 @@ description: Display and filter `Log` topic messages.
 
 Display and filter [`Log`](#log) messages from topics.
 
-## User interactions
-
-Filter incoming messages by:
-
-- **Severity level** – The minimum severity of messages to show.
-- **Node names or message text** – A comma-separated list of filter terms.
-
-The severity filter is always enforced — i.e. messages below the minimum severity will never appear, even if their node names or message texts match the text filter.
-
-The filter terms for node names or message text will execute as an `OR` – i.e. it will return messages that match any of the terms.
-
 ## Supported messages
 
 To use this panel, your data source must provide messages conforming to one of the following supported schemas.
@@ -27,3 +16,14 @@ To use this panel, your data source must provide messages conforming to one of t
 | ROS 1     | [`rosgraph_msgs/Log`](https://docs.ros.org/en/noetic/api/rosgraph_msgs/html/msg/Log.html)                 |
 | ROS 2     | [`rcl_interfaces/msg/Log`](https://github.com/ros2/rcl_interfaces/blob/master/rcl_interfaces/msg/Log.msg) |
 | Custom    | [`foxglove.Log`](/docs/studio/messages/log)                                                               |
+
+## User interactions
+
+Filter incoming messages by:
+
+- **Severity level** – The minimum severity of messages to show.
+- **Node names or message text** – A comma-separated list of filter terms.
+
+The severity filter is always enforced — i.e. messages below the minimum severity will never appear, even if their node names or message texts match the text filter.
+
+The filter terms for node names or message text will execute as an `OR` – i.e. it will return messages that match any of the terms.

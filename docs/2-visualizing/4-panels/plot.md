@@ -5,18 +5,47 @@ description: Plot arbitrary numeric values from topic message paths.
 
 Plot arbitrary numeric values from topic [message paths](/docs/studio/app-concepts/message-path-syntax).
 
-## Introduction
-
-When playing back a pre-recorded data source (e.g. a local or remote `.bag` file), this panel will preload the data belonging to the specified topic message paths for the whole playback timeline.
-
-Current playback time will be indicated by a vertical gray bar.
+When playing back local or remote data files, this panel will preload the data belonging to the specified topic message paths for the whole playback timeline. Current playback time is indicated by a vertical gray bar.
 
 ![add series](/img/docs/visualizing/panels/plot/panel.webp)
 
+## Settings
+
+| General                   |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Sync with other plots** | Sync to other Plot panels with a timestamp-based x-axis |
+
+| Legend          |                                                                                                                                    |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| **Position**    | Position of the legend in relation to the chart (Floating, Left, Top)                                                              |
+| **Show legend** | Display the legend                                                                                                                 |
+| **Show values** | Show the corresponding y value next to each series in the legend (either at the current playback time or at a point on user hover) |
+
+| Y Axis          |                                |
+| --------------- | ------------------------------ |
+| **Show labels** | Display label for the y-axis   |
+| **Min**         | Fixed minimum value for y-axis |
+| **Max**         | Fixed maximum value for y-axis |
+
+| X Axis              |                                                                                    |
+| ------------------- | ---------------------------------------------------------------------------------- |
+| **Value**           | Value plotted on x-axis; a timestamp, an index or a message path                   |
+| **Show labels**     | Display label for the x-axis                                                       |
+| **Min**             | Fixed minimum value for x-axis                                                     |
+| **Max**             | Fixed maximum value for x-axis                                                     |
+| **Range (seconds)** | Width of the plot's viewport as it follows playback (in seconds); time series only |
+
+| Series           |                                                                                                                               |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| **Message path** | Message path containing Y values for the series                                                                               |
+| **Label**        | Label displayed in the legend for the series                                                                                  |
+| **Color**        | Color used to plot the series                                                                                                 |
+| **Timestamp**    | Timestamp used for [message ordering](/docs/studio/app-concepts/playback#message-ordering) (`Receive Time` or `Header Stamp`) |
+
+
 ## User interactions
 
-The plot panel can be configured via the [panel settings sidebar](/docs/studio/panels/introduction#panel-settings). Series can be added or removed
-via the action buttons in the `Series` section of the panel settings.
+Use the panel settings to add or remove data series.
 
 ![add series](/img/docs/visualizing/panels/plot/add-series.webp)
 
@@ -96,43 +125,6 @@ The following `Math` functions are available to append to your Plot panel's mess
 Note that `.@derivative` will not work with scatter plots (i.e. message paths that point to an array of values for each x-axis tick).
 
 See the [Javascript Math](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math) documentation for more details.
-
-## Settings
-
-|           |            |
-| --------- | ---------- |
-| **Title** | Plot title |
-
-| General                   |                                                         |
-| ------------------------- | ------------------------------------------------------- |
-| **Sync with other plots** | Sync to other Plot panels with a timestamp-based x-axis |
-
-| Legend          |                                                                                                                                    |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| **Position**    | Position of the legend in relation to the chart (Floating, Left, Top)                                                              |
-| **Show legend** | Display the legend                                                                                                                 |
-| **Show values** | Show the corresponding y value next to each series in the legend (either at the current playback time or at a point on user hover) |
-
-| Y Axis          |                                |
-| --------------- | ------------------------------ |
-| **Show labels** | Display label for the y-axis   |
-| **Min**         | Fixed minimum value for y-axis |
-| **Max**         | Fixed maximum value for y-axis |
-
-| X Axis              |                                                                                    |
-| ------------------- | ---------------------------------------------------------------------------------- |
-| **Value**           | Value plotted on x-axis; a timestamp, an index or a message path                   |
-| **Show labels**     | Display label for the x-axis                                                       |
-| **Min**             | Fixed minimum value for x-axis                                                     |
-| **Max**             | Fixed maximum value for x-axis                                                     |
-| **Range (seconds)** | Width of the plot's viewport as it follows playback (in seconds); time series only |
-
-| Series           |                                                                                                                               |
-| ---------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| **Message path** | Message path containing Y values for the series                                                                               |
-| **Label**        | Label displayed in the legend for the series                                                                                  |
-| **Color**        | Color used to plot the series                                                                                                 |
-| **Timestamp**    | Timestamp used for [message ordering](/docs/studio/app-concepts/playback#message-ordering) (`Receive Time` or `Header Stamp`) |
 
 ## Shortcuts
 

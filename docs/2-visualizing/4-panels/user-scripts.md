@@ -24,7 +24,7 @@ Resources:
 - [Basic Types](https://www.typescriptlang.org/docs/handbook/basic-types.html)
 - [Gitbook](https://basarat.gitbook.io/typescript/getting-started/why-typescript)
 
-## Writing your first script
+### Writing your first script
 
 Every script must declare 3 exports:
 
@@ -77,7 +77,7 @@ As for the `Output` type, you can either manually type out your output with the 
 
 It's not always obvious how message properties affect the visualized output – strictly typing your scripts helps you debug issues at compile time rather than at runtime. With that said, you can disable Typescript checks when working on a rough draft of your script by adding `// @ts-expect-error` on the line above the one you want to ignore.
 
-## Using multiple input topics
+#### Using multiple input topics
 
 In some cases, you will want to define multiple input topics:
 
@@ -135,7 +135,7 @@ export default function script(event: Input<"/rosout"> | Input<"/tf">): { data: 
 };
 ```
 
-## Using global variables
+#### Using global variables
 
 The `script` function will receive all of the [variables](/docs/studio/app-concepts/variables) as an object every time it is called. Each time a new message is received, the `script` function will be re-run with the latest variable values:
 
@@ -157,7 +157,7 @@ export default function script(event: Input<"/foo_marker">, globalVars: GlobalVa
 };
 ```
 
-## Debugging
+### Debugging
 
 User scripts are not executed unless the output topic is being used somewhere within your layout.
 
@@ -185,7 +185,7 @@ Invoking `log()` outside your `script` function will invoke it once, when your s
 
 Note that if your topic publishes at a high rate, using `log()` will significantly slow down your code.
 
-## FAQ
+### FAQ
 
 **What if I don't want to produce a message every time publish is called?**
 
@@ -245,7 +245,7 @@ export default function script(event: Input<"/state">): Output => {
 };
 ```
 
-## Using `@foxglove/schemas`
+### Using `@foxglove/schemas`
 
 You can import and use types from the [`@foxglove/schemas`](https://github.com/foxglove/schemas) package in your user scripts:
 

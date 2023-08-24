@@ -1,31 +1,54 @@
 ---
 title: Introduction
+description: After connecting to a data source, leverage Foxglove's visualization and debugging tools to start exploring your data.
 ---
 
-After [connecting to a data source](/docs/1-connecting-to-data/introduction), leverage Foxglove's visualization and debugging tools to explore and analyze your data.
-
-<iframe
-  className="max-w-full max-h-full"
-  width="840"
-  height="472"
-  src="https://www.youtube.com/embed/ySVzQ3iFw90"
-  title="YouTube video player – Getting Started with Foxglove"
-  frameBorder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowFullScreen
-></iframe>
-
-## Navigation
+After [connecting to a data source](/docs/connecting-to-data/introduction), leverage Foxglove's visualization and debugging tools to start exploring your data.
 
 ![top nav](/img/docs/visualizing/navigation.jpeg)
 
-- **App menu** – Connect to a [data source](/docs/studio/connection/data-sources), toggle the sidebars, or view resources
-- **Add panel** – Add a [panel](/docs/studio/panels/introduction) to the current layout
-- **Layout menu** - Save your workspace view as a [layout](/docs/studio/layouts) and share it with teammates
-- **Left sidebar**
-  - **Panel** – Edit a selected panel's settings
-  - **Topics** – View a list of topics in your data source
-  - **Problems** – View and troubleshoot issues with your data source connection
-- **Right sidebar** - Edit a selected panel's settings
-  - **Variables** - Set app-level [variables](/docs/studio/app-concepts/variables) for use throughout your current layout
-- **User menu** – Sign in to your Foxglove account, configure app and user preferences, manage [custom extensions](/docs/studio/extensions/getting-started), and more
+|                   | Description                                                                                                                     |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| **App menu**      | Connect to a [data source](/docs/studio/connection/data-sources), toggle the sidebars, or view resources                        |
+| **Add panel**     | Add a [panel](/docs/studio/panels/introduction) to the current layout                                                           |
+| **Layout menu**   | Save your workspace view as a [layout](/docs/studio/layouts) and share it with teammates                                        |
+| **Left sidebar**  | Edit panel settings (Panel), view data source's topics (Topics), and troubleshoot issues with your connection (Problems)        |
+| **Right sidebar** | Set [variables](/docs/studio/app-concepts/variables) for your current layout                                                    |
+| **User menu**     | Sign in to your Foxglove account, configure preferences, manage [extensions](/docs/studio/extensions/getting-started), and more |
+
+## Settings
+
+Configure Foxglove app settings, privacy preferences, and experimental features.
+
+Click into the _Preferences_ tab in the app sidebar to configure the following settings.
+
+### General
+
+|                                                                                        | Definition                                                                                                                                                                       |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Color scheme**                                                                       | Choose between light or dark mode, or follow your OS settings                                                                                                                    |
+| **Display timestamps in**                                                              | Timezone used to display timestamps                                                                                                                                              |
+| **Timestamp format**                                                                   | Formatting used to display timestamps                                                                                                                                            |
+| **Message rate (Hz)**                                                                  | Message pipeline's frame rate; lowering frame rate will reduce CPU usage and redraw frequency for certain panels; rendering will continue at the usual 60fps for smooth playback |
+| **Language**                                                                           | App language ([contribute translations](https://github.com/foxglove/studio/blob/main/CONTRIBUTING.md#localization))                                                              |
+| **Updates**                                                                            | Toggle ability to automatically update the desktop app                                                                                                                           |
+| [**ROS_PACKAGE_PATH**](https://wiki.ros.org/ROS/EnvironmentVariables#ROS_PACKAGE_PATH) | Paths to search for ROS packages (local file paths or `package://` URLs); separate paths with standard OS path separator (e.g. ':' on Unix)                                      |
+
+### Privacy
+
+Decide whether you want to send anonymized usage data or crash reports to the Foxglove team. All data will be used to improve the app.
+
+These settings require an app relaunch to take effect.
+
+### Extensions
+
+Select the [Foxglove extensions](/docs/studio/extensions/getting-started) you want to install.
+
+### Experimental features
+
+These features are not recommended for regular use – they are either deprecated or in active development or testing.
+
+Reach out in the [Slack community](/join-slack), if you have any questions about any of these features.
+
+## Links and resources
+- [Getting Started with Foxglove](https://www.youtube.com/watch?v=ySVzQ3iFw90)

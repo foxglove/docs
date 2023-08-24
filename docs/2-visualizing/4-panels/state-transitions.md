@@ -15,16 +15,6 @@ Paths can point to any primitive value (numbers, booleans, enums, etc.), but wil
 
 **Note**: Constants included in your ROS message definition will be displayed as a label for each "enum" plot. Limit enums to one per message definition, as Foxglove will not know which constant name to use in the event of multiple matches.
 
-## User interactions
-
-Scroll to zoom, and drag to pan. Double-click to reset the view.
-
-Hover over any point on a chart to see its details in a tooltip. You'll see a vertical yellow bar appear, as well as a corresponding yellow marker on the playback timeline.
-
-![hover on state transitions panel](/img/docs/visualizing/panels/state-transitions/hover.webp)
-
-Click to seek playback to the yellow marker on the timeline.
-
 ## Settings
 
 | General                   |                                                         |
@@ -36,3 +26,13 @@ Click to seek playback to the yellow marker on the timeline.
 | **Message path** | Message path containing values for the series                                                                                 |
 | **Label**        | Label displayed in the legend for the series                                                                                  |
 | **Timestamp**    | Timestamp used for [message ordering](/docs/studio/app-concepts/playback#message-ordering) (`Receive Time` or `Header Stamp`) |
+
+## User interactions
+
+Scroll to zoom, and drag to pan. Double-click to reset the view.
+
+Hover over any point on a chart to see its details in a tooltip. You'll see a vertical yellow bar appear, as well as a corresponding yellow marker on the playback timeline.
+
+![hover on state transitions panel](/img/docs/visualizing/panels/state-transitions/hover.webp)
+
+Click to seek playback to the yellow marker on the timeline.

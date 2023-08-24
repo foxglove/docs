@@ -25,6 +25,17 @@ Click any entry to open a corresponding Diagnostics – Detail (ROS) panel with 
 
 ![diagnostics summary and detail panels](/img/docs/visualizing/panels/diagnostics/with-detail-panel.webp)
 
+## Supported messages
+
+To use this panel, your data source must provide messages conforming to one of the following supported schemas.
+
+### `DiagnosticArray`
+
+| framework | schema                                                                                                                                 |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| ROS 1     | [`diagnostic_msgs/DiagnosticArray`](https://docs.ros.org/en/noetic/api/diagnostic_msgs/html/msg/DiagnosticArray.html)                  |
+| ROS 2     | [`diagnostic_msgs/msg/DiagnosticArray`](https://github.com/ros2/common_interfaces/blob/master/diagnostic_msgs/msg/DiagnosticArray.msg) |
+
 ## Settings
 
 ### Diagnostics – Summary (ROS)
@@ -40,14 +51,3 @@ Click any entry to open a corresponding Diagnostics – Detail (ROS) panel with 
 | --------------------- | ------------------------------------------------------------------------- |
 | **Topic**             | ROS [`DiagnosticArray`](#diagnosticarray) topic to subscribe to for nodes |
 | **Numeric precision** | Number of digits to the right of the decimal point for displayed values   |
-
-## Supported messages
-
-To use this panel, your data source must provide messages conforming to one of the following supported schemas.
-
-### `DiagnosticArray`
-
-| framework | schema                                                                                                                                 |
-| --------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| ROS 1     | [`diagnostic_msgs/DiagnosticArray`](https://docs.ros.org/en/noetic/api/diagnostic_msgs/html/msg/DiagnosticArray.html)                  |
-| ROS 2     | [`diagnostic_msgs/msg/DiagnosticArray`](https://github.com/ros2/common_interfaces/blob/master/diagnostic_msgs/msg/DiagnosticArray.msg) |
