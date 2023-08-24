@@ -1,16 +1,11 @@
 ---
 title: Introduction
+description: Adhering to Foxglove-supported schemas will help you take full advantage of the platform's built-in visualizations.
 ---
 
-While some Foxglove panels (e.g. [Raw Messages](/docs/studio/panels/raw-messages) and [Plot](/docs/studio/panels/plot)) can display data of any type from any topic, others (e.g. [Map](/docs/studio/panels/map) and [3D](/docs/studio/panels/3d)) require incoming messages to conform to a known schema to visualize them properly.
+[Foxglove panels](TBD) often require incoming messages to conform to a known schema to visualize them properly,
 
-To transform custom messages into supported Foxglove schemas, you can write a [message converter](/docs/studio/extensions/getting-started#message-converters).
-
-See the [panels](TBD) for each panel's supported messages.
-
-## Using Foxglove schemas
-
-Adhering to supported schemas will help you take full advantage of Foxglove's built-in visualizations.
+Adhering to Foxglove-supported schemas will help you take full advantage of the platform's built-in visualizations.
 
 Use the schema files in [`@foxglove/schemas`](https://github.com/foxglove/schemas) to write structured messages in any of the following formats:
 
@@ -21,7 +16,10 @@ Use the schema files in [`@foxglove/schemas`](https://github.com/foxglove/schema
 - [TypeScript](https://github.com/foxglove/schemas/tree/main/schemas/typescript)
 - [FlatBuffers](https://github.com/foxglove/schemas/tree/main/schemas/flatbuffer)
 
-## Protobuf and JSON Schema
+
+If you've already written custom messages, you can transform them into Foxglove-supported schemas using a [message converter](/docs/studio/extensions/getting-started#message-converters) extension.
+
+### Protobuf and JSON Schema
 
 Copy the [`.proto` files](https://github.com/foxglove/schemas/tree/main/schemas/proto/foxglove) or [`.json` files](https://github.com/foxglove/schemas/tree/main/schemas/jsonschema) you need directly into your project, and use them to start publishing data via a [live Foxglove WebSocket connection](/docs/studio/connection/foxglove-websocket) or logging data to an [MCAP file](https://mcap.dev).
 
@@ -37,7 +35,7 @@ We provide WebSocket libraries for live data ([Python](https://github.com/foxglo
 
 _Check out the blog post on [Recording Robocar Data with MCAP](/blog/recording-robocar-data-with-mcap) for an example on using an [MCAP](https://mcap.dev) C++ writer to record your Protobuf data._
 
-## ROS
+### ROS
 
 Install the [`foxglove_msgs` package](https://index.ros.org/r/foxglove_msgs/):
 
@@ -56,7 +54,7 @@ msg = Vector2()
 msg.data = { x: 0.5, y: 0.7 }
 ```
 
-## TypeScript
+### TypeScript
 
 Import Foxglove schemas as TypeScript types for type-checking purposes.
 

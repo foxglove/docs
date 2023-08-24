@@ -1,5 +1,6 @@
 ---
 title: Variable Slider
+description: Use a customizable slider interface to quickly update a numerical variable value.
 ---
 
 Use a customizable slider interface to quickly update a numerical [variable](/docs/studio/app-concepts/variables) value.

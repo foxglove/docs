@@ -1,5 +1,6 @@
 ---
 title: Topic Graph
+description: Display a graph visualization of the current node and topic topology.
 ---
 
 Display a graph visualization of the current node and topic topology.

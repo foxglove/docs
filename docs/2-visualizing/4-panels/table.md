@@ -1,5 +1,6 @@
 ---
 title: Table
+description: Display topic data in a tabular format.
 ---
 
 Display topic data in a tabular format.

@@ -1,8 +1,9 @@
 ---
 title: Shareable links
+description: Build and share deep links with your teammates to open Foxglove with specific layouts and data sources.
 ---
 
-Build and share deep links with your teammates to open Foxglove (on web or desktop) with specific layouts and data sources.
+Build and share deep links with your teammates to open Foxglove with specific layouts and data sources.
 
 To open Foxglove using a specific layout or data source, construct a "deep link" URL using the format:
 

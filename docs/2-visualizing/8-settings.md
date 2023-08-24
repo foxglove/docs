@@ -1,8 +1,9 @@
 ---
 title: Settings
+description: Configure Foxglove app settings, privacy preferences, and experimental features.
 ---
 
-Configure app settings, privacy preferences, and experimental features.
+Configure Foxglove app settings, privacy preferences, and experimental features.
 
 Click into the _Preferences_ tab in the app sidebar to configure the following settings.
 

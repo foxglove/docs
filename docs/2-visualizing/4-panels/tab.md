@@ -1,8 +1,9 @@
 ---
 title: Tab
+description: Group related panels into tabs to organize your layout.
 ---
 
-Group related panels into tabs to organize your layout and save space.
+Group related panels into tabs to organize your layout.
 
 <div className="flex flex-wrap">
   <img

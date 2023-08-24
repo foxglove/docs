@@ -1,5 +1,6 @@
 ---
 title: State Transitions
+description: Track when the discrete values of topic message paths change.
 ---
 
 Track when the discrete values of topic message paths, specified using [message path syntax](/docs/studio/app-concepts/message-path-syntax), change.
