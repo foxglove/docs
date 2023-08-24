@@ -1,8 +1,9 @@
 ---
 title: Playback
+description: When visualizing a local or rmote data file, you can navigate its contents using the playback bar controls.
 ---
 
-Navigate the timeline of a pre-recorded data source (e.g. a local or remote `.bag` file) using the playback bar controls.
+When visualizing a local or rmote data file, you can navigate its contents using the playback bar controls.
 
 Format the current timestamp display, seek back and forth at increments of 100ms, loop playback, and configure playback speed.
 

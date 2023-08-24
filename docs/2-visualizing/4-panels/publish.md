@@ -1,8 +1,9 @@
 ---
 title: Publish
+description: Publish messages on a topic back to your robotics stack.
 ---
 
-Publish messages on a given topic back to your ROS stack.
+Publish messages on a topic back to your robotics stack.
 
 ## User interactions
 

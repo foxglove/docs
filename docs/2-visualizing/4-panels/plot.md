@@ -1,8 +1,9 @@
 ---
 title: Plot
+description: Plot arbitrary numeric values from topic message paths.
 ---
 
-Plot arbitrary values from topic message paths, specified using [message path syntax](/docs/studio/app-concepts/message-path-syntax).
+Plot arbitrary numeric values from topic [message paths](/docs/studio/app-concepts/message-path-syntax).
 
 ## Introduction
 

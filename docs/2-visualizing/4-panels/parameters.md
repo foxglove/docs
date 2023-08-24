@@ -1,5 +1,6 @@
 ---
 title: Parameters
+description: Read and set parameters from the connected data source.
 ---
 
 Read and set parameters from the connected data source.

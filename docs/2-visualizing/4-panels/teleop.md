@@ -1,5 +1,6 @@
 ---
 title: Teleop
+description: Teleoperate your robot by publishing `geometry_msgs/Twist` or `geometry_msgs/msg/Twist` messages on a given topic back to your live ROS stack.
 ---
 
 Teleoperate your robot by publishing [`geometry_msgs/Twist`](https://docs.ros.org/en/api/geometry_msgs/html/msg/Twist.html) or [`geometry_msgs/msg/Twist`](https://github.com/ros2/common_interfaces/blob/master/geometry_msgs/msg/Twist.msg) messages on a given topic back to your live ROS stack.

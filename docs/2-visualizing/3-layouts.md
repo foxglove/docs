@@ -1,10 +1,11 @@
 ---
 title: Layouts
+description: Arrange Foxglove panels into custom layouts to tackle your visualization and debugging workflows.
 ---
 
 import AccountRequiredHeader from "../../src/components/docs/icons/AccountRequiredHeader";
 
-Configure and arrange [Foxglove panels](TBD) into custom layouts to better tackle your visualization and debugging workflows.
+Arrange Foxglove [panels](TBD) into custom layouts to tackle your visualization and debugging workflows.
 
 Layouts allow you to have the ideal tools ready for the task at hand. A perception engineer may develop layouts for calibrating various sensors, a planning engineer may have a few for visualizing different routing algorithm outputs, and a controls engineer may build one for plotting robot kinematics.
 

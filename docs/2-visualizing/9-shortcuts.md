@@ -1,8 +1,9 @@
 ---
 title: Shortcuts
+description: Use keyboard shortcuts to navigate the visualization interface.
 ---
 
-Use keyboard shortcuts to quickly navigate the Foxglove interface.
+Use keyboard shortcuts to navigate the visualization interface.
 
 - [Playback](/docs/studio/app-concepts/playback#shortcuts)
 - [Variables](/docs/studio/app-concepts/variables#shortcuts)

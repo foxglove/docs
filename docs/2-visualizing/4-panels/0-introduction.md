@@ -1,5 +1,6 @@
 ---
 title: Introduction
+description: Panels are modular visualization interfaces that can be configured and arranged into Foxglove layouts.
 ---
 
 Panels are modular visualization interfaces that can be configured and arranged into Foxglove layouts.

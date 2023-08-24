@@ -1,10 +1,11 @@
 ---
 title: User Scripts
+description: Publish pseudo topics internally to Foxglove using custom scripts. Manipulate, reduce, and filter existing messages and output them for useful visualization.
 ---
 
-Use a code editor sandbox to write scripts that publish pseudo topics internally to Foxglove. Manipulate, reduce, and filter existing messages and output them in a way that is useful to you.
+Publish pseudo topics internally to Foxglove using custom scripts. Manipulate, reduce, and filter existing messages and output them for useful visualization.
 
-You can write user scripts to transform both playback and preloaded data:
+User scripts can transform both playback and preloaded data:
 
 - **Playback data** – Messages streaming frame-by-frame into Foxglove; e.g. data for the [Raw Messages](/docs/studio/panels/raw-messages) or [3D](/docs/studio/panels/3d) panel
 

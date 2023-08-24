@@ -1,8 +1,9 @@
 ---
 title: Migrate from other tools
+description: Migrate your existing developer tools to a Fox
 ---
 
-Foxglove streamlines robotics development by integrating many commonly used developer tools into one environment. Migrate your existing tools to a Foxglove [panel](/docs/studio/panels/introduction).
+Foxglove streamlines robotics development by migrating many commonly used developer tools into modular [panels](/docs/visualizing/panels/introduction) – all within one integrated development environment.
 
 ## By framework
 

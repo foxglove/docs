@@ -1,10 +1,9 @@
 ---
 title: Extension context
+description: The `ExtensionContext` allows you to extend Foxglove for your custom workflows.
 ---
 
-`ExtensionContext` exposes available contribution points. The contribution points are how you extend Foxglove for your custom workflow.
-
-The first argument to your `activate` function is an `ExtensionContext`. My calling methods on the context you extend the capabilities of Foxglove.
+The `activate` function's first argument is an `ExtensionContext` – this context allows you to extend Foxglove for your custom workflows.
 
 ```typescript
 export function activate(extensionContext: ExtensionContext) {
