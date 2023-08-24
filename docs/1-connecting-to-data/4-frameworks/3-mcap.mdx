@@ -3,7 +3,9 @@ title: MCAP
 description: Foxglove can load local and remote MCAP (.mcap) files.
 ---
 
-import CorsDirections from "../../../src/components/docs/CorsDirections";
+import CorsDirections from "../../../src/components/docs/connecting-to-data/CorsDirections";
+import ImportedDataDirections from "../../../src/components/docs/connecting-to-data/ImportedDataDirections";
+import LocalDataDirections from "../../../src/components/docs/connecting-to-data/LocalDataDirections";
 
 Foxglove can load local and remote [MCAP](https://mcap.dev) (`.mcap`) files.
 
@@ -19,12 +21,10 @@ To load a remote MCAP (`.mcap`) file, select _Open file from URL_ in the _Data s
 
 ## Local data
 
-To load a local MCAP (`.mcap`) file, double-click it from your file manager, drag-and-drop the file directly into the app, or _Open local file_ via the _Data source_ dialog:
-
-![Local file dialog](/img/docs/connecting-to-data/local-file.png)
+<LocalDataDirections/>
 
 ## Imported data
 
 Use Foxglove's [web console](https://console.foxglove.dev) to upload your MCAP (`.mcap`) files and stream it directly for visualization.
 
-[IMPORTED DATA PAGE SNIPPET]
+<ImportedDataDirections/>

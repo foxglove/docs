@@ -2,9 +2,9 @@
 title: Custom
 description: Foxglove can load local and remote MCAP files containing custom data (i.e. Protobuf, JSON, FlatBuffers), or connect directly to live custom data via a Foxglove WebSocket connection.
 ---
-import CorsDirections from "../../../src/components/docs/CorsDirections";
-
-import FoxgloveWebSocketResetDirections from "../../../src/components/docs/FoxgloveWebSocketResetDirections";
+import CorsDirections from "../../../src/components/docs/connecting-to-data/CorsDirections";
+import FoxgloveWebSocketResetDirections from "../../../src/components/docs/connecting-to-data/FoxgloveWebSocketResetDirections";
+import ImportedDataDirections from "../../../src/components/docs/connecting-to-data/ImportedDataDirections";
 
 Foxglove can load local or remote [MCAP](https://mcap.dev) files containing custom data (i.e. [Protobuf](https://developers.google.com/protocol-buffers), [JSON](http://jsonschema.org/), [FlatBuffers](https://google.github.io/flatbuffers)), or connect directly to live custom data via a Foxglove WebSocket connection.
 
@@ -58,7 +58,7 @@ Once you have your local MCAP file, follow the MCAP directions for [loading it i
 
 Once converting yoru custom data to MCAP files and uploading them to Foxglove, you can stream them directly for visualization.
 
-[IMPORTED DATA PAGE SNIPPET]
+<ImportedDataDirections/>
 
 ## Schema encodings
 

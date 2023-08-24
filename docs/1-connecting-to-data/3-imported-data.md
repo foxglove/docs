@@ -1,19 +1,17 @@
 ---
 title: Imported data
-description: Foxglove supports loading imported Foxglove data files for visualization.
+description: Foxglove can load imported Foxglove ROS 1 (.bag) and MCAP (.mcap) files for visualization.
 ---
 
-Foxglove supports loading imported Foxglove data files for visualization.
+import ImportedDataDirections from "../../src/components/docs/connecting-to-data/ImportedDataDirections";
 
-Foxglove supports importing files in the following formats:
+Foxglove can load imported Foxglove data files for visualization.
+
+### Supported formats
 
 - ROS 1 (`.bag`) files
 - MCAP (`.mcap`) files
 
-After [importing data to Foxglove](TBD), select individual resources to "Visualize" on the [Recordings](https://console.foxglove.dev/recordings) or [Events](https://console.foxglove.dev/events) pages:
+### Getting started
 
-![Visualize on Recordings page](/img/docs/connecting-to-data/visualize-recordings.png)
-
-Select a custom time range of data (can span multiple recordings and/or events) to "Visualize" on the [Timeline](https://console.foxglove.dev/timeline) page:
-
-![Visualize on Timeline page](/img/docs/connecting-to-data/visualize-timeline.png)
+<ImportedDataDirections/>

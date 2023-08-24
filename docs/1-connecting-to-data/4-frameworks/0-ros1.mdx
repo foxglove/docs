@@ -3,9 +3,11 @@ title: ROS 1
 description: Foxglove can load local and remote ROS 1 (`.bag`) files, or connect directly to a live ROS 1 stack.
 ---
 
-import CorsDirections from "../../../src/components/docs/CorsDirections";
+import CorsDirections from "../../../src/components/docs/connecting-to-data/CorsDirections";
 import DesktopAppOnlyBadge from "../../../src/components/docs/DesktopAppOnlyBadge";
-import FoxgloveWebSocketResetDirections from "../../../src/components/docs/FoxgloveWebSocketResetDirections";
+import FoxgloveWebSocketResetDirections from "../../../src/components/docs/connecting-to-data/FoxgloveWebSocketResetDirections";
+import ImportedDataDirections from "../../../src/components/docs/connecting-to-data/ImportedDataDirections";
+import LocalDataDirections from "../../../src/components/docs/connecting-to-data/LocalDataDirections";
 
 Foxglove can load local and remote [ROS 1](/tutorials/installing-ros1-on-ubuntu) (`.bag`) files, or connect directly to a live ROS 1 stack.
 
@@ -96,13 +98,11 @@ To load a remote ROS 1 (`.bag`) file, select _Open file from URL_ in the _Data s
 
 ## Local data
 
-To load a local ROS 1 `.bag` file, double-click it from your file manager, drag-and-drop the file directly into the app, or _Open local file_ via the _Data source_ dialog:
-
-![Local file dialog](/img/docs/connecting-to-data/local-file.png)
+<LocalDataDirections/>
 
 ## Imported data
 
-[IMPORTED DATA PAGE SNIPPET]
+<ImportedDataDirections/>
 
 ## Links and resources
 

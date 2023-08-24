@@ -3,8 +3,10 @@ title: ROS 2
 description: Foxglove can load local and remote MCAP files containing ROS 2 data, or connect directly to a live ROS 2 stack.
 ---
 
-import CorsDirections from "../../../src/components/docs/CorsDirections";
-import FoxgloveWebSocketResetDirections from "../../../src/components/docs/FoxgloveWebSocketResetDirections";
+import CorsDirections from "../../../src/components/docs/connecting-to-data/CorsDirections";
+import FoxgloveWebSocketResetDirections from "../../../src/components/docs/connecting-to-data/FoxgloveWebSocketResetDirections";
+import ImportedDataDirections from "../../../src/components/docs/connecting-to-data/ImportedDataDirections";
+import LocalDataDirections from "../../../src/components/docs/connecting-to-data/LocalDataDirections";
 
 Foxglove can load local and remote [MCAP](https://mcap.dev) files containing [ROS 2](/blog/installing-ros2-humble-on-ubuntu) data, or connect directly to a live ROS 2 stack.
 
@@ -91,15 +93,15 @@ $ mcap convert ros2_input.db3 ros2_output.mcap
 $ mcap convert ros2_input.db3 ros2_output.mcap --ament-prefix-path=/your/first/directory;/your/second/directory
 ```
 
-Once you have your MCAP (`.mcap`) file, double-click it from your file manager, drag-and-drop it directly into the app, or _Open local file_ via the _Data source_ dialog:
+Once you have your MCAP (`.mcap`) file, you're ready to load it for visualization.
 
-![Local file dialog](/img/docs/connecting-to-data/local-file.png)
+<LocalDataDirections/>
 
 ## Imported data
 
 Once you [convert your ROS 2 `.db3` files to MCAP (`.mcap`) files](/docs/studio/connection/ros2#files), you can upload them to Foxglove's [web console](https://console.foxglove.dev) and stream them directly for visualization.
 
-[IMPORTED DATA PAGE SNIPPET]
+<ImportedDataDirections/>
 
 ## Links and resources
 
