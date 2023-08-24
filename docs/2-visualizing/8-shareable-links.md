@@ -38,7 +38,7 @@ To load a saved layout (personal or team):
 | ---------- | ------ | -------- | ----------------------------------------- |
 | `layoutId` | string | ✓        | Foxglove's ID for a remotely saved layout |
 
-To get a URL with the correct `layoutId` param, open the web app and click your desired layout in the _Layouts_ sidebar.
+To get a URL with the correct `layoutId` param, open the web app and click your desired layout in the "Layouts" menu.
 
 ## Timestamp
 

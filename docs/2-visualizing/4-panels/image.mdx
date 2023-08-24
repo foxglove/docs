@@ -28,71 +28,6 @@ Display raw and compressed images with 2D annotations like text labels, circles,
 | `uyvy` or `yuv422`      |                   |
 | `yuyv` or `yuv422_yuy2` |                   |
 
-### Annotations
-
-To display 2D or 3D annotations, your robot must be publishing [`CameraCalibration`](#cameracalibration) messages for the selected camera. Once you select the **Calibration** topic in the panel settings, your annotation messages will refer to that data to transform themselves onto unrectified images.
-
-For 2D annotations, go to the [**Image annotations**](#image-annotations) section to toggle on any [`ImageAnnotations` topic](#imageannotations) – this will overlay a combination of [`CircleAnnotation`](/docs/studio/messages/circle-annotation)s, [`PointsAnnotation`](/docs/studio/messages/points-annotation)s, and [`TextAnnotation`](/docs/studio/messages/text-annotation)s onto your selected camera image.
-
-For 3D annotations, go to the panel settings' [**Topics**](#topics) section to toggle on any 3D marker topics.
-
-When zooming in or out on an image, annotations will re-render to remain sharp.
-
-### User interactions
-
-Right-click on the image to download it as a PNG file.
-
-![download as png](/img/docs/visualizing/panels/image/download.webp)
-
-Click any displayed image marker to view its details.
-
-![marker details](/img/docs/visualizing/panels/image/marker-details.webp)
-
-Scroll to zoom, and drag to pan.
-
-## Settings
-
-### General
-
-| field                  | description                                                                                                                                                |
-| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Topic**              | Camera image topic to display                                                                                                                              |
-| **Calibration**        | Calibration topic to use for distortion and 3D markers                                                                                                     |
-| **Sync annotations**   | Display images and annotations only when their messages' timestamps match. Newly received messages will be buffered until a matching set can be displayed. |
-| **Flip horizontal**    | Flip image horizontally over a vertical axis                                                                                                               |
-| **Flip vertical**      | Flip image vertically over a horizontal axis                                                                                                               |
-| **Rotation**           | Rotate image by 90°, 180°, or 270°                                                                                                                         |
-| **Min (depth images)** | Minimum scaling value for depth images (default: 0); currently only used for `mono16` and `16UC1` images                                                   |
-| **Max (depth images)** | Maximum scaling value for depth images (default: 10000); currently only used for `mono16` and `16UC1` images                                               |
-
-### Scene
-
-| field                          | description                                                                                |
-| ------------------------------ | ------------------------------------------------------------------------------------------ |
-| **Render stats**               | Display rendering performance statistics in panel corner                                   |
-| **Background**                 | Color of background behind the image                                                       |
-| **Label scale**                | Size of text labels                                                                        |
-| **Ignore COLLADA `<up_axis>`** | Ignore the `<up_axis>` tag in COLLADA files                                                |
-| **Mesh up axis**               | Direction of “up” when loading meshes (STL, OBJ) without orientation info ("Y-up", "Z-up") |
-
-### Image annotations
-
-List of image annotation marker topics with display settings.
-
-### Transforms
-
-List of transform messages to display.
-
-See the [3D panel docs](/docs/studio/panels/3d#transforms-2) for more information on possible settings.
-
-### Topics
-
-List of [3D marker topics](/docs/studio/panels/3d#topics) to superimpose on the 2D image.
-
-### Custom layers
-
-See the [3D panel docs](/docs/studio/panels/3d#custom-layers) for more information on possible settings.
-
 ## Supported messages
 
 To use this panel, your data source must provide messages conforming to one of the following supported schemas.
@@ -115,7 +50,9 @@ To use this panel, your data source must provide messages conforming to one of t
 
 ### `CameraCalibration`
 
-_NOTE: Foxglove currently only supports `plumb_bob` and `rational_polynomial` for the `distortion_model` field value._
+Must be publishing `CameraCalibration` messages for the selected camera to display its corresponding 2D and 3D annotations.
+
+Foxglove currently only supports `plumb_bob` and `rational_polynomial` for the `distortion_model` field value.
 
 | framework | schema                                                                                                               |
 | --------- | -------------------------------------------------------------------------------------------------------------------- |
@@ -136,6 +73,61 @@ _NOTE: Foxglove currently only supports `plumb_bob` and `rational_polynomial` fo
 | --------- | -------------------------------------------------------------------------------------------------------------------- |
 | ROS 1     | [`foxglove_msgs/ImageMarkerArray`](https://github.com/foxglove/ros_foxglove_msgs/blob/main/msg/ImageMarkerArray.msg) |
 | Custom    | [`foxglove.ImageAnnotations`](/docs/studio/messages/image-annotations)                                               |
+
+## Settings
+
+### General
+
+| field                  | description                                                                                                                                                |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Topic**              | Camera image topic to display                                                                                                                              |
+| **Calibration**        | Calibration topic for calculating distortion; used to transform annotations onto unrectified images                                                        |
+| **Sync annotations**   | Display images and annotations only when their messages' timestamps match. Newly received messages will be buffered until a matching set can be displayed. |
+| **Flip horizontal**    | Flip image horizontally over a vertical axis                                                                                                               |
+| **Flip vertical**      | Flip image vertically over a horizontal axis                                                                                                               |
+| **Rotation**           | Rotate image by 90°, 180°, or 270°                                                                                                                         |
+| **Min (depth images)** | Minimum scaling value for depth images (default: 0); currently only used for `mono16` and `16UC1` images                                                   |
+| **Max (depth images)** | Maximum scaling value for depth images (default: 10000); currently only used for `mono16` and `16UC1` images                                               |
+
+### Scene
+
+| field                          | description                                                                                |
+| ------------------------------ | ------------------------------------------------------------------------------------------ |
+| **Render stats**               | Display rendering performance statistics in panel corner                                   |
+| **Background**                 | Color of background behind the image                                                       |
+| **Label scale**                | Size of text labels                                                                        |
+| **Ignore COLLADA `<up_axis>`** | Ignore the `<up_axis>` tag in COLLADA files                                                |
+| **Mesh up axis**               | Direction of “up” when loading meshes (STL, OBJ) without orientation info ("Y-up", "Z-up") |
+
+### Image annotations
+
+2D image annotation marker topics to display.
+
+### Transforms
+
+List of transform messages to display.
+
+See the [3D panel docs](/docs/studio/panels/3d#transforms-2) for more information on possible settings.
+
+### Topics
+
+List of [3D marker topics](/docs/studio/panels/3d#topics) to superimpose on the image.
+
+### Custom layers
+
+See the [3D panel docs](/docs/studio/panels/3d#custom-layers) for more information on possible settings.
+
+## User interactions
+
+Right-click on the image to download it as a PNG file.
+
+![download as png](/img/docs/visualizing/panels/image/download.webp)
+
+Click any displayed image marker to view its details.
+
+![marker details](/img/docs/visualizing/panels/image/marker-details.webp)
+
+Scroll to zoom, and drag to pan. Annotations will re-render on zoom to remain sharp.
 
 ## Shortcuts
 

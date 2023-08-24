@@ -5,50 +5,81 @@ description: Arrange Foxglove panels into custom layouts to tackle your visualiz
 
 import AccountRequiredHeader from "../../src/components/docs/icons/AccountRequiredHeader";
 
-Arrange Foxglove [panels](TBD) into custom layouts to tackle your visualization and debugging workflows.
+With layouts, you can reuse a workspace for a recurring task or share it with a teammate solving a similar problem.
 
-Layouts allow you to have the ideal tools ready for the task at hand. A perception engineer may develop layouts for calibrating various sensors, a planning engineer may have a few for visualizing different routing algorithm outputs, and a controls engineer may build one for plotting robot kinematics.
+A perception engineer may develop layouts for calibrating various sensors, a planning engineer may have a few for visualizing different routing algorithm outputs, and a controls engineer may build one for plotting robot kinematics.
 
-By creating and sharing layouts designed to meet specific needs, you can revisit a particular setup for a common task or share that setup with a teammate solving a similar problem.
+Use the "Layouts" menu to create, edit, and share layouts.
+
+<img alt="Layouts menu" src="/img/docs/visualizing/organization-layouts.png" width="300"/>
 
 ## Personal layouts
 
-**Create, save, and switch between your personal layouts in the sidebar's _Layouts_ tab.** When signed in to your [Foxglove account](/docs/studio/signing-in), your personal layouts will be synced across all of your devices.
+Personal layouts are accessible to only you – they cannot be viewed, loaded, or edited by anyone else.
 
-Use each layout's details menu to **rename, duplicate, export, or delete any personal layout**. To save, revert, duplicate, or delete multiple layouts at once, press `Cmd` to select multiple layouts or `Shift` to select a range of adjacent layouts, then right-click for the context menu. If you're [signed in](/docs/studio/signing-in), you will have the additional option to **share the layout with your team**. Otherwise, your personal layouts will remain accessible to only you – they cannot be viewed, loaded, or edited by anyone else.
+When signed in, personal layouts are synced across all your devices, and can be shared with your organization.
 
-Use the "Import layout" icon in the top right to load an exported layout file.
+### Create
 
-![layouts tab](/img/docs/visualizing/layouts/tab.webp)
+Use the "Layouts" menu's "Create new layout" option to start building a custom workspace.
 
-**After editing a personal layout**, you can take either of the following actions:
+![Layouts glossary](/img/docs/visualizing/layouts-glossary.webp)
 
-- Save your changes to the layout
-- Discard your changes and revert to the last explicitly saved version of the layout
+Add and position [panels](TBD), configure their settings, adjust [playback settings](TBD), and set [variable](/docs/studio/app-concepts/variables) values.
 
-![modified personal layout options](/img/docs/visualizing/layouts/modified-personal.webp)
+### Edit
 
-Taking any of the following actions will **automatically edit your loaded layout**:
+When switching layouts after making edits to your current personal layout, you can take either of the following actions:
 
-- Adding or removing panels
-- Configuring panels
-- Adjusting playback settings
-- Changing [variable](/docs/studio/app-concepts/variables) values
+- **"Save changes"** – Save your changes to the layout
+- **"Revert"** – Discard changes and revert to the last explicitly saved layout version
 
-<AccountRequiredHeader headerId="team-layouts" headerText="Team layouts" />
+<img alt="Modified personal layout menu" src="/img/docs/visualizing/modified-personal-layout.png" width="400"/>
 
-Share any of your personal layouts with the members of your organization to make it a team layout. **Once shared, team layouts can be edited, renamed, or deleted by any member of that organization.**
+### Import and export
 
-![team layouts](/img/docs/visualizing/layouts/team.webp)
+Use a layout's context menu to "Export..." it as a JSON file.
 
-**This allows teams to curate a set of canonical layouts to accomplish common tasks** – e.g. for calibrating radar sensors, visualizing planning algorithm outputs, or viewing logs. Instead of maintaining marginally different setups for different tasks, teammates can use layouts preconfigured by workflow experts to avoid redundant work and accelerate development.
+Use the "Layouts" menu's "Import from file" option to load an exported layout JSON file.
 
-Team layouts work very similarly to personal layouts – i.e. you can rename, copy, export, and delete them – but operate more as templates than evolving snapshots of a workspace.
+### Share
 
-![team layout options](/img/docs/visualizing/layouts/team-options.webp)
+Use a layout's context menu to "Share with team..." – this will make a personal layout accessible to your entire organization.
 
-**If you edit a team layout and then try switching to another layout**, you'll be prompted to take one of the following actions:
+### Other
 
-- Save your changes as a separate personal layout (reverts changes to team layout)
-- Overwrite the team layout with your changes
-- Discard your changes and revert to the last explicitly saved version of the layout
+Use each layout's details menu to rename, duplicate, or delete any personal layout.
+
+To perform a batch action on multiple layouts:
+
+- Use `Cmd` to multi-select individual layouts
+- Use `Shift` to select a range of adjacent layouts
+- Right-click any selected layout's context menu to select a batch action
+
+
+## Organization layouts
+
+<AccountRequiredHeader />
+
+Organization layouts allow teams to curate a set of canonical layouts to accomplish common tasks – e.g. for calibrating radar sensors, visualizing planning algorithm outputs, or viewing logs. Instead of maintaining marginally different setups for different tasks, teammates can use layouts preconfigured by workflow experts to avoid redundant work and accelerate development.
+
+Organization layouts work very similarly to personal layouts – i.e. you can rename, copy, export, and delete them – but operate more as templates than evolving snapshots of a workspace.
+
+<img alt="Modified team layout menu" src="/img/docs/visualizing/modified-team-layout.png" width="400"/>
+
+### Edit
+
+After editing an organization layout, you can take any of the following actions:
+
+- **"Save changes"** – Overwrite the organization layout with your changes
+- **"Revert"** – Discard changes and revert to the last explicitly saved layout version
+- **"Make a personal copy"** – Save changes as a separate personal layout (reverts changes to organization layout)
+
+
+### Share
+
+Use a personal layout's context menu to "Share with team..." – this will make it accessible to your entire organization.
+
+Organization layouts can be edited, renamed, or deleted by any team member.
+x
+<img alt="Organization layouts" src="/img/docs/visualizing/organization-layouts.png" width="300"/>

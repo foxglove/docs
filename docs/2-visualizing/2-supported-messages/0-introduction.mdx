@@ -1,13 +1,11 @@
 ---
 title: Introduction
-description: Adhering to Foxglove-supported schemas will help you take full advantage of the platform's built-in visualizations.
+description: Using Foxglove schemas helps you take full advantage of the platform's built-in visualizations.
 ---
 
-[Foxglove panels](TBD) often require incoming messages to conform to a known schema to visualize them properly,
+Foxglove often requires incoming messages to conform to specific structures to visualize them properly. Using [Foxglove schemas](https://github.com/foxglove/schemas) helps you take full advantage of the platform's built-in visualizations.
 
-Adhering to Foxglove-supported schemas will help you take full advantage of the platform's built-in visualizations.
-
-Use the schema files in [`@foxglove/schemas`](https://github.com/foxglove/schemas) to write structured messages in any of the following formats:
+### Supported formats
 
 - [Protobuf](https://github.com/foxglove/schemas/tree/main/schemas/proto/foxglove)
 - [JSON Schema](https://github.com/foxglove/schemas/tree/main/schemas/jsonschema)
@@ -15,7 +13,6 @@ Use the schema files in [`@foxglove/schemas`](https://github.com/foxglove/schema
 - [ROS 2](https://github.com/foxglove/schemas/tree/main/schemas/ros2)
 - [TypeScript](https://github.com/foxglove/schemas/tree/main/schemas/typescript)
 - [FlatBuffers](https://github.com/foxglove/schemas/tree/main/schemas/flatbuffer)
-
 
 If you've already written custom messages, you can transform them into Foxglove-supported schemas using a [message converter](/docs/studio/extensions/getting-started#message-converters) extension.
 
