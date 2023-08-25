@@ -5,18 +5,15 @@ description: Recordings represent every data file recorded by your organization'
 
 Recordings represent every data file recorded by your organization's devices.
 
-## Common actions
-
 Import, delete, and search recordings from the [Recordings page](https://console.foxglove.dev/recordings).
 
-|            | Definition                                                | CLI command                           |
-| ---------- | --------------------------------------------------------- | ------------------------------------- |
-| **Import** | Import a data recording for a device in your organization | `TBD` ([supported data formats](TBD)) |
-| **Delete** | Delete a data recording imported into your organization   | `TBD`                                 |
+![Recordings page](/img/docs/organizing/recordings.png)
 
+### Actions
 
-### Attach information
-
-To include contextual information in a recording, import [MCAP](https://mcap.dev) files with [metadata records](TBD).
-
-To include auxiliary information in a recording, import [MCAP](https://mcap.dev) files with [attachments](TBD).
+|                            | Definition                                                         | CLI command                                                                                            |
+| -------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| **Import**                 | Import a data recording for a device in your organization          | `foxglove data import ~/data/bags/gps.bag --device-id dev_drpLqjBZYUzus3gv` ([supported formats](TBD)) |
+| **Delete**                 | Delete a data recording imported into your organization            | `TBD`                                                                                                  |
+| **Attach contextual data** | Import [MCAP](https://mcap.dev) files with [metadata records](TBD) | N/A                                                                                                    |
+| **Attach auxiliary data**  | Import [MCAP](https://mcap.dev) files with [attachments](TBD)      | N/A                                                                                                    |

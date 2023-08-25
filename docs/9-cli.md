@@ -43,7 +43,7 @@ Enable shell autocompletion for subcommands and parameters (`bash`, `zsh`, `fish
 $ foxglove completion <shell> -h
 ```
 
-### Common actions
+### Actions
 
 |                | Create                                                                                                                                    | List                         | Delete                                              |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | --------------------------------------------------- |

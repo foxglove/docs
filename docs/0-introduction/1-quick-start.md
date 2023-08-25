@@ -5,7 +5,7 @@ description: Sign up for a free Foxglove account – either as an individual or
 
 [Sign up for a free Foxglove account](https://console.foxglove.dev/signup) to get started.
 
-![Individual vs team](/img/docs/introduction/signup.png)
+![Solo vs organization](/img/docs/introduction/solo-vs-organization.png)
 
 If you sign up **as an individual**, you can:
 
@@ -23,11 +23,15 @@ If you sign up **with a team**, you can also:
 
 Set your data region to United States or Europe. By specifying where your uploaded data should live, you can ensure that it stays within your team's geography for compliance with GDPR and other security and privacy requirements.
 
+![Storage region](/img/docs/introduction/storage-region.png)
+
 This selection applies only to imported data files – import metadata, user account data, and general app data are all stored in Foxglove's US-based servers.
 
 ### Dashboard
 
 Once logged in, use the dashboard to track your organization's robots, upload data files, and load them for visualization.
+
+![Dashboard](/img/docs/introduction/dashboard.png)
 
 Explore your imported data via the following views:
 
@@ -38,8 +42,7 @@ Explore your imported data via the following views:
 
 ## Links and resources
 
-- [Foxglove dashboard](https://console.foxglove.dev/dashboard)
-- Visualization
-  - [Hosted web app](https://studio.foxglove.dev/)
-  - [Desktop app](https://foxglove.dev/download) (for Linux, Windows, and macOS)
-  - [Self-hosting the web app](/self-hosting/introduction)
+- [Dashboard](https://console.foxglove.dev/dashboard)
+- [Visualization](https://studio.foxglove.dev/)
+- [Desktop app download](https://foxglove.dev/download) (for Linux, Windows, and macOS)
+- [Self-hosting Foxglove](/docs/self-hosting/introduction)

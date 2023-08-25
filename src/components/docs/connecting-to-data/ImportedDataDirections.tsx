@@ -4,8 +4,9 @@ const ImportedDataDirections = (): ReactElement => {
   return (
     <>
       <p>
-        After <a href="">importing data to Foxglove</a>, select individual resources to "Visualize"
-        on the <a href="https://console.foxglove.dev/recordings">Recordings</a> or{" "}
+        After <a href="/docs/organizing/recordings">importing data to Foxglove</a>, select
+        individual resources to "Visualize" on the{" "}
+        <a href="https://console.foxglove.dev/recordings">Recordings</a> or{" "}
         <a href="https://console.foxglove.dev/events">Events</a> pages:
       </p>
 
@@ -15,8 +16,8 @@ const ImportedDataDirections = (): ReactElement => {
       />
 
       <p>
-        Select a custom time range of data (can span multiple recordings and/or events) to
-        "Visualize" on the <a href="https://console.foxglove.dev/timeline">Timeline</a> page:
+        You can also select a custom time range of data (can span multiple recordings and/or events)
+        to "Visualize" on the <a href="https://console.foxglove.dev/timeline">Timeline</a> page:
       </p>
 
       <img
