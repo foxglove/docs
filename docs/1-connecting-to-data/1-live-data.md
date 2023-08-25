@@ -7,13 +7,13 @@ Connect to live data sources with the Foxglove WebSocket, Rosbridge, and Velodyn
 
 ### Supported formats
 
-|                    | Supported formats                                                                                                                                                                                                                                                                                                               | Configuration options                                      |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| **Foxglove WebSocket** | <ul><li>[ROS 1](/docs/connecting-to-data/frameworks/ros1#foxglove-websocket)</li><li>[ROS 2](/docs/connecting-to-data/frameworks/ros2#foxglove-websocket)</li><li>[Custom](/docs/connecting-to-data/frameworks/custom#foxglove-websocket)</li><li>[MCAP](/docs/connecting-to-data/frameworks/mcap#foxglove-websocket)</li></ul> | WebSocket URL                                              |
-| **Rosbridge**          | <ul><li>[ROS 1](/docs/connecting-to-data/frameworks/ros1#rosbridge)</li><li>[ROS 2](/docs/connecting-to-data/frameworks/ros2#rosbridge)</li></ul>                                                                                                                                                                               | WebSocket URL                                              |
-| **ROS 1**              | [ROS 1](/docs/connecting-to-data/frameworks/ros1#native) (Desktop app only)                                                                                                                                                                                                                                                     | `ROS_MASTER_URI` and `ROS_HOSTNAME`                        |
-| **Velodyne Lidar**     | [Velodyne](/docs/connecting-to-data/frameworks/velodyne) (Desktop app only)                                                                                                                                                                                                                                                     | UDP port                                                   |
-| **Remote file**        | <ul><li>[ROS 1](/docs/connecting-to-data/frameworks/ros1)</li><li>[MCAP](/docs/connecting-to-data/frameworks/mcap)</li></ul>                                                                                                                                                                                                    | Requires [CORS setup](#cross-origin-resource-sharing-cors-setup) |
+|                        | Supported formats                                                                                                                                                                                                           | Configuration options                                            |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| **Foxglove WebSocket** | <ul><li>[ROS 1](frameworks/ros1#foxglove-websocket)</li><li>[ROS 2](frameworks/ros2#foxglove-websocket)</li><li>[Custom](frameworks/custom#foxglove-websocket)</li><li>[MCAP](frameworks/mcap#foxglove-websocket)</li></ul> | WebSocket URL                                                    |
+| **Rosbridge**          | <ul><li>[ROS 1](frameworks/ros1#rosbridge)</li><li>[ROS 2](frameworks/ros2#rosbridge)</li></ul>                                                                                                                             | WebSocket URL                                                    |
+| **ROS 1**              | [ROS 1](frameworks/ros1#native) (Desktop app only)                                                                                                                                                                          | `ROS_MASTER_URI` and `ROS_HOSTNAME`                              |
+| **Velodyne Lidar**     | [Velodyne](frameworks/velodyne) (Desktop app only)                                                                                                                                                                          | UDP port                                                         |
+| **Remote file**        | <ul><li>[ROS 1](frameworks/ros1#remote-file)</li><li>[MCAP](frameworks/mcap#remote-file)</li></ul>                                                                                                                          | Requires [CORS setup](#cross-origin-resource-sharing-cors-setup) |
 
 
 ### Limitations
@@ -45,7 +45,7 @@ If your data is sensitive, generate and use a signed URL – make sure that you
 
 This signed URL will work for a limited period of time. You can set up your server to only sign URLs for authenticated users.
 
-Finally, set up your CORS configuration. Check out the following example of a [Terraform](https://www.terraform.io/) config for an S3 bucket ([documentation here](https://registry.terraform.io/providers/hashicorp%20%20/aws/latest/docs/resources/s3_bucket_cors_configuration)):
+Finally, set up your CORS configuration. Check out the following example of a [Terraform](https://www.terraform.io/) config for an S3 bucket ([docs](https://registry.terraform.io/providers/hashicorp%20%20/aws/latest/docs/resources/s3_bucket_cors_configuration)):
 
 ```
 cors_rule {
@@ -56,7 +56,7 @@ cors_rule {
 }
 ```
 
-And a Terraform config for a GCS bucket ([documentation here](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket#cors)):
+And a Terraform config for a GCS bucket ([docs](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket#cors)):
 
 ```
 cors {

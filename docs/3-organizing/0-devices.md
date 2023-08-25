@@ -7,7 +7,7 @@ Devices represent every real and simulated robot that your organization wants to
 
 When importing data into Foxglove, you can associate each data recording with the device that recorded it.
 
-## Common actions
+## Actions
 
 Create, list, delete, and search devices from the [Devices page](https://console.foxglove.dev/devices).
 

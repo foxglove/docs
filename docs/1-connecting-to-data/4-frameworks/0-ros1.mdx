@@ -1,6 +1,6 @@
 ---
 title: ROS 1
-description: Foxglove can load local and remote ROS 1 (`.bag`) files, or connect directly to a live ROS 1 stack.
+description: Load local and remote ROS 1 (`.bag`) files, or connect directly to a live ROS 1 stack.
 ---
 
 import CorsDirections from "../../../src/components/docs/connecting-to-data/CorsDirections";
@@ -10,11 +10,13 @@ import ImportedDataDirections from "../../../src/components/docs/connecting-to-d
 import LocalDataDirections from "../../../src/components/docs/connecting-to-data/LocalDataDirections";
 import RosbridgeDirections from "../../../src/components/docs/connecting-to-data/RosbridgeDirections";
 
-Foxglove can load local and remote [ROS 1](/tutorials/installing-ros1-on-ubuntu) (`.bag`) files, or connect directly to a live ROS 1 stack.
+Load local and remote [ROS 1](/tutorials/installing-ros1-on-ubuntu) (`.bag`) files, or connect directly to a live ROS 1 stack.
 
 ## Live data
 
-Install [ROS 1](https://foxglove.dev/blog/installing-ros1-on-ubuntu), and make sure you are on the same network as the robot.
+[Install ROS 1](https://foxglove.dev/blog/installing-ros1-on-ubuntu), and make sure you are on the same network as the robot.
+
+In Foxglove, select "Open connection" in the "Open data source" dialog.
 
 ### Foxglove WebSocket
 
@@ -24,9 +26,9 @@ This option requires running an extra ROS node ([`foxglove_bridge`](https://inde
 
 #### Connect
 
-[Set up the Foxglove bridge](/docs/studio/connection/using-foxglove-bridge).
+[Set up the Foxglove bridge](/docs/connecting-to-data/ros-foxglove-bridge).
 
-_Open connection_ in the _Data source_ dialog, select _Foxglove WebSocket_, then enter the URL to your Rosbridge server:
+Select "Foxglove WebSocket" in the "Open data source" dialog, then enter the URL to your Rosbridge server:
 
 ![Foxglove WebSocket dialog](/img/docs/connecting-to-data/foxglove-websocket.png)
 
@@ -55,7 +57,7 @@ Connect directly to your running ROS stack via a native TCP (Transmission Contro
 
 Once you have a working [ROS 1](/tutorials/installing-ros1-on-ubuntu) setup on your computer, run `roscore` in your terminal to start your ROS master.
 
-_Open connection_ via the _Data source_ dialog, select "ROS 1", and enter your [`ROS_MASTER_URI`](https://wiki.ros.org/ROS/EnvironmentVariables#ROS_MASTER_URI) (ROS master's IP and port) and [`ROS_HOSTNAME`](https://wiki.ros.org/ROS/EnvironmentVariables#ROS_IP.2FROS_HOSTNAME):
+Select "ROS 1" in the "Open data source" dialog, and enter your [`ROS_MASTER_URI`](https://wiki.ros.org/ROS/EnvironmentVariables#ROS_MASTER_URI) (ROS master's IP and port) and [`ROS_HOSTNAME`](https://wiki.ros.org/ROS/EnvironmentVariables#ROS_IP.2FROS_HOSTNAME):
 
 ![ROS 1 dialog](/img/docs/connecting-to-data/ros1.png)
 
@@ -69,7 +71,7 @@ ROS 1 connections do not yet support reading or setting [ROS parameters](https:/
 
 ### Remote file
 
-To load a remote ROS 1 (`.bag`) file, select _Open file from URL_ in the _Data source_ dialog, and enter the URL to your remote file.
+Select "Remote file" in the "Open data source" dialog, and enter the URL to your remote `.bag` file.
 
 <CorsDirections />
 

@@ -1,16 +1,19 @@
 ---
 title: Custom
-description: Foxglove can load local and remote MCAP files containing custom data (i.e. Protobuf, JSON, FlatBuffers), or connect directly to live custom data via a Foxglove WebSocket connection.
+description: Load local and remote MCAP files containing custom data (i.e. Protobuf, JSON, FlatBuffers), or connect directly to live custom data via a Foxglove WebSocket connection.
 ---
 import CorsDirections from "../../../src/components/docs/connecting-to-data/CorsDirections";
 import FoxgloveWebSocketResetDirections from "../../../src/components/docs/connecting-to-data/FoxgloveWebSocketResetDirections";
 import ImportedDataDirections from "../../../src/components/docs/connecting-to-data/ImportedDataDirections";
+import LocalDataDirections from "../../../src/components/docs/connecting-to-data/LocalDataDirections";
 
-Foxglove can load local or remote [MCAP](https://mcap.dev) files containing custom data (i.e. [Protobuf](https://developers.google.com/protocol-buffers), [JSON](http://jsonschema.org/), [FlatBuffers](https://google.github.io/flatbuffers)), or connect directly to live custom data via a Foxglove WebSocket connection.
+Load local or remote [MCAP](https://mcap.dev) files containing custom data (i.e. [Protobuf](https://developers.google.com/protocol-buffers), [JSON](http://jsonschema.org/), [FlatBuffers](https://google.github.io/flatbuffers)), or connect directly to live custom data via a Foxglove WebSocket connection.
 
 ## Live data
 
 Connect directly to your live custom data (i.e. Protobuf, JSON, FlatBuffers) with an encoding-agnostic WebSocket connection.
+
+In Foxglove, select "Open connection" in the "Open data source" dialog.
 
 ### Foxglove WebSocket
 
@@ -30,7 +33,7 @@ $ npx @foxglove/ws-protocol-examples image-server
 
 #### Connect
 
-_Open connection_ in the _Data source_ dialog, select _Foxglove WebSocket_, and enter the URL to your WebSocket server:
+Select "Foxglove WebSocket" in the "Open data source" dialog, and enter the URL to your WebSocket server:
 
 ![Foxglove WebSocket dialog](/img/docs/connecting-to-data/foxglove-websocket.png)
 
@@ -38,21 +41,15 @@ _Open connection_ in the _Data source_ dialog, select _Foxglove WebSocket_, and 
 
 ### Remote file
 
-Once you have an MCAP file in remote storage, follow the MCAP directions for [opening it via URL in Foxglove](/docs/studio/connection/mcap#remote).
+Once you have an MCAP file in remote storage, follow the MCAP directions for [opening it via URL in Foxglove](/docs/connecting-to-data/frameworks/mcap#remote-file).
 
 <CorsDirections />
 
 ## Local data
 
-Load custom data into Foxglove by first encoding it in [MCAP](https://mcap.dev) (`.mcap`) files.
+Load custom data into Foxglove by first encoding it in [MCAP](https://mcap.dev) (`.mcap`) files – see [supported data formats here](https://mcap.dev/guides#supported-formats).
 
-MCAP supports the following serialization formats:
-
-- [Protobuf](https://mcap.dev/guides/getting-started/protobuf)
-- [JSON](https://mcap.dev/guides/getting-started/json)
-- [FlatBuffers](https://mcap.dev/guides/getting-started/flatbuffers)
-
-Once you have your local MCAP file, follow the MCAP directions for [loading it in Foxglove](/docs/studio/connection/mcap#local).
+<LocalDataDirections/>
 
 ## Imported data
 

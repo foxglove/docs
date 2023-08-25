@@ -1,11 +1,11 @@
 ---
 title: ROS Foxglove bridge
-description: The ROS Foxglove bridge connects to live ROS 1 and ROS 2 data via the Foxglove WebSocket protocol. It is implemented as a C++ node for high performance and low overhead.
+description: Use the ROS Foxglove bridge with the Foxglove WebSocket connection to visualize your live ROS 1 or ROS 2 data. The Foxglove bridge connects your ROS stack to Foxglove via the Foxglove WebSocket protocol.
 ---
 
-The ROS Foxglove bridge connects to live ROS 1 and ROS 2 data via the Foxglove WebSocket protocol. It is implemented as a C++ node for high performance and low overhead.
+Use the ROS Foxglove bridge to visualize your live [ROS 1](frameworks/ros1#foxglove-websocket) or [ROS 2](frameworks/ros2#foxglove-websocket) data via the Foxglove WebSocket connection.
 
-Connect via the Foxglove WebSocket connection to visualize your live robotics data.
+The Foxglove bridge connects your ROS stack to Foxglove via the Foxglove WebSocket protocol. It is implemented as a C++ node for high performance and low overhead.
 
 ### Overview
 
@@ -40,9 +40,13 @@ Configure bridge behavior with the following parameters. Set parameters at initi
 - **keyfile** – Path to the private key to use for TLS. Required when **tls** is set to `true`. Defaults to `""`.
 - **topic_whitelist** – List of regular expressions ([ECMAScript grammar](https://en.cppreference.com/w/cpp/regex/ecmascript)) of whitelisted topic names. Defaults to `[".*"]`.
 - **send_buffer_limit** – Connection send buffer limit in bytes. Messages will be dropped when a connection's send buffer reaches this limit to avoid a queue of outdated messages building up. Defaults to `10000000` (10 MB).
-- (ROS 1) **max_update_ms** – The maximum number of milliseconds to wait in between polling `roscore` for new topics, services, or parameters. Defaults to `5000`.
-- (ROS 2) **num_threads** – The number of threads to use for the ROS node executor. This controls the number of subscriptions that can be processed in parallel. 0 means one thread per CPU core. Defaults to `0`.
-- (ROS 2) **max_qos_depth** – Maximum depth used for the QoS profile of subscriptions. Defaults to `10`.
+
+ROS 1 only:
+- **max_update_ms** – Maximum number of milliseconds to wait in between polling `roscore` for new topics, services, or parameters. Defaults to `5000`.
+
+ROS 2 only:
+- **num_threads** – Number of threads to use for the ROS node executor. This controls the number of subscriptions that can be processed in parallel. 0 means one thread per CPU core. Defaults to `0`.
+- **max_qos_depth** – Maximum depth used for the QoS profile of subscriptions. Defaults to `10`.
 
 ### Development
 
