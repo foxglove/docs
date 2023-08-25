@@ -81,7 +81,7 @@ If "Events" is open in the sidebar, hovering on an event on the playback timelin
 
 ### Search events
 
-Open the Data source sidebar and click on the “Events” tab to see all your events. The search input field at the top of the tab uses the [same query syntax supported in the web console](/docs/data-platform/events#search-events). Type in some queries to filter events by metadata keys and values and find events of interest.
+View a list of events in the left sidebar's "Events" tab. The search input field uses the [same syntax as Foxglove event search](/docs/organizing/events#search). Type in some queries to filter events by metadata keys and values and find events of interest.
 
 ## Shortcuts
 

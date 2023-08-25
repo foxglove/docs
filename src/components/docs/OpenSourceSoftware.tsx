@@ -69,7 +69,7 @@ const otherPackages: Package[] = [
 const Basics = (): ReactElement => (
   <div className="flex flex-row flex-wrap">
     <OpenSourcePackageCard
-      name="Foxglove Studio"
+      name="Foxglove"
       description="Open source desktop and web app for robotics data visualization and debugging"
       gitHubURL="studio"
       hideNpm
@@ -82,7 +82,7 @@ const Basics = (): ReactElement => (
     />
     <OpenSourcePackageCard
       name="Foxglove WebSocket protocol libraries"
-      description="Libraries for loading custom data into Foxglove Studio via WebSocket servers"
+      description="Libraries for loading custom data into Foxglove via WebSocket servers"
       gitHubURL="ws-protocol"
       pythonPackage="foxglove-websocket"
       npmPackage="@foxglove/ws-protocol"
