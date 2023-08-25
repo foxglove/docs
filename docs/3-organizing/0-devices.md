@@ -7,34 +7,17 @@ Devices represent every real and simulated robot that your organization wants to
 
 When importing data into Foxglove, you can associate each data recording with the device that recorded it.
 
-### Create
+## Common actions
 
-Create a uniquely named device for every robot your organization wants to track.
+Create, list, delete, and search devices from the [Devices page](https://console.foxglove.dev/devices).
 
-|          |                                                                      |
-| -------- | -------------------------------------------------------------------- |
-| Foxglove | Create from the [Devices](https://console.foxglove.dev/devices) page |
-| CLI      | `$ foxglove devices add --name "my device"`                          |
+|            | Definition                                                                      | CLI command                                  |
+| ---------- | ------------------------------------------------------------------------------- | -------------------------------------------- |
+| **Create** | Create a uniquely named device for every robot your organization wants to track | `foxglove devices add --name "my device"`    |
+| **List**   | View your organization's devices                                                | `foxglove devices list`                      |
+| **Delete** | Delete a device in your organization                                            | `foxglove devices delete --name "my device"` |
 
-### List
-
-List your organization's devices.
-
-|          |                                                                       |
-| -------- | --------------------------------------------------------------------- |
-| Foxglove | View list at the [Devices](https://console.foxglove.dev/devices) page |
-| CLI      | `$ foxglove devices list`                                             |
-
-### Delete
-
-Delete a device created in your organization.
-
-|          |                                                                             |
-| -------- | --------------------------------------------------------------------------- |
-| Foxglove | Select device from the [Devices](https://console.foxglove.dev/devices) page |
-| CLI      | `$ foxglove devices delete --name "my device"`                              |
-
-## Add custom properties
+## Custom properties
 
 Custom properties are predefined metadata fields that can be associated with a device. They are set by admins for their organization.
 

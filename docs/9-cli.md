@@ -5,7 +5,7 @@ description: The foxglove CLI tool helps you import, export, and interact with y
 
 The [`foxglove` CLI tool](https://github.com/foxglove/foxglove-cli) helps you import, export, and interact with your data from the command line.
 
-## Installation
+### Installation
 
 Download the latest release from your command line.
 
@@ -23,7 +23,7 @@ Download the latest release from your command line.
 
 To install a specific release, see the [releases page](https://github.com/foxglove/foxglove-cli/releases).
 
-## Getting started
+### Getting started
 
 Before interacting with your data, you must first authenticate with your [Foxglove account](/docs/data-platform/signing-in):
 
@@ -43,40 +43,11 @@ Enable shell autocompletion for subcommands and parameters (`bash`, `zsh`, `fish
 $ foxglove completion <shell> -h
 ```
 
-## Devices
+### Common actions
 
-### Create device
-
-`$ foxglove devices add --name "my device"`
-
-### List devices
-
-`$ foxglove devices list`
-
-## Delete device
-
-`$ foxglove devices delete --name "my device"`
-
-## Recordings
-
-### Import recording
-
-`$ TBD`
-
-### Delete recording
-
-`$ TBD`
-
-## Events
-
-### Create event
-
-`$ foxglove beta events add \
-  --device-id dev_flm75pLkfzUBX2DH \
-  --timestamp 2022-01-01T12:00:00Z \
-  --duration-nanos 0 \
-  --metadata 'someKey:someValue'`
-
-### Search events
-
-`$ TBD`
+|                | Create                                                                                                                                    | List                         | Delete                                              |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | --------------------------------------------------- |
+| **Devices**    | `foxglove devices add --name "my device"`                                                                                                 | `foxglove devices list`      | `foxglove devices delete --name "my device"`        |
+| **Recordings** | `foxglove data import ~/data/bags/gps.bag --device-id dev_drpLqjBZYUzus3gv`                                                               | `foxglove data imports list` |                                                     |
+| **Events**     | `foxglove events add --device-id dev_flm75pLkfzUBX2DH --timestamp 2022-01-01T12:00:00Z --duration-nanos 0 --metadata 'someKey:someValue'` | `foxglove events list`       |                                                     |
+| **Extensions** | `foxglove extensions upload ./my-extension.1.0.0.foxe`                                                                                    | `foxglove extensions list`   | `foxglove extensions unpublish ext_BsGXKGsZ9c4WQF1` |

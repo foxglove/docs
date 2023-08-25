@@ -5,44 +5,35 @@ description: Events represent points or time ranges of interest in your organiza
 
 Events represent points or time ranges of interest in your organization's recordings. They help you quickly identify, categorize, and search for relevant subsets of your data.
 
-### Create
-
-Create an event to flag points or time ranges of interest in your organization's data.
-
 Each event requires an associated device, timestamp, and duration (0 for an instantaneous event). It can also contain optional metadata.
 
 ![create event](/img/docs/data-platform/create-event.webp)
 
-|        |                                                                                                                         |
-| ------ | ----------------------------------------------------------------------------------------------------------------------- |
-| In app | <ul><li>Create at [Events](https://console.foxglove.dev/events) or select device at [Devices](https://console.foxglove.devices)</li><li>Add events directly on the playback bar during visualization</li></ul> |
-| CLI    | `$ foxglove TBD`                                                                                                        |
+### Common actions
 
-### List
+Create, list, delete, and search events from the [Events page](https://console.foxglove.dev/events).
 
-|        |                                                              |
-| ------ | ------------------------------------------------------------ |
-| In app | View list at [Events](https://console.foxglove.dev/events)   |
-| CLI    | `$ foxglove events list`                                     |
+|            | Definition                                                    | CLI                    |
+| ---------- | ------------------------------------------------------------- | ---------------------- |
+| **Create** | Create an event to flag interesting data in your organization | `TBD`                  |
+| **List**   | View your organization's events                               | `foxglove events list` |
+| **Delete** | Delete an event in your organization                          | `TBD`                  |
+
 
 ### Search
 
-Search events by device, time range, and metadata.
+Search events by device, time range, and metadata on the [Events page](https://console.foxglove.dev/events).
 
-The metadata field uses specific syntax to filter events:
+Use the syntax below to filter by metadata keys and values:
 
-- `weather:rain` – Find events with a certain metadata key and corresponding value
-- `weather:*` – Find events with a certain metadata key and any value
-- `*:rain` – Find events with a certain metadata value and any key
-- `weather:rain weather:fog` – Find events with `weather` that matches both `rain` AND `fog`
-- `weather:rain,fog,"mostly sunny"` – Find events with `weather` that matches `rain` OR `fog` OR `"mostly sunny"` (double quotes used for values with spaces)
-- `error` – Find events with either a key or value tagged “error”
+|                                | Specific key                      | Any key  |
+| ------------------------------ | --------------------------------- | -------- |
+| Specific value                 | `weather:rain`                    | `*:rain` |
+| Any value                      | `weather:*`                       |          |
+| Multiple values (all required) | `weather:rain weather:fog`        |          |
+| Multiple values (1+ required)  | `weather:rain,fog,"mostly sunny"` |          |
 
-|        |                                                         |
-| ------ | ------------------------------------------------------- |
-| In app | Search at [Events](https://console.foxglove.dev/events) |
-| CLI    | N/A                                                     |
-
+A single word (e.g. `error`) will look for matching metadata keys or values.
 
 ## Links and resources
 
