@@ -9,9 +9,9 @@ Manage your self-hosted Primary Site's data.
 
 When uploading data to the inbox bucket, you need to add a `foxglove_device_id` metadata key that corresponds to a device ID in your Foxglove organization.
 
-To add a device and get its ID, either click "Add Device" in the [web console](https://console.foxglove.dev), or use the CLI's `foxglove devices add` command.
+Create a device from the [Devices page](https://console.foxglove.dev/devices) or using the CLI's `foxglove devices add` command.
 
-Once you've created a device, import data for that device according to your cloud provider.
+Then, import data for that device according to your cloud provider.
 
 #### Microsoft Azure
 
@@ -31,7 +31,7 @@ $ gsutil -h "x-goog-meta-foxglove_device_id:<your device id>" cp <input.bag> gs:
 $ aws s3 cp input.bag s3://<inbox-bucket>/<path> --metadata '{"foxglove_device_id": "<your device ID>"}'
 ```
 
-You will see the pending import in the web console's [_Recordings_](https://console.foxglove.dev/recordings) page. Once processed, the uploaded data will be available via the API and CLI.
+You will see the pending import on the [Recordings page](https://console.foxglove.dev/recordings). Once processed, the uploaded data will be available via the API and CLI.
 
 ### Specify a device in MCAP metadata
 
