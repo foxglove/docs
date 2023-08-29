@@ -10,11 +10,11 @@ Start processing data through your Foxglove edge site.
 To add recordings to your edge site:
 
 1. Upload the recording to the storage volume for the site.
-2. Make an HTTP POST request to the edge controller `/v1/recordings` endpoint. The request body must include a `path` (string path to the recording within the storage volume) and `deviceName` (for the recording):
+2. Make an HTTP POST request to the edge controller `/v1/recordings` endpoint. The request body must include a `path` (string path to the recording within the storage volume) and `deviceName` (for the recording). Use the optional `autoImport`` parameter to trigger an immediate import of the data:
 
 ```shell
 $ curl -X POST http://my-edge-site/v1/recordings \
-    -d '{"path": "path/to/log.mcap", "deviceName": "my-device"}'
+    -d '{"path": "path/to/log.mcap", "deviceName": "my-device", "autoImport": true}'
 ```
 
 Once successfully uploaded to your edge site, your recording will appear on the [Recordings page](https://console.foxglove.dev/recordings) and be available via the recordings API endpoint.
