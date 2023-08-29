@@ -3,7 +3,7 @@ title: Variable Slider
 description: Customize a slider to quickly update a numerical variable value.
 ---
 
-Customize a slider to quickly update a numerical [variable](/docs/studio/app-concepts/variables) value.
+Customize a slider to quickly update a numerical [variable](/docs/visualizing/variables) value.
 
 ![variable slider panel](/img/docs/visualizing/panels/variable-slider/panel.webp)
 

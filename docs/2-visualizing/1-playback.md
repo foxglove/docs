@@ -11,7 +11,7 @@ When visualizing a local or remote data file, you can navigate its contents usin
 
 Robotics data typically includes several types of timestamps.
 
-Both Foxglove and the [Foxglove WebSocket protocol](https://github.com/foxglove/ws-protocol/blob/main/docs/spec.md) play messages in receive time, or `log_time`, order. Some Foxglove [panels](/docs/studio/panels/introduction) – like the [Plot](/docs/studio/panels/plot) and [State Transitions](/docs/studio/panels/state-transitions) – can be configured to order messages by header stamp.
+Both Foxglove and the [Foxglove WebSocket protocol](https://github.com/foxglove/ws-protocol/blob/main/docs/spec.md) play messages in receive time, or `log_time`, order. Some Foxglove [panels](/docs/visualization/panels/introduction) – like the [Plot](/docs/visualization/panels/plot) and [State Transitions](/docs/visualization/panels/state-transitions) – can be configured to order messages by header stamp.
 
 |                  | Frameworks                                                                                                                                                            | Description                                       | Notes                                                                                                                        |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -41,9 +41,9 @@ Message latching allows panels to accurately display data from infrequently publ
 
 #### Preloading
 
-While most Foxglove panels – like the [Raw Messages](/docs/studio/panels/raw-messages) and [Image](/docs/studio/panels/image) panels – display just the most recent message for a given topic, others like the [Plot](/docs/studio/panels/plot) and [Map](/docs/studio/panels/map) panels benefit from visualizing messages across the data's entire time range. Seeing a complete view of one's data makes spotting anomalies, summarizing robot behavior, and recognizing trends and patterns much easier. Preloading data allows these panels to access all their historical data throughout playback.
+While most Foxglove panels – like the [Raw Messages](/docs/visualization/panels/raw-messages) and [Image](/docs/visualization/panels/image) panels – display just the most recent message for a given topic, others like the [Plot](/docs/visualization/panels/plot) and [Map](/docs/visualization/panels/map) panels benefit from visualizing messages across the data's entire time range. Seeing a complete view of one's data makes spotting anomalies, summarizing robot behavior, and recognizing trends and patterns much easier. Preloading data allows these panels to access all their historical data throughout playback.
 
-Even panels that visualize their most recently seen data can benefit from preloading. For example, the [3D panel](/docs/studio/panels/3d) preloads its transform messages to accurately position its markers. Robots often have many coordinate frames (e.g. joints of a robot arm, cameras on a self-driving car), each with their own markers. To render markers from different frames in a single 3D scene, the panel needs to use transforms to calculate the position of these visual elements in a common coordinate space. Since transforms accumulate and update over time, looking at just the latest message would result in an incompletely or incorrectly rendered scene. By preloading all transforms, the 3D panel can accurately position its markers, regardless of where and how often you decide to seek in your data.
+Even panels that visualize their most recently seen data can benefit from preloading. For example, the [3D panel](/docs/visualization/panels/3d) preloads its transform messages to accurately position its markers. Robots often have many coordinate frames (e.g. joints of a robot arm, cameras on a self-driving car), each with their own markers. To render markers from different frames in a single 3D scene, the panel needs to use transforms to calculate the position of these visual elements in a common coordinate space. Since transforms accumulate and update over time, looking at just the latest message would result in an incompletely or incorrectly rendered scene. By preloading all transforms, the 3D panel can accurately position its markers, regardless of where and how often you decide to seek in your data.
 
 ## User interactions
 
@@ -59,11 +59,11 @@ Navigate to the [“Recordings” page](https://console.foxglove.dev/recordings)
 
 The window that opens with your Foxglove data source will display a bookmark icon on the playback bar.
 
-![Event icon](/img/docs/app-concepts/playback/event-icon.webp)
+![Event icon](/img/docs/visualizing/playback/event-icon.webp)
 
 Seek to a point of interest in your data, then click that bookmark icon to add an event to your data at that point on the timeline.
 
-![Create event](/img/docs/app-concepts/playback/create-event.webp)
+![Create event](/img/docs/visualizing/playback/create-event.webp)
 
 These events will also persist to the [“Events” page](https://console.foxglove.dev/events).
 
@@ -73,11 +73,11 @@ Open "Events" in the left sidebar to see a list of all events associated with th
 
 When streaming Foxglove data, the playback bar will display events using blue bars. Hovering on a blue bar will display its metadata in a tooltip.
 
-![Event tooltip](/img/docs/app-concepts/playback/event-tooltip.webp)
+![Event tooltip](/img/docs/visualizing/playback/event-tooltip.webp)
 
 If "Events" is open in the sidebar, hovering on an event on the playback timeline will also highlight its corresponding metadata in the sidebar.
 
-![Event hover](/img/docs/app-concepts/playback/event-hover.webp)
+![Event hover](/img/docs/visualizing/playback/event-hover.webp)
 
 ### Search events
 

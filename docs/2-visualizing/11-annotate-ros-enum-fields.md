@@ -5,7 +5,7 @@ description: Annotate your ROS message definitions' enum fields for optimal visu
 
 Annotate your ROS message definitions' enum fields for optimal visualization in Foxglove.
 
-Since ROS messages do not have built-in support for enums, we've implemented a way for Foxglove to read annotated message definitions and display enum values (e.g. in the [Plot](/docs/studio/panels/plot), [Raw Messages](/docs/studio/panels/raw-messages), and [State Transitions](/docs/studio/panels/state-transitions) panels) in a meaningful way.
+Since ROS messages do not have built-in support for enums, we've implemented a way for Foxglove to read annotated message definitions and display enum values (e.g. in the [Plot](/docs/visualization/panels/plot), [Raw Messages](/docs/visualization/panels/raw-messages), and [State Transitions](/docs/visualization/panels/state-transitions) panels) in a meaningful way.
 
 ## Before annotating
 

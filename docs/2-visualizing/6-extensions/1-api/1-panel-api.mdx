@@ -7,7 +7,7 @@ The `PanelExtensionContext` exposes properties and methods for writing a custom 
 
 The more common methods and properties are described below. For full type docs on the `PanelExtensionContext` and `RenderState` types, see [`@foxglove/studio`](https://github.com/foxglove/studio/blob/main/packages/studio/index.d.ts).
 
-> The `initPanel` function used in the [`registerPanel` method](/docs/studio/extensions/extension-context#registerpanel) accepts a `PanelExtensionContext` argument. This argument contains properties and methods for accessing panel data and rendering UI updates. The `initPanel` function also returns an optional cleanup function to run when the extension `panelElement` unmounts.
+> The `initPanel` function used in the [`registerPanel` method](/docs/visualizing/extensions/extension-context#registerpanel) accepts a `PanelExtensionContext` argument. This argument contains properties and methods for accessing panel data and rendering UI updates. The `initPanel` function also returns an optional cleanup function to run when the extension `panelElement` unmounts.
 
 ## `panelElement`
 
@@ -63,7 +63,7 @@ Most panels display data from the current frame; examples of built-in panels tha
 
 By default, subscriptions will provide only the messages for the current frame. If your panel would like to receive all the available messages on a topic, set the `preload` option to `true`. Preloaded messages are available in `renderState.allFrames`.
 
-> NOTE: Message preloading is done on a best-effort basis. If your preloaded messages exceed available memory limits for the browser or desktop app, then the preloaded data may not represent the full dataset range. Preloading results in more data transfer and memory use and is recommended only for panels which should display the entire dataset (e.g. the [Plot panel](/docs/studio/panels/plot)) rather than the current frame.
+> NOTE: Message preloading is done on a best-effort basis. If your preloaded messages exceed available memory limits for the browser or desktop app, then the preloaded data may not represent the full dataset range. Preloading results in more data transfer and memory use and is recommended only for panels which should display the entire dataset (e.g. the [Plot panel](/docs/visualization/panels/plot)) rather than the current frame.
 
 ### Message Converters
 
@@ -91,7 +91,7 @@ context.advertise("/my_image_topic", "sensor_msgs/Image");
 
 `options` are specific to each data source - see documentation below for supported data sources.
 
-### [Native (ROS 1)](/docs/studio/connection/ros1#native)
+### [Native (ROS 1)](/docs/connecting-to-data/frameworks/ros1#native)
 
 | field     | type             | description                                                                                                                                                            |
 | --------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -114,11 +114,11 @@ context.advertise?.(currentTopic, "sensor_msgs/Joy", {
 });
 ```
 
-### [Foxglove WebSocket](/docs/studio/connection/custom#foxglove-websocket)
+### [Foxglove WebSocket](/docs/connecting-to-data/frameworks/custom#foxglove-websocket)
 
 `options` depend on the server implementation.
 
-#### [Foxglove Bridge](/docs/studio/connection/using-foxglove-bridge)
+#### [Foxglove Bridge](/docs/connecting-to-data/ros-foxglove-bridge)
 
 When using the Foxglove Bridge with ROS data, use `context.dataSourceProfile` to determine the ROS version.
 
@@ -149,7 +149,7 @@ context.advertise?.(currentTopic, "sensor_msgs/Joy", {
 });
 ```
 
-### [Rosbridge](/docs/studio/connection/rosbridge)
+### Rosbridge ([ROS 1](/docs/connecting-to-data/frameworks/ros1#rosbridge), [ROS 2](/docs/connecting-to-data/frameworks/ros2#rosbridge))
 
 No `options` required. Simply publish a JSON message with fields conforming to the advertised datatype, and the bridge node will serialize it according to the datatype.
 
@@ -188,7 +188,7 @@ context.setParameter("/param1", "value1");
 
 > `setVariable: (name: string, value: VariableValue)`
 
-Use `context.setVariable` to set a [variable](/docs/studio/app-concepts/variables) `name` to any valid variable `value`.
+Use `context.setVariable` to set a [variable](/docs/visualizing/variables) `name` to any valid variable `value`.
 
 ```tsx
 context.setVariable("myVar", 55);

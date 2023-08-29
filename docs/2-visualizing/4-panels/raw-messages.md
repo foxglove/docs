@@ -3,7 +3,7 @@ title: Raw Messages
 description: Inspect a particular message path in your data source.
 ---
 
-Inspect a particular [message path](/docs/studio/app-concepts/message-path-syntax) in your data source.
+Inspect a particular [message path](/docs/visualizing/message-path-syntax) in your data source.
 
 As new messages are received for a given path, the collapsible tree will show just the latest data. You will be able to expand and collapse keys, and have those changes persist across playback.
 

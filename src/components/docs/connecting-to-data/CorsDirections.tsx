@@ -3,8 +3,11 @@ import React, { ReactElement } from "react";
 const CorsDirections = (): ReactElement => {
   return (
     <p>
-      Check out the <a href="/docs/studio/connection/setting-up-cors">Setting up CORS</a> page for
-      more details on loading your remote data files into Foxglove.
+      Check out the{" "}
+      <a href="/docs/connecting-to-data//live-data#cross-origin-resource-sharing-cors-setup">
+        directions for setting up CORS
+      </a>{" "}
+      to load remote data files into Foxglove.
     </p>
   );
 };

@@ -48,7 +48,7 @@ type MyGps = {
 };
 ```
 
-To visualize GPS coordinates, the [Map panel](/docs/studio/panels/map) requires messages in the [`foxglove.LocationFix`](/docs/studio/messages/location-fix) format. In short, our converter needs to turn `MyGps` messages into messages that adhere to the `foxglove.LocationFix` schema.
+To visualize GPS coordinates, the [Map panel](/docs/visualization/panels/map) requires messages in the [`foxglove.LocationFix`](/docs/visualizing/supported-messages/location-fix) format. In short, our converter needs to turn `MyGps` messages into messages that adhere to the `foxglove.LocationFix` schema.
 
 First, specify the _from_ schema (`sensors.MyGps`) and _to_ schema (`foxglove.LocationFix`), to inform Foxglove that our registered converter will turn `sensors.MyGps` messages into `foxglove.LocationFix` messages.
 
@@ -71,4 +71,4 @@ export function activate(extensionContext: ExtensionContext) {
 
 ## Testing
 
-Once we've packaged and installed our extension, load any data source containing `sensors.MyGps` messages in Foxglove and visualize them with the [Map panel](/docs/studio/panels/map).
+Once we've packaged and installed our extension, load any data source containing `sensors.MyGps` messages in Foxglove and visualize them with the [Map panel](/docs/visualization/panels/map).

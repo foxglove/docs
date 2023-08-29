@@ -19,13 +19,13 @@ To use this panel, your data source must provide messages conforming to one of t
 | --------- | ------------------------------------------------------------------------------------------------------------------ |
 | ROS 1     | [`sensor_msgs/NavSatFix`](https://docs.ros.org/en/api/sensor_msgs/html/msg/NavSatFix.html)                         |
 | ROS 2     | [`sensor_msgs/msg/NavSatFix`](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/NavSatFix.msg) |
-| Custom    | [`foxglove.LocationFix`](/docs/studio/messages/location-fix)                                                       |
+| Custom    | [`foxglove.LocationFix`](/docs/visualizing/supported-messages/location-fix)                                                       |
 
 ### `GeoJSON`
 
 | framework | schema                                               |
 | --------- | ---------------------------------------------------- |
-| Custom    | [`foxglove.GeoJSON`](/docs/studio/messages/geo-json) |
+| Custom    | [`foxglove.GeoJSON`](/docs/visualizing/supported-messages/geo-json) |
 
 The Map panel can recognize special `name` and `style` fields for the `properties` field of each feature in a GeoJSON message. The panel will use these to label and style features on the map. For example, the message below will be labelled "Named Polygon" and have the specified styling:
 
