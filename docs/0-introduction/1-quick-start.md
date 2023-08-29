@@ -3,7 +3,7 @@ title: Quick start
 description: Sign up for a free Foxglove account – either as an individual or with a team.
 ---
 
-[Sign up for a free Foxglove account](https://console.foxglove.dev/signup) to get started.
+[Sign up](https://console.foxglove.dev/signup) for a free Foxglove account to get started.
 
 ![Solo vs organization](/img/docs/introduction/solo-vs-organization.png)
 

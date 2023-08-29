@@ -25,7 +25,7 @@ To install a specific release, see the [releases page](https://github.com/foxglo
 
 ### Getting started
 
-Before interacting with your data, you must first authenticate with your [Foxglove account](/docs/data-platform/signing-in):
+Before interacting with your data, you must first authenticate with your [Foxglove account](https://console.foxglove.dev/signup):
 
 ```bash
 $ foxglove auth login

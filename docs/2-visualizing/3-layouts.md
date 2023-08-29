@@ -25,7 +25,7 @@ Use the "Layouts" menu's "Create new layout" option to start building a custom w
 
 ![Layouts glossary](/img/docs/visualizing/layouts-glossary.webp)
 
-Add and position [panels](TBD), configure their settings, adjust [playback settings](TBD), and set [variable](/docs/studio/app-concepts/variables) values.
+Add and position [panels](TBD), configure their settings, adjust [playback settings](TBD), and set [variable](/docs/visualizing/variables) values.
 
 ### Edit
 
