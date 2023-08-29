@@ -6,7 +6,9 @@ import AccountRequiredHeader from "../../src/components/docs/icons/AccountRequir
 
 <AccountRequiredHeader badgeText="Requires Enterprise plan" />
 
-Foxglove organizations can use Okta as authorization provider. To enable SSO for your organization, contact [sales@foxglove.dev](mailto:sales@foxglove.dev)
+Foxglove organizations can use Okta as authorization provider.
+
+To enable SSO for your organization, contact [sales@foxglove.dev](mailto:sales@foxglove.dev).
 
 ### Create an Okta application
 
@@ -33,9 +35,9 @@ This [Foxglove logo](/img/docs/data-platform/okta/foxglove-logo-okta.png) works 
 
 ### Foxglove OIDC configuration
 
-Configure application settings on the [Okta OIDC settings page](https://console.foxglove.dev/settings/oidc):
+Configure application settings on the [Okta SSO settings page](https://console.foxglove.dev/settings/oidc):
 
-![Foxglove OIDC settings](/img/docs/security/settings.png)
+![Foxglove SSO settings](/img/docs/security/settings.png)
 
 - **Okta domain** – Find in the Okta dashboard's profile dropdown (`xxxxx.okta.com`)
 
@@ -44,6 +46,18 @@ Configure application settings on the [Okta OIDC settings page](https://console.
 - **Client ID** – Find in the Applications list, below the app name
 
   <img alt="Okta clientId" src="/img/docs/security/clientid.png" width="600"/>
+
+### (Optional) Disable non-Okta signin
+
+Confirm that your Okta SSO setup works by signing out and signing back in with Okta SSO.
+
+Use the [SSO settings tab](https://console.foxglove.dev/settings/oidc) to disable or re-enable all other authentication methods.
+
+### Manage members
+
+- **Provision members** – Any Okta user with access to the Foxglove Okta application can sign in. A new Foxglove account is automatically created on first signin.
+
+- **Remove users** – Revoke the user's access in Okta, then remove the associated user on Foxglove's [Team settings page](https://console.foxglove.dev/settings/team) to sign them out of Foxglove immediately. If non-Okta signin methods are enabled for your account, emails matching your approved domains can always sign up.
 
 ## Links and resources
 
