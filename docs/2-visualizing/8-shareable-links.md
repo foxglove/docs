@@ -79,15 +79,6 @@ https://studio.foxglove.dev/?ds=rosbridge-websocket&ds.url=ws%3A%2F%2Flocalhost%
 | `ds`      | string | ✓        | `ros1-socket`                                                                 |
 | `ds.url`  | string | ✓        | [ROS Master URI](http://wiki.ros.org/ROS/EnvironmentVariables#ROS_MASTER_URI) |
 
-### ROS 2 Native
-
-(Supported on desktop only)
-
-| parameter | type   | required | description                                                                   |
-| --------- | ------ | -------- | ----------------------------------------------------------------------------- |
-| `ds`      | string | ✓        | `ros2-socket`                                                                 |
-| `ds.url`  | string | ✓        | [ROS Domain ID](https://docs.ros.org/en/humble/Concepts/About-Domain-ID.html) |
-
 ### Foxglove
 
 | parameter         | type                                                                     | required                                             | description                  |
