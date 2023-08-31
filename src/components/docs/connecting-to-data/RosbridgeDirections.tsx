@@ -9,16 +9,24 @@ const RosbridgeDirections = ({ rosVersion }: { rosVersion: 1 | 2 }): ReactElemen
       </p>
 
       <p>
-        A [`rosbridge`](https://wiki.ros.org/rosbridge_suite) connection uses a standard protocol to
-        connect Foxglove to your ROS master over WebSockets. While it does require running an extra
-        ROS node ([`rosbridge_server`](https://wiki.ros.org/rosbridge_server)), we recommend this
-        option if you have a network firewall between ROS and Foxglove, as it requires your ROS host
-        to have only one port open.
+        A{" "}
+        <a href="https://wiki.ros.org/rosbridge_suite">
+          <code>rosbridge</code>
+        </a>{" "}
+        connection uses a standard protocol to connect Foxglove to your ROS master over WebSockets.
+        While it does require running an extra ROS node
+        <a href="https://wiki.ros.org/rosbridge_server">
+          <code>rosbridge_server</code>
+        </a>
+        , we recommend this option if you have a network firewall between ROS and Foxglove, as it
+        requires your ROS host to have only one port open.
       </p>
 
       <p>
         To open a Rosbridge connection, make sure you’ve installed
-        [`rosbridge-suite`](https://github.com/RobotWebTools/rosbridge_suite):
+        <a href="https://wiki.ros.org/rosbridge_suite">
+          <code>rosbridge-suite</code>
+        </a>
       </p>
 
       {rosVersion === 1 && (
