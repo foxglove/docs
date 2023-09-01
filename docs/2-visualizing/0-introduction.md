@@ -14,7 +14,7 @@ After [connecting to a data source](/docs/connecting-to-data/introduction), leve
 | **Layout menu**   | Save your workspace view as a [layout](/docs/visualizing/layouts) and share it with teammates                                        |
 | **Left sidebar**  | Edit panel settings (Panel), view data source's topics (Topics), and troubleshoot issues with your connection (Problems)             |
 | **Right sidebar** | Set [variables](/docs/visualizing/variables) for your current layout                                                                 |
-| **User menu**     | Sign in to your Foxglove account, configure preferences, manage [extensions](/docs/visualizing/extensions/getting-started), and more |
+| **User menu**     | Sign in to your Foxglove account, configure preferences, manage [extensions](/docs/extensions/getting-started), and more |
 
 ## Settings
 
@@ -42,7 +42,7 @@ These settings require an app relaunch to take effect.
 
 ### Extensions
 
-Select the [Foxglove extensions](/docs/visualizing/extensions/getting-started) you want to install.
+Select the [Foxglove extensions](/docs/extensions/getting-started) you want to install.
 
 ### Experimental features
 
