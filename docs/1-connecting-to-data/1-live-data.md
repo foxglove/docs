@@ -20,16 +20,16 @@ Connect to live data sources with the Foxglove WebSocket, Rosbridge, and Velodyn
 
 When connecting to a live robotics stack, each connection will have different capabilities.
 
-|                         | Foxglove WebSocket (recommended) | Rosbridge                                                       | ROS 1 |
-| ----------------------- | -------------------------------- | --------------------------------------------------------------- | ----- |
-| Stream ROS 1 data       | ✓                                | ✓                                                               | ✓     |
-| Stream ROS 2 data       | ✓                                | ✓                                                               |       |
-| Stream custom data      | ✓                                |                                                                 |       |
-| Custom message schemas  | ✓                                | ✓                                                               | ✓     |
-| Publish messages        | ✓ (ROS 1, ROS 2, JSON)           | ✓                                                               | ✓     |
-| Call services           | ✓                                | ✓                                                               |       |
-| Call actions            |                                  |                                                                 |       |
-| Read and set parameters | ✓                                | [`studio#2645`](https://github.com/foxglove/studio/issues/2645) | ✓     |
+|                             | Foxglove WebSocket (recommended) | Rosbridge                                                       | ROS 1 |
+| --------------------------- | -------------------------------- | --------------------------------------------------------------- | ----- |
+| **Stream ROS 1 data**       | ✓                                | ✓                                                               | ✓     |
+| **Stream ROS 2 data**       | ✓                                | ✓                                                               |       |
+| **Stream custom data**      | ✓                                |                                                                 |       |
+| **Custom message schemas**  | ✓                                | ✓                                                               | ✓     |
+| **Publish messages**        | ✓ (ROS 1, ROS 2, JSON)           | ✓                                                               | ✓     |
+| **Call services**           | ✓                                | ✓                                                               |       |
+| **Call actions**            |                                  |                                                                 |       |
+| **Read and set parameters** | ✓                                | [`studio#2645`](https://github.com/foxglove/studio/issues/2645) | ✓     |
 
 ### Cross-Origin Resource Sharing (CORS) setup
 
