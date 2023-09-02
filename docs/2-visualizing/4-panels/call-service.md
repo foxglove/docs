@@ -1,24 +1,26 @@
 ---
-title: Call service
+title: Call Service
 description: Call a service and view its response.
 ---
 
 Call a service and view its response.
 
+<img width="500" alt="Call service panel" src="/img/docs/visualizing/panels/call-service/panel.png" />
+
 ## Settings
 
 ### General
 
-|                  | Definition                                                              |                                      |
-| ---------------- | ----------------------------------------------------------------------- | ------------------------------------ |
-| **Service name** |                                                                         | Name of service to make a request to |
-| **Layout**       | Positioning of request and response inputs ("Vertical" or "Horizontal") |                                      |
+| field            | description                                                             |
+| ---------------- | ----------------------------------------------------------------------- |
+| **Service name** | Name of service to make a request to                                    |
+| **Layout**       | Positioning of request and response inputs ("Vertical" or "Horizontal") |
 
 ### Button
 
 Configure the button for calling the service.
 
-|             | Definition          |
+| field       | description         |
 | ----------- | ------------------- |
 | **Title**   | Button text         |
 | **Tooltip** | Button tooltip text |
