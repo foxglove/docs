@@ -53,15 +53,16 @@ const config = {
         title: undefined,
         logo: {
           alt: "Foxglove",
-          src: "img/logo.png",
+          src: "img/foxglove-typemark-dark.svg",
           href: "/",
+          target: "_self",
         },
         items: [
           {
             type: "docSidebar",
             sidebarId: "docsSidebar",
             position: "left",
-            label: "Docs",
+            label: "Documentation",
           },
           {
             href: "https://foxglove.dev/docs/api",
@@ -76,7 +77,6 @@ const config = {
         ],
       },
       footer: {
-        style: "dark",
         links: [
           {
             title: "Foxglove",
