@@ -11,11 +11,20 @@
   --ifm-color-primary-dark: #5c21e5;
   --ifm-color-primary-darker: #551add;
   --ifm-color-primary-darkest: #4615b6;
-  --ifm-color-primary-light: #8255eb;
-  --ifm-color-primary-lighter: #8c62ed;
-  --ifm-color-primary-lightest: #a889f1;
+  --ifm-color-primary-light: #bea1ff;
+  --ifm-color-primary-lighter: #a177ff;
+  --ifm-color-primary-lightest: #8255eb;
   --ifm-code-font-size: 95%;
+  --ifm-navbar-padding-vertical: 0;
+  --ifm-navbar-background-color: #27272b;
+  --ifm-navbar-color: var(--ifm-font-color-base-inverse);
+  --ifm-navbar-link-color: var(--ifm-font-color-base-inverse);
+  --ifm-navbar-link-hover-color: #bea1ff;
+  --ifm-navbar-items-color: var(--ifm-font-color-base-inverse);
+  --ifm-navbar-item-padding-vertical: 1rem;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  --ifm-menu-link-sublist-icon: url('data:image/svg+xml;utf8,<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path opacity="0.5" d="M3.15 10.35c.2.2.5.2.7 0L8 6.21l4.15 4.14a.5.5 0 0 0 .7-.7l-4.5-4.5a.5.5 0 0 0-.7 0l-4.5 4.5a.5.5 0 0 0 0 .7Z" fill="currentColor" /></svg>');
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -23,9 +32,41 @@
   --ifm-color-primary: #bea1ff;
   --ifm-color-primary-dark: #a177ff;
   --ifm-color-primary-darker: #9363ff;
-  --ifm-color-primary-darkest: #6824ff;
+  --ifm-color-primary-darkest: #8255eb;
   --ifm-color-primary-light: #dbcbff;
   --ifm-color-primary-lighter: #e9dfff;
   --ifm-color-primary-lightest: #ffffff;
+  --ifm-navbar-background-color: #35363A;
+  --ifm-navbar-link-hover-color: #bea1ff;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-footer-background-color: #27272b;
+}
+
+.navbar {
+  --ifm-color-emphasis-200: var(--ifm-color-gray-800);
+  color: var(--ifm-navbar-color)
+}
+
+.navbar__link:hover,
+.navbar__link--active {
+  position: relative;
+  color: var(--ifm-navbar-link-color);
+  font-weight: var(--);
+}
+
+.navbar__link--active:after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  border-bottom: 3px solid var(--ifm-navbar-link-hover-color);
+  transform: scaleX(0.5);
+}
+
+.menu__link--sublist-caret:after {
+  background-size: 1.25rem !important;
+  min-width: 1rem;
+  height: 1rem;
+  width: 1rem;
 }
