@@ -165,7 +165,7 @@ ${extendedDescription}
           ["Protobuf", `foxglove.${schema.name}`, protoLink],
           ["FlatBuffers", `foxglove.${schema.name}`, flatbuffersLink],
         ] as const
-      ).map(([framework, linkText, href]) => `${framework} | [${linkText}](${href})`),
+      ).map(([framework, linkText, href]) => `${framework} | [\`${linkText}\`](${href})`),
     ].join("\n"),
     "You must use the schema names specified above for Foxglove Studio to recognize the schema.",
   ]
