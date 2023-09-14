@@ -1,9 +1,16 @@
+// -*- jsonc -*-
 {
   "extends": "@foxglove/tsconfig/base",
-  "include": ["./src/**/*"],
+  "include": ["*.ts", "./src/**/*"],
   "compilerOptions": {
-    "rootDir": "./src",
+    "module": "CommonJS",
     "noEmit": true,
     "jsx": "react-jsx",
+    "types": [
+      // From @docusaurus/tsconfig https://github.com/facebook/docusaurus/blob/main/packages/docusaurus-tsconfig/tsconfig.json
+      "node",
+      "@docusaurus/module-type-aliases",
+      "@docusaurus/theme-classic"
+    ]
   }
 }
