@@ -94,18 +94,21 @@ slug: ${slug}
 custom_edit_url: ${editUrl}
 ---
 `,
+    `# \`${schema.name}\``,
     schema.description,
 
     supportedPanels.length > 0 &&
-      `## Panel support\n\n${schema.name} is used in the ${new Intl.ListFormat().format(
+      `## Panel support\n\n\`${schema.name}\` is used in the ${new Intl.ListFormat().format(
         supportedPanels.map((panel) => `[${panel.name}](../panels/${panel.slug})`),
       )} panel${supportedPanels.length > 1 ? "s" : ""}.`,
 
     parentTypes.size > 0 &&
-      `## Parent schema${parentTypes.size > 1 ? "s" : ""}\n\n${
+      `## Parent schema${parentTypes.size > 1 ? "s" : ""}\n\n\`${
         schema.name
-      } appears in the ${new Intl.ListFormat().format(
-        [...parentTypes].sort().map((parentType) => `[${parentType}](${kebabCase(parentType)})`),
+      }\` appears in the ${new Intl.ListFormat().format(
+        [...parentTypes]
+          .sort()
+          .map((parentType) => `[\`${parentType}\`](${kebabCase(parentType)})`),
       )} message schema${parentTypes.size > 1 ? "s" : ""}.`,
 
     "## Schema",
@@ -126,12 +129,12 @@ custom_edit_url: ${editUrl}
             break;
           case "enum":
             linkTarget = `${kebabCase(field.type.enum.name)}`;
-            linkText = `enum ${field.type.enum.name}`;
+            linkText = field.type.enum.name;
             break;
         }
         return [
           `\`${field.name}\``,
-          `[${linkText}](${linkTarget})${
+          `[\`${linkText}\`](${linkTarget})${
             typeof field.array === "number" ? `[${field.array}]` : field.array === true ? "[]" : ""
           }`,
           field.description.split("\n")[0]!,
@@ -167,7 +170,7 @@ ${extendedDescription}
         ] as const
       ).map(([framework, linkText, href]) => `${framework} | [\`${linkText}\`](${href})`),
     ].join("\n"),
-    "You must use the schema names specified above for Foxglove Studio to recognize the schema.",
+    "You must use the schema names specified above for Foxglove to recognize the schema.",
   ]
     .filter(Boolean)
     .join("\n\n");
@@ -183,19 +186,20 @@ function generateEnumPage(schema: FoxgloveEnumSchema): GeneratedPage {
   const markdownContent = [
     `\
 ---
-title: enum ${schema.name}
+title: Enum ${schema.name}
 slug: ${slug}
 custom_edit_url: ${editUrl}
 ---
 `,
+    `# Enum \`${schema.name}\``,
     schema.description,
 
     `## Parent type`,
-    `${schema.name} appears in the [${schema.parentSchemaName}](${kebabCase(
+    `\`${schema.name}\` appears in the [\`${schema.parentSchemaName}\`](${kebabCase(
       schema.parentSchemaName,
     )}) message schema.`,
 
-    "## Schema",
+    "## Values",
     [
       "name | value | description",
       "--- | --- | ---",
