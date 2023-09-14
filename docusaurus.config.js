@@ -25,6 +25,21 @@ const config = {
     defaultLocale: "en",
     locales: ["en"],
   },
+  headTags: [
+    // Add Google Font version of Inter
+    { tagName: "link", attributes: { rel: "preconnect", href: "https://fonts.googleapis.com" } },
+    {
+      tagName: "link",
+      attributes: { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "true" },
+    },
+    {
+      tagName: "link",
+      attributes: {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap",
+      },
+    },
+  ],
 
   presets: [
     [
@@ -81,31 +96,16 @@ const config = {
           {
             title: "Foxglove",
             items: [
-              {
-                label: "Docs",
-                to: "/",
-              },
-              {
-                label: "API reference",
-                to: "https://foxglove.dev/docs/api",
-              },
+              { label: "Docs", to: "/" },
+              { label: "API reference", to: "https://foxglove.dev/docs/api" },
             ],
           },
           {
             title: "Community",
             items: [
-              {
-                label: "Slack",
-                href: "https://foxglove.dev/slack",
-              },
-              {
-                label: "Twitter",
-                href: "https://twitter.com/foxglovedev",
-              },
-              {
-                label: "GitHub",
-                href: "https://github.com/foxglove",
-              },
+              { label: "Slack", href: "https://foxglove.dev/slack" },
+              { label: "Twitter", href: "https://twitter.com/foxglovedev" },
+              { label: "GitHub", href: "https://github.com/foxglove" },
             ],
           },
         ],
