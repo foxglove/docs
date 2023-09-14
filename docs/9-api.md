@@ -3,7 +3,7 @@ title: API
 description: The Foxglove API provides endpoints that allow you to interact with Foxglove data and data visualization tools.
 ---
 
-The Foxglove API provides endpoints for interacting with Foxglove resources:
+The [Foxglove API](https://foxglove.dev/docs/api) provides endpoints for interacting with Foxglove resources:
 - [Devices](/organizing/devices)
 - [Recordings](/organizing/recordings)
 - [Events](/organizing/events)
