@@ -69,6 +69,7 @@ function generateMessagePage(schema: FoxgloveMessageSchema): GeneratedPage {
   const jsonSchemaLink = `https://github.com/foxglove/schemas/blob/main/schemas/jsonschema/${schema.name}.json`;
   const protoLink = `https://github.com/foxglove/schemas/blob/main/schemas/proto/foxglove/${schema.name}.proto`;
   const flatbuffersLink = `https://github.com/foxglove/schemas/blob/main/schemas/flatbuffer/${schema.name}.fbs`;
+  const idlLink = `https://github.com/foxglove/schemas/blob/main/schemas/omgidl/foxglove/${schema.name}.idl`;
   let ros1Name = `foxglove_msgs/${schema.name}`;
   let ros1Link = `https://github.com/foxglove/schemas/blob/main/schemas/ros1/${schema.name}.msg`;
   let ros2Name = `foxglove_msgs/msg/${schema.name}`;
@@ -167,6 +168,7 @@ ${extendedDescription}
           ["JSON", `foxglove.${schema.name}`, jsonSchemaLink],
           ["Protobuf", `foxglove.${schema.name}`, protoLink],
           ["FlatBuffers", `foxglove.${schema.name}`, flatbuffersLink],
+          ["OMG IDL", `foxglove::${schema.name}`, idlLink],
         ] as const
       ).map(([framework, linkText, href]) => `${framework} | [\`${linkText}\`](${href})`),
     ].join("\n"),
