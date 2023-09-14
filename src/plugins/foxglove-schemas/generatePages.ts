@@ -134,9 +134,9 @@ custom_edit_url: ${editUrl}
         }
         return [
           `\`${field.name}\``,
-          `[\`${linkText}\`](${linkTarget})${
+          `[\`${linkText}${
             typeof field.array === "number" ? `[${field.array}]` : field.array === true ? "[]" : ""
-          }`,
+          }\`](${linkTarget})`,
           field.description.split("\n")[0]!,
         ].join("|");
       }),
