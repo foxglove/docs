@@ -7,7 +7,9 @@ Publish messages on a topic back to your robotics stack.
 
 ## Settings
 
-| General            |                                                                |
+### General
+
+| field              | description                                                    |
 | ------------------ | -------------------------------------------------------------- |
 | **Editing mode**   | Whether you want to edit the message to publish; On by default |
 | **Button title**   | Defaults to "Publish"                                          |

@@ -5,7 +5,7 @@ description: Inspect a particular message path in your data source.
 
 Inspect a particular [message path](/docs/visualizing/message-path-syntax) in your data source.
 
-As new messages are received for a given path, the collapsible tree will show just the latest data. You will be able to expand and collapse keys, and have those changes persist across playback.
+As new messages are received for a given path, the collapsible tree will show just the latest message. You will be able to expand and collapse keys, and have those changes persist across playback.
 
 ![raw messages panel](/img/docs/visualizing/panels/raw-messages/panel.webp)
 
@@ -16,6 +16,14 @@ A link to the topic's schema is at the top of display for easy reference.
 Drilling down to a primitive value (i.e. number, string, boolean) will display that value in large text.
 
 ![raw messages large num display](/img/docs/visualizing/panels/raw-messages/large-num.webp)
+
+## Settings
+
+### General
+
+| field         | description                |
+| ------------- | -------------------------- |
+| **Font size** | Font size for text display |
 
 ## User interactions
 
