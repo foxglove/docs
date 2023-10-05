@@ -5,15 +5,17 @@ description: After connecting to a data source, leverage Foxglove's visualizatio
 
 After [connecting to a data source](/docs/connecting-to-data/introduction), leverage Foxglove's visualization and debugging tools to start exploring your data.
 
+## Interface
+
 ![top nav](/img/docs/visualizing/navigation.jpeg)
 
-|                   | Description                                                                                                                          |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| **App menu**      | Connect to a [data source](/docs/connecting-to-data/introduction#data-sources), toggle the sidebars, or view resources               |
-| **Add panel**     | Add a [panel](/docs/visualization/panels/introduction) to the current layout                                                         |
-| **Layout menu**   | Save your workspace view as a [layout](/docs/visualizing/layouts) and share it with teammates                                        |
-| **Left sidebar**  | Edit panel settings (Panel), view data source's topics (Topics), and troubleshoot issues with your connection (Problems)             |
-| **Right sidebar** | Set [variables](/docs/visualizing/variables) for your current layout                                                                 |
+| component         | description                                                                                                              |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| **App menu**      | Connect to a [data source](/docs/connecting-to-data/introduction#data-sources), toggle the sidebars, or view resources   |
+| **Add panel**     | Add a [panel](/docs/visualization/panels/introduction) to the current layout                                             |
+| **Layout menu**   | Save your workspace view as a [layout](/docs/visualizing/layouts) and share it with teammates                            |
+| **Left sidebar**  | Edit panel settings (Panel), view data source's topics (Topics), and troubleshoot issues with your connection (Problems) |
+| **Right sidebar** | Set [variables](/docs/visualizing/variables) for your current layout                                                     |
 | **User menu**     | Sign in to your Foxglove account, configure preferences, manage [extensions](/docs/extensions/getting-started), and more |
 
 ## Settings
@@ -24,7 +26,7 @@ Click into the _Preferences_ tab in the app sidebar to configure the following s
 
 ### General
 
-|                                                                                        | Definition                                                                                                                                                                       |
+| field                                                                                  | description                                                                                                                                                                      |
 | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Color scheme**                                                                       | Choose between light or dark mode, or follow your OS settings                                                                                                                    |
 | **Display timestamps in**                                                              | Timezone used to display timestamps                                                                                                                                              |
