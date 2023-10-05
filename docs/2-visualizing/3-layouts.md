@@ -38,9 +38,9 @@ When switching layouts after making edits to your current personal layout, you c
 
 ### Import and export
 
-Use a layout's context menu to "Export..." it as a JSON file.
+Use a layout's context menu to "Export..." it as a JSON file. Alternatively, open the app menu's "View" submenu to "Export layout to file...".
 
-Use the "Layouts" menu's "Import from file" option to load an exported layout JSON file.
+Use the "Layouts" menu's "Import from file..." option to load an exported layout JSON file. Alternatively, open the app menu's "View" submenu to "Import layout from file...".
 
 ### Share
 

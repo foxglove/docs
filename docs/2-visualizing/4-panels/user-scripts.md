@@ -247,7 +247,7 @@ export default function script(event: Input<"/state">): Output => {
 
 ### Using `@foxglove/schemas`
 
-You can import and use types from the [`@foxglove/schemas`](https://github.com/foxglove/schemas) package in your user scripts:
+Import and use types from the [`@foxglove/schemas`](https://github.com/foxglove/schemas) package in user scripts:
 
 ```typescript
 import { Input } from "./types";
