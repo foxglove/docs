@@ -5,7 +5,7 @@ description: When visualizing a local or remote data file, you can navigate its 
 
 When visualizing a local or remote data file, you can navigate its contents using the playback bar controls.
 
-![playback bar](/img/docs/visualizing/playback.png)
+![playback bar](/img/docs/visualizing/playback/bar.png)
 
 ### Message ordering
 
