@@ -41,7 +41,9 @@ Drag-and-drop filter results into certain panels for easy instant visualization:
 - **[Image and image annotation topics](./image#supported-messages)** – [Image](./image) panel
 - **Message paths** – [Plot](./plot) and [State Transitions](./state-transitions) panels
 
-To drag-and-drop multiple message paths, use “Shift” to select a range of adjacent items, or “Ctrl” (“Cmd” on macOS) to select multiple non-adjacent items.
+To drag-and-drop multiple message paths, use `Shift` to select a range of adjacent items, or `Ctrl` (`Cmd` on macOS) to select multiple non-adjacent items:
+
+![panel settings tab](/img/docs/visualizing/panels/multi-drag-and-drop.png)
 
 ## Shortcuts
 
