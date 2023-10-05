@@ -1,0 +1,55 @@
+Device:
+  type: object
+  properties:
+    id:
+      type: string
+      description: Opaque identifier
+    name:
+      type: string
+      description: Organization-chosen device name
+    orgId:
+      type: string
+      format: uuid
+    createdAt:
+      type: string
+      format: date
+    updatedAt:
+      type: string
+      format: date-time
+    deletedAt:
+      type: string
+      format: date-time
+
+  required:
+    - id
+    - name
+
+DeviceSummary:
+  type: object
+  description: |
+    ID and name of a device.
+  properties:
+    id:
+      type: string
+    name:
+      type: string
+  required:
+    - "id"
+    - "name"
+
+GenericSuccess:
+  type: object
+  properties:
+    success:
+      type: boolean
+      const: true
+  required:
+    - success
+
+Error:
+  type: object
+  properties:
+    error:
+      type: string
+  required:
+    - error

@@ -1,0 +1,2542 @@
+openapi: 3.1.0
+
+info:
+  title: Foxglove API
+  version: "v1"
+  x-logo:
+    url: https://foxglove.dev/images/logo-icon-round.png
+  description: |
+    # Authentication
+
+    All routes require an API key with specific capabilities. Org admins can create an api key.
+
+    Requests must include the API key in the `Authorization` header as a bearer token:
+
+    ```
+    Authorization: Bearer fox_sk_1234...
+    ```
+
+    Each endpoint in the API reference lists the capabilities required for access. An endpoint with
+    Authorizations `ApiKey (devices.list)` would require an api key with the `devices.list`
+    capability.
+
+    ---
+
+    # Sorting and pagination
+
+    Some GET endpoints support sorting and pagination.
+
+    Where supported, you will see the following
+    query parameters in the endpoint documentation:
+
+    * `sortBy` – Field name to sort by (endpoint specific)
+    * `sortOrder` – "asc" or "desc"
+    * `limit` – Number of records in the response
+    * `offset` – Number of records to skip
+
+    If no limit is provided, endpoints will default to a limit of 2000 items. Requesting a limit
+    greater than 2000 items will result in a 400 response.
+    ---
+
+    # Timestamps
+
+    Unless otherwise documented, all timestamp related fields (start, end, created, etc) use the ISO8601 conforming [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) UTC "Zulu" format.
+
+    In the documentation this will appear as `string` types with `<date-time>` formatting (i.e. `string <date-time>`).
+
+    These timestamps support nanosecond resolution with up to nine fractional digits.
+
+    Examples:
+    - 2023-04-06T09:15:30Z
+    - 2023-04-06T18:27:45.876543210Z
+
+    > Note: Variants of RFC3339 using durations or offsets which are not conforming to ISO8601 are not supported.
+
+    # Python examples
+
+    Documentation here includes examples for the Foxglove Python SDK where supported.
+    The SDK can be downloaded from [PyPI](https://pypi.org/project/foxglove-data-platform/) and source is available on
+    [GitHub](https://github.com/foxglove/py-data-platform).
+
+    *Note: As of v0.5.0, all methods require the use of keyword arguments.*
+
+    ---
+
+    # Rate limits
+
+    To help ensure responsiveness for all clients, requests to the API may be rate-limited. In this case, a request
+    will receive a status code of 429. Your client may refer to headers, such as "Retry-After", to determine when a
+    request should be retried.
+
+    In general, if your client experiences an error, you should adjust the rate at which your client makes requests,
+    and you may issue retries with a strategy such as exponential backoff.
+
+servers:
+  - url: http://api.foxglove.dev/v1
+    description: Production
+
+security:
+  - Session: []
+
+tags:
+  - name: Custom Properties
+    description: |
+      Custom properties are typed metadata which you can assign to resources such
+      as devices.
+
+      For example, you can create a device custom property identified with a key
+      `locationId` and a type of `string`. assign location IDs. This enables you
+      to assign a location to each of your devices, view that data in Console, and
+      filter devices by a location ID.
+
+  - name: Devices
+    description: |
+      Devices represent robots in your organization. It is common to have devices for both
+      physical and virtual robots.
+
+      Devices are referenced by other resources like recordings, events, and imports.
+
+  - name: Coverage
+    description: |
+      Coverage provides the ability to see which time spans are available within data platform.
+
+  - name: Imports
+    description: |
+      **The Imports endpoints are deprecated. Use the [Recordings](#tag/Recordings) endpoints instead.**
+
+      Imports are recordings that are available at a Primary Site.
+
+  - name: Topics
+    description: |
+      Topics provide schema information for messages in the data source.
+
+  - name: Events
+    description: |
+      Adding events can help you quickly identify, categorize, and search for points of interest in
+      your data. Each event is tied to a device and time span, and can contain metadata.
+
+      You can list events by devices, time ranges, and metadata.
+
+  - name: Recordings
+    description: |
+      A recording is a resource representing the content of an MCAP file or ROS bag managed by Data
+      Platform.
+
+  - name: Recording Attachments
+    description: |
+      A recording attachment resource represents information about an MCAP attachment
+      imported to the data platform.
+
+      Attachments are available for individual download or with their recording.
+
+  - name: Sites
+    description: |
+      A site is a logical grouping of storage and compute for storing Recording data.
+
+x-tagGroups:
+  - name: Data Platform
+    tags:
+      - Coverage
+      - Custom Properties
+      - Devices
+      - Events
+      - Recordings
+      - Recording Attachments
+      - Imports
+      - Stream data
+      - Topics
+
+  - name: Studio
+    tags:
+      - Extensions
+      - Layouts
+
+paths:
+  /devices:
+    get:
+      tags: [Devices]
+      security:
+        - Session: [org_member]
+        - ApiKey: ["devices.list"]
+
+      summary: List devices
+      description: |
+        Retrieve a list of devices.
+
+        **Filtering by custom properties**
+
+        Use the `query` parameter to filter devices on custom properties.
+        Syntax:
+        * `properties.key:value`: matches devices with a property that contains a key named `key` and its value is `value`
+        * `properties.key:value1,value2`: matches devices with a property that contains a key named `key` and its value is either `value1` or `value2`
+        * `foo`: matches devices with properties where any key or stringified value contains `foo`
+        Multiple qualifiers can be used in the same query string; this will filter devices matching the intersection of the qualifiers (AND).
+
+      x-codeSamples:
+        - lang: "python"
+          label: "Python"
+          source: |
+            from foxglove_data_platform.client import Client
+
+            token = "<YOUR API TOKEN HERE>"
+            client = Client(token=token)
+
+            client.get_devices()
+
+      parameters:
+        - in: query
+          name: sortBy
+          description: Field to sort items by ("id", "name", or a custom property key prefixed with `properties.`)
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: query
+          description: Space-separated query string for device custom properties.
+            Each custom property key must be valid and prefixed with "properties.".
+            See above for syntax and examples.
+          schema:
+            type: string
+        - $ref: "ref/components/parameters.yaml#/sortOrder"
+        - $ref: "ref/components/parameters.yaml#/limit"
+        - $ref: "ref/components/parameters.yaml#/offset"
+
+      responses:
+        "200":
+          description: List of devices
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "ref/components/responses.yaml#/Device"
+
+    post:
+      tags: [Devices]
+      summary: Create a device
+
+      security:
+        - Session: [org_member]
+        - ApiKey: ["devices.create"]
+
+      x-codeSamples:
+        - lang: "python"
+          label: "Python"
+          source: |
+            from foxglove_data_platform.client import Client
+
+            token = "<YOUR API TOKEN HERE>"
+            client = Client(token=token)
+
+            client.create_device(
+                name=name,
+            )
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  maxLength: 100
+                  description: The name of the device.
+                  pattern: "^[A-Za-z0-9_~.-]+$"
+                properties:
+                  description: |
+                    A key-value map, where each key is one of your pre-defined device custom property keys.
+                    Keys which are not recognized as custom properties will be ignored.
+                  type: object
+                  additionalProperties:
+                    oneOf:
+                      - type: string
+                      - type: number
+                      - type: boolean
+                  required: []
+              required:
+                - name
+
+      responses:
+        "200":
+          description: The newly created device
+          content:
+            application/json:
+              schema:
+                $ref: "ref/components/responses.yaml#/Device"
+
+  /recordings:
+    get:
+      tags: [Recordings]
+      summary: List recordings
+      security:
+        - Session: [org_member]
+        - ApiKey: ["recordings.list"]
+      x-codeSamples:
+        - lang: "python"
+          label: "Python"
+          source: |
+            from foxglove_data_platform.client import Client
+
+            token = "<YOUR API TOKEN HERE>"
+            client = Client(token=token)
+
+            client.get_recordings()
+      parameters:
+        - in: query
+          name: start
+          description: |
+            Define the start of an inclusive time range. All recordings with data
+            overlapping this time-range will be returned.
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: end
+          description: |
+            Define the end of an inclusive time range. All recordings with data
+            overlapping this time-range will be returned.
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: path
+          description: Filter response to recordings with this path
+          schema:
+            type: string
+        - in: query
+          name: site.id
+          description: Filter response to recordings stored at the primary site with this ID
+          schema:
+            type: string
+        - in: query
+          name: edgeSite.id
+          description: Filter response to recordings stored at the edge site with this ID
+          schema:
+            type: string
+        - in: query
+          name: device.id
+          description: Filter response to recordings for the device with this ID
+          schema:
+            type: string
+        - in: query
+          name: device.name
+          description: Filter response to recordings for the device with this name
+          schema:
+            type: string
+        - in: query
+          name: importStatus
+          description: Filter response to recordings with this import status
+          schema:
+            type: string
+            enum:
+              - "none"
+              - "pending"
+              - "importing"
+              - "failed"
+              - "complete"
+        - $ref: "ref/components/parameters.yaml#/limit"
+        - $ref: "ref/components/parameters.yaml#/offset"
+        - in: query
+          name: sortBy
+          description: |
+            Sort returned recordings by a field in the response type. Specifying `duration` sorts by
+            the duration between the recording `start` and `end` fields.
+
+          schema:
+            type: string
+            enum:
+              - device.name
+              - createdAt
+              - start
+              - end
+              - duration
+              - path
+              - importedAt
+        - $ref: "ref/components/parameters.yaml#/sortOrder"
+
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Recording"
+
+  /recordings/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: Recording ID
+
+    get:
+      tags: [Recordings]
+      summary: Get a recording
+      description: |
+        Get details on a specific recording.
+
+      security:
+        - Session: [org_member]
+        - ApiKey: ["recordings.list"]
+
+      responses:
+        "200":
+          description: A Recording
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Recording"
+    delete:
+      tags: [Recordings]
+      summary: Delete a recording
+      description: |
+        Deletes a recording. Deleting a recording also deletes the data for that recording
+        (including attachments, messages, metadata, etc).
+
+        Note: For recordings stored at an edge site, this method deletes only
+        the imported data for that recording, leaving the edge copy intact.
+      security:
+        - Session: [org_member]
+        - ApiKey: ["recordings.delete"]
+      responses:
+        "200":
+          description: The deleted recording ID
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  recordingId:
+                    type: string
+                    description: The recording ID
+                required:
+                  - recordingId
+
+  /recordings/{id}/import:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: Recording ID
+    post:
+      tags: [Recordings]
+      summary: Import from edge
+      description: |
+        Request import of a recording from an edge site to a primary site. Importing a recording
+        makes the data (messages, metadata, attachments, etc.) available for download and streaming.
+
+        If the recording is successuly queued for import, is already imported, or already queued for
+        import, this endpoint will return a 200 respoonse and include the recording ID and the
+        `importStatus`.
+
+        An import status of `complete` indicates the recording is already imported. Poll the `GET
+        v1/recordings/{id}` endpoint to observe changes to the `importStatus`.
+
+        If the recording cannot be found or is unavailable for import because the edge copy or site
+        is deleted, this endpoint will return a 404 response.
+      security:
+        - Session: [org_member]
+        - ApiKey: ["data.upload"]
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Recording ID
+                  importStatus:
+                    $ref: "#/components/schemas/RecordingImportStatus"
+
+  /data/imports:
+    get:
+      deprecated: true
+      tags: [Imports]
+      summary: List imports
+      description: |
+        **This endpoint is deprecated. Use the [list recordings](#tag/Recordings/paths/~1recordings/get) endpoint instead.**
+
+      security:
+        - Session: [org_member]
+        - ApiKey: ["data.imports.list"]
+
+      x-codeSamples:
+        - lang: "python"
+          label: "Python"
+          source: |
+            from foxglove_data_platform.client import Client
+
+            token = "<YOUR API TOKEN HERE>"
+            client = Client(token=token)
+
+            client.get_imports()
+
+      parameters:
+        - in: query
+          name: deviceId
+          description: ID of device associated with the exported data
+          schema:
+            type: string
+        - in: query
+          name: filename
+          description: Filename to match
+          schema:
+            type: string
+        - in: query
+          name: start
+          description: Inclusive start of import time
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: end
+          description: Inclusive end of import time
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: dataStart
+          description: Inclusive start of message log time
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: dataEnd
+          description: Inclusive end of message log time
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: sortBy
+          description: Sort by a single field of the import type
+          schema:
+            type: string
+            enum:
+              - importId
+              - deviceId
+              - importTime
+              - dataStart
+              - dataEnd
+        - $ref: "ref/components/parameters.yaml#/sortOrder"
+        - $ref: "ref/components/parameters.yaml#/limit"
+        - $ref: "ref/components/parameters.yaml#/offset"
+
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Import"
+    delete:
+      deprecated: true
+      tags: [Imports]
+      summary: "Delete multiple imports"
+      description: >-
+        Deletes multiple imports by ID. Returns an array of result objects, which indicate whether
+        a given import was successfully deleted. An import that has already been deleted will result
+        in "notFound".
+
+        _Note: All imports must belong to the same site. If any import belongs to a different site,
+        the entire request is rejected with a 400 response._
+      security:
+        - Session: [org_admin]
+        - ApiKey: ["data.imports.delete"]
+      parameters:
+        - in: query
+          name: id
+          description: ID of import to delete. You can specify up to 50 IDs (for example, `?id=abc&id=def&...`).
+          required: true
+          schema:
+            type: array
+            items:
+              type: string
+              description: an import ID
+            maxItems: 50
+          style: form
+          explode: true
+
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  deletionResults:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        importId:
+                          type: string
+                          description: The import ID that was provided
+                        result:
+                          type: string
+                          description: The result of the deletion attempt.
+                          enum:
+                            - success
+                            - notFound
+                      required:
+                        - importId
+                        - result
+                required:
+                  - deletionResults
+
+  /data/imports/{importId}:
+    parameters:
+      - in: path
+        name: importId
+        schema:
+          type: string
+        required: true
+        description: The `importId` of an import
+
+    delete:
+      deprecated: true
+      tags: [Imports]
+      summary: Delete an import
+      description: |
+        **This endpoint is deprecated. Use the [delete recording](#tag/Recordings/paths/~1recordings~1%7Bid%7D/delete) endpoint instead.**
+
+        Deleting an import deletes all data associated with the import.
+
+        **This action is permanent and cannot be undone.**
+      security:
+        - Session: [org_admin]
+        - ApiKey: ["data.imports.delete"]
+
+      x-codeSamples:
+        - lang: "python"
+          label: "Python"
+          source: |
+            from foxglove_data_platform.client import Client
+
+            token = "<YOUR API TOKEN HERE>"
+            client = Client(token=token)
+
+            client.delete_import(
+                device_id=device_id,
+                import_id=import_id,
+            )
+
+      parameters:
+        - in: query
+          name: deviceId
+          deprecated: true
+          description: The deviceId from the import record
+          schema:
+            type: string
+          required: false
+
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                required:
+                  - id
+
+  /data/pending-imports:
+    get:
+      tags: [Recordings]
+      summary: List pending imports
+      description: |
+        List the pending imports. These are in-progress import jobs for newly uploaded recordings.
+
+      security:
+        - Session: [org_member]
+        - ApiKey: ["data.imports.pending.list"]
+
+      parameters:
+        - in: query
+          name: requestId
+          description: A specific import request ID
+          schema:
+            type: string
+        - in: query
+          name: deviceId
+          description: ID of device associated with the pending import
+          schema:
+            type: string
+          deprecated: true
+        - in: query
+          name: device.name
+          description: Name of device associated with the pending import
+          schema:
+            type: string
+        - in: query
+          name: device.id
+          description: ID of device associated with the pending import
+          schema:
+            type: string
+        - in: query
+          name: error
+          description: A string to filter based on error messages
+          schema:
+            type: string
+        - in: query
+          name: filename
+          description: Filename to exactly match
+          schema:
+            type: string
+        - in: query
+          name: updatedSince
+          description: Filter pending imports updated since this time
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: showCompleted
+          description: Include completed requests
+          schema:
+            type: boolean
+            default: false
+        - in: query
+          name: showQuarantined
+          description: Include quarantined requests
+          schema:
+            type: boolean
+            default: false
+        - in: query
+          name: siteId
+          description: Filter response to imports at site with this ID
+          schema:
+            type: string
+        - in: query
+          name: sortBy
+          description: Sort by a single field of the import type
+          schema:
+            type: string
+            enum:
+              - createdAt
+              - deviceId
+              - device.name
+              - device.id
+              - error
+              - importId
+              - requestId
+              - updatedAt
+        - $ref: "ref/components/parameters.yaml#/sortOrder"
+        - $ref: "ref/components/parameters.yaml#/limit"
+        - $ref: "ref/components/parameters.yaml#/offset"
+
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/PendingImport"
+
+  /recording-attachments:
+    get:
+      tags: [Recording Attachments]
+      summary: List attachments
+      security:
+        - Session: [org_member]
+        - ApiKey: ["recordings.list"]
+        - StreamToken: []
+        - SiteToken: []
+        - SystemKey: []
+      x-codeSamples:
+        - lang: "python"
+          label: "Python"
+          source: |
+            from foxglove_data_platform.client import Client
+
+            token = "<YOUR API TOKEN HERE>"
+            client = Client(token=token)
+
+            client.get_attachments()
+      parameters:
+        - in: query
+          name: recordingId
+          description: filter by recording ID
+          schema:
+            type: string
+        - in: query
+          name: siteId
+          description: filter by primary site ID
+          schema:
+            type: string
+        - in: query
+          name: deviceId
+          description: filter by device ID
+          schema:
+            type: string
+          deprecated: true
+        - in: query
+          name: device.id
+          description: filter by device ID
+          schema:
+            type: string
+        - in: query
+          name: device.name
+          description: filter by device name
+          schema:
+            type: string
+        - in: query
+          name: sortBy
+          description: Sort by a single field of the attachment
+          schema:
+            type: string
+            enum:
+              - logTime
+        - $ref: "ref/components/parameters.yaml#/sortOrder"
+        - $ref: "ref/components/parameters.yaml#/limit"
+        - $ref: "ref/components/parameters.yaml#/offset"
+
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/RecordingAttachment"
+
+  /recording-attachments/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: ID of the attachment
+
+    get:
+      tags: [Recording Attachments]
+      summary: Get an attachment
+      security:
+        - Session: [org_member]
+        - ApiKey: ["recordings.list"]
+        - StreamToken: []
+
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RecordingAttachment"
+
+  /recording-attachments/{id}/download:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: ID of the attachment to download
+
+    get:
+      tags: [Recording Attachments]
+      summary: Download an attachment
+      description: |
+        To download an attachment make a request to this endpoint and follow the 302 redirect. The
+        attachment will download directly from the primary site.
+
+        Note: The redirect link expires after 15 minutes.
+      security:
+        - Session: [org_member]
+        - ApiKey: ["recordings.list"]
+      x-codeSamples:
+        - lang: "python"
+          label: "Python"
+          source: |
+            from foxglove_data_platform.client import Client
+
+            token = "<YOUR API TOKEN HERE>"
+            client = Client(token=token)
+
+            bytes = client.download_attachment(id='Wwz2ZHLSQTUepB3z')
+      responses:
+        "302":
+          description: Found
+          headers:
+            Location:
+              schema:
+                type: string
+
+  /data/coverage:
+    get:
+      tags: [Coverage]
+      summary: List coverage
+      description: |-
+        A coverage range represents a time span for which Foxglove Data Platform has data for a
+        given device.
+
+        Your must specify the `start` and `end` arguments when making a coverage request.
+
+        Note: By default, only coverage ranges with imported recordings are returned. To include
+        coverage ranges with unimported recordings, set the `includeEdgeRecordings` query parameter
+        to true
+
+      security:
+        - Session: [org_member]
+        - ApiKey: ["data.coverage.list"]
+
+      x-codeSamples:
+        - lang: "python"
+          label: "Python"
+          source: |
+            from foxglove_data_platform.client import Client
+            from datetime import datetime, timedelta
+
+            token = "<YOUR API TOKEN HERE>"
+            client = Client(token=token)
+
+            client.get_coverage(
+                start=datetime.now() - timedelta(hours=3),
+                end=datetime.now() - timedelta(hours=1),
+            )
+
+      parameters:
+        - $ref: "ref/components/parameters.yaml#/start"
+        - $ref: "ref/components/parameters.yaml#/end"
+        - in: query
+          name: tolerance
+          description: Minimum interval (in seconds) that ranges must be separated by to be considered discrete
+          schema:
+            type: number
+            minimum: 0
+          required: false
+        - in: query
+          name: deviceId
+          description: Filter coverage by device ID
+          schema:
+            type: string
+          required: false
+          deprecated: true
+        - in: query
+          name: device.name
+          description: Name of device associated with the data
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: device.id
+          description: ID of device associated with the data
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: includeEdgeRecordings
+          description: |
+            Include edge recordings in the response.
+
+            When edge recordings are included, each item in the response array will also include the
+            `importStatus` for the coverage range.
+          schema:
+            type: boolean
+            default: false
+          required: false
+        - in: query
+          deprecated: true
+          name: importId
+          description: Filter coverage by import ID
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: recordingId
+          description: Filter coverage by recording ID
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: sortBy
+          description: Field to sort items by
+          schema:
+            type: string
+            enum:
+              - deviceId
+              - device.id
+              - device.name
+              - start
+              - end
+          required: false
+        - $ref: "ref/components/parameters.yaml#/sortOrder"
+        - $ref: "ref/components/parameters.yaml#/limit"
+        - $ref: "ref/components/parameters.yaml#/offset"
+
+      responses:
+        "200":
+          description: Coverage
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Coverage"
+
+  /data/stream:
+    post:
+      tags: [Stream data]
+      summary: Download data
+      description: |
+        This endpoint returns a `link` URL where you can download your data as an `.mcap` or `.bag`
+        file.
+
+        To download your data:
+          1. Make a request to this endpoint.
+          2. Make a `GET` request to the `link` URL.
+
+        Either `recordingId`, `importId`, or all three of
+        `device.id`/`device.name`, `start`, and `end` must be specified.
+
+        _Note: You can only export a `.bag` file if you originally uploaded a `.bag` file._
+      security:
+        - Session: [org_member]
+        - ApiKey: ["data.stream"]
+
+      x-codeSamples:
+        - lang: "python"
+          label: "Python"
+          source: |
+            from foxglove_data_platform.client import Client
+            from datetime import datetime, timedelta
+
+            token = "<YOUR API TOKEN HERE>"
+            client = Client(token=token)
+
+            bytes = client.download_data(
+                device_id=device_id,
+                start=datetime.now() - timedelta(hours=3),
+                end=datetime.now() - timedelta(hours=1),
+                topics=["/clock", "/tracked_objects"],
+                output_format="mcap0",
+                callback=lambda progress: print(".", end=""),
+            )
+
+            # Or, to download using a recording ID:
+            bytes = client.download_recording_data(id="XBKHJqfndJMoDyzY")
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                topics:
+                  type: array
+                  items:
+                    type: string
+                  description: List of topics to include in the exported file (defaults to all topics)
+                outputFormat:
+                  type: string
+                  description: Output an .mcap (v0), or .bag file
+                  enum:
+                    - mcap
+                    - mcap0
+                    - bag1
+                includeAttachments:
+                  type: boolean
+                  description: |
+                    Include attachments in streamed data. One of `importId` or `recordingId` must
+                    also be set. Only valid for mcap0 outputFormat.
+                isHosted:
+                  type: boolean
+                  description: true if the import is hosted
+                replayLookbackSeconds:
+                  type: number
+                  description: time in seconds to look back before start
+                  minimum: 0
+                replayPolicy:
+                  type: string
+                  description: replay policy
+                  enum:
+                    - lastPerChannel
+                    - ""
+                deviceId:
+                  type: string
+                  description: ID of device associated with the exported data
+                  deprecated: true
+                device.id:
+                  type: string
+                  description: ID of device associated with the exported data.
+                device.name:
+                  type: string
+                  description: Name of device associated with the exported data.
+                start:
+                  type: string
+                  format: date-time
+                  description: Inclusive start of requested time range
+                end:
+                  type: string
+                  format: date-time
+                  description: Inclusive end of requested time range
+                importId:
+                  type: string
+                  description: ID of the import to stream
+                recordingId:
+                  type: string
+                  description: ID of the recording to stream
+
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  link:
+                    type: string
+                    description: A signed url to access the data. This link expires after 15 seconds.
+                required:
+                  - link
+
+  /data/upload:
+    post:
+      tags: [Recordings]
+      summary: "Upload a recording"
+      description: |
+        Use this endpoint to upload data to your `foxglove-hosted` site. The upload is a two-request
+        process.
+
+        1. Make a request to this upload endpoint to create an upload `link`.
+        2. Issue a PUT HTTP request to the `link` response field URL.
+
+        _Your PUT request header should have `Content-Type: application/octet-stream`, and your
+        request body should contain your file content._
+
+        Note: If you are using a self-managed site, see [this
+        guide](https://foxglove.dev/docs/data-platform/primary-sites/manage-data) for uploading data.
+      security:
+        - ApiKey: ["data.upload"]
+        - Session: ["org_member"]
+
+      x-codeSamples:
+        - lang: "python"
+          label: "Python"
+          source: |
+            from foxglove_data_platform.client import Client
+
+            token = "<YOUR API TOKEN HERE>"
+            client = Client(token=token)
+
+            with Path("my_mcap_data.mcap").open("rb") as byte_stream:
+                client.upload_data(
+                    device_id=device_id,
+                    filename="my_mcap_data.mcap",
+                    data=byte_stream,
+                    callback=lambda size, progress: print(size, progress),
+                )
+
+      requestBody:
+        required: true
+        description: In addition to `filename`, one of `device.id`, `device.name`, or `deviceId` is required.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                deviceId:
+                  type: string
+                  deprecated: true
+                device.name:
+                  type: string
+                device.id:
+                  type: string
+                filename:
+                  type: string
+              required:
+                - filename
+
+      responses:
+        "200":
+          description: Upload details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  link:
+                    type: string
+                    description: A signed upload URL. Upload your data to this URL using a PUT request.
+                  requestId:
+                    type: string
+                required:
+                  - link
+                  - requestId
+
+  /data/topics:
+    get:
+      tags: [Topics]
+      summary: List topics
+      description: |-
+        Get a list of topics available for a device within a given time range.
+
+        By default, this endpoint will not return the `schema` for each topic. To include
+        the schemas, you must provide the `includeSchemas` query parameter.
+
+        Use `start` and `end` to limit the response to overlapping recording ranges.
+      security:
+        - Session: [org_member]
+        - ApiKey: ["data.topics.list"]
+
+      x-codeSamples:
+        - lang: "python"
+          label: "Python"
+          source: |
+            from foxglove_data_platform.client import Client
+            from datetime import datetime, timedelta
+
+            token = "<YOUR API TOKEN HERE>"
+            client = Client(token=token)
+
+            client.get_topics(
+                device_id=device_id,
+                start=datetime.now() - timedelta(hours=3),
+                end=datetime.now() - timedelta(hours=1),
+            )
+
+      parameters:
+        - $ref: "ref/components/parameters.yaml#/start"
+          description: Filter response to topics appearing in recordings ending at or after `start`.
+        - $ref: "ref/components/parameters.yaml#/end"
+          description: Filter response to topics appearing in recordings starting before `end`.
+        - in: query
+          name: importId
+          description: ID of the import from which to list topics
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: recordingId
+          description: ID of the recording from which to list topics
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: deviceId
+          description: ID of device being queried
+          schema:
+            type: string
+          required: false
+          deprecated: true
+        - in: query
+          name: device.name
+          description: Name of device being queried
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: device.id
+          description: ID of device being queried
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: includeSchemas
+          description: Whether full schemas should be included in the repsonse
+          schema:
+            type: boolean
+            default: false
+          required: false
+        - in: query
+          name: sortBy
+          description: Sort by a single field of the topic type ("topic" or "version")
+          schema:
+            type: string
+            enum:
+              - topic
+              - version
+          required: false
+        - $ref: "ref/components/parameters.yaml#/sortOrder"
+        - $ref: "ref/components/parameters.yaml#/limit"
+        - $ref: "ref/components/parameters.yaml#/offset"
+      responses:
+        "200":
+          description: List of topics
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Topic"
+
+  /devices/{nameOrId}:
+    parameters:
+      - in: path
+        name: nameOrId
+        schema:
+          type: string
+        required: true
+        description: |
+          Device name or ID. Device names must be URI-encoded if they contain
+          non-URI-safe characters. If a device is named with another device's ID,
+          the device with the matching name will be returned.
+
+    get:
+      tags: [Devices]
+      summary: Get a device
+      description: |
+        Get details on a specific device.
+
+      security:
+        - Session: [org_member]
+        - ApiKey: ["devices.list"]
+        - SiteToken: []
+
+      x-codeSamples:
+        - lang: "python"
+          label: "Python"
+          source: |
+            from foxglove_data_platform.client import Client
+
+            token = "<YOUR API TOKEN HERE>"
+            client = Client(token=token)
+
+            client.get_device(
+                device_id=device_id,
+            )
+
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "ref/components/responses.yaml#/Device"
+
+    delete:
+      tags: [Devices]
+      summary: Delete a device
+      description: |
+        Delete a device. Once a device is deleted, it will no longer show up in your list of devices.
+
+        _Before deleting a device, you must delete all associated data._
+
+      security:
+        - Session: [org_admin]
+        - ApiKey: ["devices.delete"]
+
+      x-codeSamples:
+        - lang: "python"
+          label: "Python"
+          source: |
+            from foxglove_data_platform.client import Client
+
+            token = "<YOUR API TOKEN HERE>"
+            client = Client(token=token)
+
+            client.delete_device(device_id=device_id)
+
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The ID of the deleted device
+                required:
+                  - id
+
+    patch:
+      tags: [Devices]
+      summary: Update a device
+      security:
+        - Session: [org_member]
+        - ApiKey: ["devices.update"]
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Device names must be unique in your organization.
+                properties:
+                  description: |
+                    A key-value map, where each key is one of your pre-defined device custom property keys.
+                    Keys which are not recognized as custom properties will be ignored.
+                    Keys which are not included in the request, but exist on the device, will be unchanged.
+                    To unset a property, pass `null` as the value.
+                  type: object
+                  additionalProperties: true
+                  required: []
+
+      responses:
+        "200":
+          description: Update device
+          content:
+            application/json:
+              schema:
+                $ref: "ref/components/responses.yaml#/Device"
+
+  /extension-upload:
+    post:
+      tags: [Extensions]
+      summary: Publish an extension
+      description: |-
+        **Requires Team plan or above**
+
+        Publish a new [Foxglove Studio extension](https://foxglove.dev/docs/studio/extensions/getting-started)
+        or an updated version of an existing extension. When uploaded, the extension will automatically be
+        installed for users in your organization.
+
+        See our packaging tool [`create-foxglove-extension`](https://github.com/foxglove/create-foxglove-extension/)
+        for more information on how to create an extension.
+
+        Read the [docs](https://foxglove.dev/docs/studio/extensions/getting-started)
+        for more information on Foxglove Studio extensions.
+
+      requestBody:
+        description: |-
+          The request headers must contain `Content-Type: application/octet-stream`.
+          The request body must contain the contents of your (`.foxe`) extension file.
+          All other information about the extension will be parsed from the package.json file.
+
+          **`package.json` requirements**
+
+          An extension is uniquely identified by its publisher and name, which are
+          both required in your `package.json`. Both values are case-insensitive,
+          so a package named `custompanel` would be the same as one named `CustomPanel`.
+
+          To update an extension, change its version in `package.json`, create a
+          new `.foxe` bundle, and upload it via this endpoint. Version numbers must
+          be unique to each extension. There are no other restrictions on versioning schemes.
+
+          To publish an extension to your organization, your `package.json` must define
+          a `displayName`. This is displayed to Studio users in your organization.
+
+          Once an extension is uploaded, its `displayName` may not be changed by future versions.
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+
+      security:
+        - Session: [org_admin]
+        - ApiKey: ["extensions.create"]
+
+      responses:
+        "200":
+          description: Extension ID
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: string
+                required:
+                  - id
+        "409":
+          description: Conflict with package name and version
+          content:
+            application/json:
+              schema:
+                $ref: "ref/components/responses.yaml#/Error"
+
+  /extensions:
+    get:
+      tags: [Extensions]
+      summary: List extensions
+      description: |-
+        Foxglove Data Platform allows organization admins to share and manage
+        Foxglove Studio extensions. Check out the
+        [Foxglove Studio docs](https://foxglove.dev/docs/studio/extensions/getting-started)
+        to learn more.
+
+      security:
+        - Session: [org_member]
+        - ApiKey: ["extensions.list"]
+
+      responses:
+        "200":
+          description: List of extensions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/StudioExtension"
+
+  /extensions/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: Extension ID
+
+    get:
+      tags: [Extensions]
+      summary: Get an extension
+      security:
+        - Session: [org_member]
+        - ApiKey: ["extensions.list"]
+
+      responses:
+        "200":
+          description: Extension details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StudioExtensionWithSignedLink"
+
+    delete:
+      tags: [Extensions]
+      summary: Delete an extension
+      description: |
+        Once deleted, the extension will no longer be available within your organization.
+
+      security:
+        - Session: [org_admin]
+        - ApiKey: ["extensions.delete"]
+
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The ID of the deleted extension
+                required:
+                  - id
+
+  /events:
+    get:
+      tags: [Events]
+      security:
+        - Session: ["org_member"]
+        - ApiKey: ["events.list"]
+      summary: List events
+      description: |
+        Retrieve a list of events.
+
+        Use the `query` parameter to filter events on key/value criteria.
+
+        Syntax:
+
+        * `key:value`: matches events with metadata that contains a key named `key` with a value of `value`
+        * `key:value1,value2`: matches events with metadata that contains a key named `key` with a value of either `value1` or `value2`
+        * `key:*`: matches events where any metadata that contains a key named `key`
+        * `*:value`: matches events where any metadata that contains `value` as a value
+        * `foo`: matches events with metadata where any key or value string contains `foo`
+
+        Multiple qualifiers can be used in the same query string; this will filter events where metadata matches the intersection of the qualifiers (AND).
+
+        Examples:
+
+        * `key1:value1 key2:value2`: matches metadata that contains both a key named `key1` with its value `value1` and another key named `key2` with its value `value2`
+        * `key:"value with spaces"`: matches metadata with a key named `key` and its value `value with spaces`
+        * `key:value foo`: matches metadata that contains both a key named `key` with its value `value` and any key or value that contains the text `foo`
+
+        > Note: The `start` and `end` query arguments will find any events which intersect the query range (inclusive of start and end).
+
+      x-codeSamples:
+        - lang: "python"
+          label: "Python"
+          source: |
+            from foxglove_data_platform.client import Client
+            from datetime import datetime, timedelta
+
+            token = "<YOUR API TOKEN HERE>"
+            client = Client(token=token)
+
+            client.get_events(
+                device_id=device_id,
+                sort_by=sort_by,
+                sort_order=sort_order,
+                limit=limit,
+                offset=offset,
+                start=datetime.now() - timedelta(hours=3),
+                end=datetime.now() - timedelta(hours=1),
+                query="key:val"
+            )
+
+      parameters:
+        - $ref: "ref/components/parameters.yaml#/start"
+        - $ref: "ref/components/parameters.yaml#/end"
+        - in: query
+          name: deviceId
+          description: Filter events matching device ID
+          schema:
+            type: string
+          deprecated: true
+        - in: query
+          name: device.name
+          description: Name of device associated with the event
+          schema:
+            type: string
+        - in: query
+          name: device.id
+          description: ID of device associated with the event
+          schema:
+            type: string
+        - in: query
+          name: query
+          description: Event query string. Comprises a space-separated list of event queries,
+            where the syntax of those queries is described above.
+          schema:
+            type: string
+        - in: query
+          name: sortBy
+          description: field to sort response items by
+          schema:
+            type: string
+            enum:
+              - id
+              - deviceId
+              - device.name
+              - device.id
+              - start
+              - createdAt
+              - updatedAt
+        - $ref: "ref/components/parameters.yaml#/sortOrder"
+        - $ref: "ref/components/parameters.yaml#/limit"
+        - $ref: "ref/components/parameters.yaml#/offset"
+      responses:
+        "200":
+          description: A list of device events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Event"
+
+    post:
+      tags: [Events]
+      security:
+        - ApiKey: ["events.create"]
+        - Session: ["org_member"]
+      summary: Create an event
+      description: |
+        Create a new event.
+
+        Note: Creating an new event currently requires a device ID or device
+          name, however the `device` field on the Event resource responses is
+          optional to allow future API expansion for attaching events to other
+          types of resources.
+      x-codeSamples:
+        - lang: "python"
+          label: "Python"
+          source: |
+            from foxglove_data_platform.client import Client
+            from datetime import datetime, timedelta
+
+            token = "<YOUR API TOKEN HERE>"
+            client = Client(token=token)
+
+            event_time = datetime.now()
+
+            client.create_event(
+                device_id=device_id,
+                start=event_time,
+                end=event_time,
+                metadata={"message": "Hi from python!"}
+            )
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                deviceId:
+                  type: string
+                  description: ID of the device to associate with the event
+                  deprecated: true
+                device.id:
+                  type: string
+                  description: ID of the device to associate with the event
+                device.name:
+                  type: string
+                  description: ID of the device to associate with the event
+                metadata:
+                  type: object
+                  additionalProperties:
+                    type: string
+                  required: []
+                  description: An object with user-defined string keys and string values; key order is not preserved
+                start:
+                  type: string
+                  description: Event start time (inclusive)
+                  format: date-time
+                end:
+                  type: string
+                  description: Event end time (inclusive)
+                  format: date-time
+              required:
+                - start
+                - end
+
+      responses:
+        "200":
+          description: The created event
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Event"
+
+  /events/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: ID of the event
+
+    get:
+      tags: [Events]
+      summary: Get an event
+      security:
+        - ApiKey: ["events.list"]
+        - Session: ["org_member"]
+
+      responses:
+        "200":
+          description: The created event
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Event"
+
+    delete:
+      tags: [Events]
+      security:
+        - ApiKey: ["events.delete"]
+        - Session: ["org_member"]
+      summary: Delete an event
+      x-codeSamples:
+        - lang: "python"
+          label: "Python"
+          source: |
+            from foxglove_data_platform.client import Client
+
+            token = "<YOUR API TOKEN HERE>"
+            client = Client(token=token)
+
+            client.delete_event(
+                event_id=event_id,
+            )
+
+      responses:
+        "200":
+          description: ID of the deleted event
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: ID of the deleted event
+                required:
+                  - id
+
+    patch:
+      tags: [Events]
+      summary: Update an event
+      security:
+        - ApiKey: ["events.update"]
+        - Session: ["org_member"]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                metadata:
+                  type: object
+                  additionalProperties:
+                    type: string
+                  required: []
+                  description: An object with user-defined string keys and string values; key order is not preserved
+                start:
+                  type: string
+                  description: Event start time (inclusive)
+                  format: date-time
+                end:
+                  type: string
+                  description: Event end time (inclusive)
+                  format: date-time
+      responses:
+        "200":
+          description: The updated event
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Event"
+
+  /layouts:
+    get:
+      tags: [Layouts]
+      summary: List layouts
+
+      ## Note - when using session auth we do return the personal layouts for the authenticated user.
+      ## We avoid describing this in the docs because session auth nuances is not something we call
+      ## out in the api docs since the user does not use session auth themselves.
+      description: |
+        List the org layouts.
+
+        Note: Only layouts shared with the org are returned in the response; no personal layouts are
+        returned.
+      security:
+        - Session: [org_member]
+        - ApiKey: ["layouts.list"]
+      responses:
+        "200":
+          description: List of org layouts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Layout"
+
+  /custom-properties:
+    get:
+      tags: [Custom Properties]
+      summary: List custom properties
+      security:
+        - Session: [org_member]
+        - ApiKey: ["properties.list"]
+      parameters:
+        - in: query
+          name: resourceType
+          description: Filter properties matching a resource type
+          schema:
+            type: string
+            enum:
+              - device
+          required: false
+      responses:
+        "200":
+          description: The custom properties
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CustomProperty"
+
+    post:
+      tags: [Custom Properties]
+      summary: Create a custom property
+      security:
+        - Session: [org_admin]
+        - ApiKey: ["properties.create"]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NewCustomProperty"
+      responses:
+        "200":
+          description: The custom property
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CustomProperty"
+
+  /custom-properties/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: Custom Property ID
+
+    get:
+      tags: [Custom Properties]
+      summary: Get a custom property
+      security:
+        - Session: [org_member]
+        - ApiKey: ["properties.list"]
+      responses:
+        "200":
+          description: The custom property
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CustomProperty"
+
+    patch:
+      tags: [Custom Properties]
+      summary: Edit a custom property
+      security:
+        - Session: [org_admin]
+        - ApiKey: ["properties.update"]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                label:
+                  description: Display label for user interfaces
+                  type: string
+                  minLength: 1
+                  maxLength: 32
+                values:
+                  description: Reorder or add to enum values. Must be a superset of existing values.
+                  type: array
+                  items:
+                    type: string
+                  uniqueItems: true
+              required: []
+      responses:
+        "200":
+          description: The custom property
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CustomProperty"
+
+    delete:
+      tags: [Custom Properties]
+      summary: Delete a custom property
+      security:
+        - Session: [org_admin]
+        - ApiKey: ["properties.delete"]
+      responses:
+        "200":
+          description: ID of the deleted custom property
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                required:
+                  - id
+
+components:
+  securitySchemes:
+    $ref: ref/securitySchemas.yaml
+
+  schemas:
+    Import:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Opaque ID
+        importId:
+          type: string
+          deprecated: true
+        orgId:
+          type: string
+          format: uuid
+        deviceId:
+          type: string
+        deviceName:
+          type: string
+        filename:
+          type: string
+        importTime:
+          type: string
+          format: date-time
+          description: Imported timestamp
+        start:
+          type: string
+          format: date-time
+          description: Message log time start of imported data
+        end:
+          type: string
+          format: date-time
+          description: Message log time end of imported data
+        inputType:
+          type: string
+          description: 'Supported input type: ROS 1 bag ("bag1") or MCAP v0.x ("mcap0") file'
+        outputType:
+          type: string
+          description: 'Supported output type: ROS 1 bag ("bag1") or MCAP v0.x ("mcap0") file'
+        inputSize:
+          type: number
+          description: Size in bytes of the uploaded file
+          format: bigint
+        totalOutputSize:
+          type: number
+          description: Size in bytes of the data after processing
+          format: bigint
+        date:
+          type: string
+          description: Message log time start date in YYYYMMDD format e.g. 20170322
+        deleted:
+          type: boolean
+      required:
+        - id
+        - importId
+        - orgId
+        - deviceId
+        - deviceName
+        - filename
+        - importTime
+        - start
+        - end
+
+    PendingImport:
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+          description: When the pending import was created
+        deviceId:
+          type: string
+          description: ID of device
+          nullable: true
+        deviceName:
+          type: string
+          description: Name of the device from which the import originated
+          nullable: true
+        error:
+          type: string
+          description: Error message, if status is "error"
+          nullable: true
+        filename:
+          type: string
+          description: Filename of the import
+        importId:
+          type: string
+          description: ID of import; null until status is "complete"
+          nullable: true
+        orgId:
+          type: string
+          description: ID of org to which the import belongs
+        pipelineStage:
+          type: string
+          description: stage in the import pipeline the import currently occupies
+        requestId:
+          type: string
+          description: ID of the import request
+        siteId:
+          type: string
+          description: ID of Primary Site where import will be stored
+          nullable: true
+        status:
+          type: string
+          description: Status of initiated import
+          enum:
+            - received
+            - processing
+            - ready for indexing
+            - error
+            - complete
+        updatedAt:
+          type: string
+          format: date-time
+          description: When the pending import was last updated
+      required:
+        - createdAt
+        - filename
+        - orgId
+        - pipelineStage
+        - requestId
+        - updatedAt
+
+    StudioExtension:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Assigned by backend
+        name:
+          type: string
+          description: Name as it appears in your package.json
+        publisher:
+          type: string
+          description: Publisher as it appears in your package.json
+        displayName:
+          type: string
+          description: Display name as it appears in your package.json
+        description:
+          type: string
+          nullable: true
+          description: Description as it appears in the active version's package.json
+        activeVersion:
+          type: string
+          nullable: true
+          description: Version string as it appears in the active version's package.json
+        sha256Sum:
+          type: string
+          nullable: true
+          description: SHA-256 sum of the active version contents, encoded as hex
+      required:
+        - id
+        - name
+        - publisher
+        - displayName
+        - description
+        - activeVersion
+        - sha256Sum
+
+    StudioExtensionWithSignedLink:
+      allOf:
+        - ref: "#/components/schemas/StudioExtension"
+        - type: object
+          properties:
+            foxe:
+              type: string
+              description: Signed download link for the extension
+          required:
+            - foxe
+
+    Coverage:
+      type: object
+      description: A coverage range represents a time span for which Foxglove Data Platform has data for a given device.
+      properties:
+        deviceId:
+          type: string
+          description: ID of device
+        device:
+          $ref: "ref/components/responses.yaml#/DeviceSummary"
+        start:
+          type: string
+          format: date-time
+          description: Start of this coverage
+        end:
+          type: string
+          format: date-time
+          description: End of this coverage
+        status:
+          type: string
+          deprecated: true
+          description: The status of the coverage range
+          enum:
+            - at-edge
+            - import-pending
+            - imported
+        importStatus:
+          $ref: "#/components/schemas/RecordingImportStatus"
+
+      required:
+        - deviceId
+        - device
+        - start
+        - end
+        - status
+
+    Recording:
+      type: object
+      description: |
+        A resource representing the content of an MCAP file or ROS bag managed by Data Platform.
+      properties:
+        id:
+          type: string
+          description: "ID of the recording"
+        path:
+          type: string
+          description: |
+            filepath of the recording as it was originally provided to Data Platform.
+            for recordings originated at the edge, this is the full path of the recording file in
+            the edge controller store. For recordings uploaded directly to Data Platform, this is
+            the `filename` query arg provided to `/data/upload`.
+        size:
+          type: number
+          description: |
+            Size of the recording file in bytes
+          format: bigint
+        messageCount:
+          type: number
+          description: number of messages in the recording file.
+        createdAt:
+          type: string
+          format: date-time
+          description: |
+            Timestamp when the recording file was added to Data Platform.
+        importedAt:
+          type: string
+          format: date-time
+          description: Timestamp when the recording was imported to a primary site.
+        start:
+          type: string
+          format: date
+          description: log time of first message in the recording.
+        end:
+          type: string
+          format: date
+          description: log time of last message in the recording.
+        importStatus:
+          $ref: "#/components/schemas/RecordingImportStatus"
+        site:
+          description: The primary site for this recording.
+          $ref: "#/components/schemas/SiteSummary"
+        edgeSite:
+          description: The edge site for this recording.
+          $ref: "#/components/schemas/SiteSummary"
+        device:
+          $ref: "ref/components/responses.yaml#/DeviceSummary"
+        metadata:
+          type: array
+          description: The metadata records of the original MCAP file content
+          items:
+            $ref: "#/components/schemas/RecordingMetadata"
+      required:
+        - "id"
+        - "path"
+        - "size"
+        - "start"
+        - "end"
+        - "createdAt"
+        - "importStatus"
+
+    RecordingImportStatus:
+      type: string
+      description: |
+        The import status of recordings. Status will be one of:
+        - `none`: The recording has not yet been imported, and import has not been requested.
+        - `pending`: Data Platform has received a request to import this recording.
+        - `importing`: The recording data is being processed for access via Data Platform.
+        - `failed`: The recording data could not be imported.
+        - `complete`: The contents of the recording are available for access via Data Platform.
+
+        The set of importStatus values may expand in the future.
+
+      enum:
+        - "none"
+        - "pending"
+        - "importing"
+        - "failed"
+        - "complete"
+
+    RecordingActivity:
+      type: object
+      description: An item from a recording's activity history.
+      properties:
+        id:
+          type: string
+        recordingName:
+          type: string
+          description: Name of the associated recording
+        createdAt:
+          type: string
+          format: date-time
+        status:
+          type: string
+          enum:
+            - pending
+            - imported
+            - error
+        message:
+          type: string
+      required:
+        - id
+        - recordingName
+        - createdAt
+        - status
+        - message
+
+    RecordingMetadata:
+      type: object
+      description: |
+        MCAP metadata pertaining to a recording.
+      properties:
+        name:
+          type: string
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+      required:
+        - "name"
+        - "metadata"
+
+    SiteSummary:
+      type: object
+      description: |
+        ID and name of a site.
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      required:
+        - id
+        - name
+
+    Topic:
+      type: object
+      description: A topic to which messages can be published.
+      properties:
+        encoding:
+          type: string
+          description: Encoding of the topic
+        schema:
+          type: string
+          description: Full schema, base-64 encoded; included only if the request's includeSchemas is true
+        schemaEncoding:
+          type: string
+          description: Encoding of the topic schema
+        schemaName:
+          type: string
+          description: Name of the topic schema
+        topic:
+          type: string
+          description: Topic name
+        version:
+          type: string
+          description: Topic version
+      required:
+        - encoding
+        - schemaEncoding
+        - schemaName
+        - topic
+        - version
+
+    Event:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID of the event
+        start:
+          type: string
+          format: date-time
+          description: Event start time (inclusive)
+        end:
+          type: string
+          format: date-time
+          description: Event end time (inclusive)
+        deviceId:
+          type: string
+          description: ID of the device associated with the event
+        device:
+          $ref: "ref/components/responses.yaml#/DeviceSummary"
+        metadata:
+          type: object
+          additionalProperties: true
+          required: []
+          description: Any metadata associated with the event
+        createdAt:
+          type: string
+          format: date-time
+          description: When the event was created
+        updatedAt:
+          type: string
+          format: date-time
+          description: When the event was last updated
+      required:
+        - id
+        - start
+        - end
+        - metadata
+        - createdAt
+        - updatedAt
+
+    RecordingAttachment:
+      type: object
+      description: An attachment resource represents information about an MCAP attachment imported to the data platform.
+      properties:
+        id:
+          type: string
+          description: ID of the attachment
+        recordingId:
+          type: string
+          description: ID of the recording with which the attachment is associated
+        siteId:
+          type: string
+          description: ID of the primary site where the attachment data is stored
+        name:
+          type: string
+          description: Name field from the attachment record
+        mediaType:
+          type: string
+          description: Media type from the attachment record
+        logTime:
+          type: string
+          description: Log time field from the attachment record
+        createTime:
+          type: string
+          description: Create time field from the attachment record
+        crc:
+          type: number
+          description: CRC field from the attachment record as a decimal number
+        size:
+          type: integer
+          description: Size of the attachment in bytes
+        fingerprint:
+          type: string
+          description: |
+            A hash of the attachment content (algorithm subject to change). Two attachments
+            with the same fingerprint will have identical content.
+      required:
+        - id
+        - recordingId
+        - siteId
+        - name
+        - mediaType
+        - logTime
+        - createTime
+        - crc
+        - size
+        - fingerprint
+
+    LayoutPermission:
+      type: string
+      enum:
+        - CREATOR_WRITE
+        - ORG_READ
+        - ORG_WRITE
+
+    Layout:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID of the layout
+        name:
+          type: string
+          description: Name of the layout
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the layout was created
+        updatedAt:
+          type: string
+          format: date-time
+          description: Timestamp when the layout was last updated
+        savedAt:
+          type: string
+          format: date-time
+          description: Timestamp when the layout was last saved
+        permission:
+          $ref: "#/components/schemas/LayoutPermission"
+        data:
+          type: object
+          description: |
+            An object containing the layout data.
+
+            Note: The layout data format is not considered stable and may change over time.
+          additionalProperties: true
+      required:
+        - id
+        - name
+        - createdAt
+        - updatedAt
+        - permission
+
+    NewCustomProperty:
+      type: object
+      properties:
+        key:
+          description: |
+            An immutable identifier for this custom property; it cannot be edited once saved.
+
+            This key is used to identify the custom property in queries; for example, when filtering
+            your devices by a custom property ("partNumber:456").
+          type: string
+          minLength: 1
+          maxLength: 32
+          pattern: "^[A-Za-z0-9_-]+$"
+        label:
+          description: Display label for user interfaces. May be changed after saving.
+          type: string
+          minLength: 1
+          maxLength: 32
+        resourceType:
+          description: Resource type to which this custom property may be assigned
+          type: string
+          enum:
+            - device
+        valueType:
+          description: |
+            The type of the values associated with this custom property
+            Number values will be treated as IEEE 754 64-bit floats.
+          type: string
+          enum:
+            - string
+            - number
+            - enum
+            - boolean
+        values:
+          description: Allowed string values; required if `valueType` is "enum"
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+      required:
+        - key
+        - label
+        - resourceType
+        - valueType
+
+    CustomProperty:
+      type: object
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: string
+              description: ID of the custom property
+          required:
+            - id
+        - $ref: "#/components/schemas/NewCustomProperty"
+
+    Site:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for this site
+        name:
+          type: string
+          description: Name for this site
+        type:
+          type: string
+          description: |
+            The type of the site.
+            - primary: stores your robotics data in the cloud, and can be Foxglove-hosted or self-managed
+            - edge: store robotics data in physical proximity to where your robots are operating
+          enum:
+            - primary
+            - edge
+        retainRecordingsSeconds:
+          type: number
+          description: |
+            An optional recording retention period (only available on edge sites).
+
+      required:
+        - id
+        - name
+        - type

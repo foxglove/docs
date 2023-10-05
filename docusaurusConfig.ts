@@ -3,6 +3,7 @@
 import { Config } from "@docusaurus/types";
 import darkCodeTheme from "prism-react-renderer/themes/dracula";
 import lightCodeTheme from "prism-react-renderer/themes/github";
+import "redocusaurus";
 
 import foxgloveSchemasPlugin, {
   generateFoxgloveSchemaRedirects,
@@ -57,6 +58,21 @@ const docusaurusConfig: Config = {
         },
       } satisfies import("@docusaurus/preset-classic").Options,
     ],
+    [
+      "redocusaurus",
+      {
+        config: "./api-docs/redocly.yaml",
+        specs: [
+          {
+            spec: "./api-docs/specs/v1.yaml",
+            route: "/api/",
+          },
+        ],
+        theme: {
+          primaryColor: "#9480ed",
+        },
+      } satisfies import("redocusaurus").PresetOptions,
+    ],
   ],
 
   plugins: [
@@ -88,7 +104,7 @@ const docusaurusConfig: Config = {
           label: "Documentation",
         },
         {
-          href: "https://foxglove.dev/docs/api",
+          to: "/api",
           label: "API Reference",
           position: "left",
         },
