@@ -11,7 +11,9 @@ When playing back local or remote data files, this panel will preload the data b
 
 ## Settings
 
-| General                   |                                                         |
+### General
+
+| field                     | description                                             |
 | ------------------------- | ------------------------------------------------------- |
 | **Sync with other plots** | Sync to other Plot panels with a timestamp-based x-axis |
 
@@ -33,7 +35,7 @@ When playing back local or remote data files, this panel will preload the data b
 | **Show labels**     | Display label for the x-axis                                                       |
 | **Min**             | Fixed minimum value for x-axis                                                     |
 | **Max**             | Fixed maximum value for x-axis                                                     |
-| **Range (seconds)** | Width of the plot's viewport as it follows playback (in seconds); time series only |
+| **Range (seconds)** | Width of the panel viewport as it follows playback (in seconds); time series only |
 
 | Series           |                                                                                                                               |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------- |
@@ -45,7 +47,9 @@ When playing back local or remote data files, this panel will preload the data b
 
 ## User interactions
 
-Use the panel settings to add or remove data series.
+Use the "X" next to each data series in the plot legend to remove the series.
+
+Use the panel settings to add, edit, or remove data series.
 
 ![add series](/img/docs/visualizing/panels/plot/add-series.webp)
 

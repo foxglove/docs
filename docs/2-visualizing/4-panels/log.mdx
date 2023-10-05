@@ -17,13 +17,19 @@ To use this panel, your data source must provide messages conforming to one of t
 | ROS 2     | [`rcl_interfaces/msg/Log`](https://github.com/ros2/rcl_interfaces/blob/master/rcl_interfaces/msg/Log.msg) |
 | Custom    | [`foxglove.Log`](/docs/visualizing/supported-messages/log)                                                               |
 
+## Settings
+
+### General
+
+| field         | description                                                                                                                                |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Topic**     | Topic to display log messages from                                                                                                         |
+| **Log level** | Minimum severity of messages to display – always enforced, even if the node name is selected or the message text matches the search filter |
+
+### Namespaces
+
+Lists namespaces (i.e. node names) that have log messages to display. Toggle individual namespaces.
+
 ## User interactions
 
-Filter incoming messages by:
-
-- **Severity level** – The minimum severity of messages to show.
-- **Node names or message text** – A comma-separated list of filter terms.
-
-The severity filter is always enforced — i.e. messages below the minimum severity will never appear, even if their node names or message texts match the text filter.
-
-The filter terms for node names or message text will execute as an `OR` – i.e. it will return messages that match any of the terms.
+Filter incoming messages' text by a comma-separated list of filter terms. These terms will execute as an `OR` – i.e. it will return messages that match any of the terms.

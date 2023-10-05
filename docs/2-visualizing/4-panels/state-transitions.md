@@ -17,14 +17,26 @@ Paths can point to any primitive value (numbers, booleans, enums, etc.), but wil
 
 ## Settings
 
-| General                   |                                                         |
+### General
+
+| field                   | description                                                        |
 | ------------------------- | ------------------------------------------------------- |
 | **Sync with other plots** | Sync zooming and panning with other plots in the layout |
 
-| Series           |                                                                                                                               |
-| ---------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| **Message path** | Message path containing values for the series                                                                                 |
-| **Label**        | Label displayed in the legend for the series                                                                                  |
+### X Axis
+
+| field               | description                                                     |
+| ------------------- | --------------------------------------------------------------- |
+| **Min**             | Minimum x-axis value                                            |
+| **Max**             | Maximum x-axis value                                            |
+| **Range (seconds)** | Width of the panel viewport as it follows playback (in seconds) |
+
+### Series
+
+| field            | description                                                                                                           |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------- |
+| **Message path** | Message path containing values for the series                                                                         |
+| **Label**        | Label displayed in the legend for the series                                                                          |
 | **Timestamp**    | Timestamp used for [message ordering](/docs/visualizing/playback#message-ordering) (`Receive Time` or `Header Stamp`) |
 
 ## User interactions

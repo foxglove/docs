@@ -78,20 +78,19 @@ Foxglove currently only supports `plumb_bob` and `rational_polynomial` for the `
 
 ### General
 
-| field                | description                                                                                                                                                                 |
-| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Topic**            | Camera image topic to display                                                                                                                                               |
-| **Calibration**      | Calibration topic to use for distortion and 3D markers                                                                                                                      |
-| **Sync annotations** | Display images and 2D annotations only when their messages' timestamps match. Newly received 2D annotation messages will be buffered until a matching set can be displayed. |
-| **Flip horizontal**  | Flip image horizontally over a vertical axis                                                                                                                                |
-| **Flip vertical**    | Flip image vertically over a horizontal axis                                                                                                                                |
-| **Rotation**         | Rotate image by 90°, 180°, or 270°                                                                                                                                          |
-| **Color mode**       | One of: <br/><b>Color map</b>: pre-defined color palette<br/><b>Gradient</b>: smooth transition between two custom colors                                                   |
-| **Color map**        | Only shown if "Color mode" is set to "Color map"; "Turbo" (Google) or "Rainbow" (RViz); for mapping image values to colors; only available for `mono16` and `16UC1` images  |
-| **Gradient**         | Only shown if "Color mode" is set to "Gradient"; specifies gradient color values; only available for `mono16` and `16UC1` images                                            |
-| **Value min**        | Minimum scaling value for depth images (default: 0); only available for `mono16` and `16UC1` images                                                                         |
-| **Value max**        | Maximum scaling value for depth images (default: 10000); only available for `mono16` and `16UC1` images                                                                     |
-|                      |                                                                                                                                                                             |
+| field                | description                                                                                                                                                                    |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Topic**            | Camera image topic to display                                                                                                                                                  |
+| **Calibration**      | Calibration topic to use for distortion and 3D markers                                                                                                                         |
+| **Sync annotations** | Display images and 2D annotations only when their messages' timestamps match. Newly received 2D annotation messages will be buffered until a matching set can be displayed.    |
+| **Flip horizontal**  | Flip image horizontally over a vertical axis                                                                                                                                   |
+| **Flip vertical**    | Flip image vertically over a horizontal axis                                                                                                                                   |
+| **Rotation**         | Rotate image by 90°, 180°, or 270°                                                                                                                                             |
+| **Color mode**       | <ul><li><b>Color map</b> – Pre-defined color palette</li><li><b>Gradient</b> – Smooth transition between two custom colors</li></ul>                                           |
+| **Color map**        | Only shown if "Color mode" is set to "Color map".<br/><br/>For mapping `mono16` and `16UC1` image values to colors:<ul><li>"Turbo" (Google)</li><li>"Rainbow" (RViz)</li></ul> |
+| **Gradient**         | Only shown if "Color mode" is set to "Gradient".<br/><br/>Specifies gradient color values for `mono16` and `16UC1` images.                                                     |
+| **Value min**        | Minimum scaling value for `mono16` and `16UC1` depth images (default: 0).                                                                                                      |
+| **Value max**        | Maximum scaling value for `mono16` and `16UC1` depth images (default: 10000).                                                                                                  |
 
 ### Scene
 
