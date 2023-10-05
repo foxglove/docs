@@ -5,9 +5,9 @@ description: Panels are modular visualization interfaces that can be configured 
 
 Panels are modular visualization interfaces that can be configured and arranged into Foxglove layouts.
 
-Find the full list of available panels in the sidebar's "Add panel" menu.
+Find the full list of available panels in the "Add panel" menu.
 
-![panels thumbnail](/img/docs/visualizing/panels/thumbnail.webp)
+![panels thumbnail](/img/docs/visualizing/panels/thumbnail.png)
 
 ### Add to layout
 
@@ -15,17 +15,33 @@ Click any panel name to add it to your current layout. Alternatively, drag and d
 
 Each panel's top bar contains the following:
 
-- Menu with common panel actions, like splitting the panel or changing it for another panel type
-- Cog icon that opens that panel's settings in the sidebar
-- Draggable area for easily moving the panel around your layout
+- **Menu** – Common panel actions, like splitting the panel or changing it to another panel type
+- **Settings** – Click the cog icon to open the panel's settings
 
-### Edit panel settings
+Use the top bar to easily drag a panel around the layout.
+
+### Edit settings
 
 Click the cog icon in each panel's top bar to view and edit its settings in the sidebar. The selected panel will be designated with a purple border.
 
-![panel settings tab](/img/docs/visualizing/panels/settings-tab.webp)
+![panel settings tab](/img/docs/visualizing/panels/settings-tab.png)
 
 Clicking different panels in your layout while the sidebar's panel settings are open will switch to its settings.
+
+### Drag-and-drop topics
+
+Filter your data source's topics – and their contained [message paths](../message-path-syntax) – using the sidebar's Topics tab:
+
+
+![panel settings tab](/img/docs/visualizing/panels/filter-topics.png)
+
+Drag-and-drop filter results into certain panels for easy instant visualization:
+
+- **All topics** – [Raw Messages](./raw-messages) and [Table](./table) panels
+- **[Image and image annotation topics](./image#supported-messages)** – [Image](./image) panel
+- **Message paths** – [Plot](./plot) and [State Transitions](./state-transitions) panels
+
+To drag-and-drop multiple message paths, use “Shift” to select a range of adjacent items, or “Ctrl” (“Cmd” on macOS) to select multiple non-adjacent items.
 
 ## Shortcuts
 
