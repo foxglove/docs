@@ -3,7 +3,7 @@ title: Introduction
 description: After connecting to a data source, leverage Foxglove's visualization and debugging tools to start exploring your data.
 ---
 
-Download Foxglove as a [desktop app](/download) (available on Linux, Windows, or macOS), or navigate to the [web app](https://studio.foxglove.dev) in a Chrome browser window.
+Download Foxglove as a [desktop app](https://foxglove.dev/download) (available on Linux, Windows, or macOS), or navigate to the [web app](https://studio.foxglove.dev) in a Chrome browser window.
 
 <iframe
   className="max-w-full max-h-full"
@@ -20,15 +20,15 @@ Download Foxglove as a [desktop app](/download) (available on Linux, Windows, or
 
 Some features are only available via the desktop app:
 
-- Opening a [native ROS 1 or ROS 2 connection](../1-connecting-to-data/4-frameworks/0-ros1#native)
-- Connecting to your [Velodyne LIDAR hardware](../1-connecting-to-data/4-frameworks/5-velodyne)
-- Loading local URDF and mesh resources in the [3D panel](./4-panels/3d) using URLs prefixed with `package://`
-- [Creating shareable links](./8-shareable-links) prefixed with `foxglove://`
-- Installing [extensions](../3-extensions/0-introduction) via the [extension marketplace](https://github.com/foxglove/studio-extension-marketplace)
+- Opening a [native ROS 1 or ROS 2 connection](../connecting-to-data/frameworks/ros1#native)
+- Connecting to your [Velodyne LIDAR hardware](../connecting-to-data/frameworks/velodyne)
+- Loading local URDF and mesh resources in the [3D panel](./panels/3d) using URLs prefixed with `package://`
+- [Creating shareable links](./shareable-links) prefixed with `foxglove://`
+- Installing [extensions](../extensions/introduction) via the [extension marketplace](https://github.com/foxglove/studio-extension-marketplace)
 
 ## Interface
 
-[Connect to a data source](../1-connecting-to-data/0-introduction) to explore it with Foxglove's visualization and debugging tools.
+[Connect to a data source](../connecting-to-data/introduction) to explore it with Foxglove's visualization and debugging tools.
 
 ![top nav](/img/docs/visualizing/navigation.jpeg)
 
