@@ -9,7 +9,7 @@ import foxgloveSchemasPlugin, {
 } from "./src/plugins/foxglove-schemas";
 
 const docusaurusConfig: Config = {
-  title: "Foxglove",
+  title: "Foxglove | Docs",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
