@@ -20,7 +20,7 @@ export default function index(): ReactElement {
           >
             View Docs
           </a>
-          <a href="https://foxglove.dev/docs/api" style={{ textDecoration: "underline" }}>
+          <a href="/api" style={{ textDecoration: "underline" }}>
             View API Reference
           </a>
         </div>

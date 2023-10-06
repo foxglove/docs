@@ -121,7 +121,7 @@ const docusaurusConfig: Config = {
           title: "Foxglove",
           items: [
             { label: "Docs", to: "/" },
-            { label: "API reference", to: "https://foxglove.dev/docs/api" },
+            { label: "API reference", to: "/api" },
           ],
         },
         {
