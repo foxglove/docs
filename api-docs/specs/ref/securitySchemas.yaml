@@ -1,3 +1,5 @@
+# This file is generated from an internal repository; do not edit it manually.
+
 # Session security allows access for valid sessions.
 # Specify 'org_admin' in the roles array to require the an org admin session
 Session:

@@ -7,9 +7,6 @@ extends:
 rules:
   no-unused-components: error
 
-decorators:
-  remove-x-internal: on
-
 theme:
   # See https://redocly.com/docs/api-reference-docs/configuration/functionality/
   openapi:

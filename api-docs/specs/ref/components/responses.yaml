@@ -1,3 +1,5 @@
+# This file is generated from an internal repository; do not edit it manually.
+
 Device:
   type: object
   properties:

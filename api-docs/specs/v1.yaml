@@ -1,3 +1,5 @@
+# This file is generated from an internal repository; do not edit it manually.
+
 openapi: 3.1.0
 
 info:
@@ -192,9 +194,7 @@ paths:
           required: false
         - in: query
           name: query
-          description: Space-separated query string for device custom properties.
-            Each custom property key must be valid and prefixed with "properties.".
-            See above for syntax and examples.
+          description: Space-separated query string for device custom properties. Each custom property key must be valid and prefixed with "properties.". See above for syntax and examples.
           schema:
             type: string
         - $ref: "ref/components/parameters.yaml#/sortOrder"
@@ -546,12 +546,9 @@ paths:
       tags: [Imports]
       summary: "Delete multiple imports"
       description: >-
-        Deletes multiple imports by ID. Returns an array of result objects, which indicate whether
-        a given import was successfully deleted. An import that has already been deleted will result
-        in "notFound".
+        Deletes multiple imports by ID. Returns an array of result objects, which indicate whether a given import was successfully deleted. An import that has already been deleted will result in "notFound".
 
-        _Note: All imports must belong to the same site. If any import belongs to a different site,
-        the entire request is rejected with a 400 response._
+        _Note: All imports must belong to the same site. If any import belongs to a different site, the entire request is rejected with a 400 response._
       security:
         - Session: [org_admin]
         - ApiKey: ["data.imports.delete"]
@@ -1607,8 +1604,7 @@ paths:
             type: string
         - in: query
           name: query
-          description: Event query string. Comprises a space-separated list of event queries,
-            where the syntax of those queries is described above.
+          description: Event query string. Comprises a space-separated list of event queries, where the syntax of those queries is described above.
           schema:
             type: string
         - in: query
