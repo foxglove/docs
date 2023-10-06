@@ -1,7 +1,12 @@
+import useBaseUrl from "@docusaurus/useBaseUrl";
 import Layout from "@theme/Layout";
-import React, { ReactElement } from "react";
+import React, { ReactElement, useEffect } from "react";
 
 export default function index(): ReactElement {
+  useEffect(() => {
+    window.location.href = useBaseUrl("/docs/main");
+  }, []);
+
   return (
     <Layout>
       <div style={{ textAlign: "center" }}>
