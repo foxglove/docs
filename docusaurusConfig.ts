@@ -49,6 +49,7 @@ const docusaurusConfig: Config = {
       "classic",
       {
         docs: {
+          routeBasePath: "/",
           sidebarPath: require.resolve("./navigation.js"),
           editUrl: "https://github.com/foxglove/docs/tree/main",
         },
