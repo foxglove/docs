@@ -71,3 +71,24 @@
   height: 1rem;
   width: 1rem;
 }
+
+/*
+ (Roman) The sidebar gets hidden by the navbar - I have no idea why that is so I've added this
+ workaround to keep the sidebar below the navbar.
+ Bottom padding is added to ensure the sidebar contents clear the redocly banner.
+*/
+.redocusaurus .menu-content {
+  top: 64px !important;
+  padding-bottom: 64px;
+}
+
+/* Sidebar tags for request samples and response samples */
+.redocusaurus .react-tabs__tab--selected {
+  border-radius: 0;
+  padding: 2px;
+}
+
+/* Alignment of method types with endpoint names */
+.redocusaurus .operation-type {
+  margin-top: 3px !important;
+}

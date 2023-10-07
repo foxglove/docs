@@ -1,0 +1,42 @@
+# This file is generated from an internal repository; do not edit it manually.
+
+limit:
+  in: query
+  name: limit
+  description: Maximum number of items to return
+  schema:
+    type: number
+    minimum: 0
+    maximum: 2000
+    default: 2000
+offset:
+  in: query
+  name: offset
+  description: Number of items to skip before returning the results
+  schema:
+    type: integer
+    minimum: 0
+    default: 0
+sortOrder:
+  in: query
+  name: sortOrder
+  description: Sort order for the `sortBy` field
+  schema:
+    type: string
+    enum:
+      - asc
+      - desc
+start:
+  in: query
+  name: start
+  description: Start of an inclusive time range
+  schema:
+    type: string
+    format: date-time
+end:
+  in: query
+  name: end
+  description: End of an inclusive time range
+  schema:
+    type: string
+    format: date-time
