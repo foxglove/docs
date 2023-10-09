@@ -1,0 +1,14 @@
+# This file is generated from an internal repository; do not edit it manually.
+
+# Session security allows access for valid sessions.
+# Specify 'org_admin' in the roles array to require the an org admin session
+Session:
+  type: apiKey
+  in: cookie
+  name: fox.session
+  description: User permissions when signed into the website
+
+ApiKey:
+  type: http
+  scheme: bearer
+  description: API key authentication using HTTP Bearer auth

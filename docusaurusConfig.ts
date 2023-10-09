@@ -3,14 +3,15 @@
 import { Config } from "@docusaurus/types";
 import darkCodeTheme from "prism-react-renderer/themes/dracula";
 import lightCodeTheme from "prism-react-renderer/themes/github";
+import "redocusaurus";
 
 import foxgloveSchemasPlugin, {
   generateFoxgloveSchemaRedirects,
 } from "./src/plugins/foxglove-schemas";
 
 const docusaurusConfig: Config = {
-  title: "Foxglove",
-  favicon: "img/favicon.png",
+  title: "Foxglove | Docs",
+  favicon: "img/favicon.ico",
 
   // Set the production url of your site here
   url: "https://foxglove.dev",
@@ -58,6 +59,21 @@ const docusaurusConfig: Config = {
         },
       } satisfies import("@docusaurus/preset-classic").Options,
     ],
+    [
+      "redocusaurus",
+      {
+        config: "./api-docs/redocly.yaml",
+        specs: [
+          {
+            spec: "./api-docs/specs/v1.yaml",
+            route: "/api/",
+          },
+        ],
+        theme: {
+          primaryColor: "#9480ed",
+        },
+      } satisfies import("redocusaurus").PresetOptions,
+    ],
   ],
 
   plugins: [
@@ -89,7 +105,7 @@ const docusaurusConfig: Config = {
           label: "Documentation",
         },
         {
-          href: "https://foxglove.dev/docs/api",
+          to: "/api",
           label: "API Reference",
           position: "left",
         },
@@ -106,7 +122,7 @@ const docusaurusConfig: Config = {
           title: "Foxglove",
           items: [
             { label: "Docs", to: "/" },
-            { label: "API reference", to: "https://foxglove.dev/docs/api" },
+            { label: "API reference", to: "/api" },
           ],
         },
         {
