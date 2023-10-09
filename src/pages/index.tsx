@@ -15,7 +15,7 @@ export default function index(): ReactElement {
         </h2>
         <div style={{ marginTop: "5em", display: "flex", justifyContent: "center" }}>
           <a
-            href="/docs/introduction/why-foxglove"
+            href="/introduction/why-foxglove"
             style={{ textDecoration: "underline", marginRight: "20px" }}
           >
             View Docs
