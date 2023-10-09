@@ -5,7 +5,7 @@ description: Variables are values that can be set globally for a Foxglove layout
 
 Variables are values that can be set globally for a Foxglove layout. They’re prefixed with a `$` for easy reference (e.g. `$my_global_var`) and can be set to any valid string, number, boolean, or `undefined`. It can also be set to an array containing any of those primitive values (e.g. `["x", 2, false]`), or a map of strings to any of those primitive values (e.g. `{"x": 2, "y": false}`).
 
-Open the sidebar's _Variables_ tab to view, add, and update variables.
+Open the sidebar's "Variables" tab to view, add, and update variables.
 
 ![variables tab](/img/docs/visualizing/variables/tab.webp)
 

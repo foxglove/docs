@@ -274,7 +274,7 @@ export default function script(event: Input<"/imu">): Output {
 
 ## Utilities and templates
 
-The sidebar's _Utilities_ tab includes functions that can be imported for use in any script (e.g. `import { compare } from "./time.ts"`). The `types.ts` utility file is generated from the currently loaded data source, and contains type definitions for all found schemas.
+The sidebar's "Utilities" tab includes functions that can be imported for use in any script (e.g. `import { compare } from "./time.ts"`). The `types.ts` utility file is generated from the currently loaded data source, and contains type definitions for all found schemas.
 
 We currently do not allow importing 3rd-party packages, but [let us know](/slack) if there are packages that would be useful to you!
 
