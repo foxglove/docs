@@ -3,7 +3,7 @@ title: Introduction
 description: After connecting to a data source, leverage Foxglove's visualization and debugging tools to start exploring your data.
 ---
 
-After [connecting to a data source](/docs/connecting-to-data/introduction), leverage Foxglove's visualization and debugging tools to start exploring your data.
+After [connecting to a data source](/connecting-to-data/introduction), leverage Foxglove's visualization and debugging tools to start exploring your data.
 
 ## Interface
 
@@ -11,12 +11,12 @@ After [connecting to a data source](/docs/connecting-to-data/introduction), leve
 
 | component         | description                                                                                                              |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| **App menu**      | Connect to a [data source](/docs/connecting-to-data/introduction#data-sources), toggle the sidebars, or view resources   |
-| **Add panel**     | Add a [panel](/docs/visualization/panels/introduction) to the current layout                                             |
-| **Layout menu**   | Save your workspace view as a [layout](/docs/visualizing/layouts) and share it with teammates                            |
+| **App menu**      | Connect to a [data source](/connecting-to-data/introduction#data-sources), toggle the sidebars, or view resources   |
+| **Add panel**     | Add a [panel](/visualization/panels/introduction) to the current layout                                             |
+| **Layout menu**   | Save your workspace view as a [layout](/visualizing/layouts) and share it with teammates                            |
 | **Left sidebar**  | Edit panel settings (Panel), view data source's topics (Topics), and troubleshoot issues with your connection (Problems) |
-| **Right sidebar** | Set [variables](/docs/visualizing/variables) for your current layout                                                     |
-| **User menu**     | Sign in to your Foxglove account, configure preferences, manage [extensions](/docs/extensions/getting-started), and more |
+| **Right sidebar** | Set [variables](/visualizing/variables) for your current layout                                                     |
+| **User menu**     | Sign in to your Foxglove account, configure preferences, manage [extensions](/extensions/getting-started), and more |
 
 ## Settings
 
@@ -44,7 +44,7 @@ These settings require an app relaunch to take effect.
 
 ### Extensions
 
-Select the [Foxglove extensions](/docs/extensions/getting-started) you want to install.
+Select the [Foxglove extensions](/extensions/getting-started) you want to install.
 
 ### Experimental features
 

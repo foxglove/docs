@@ -95,7 +95,7 @@ Using dot notation after an array of objects will map through to access each ele
 /my_options.colors[:].g => [20, 30, 40, 50, 60]
 ```
 
-Slice on a [variable](/docs/visualizing/variables) by prepending each variable name with a `$`. For example, if you've set `$my_start_idx` to 3 and `$my_end_idx` to 4:
+Slice on a [variable](/visualizing/variables) by prepending each variable name with a `$`. For example, if you've set `$my_start_idx` to 3 and `$my_end_idx` to 4:
 
 ```js
 /my_options.colors[$my_start_idx:$my_end_idx] => [{ r: 25, g: 50, b: 70 }, { r: 30, g: 60, b: 90 }]
@@ -162,7 +162,7 @@ You can also filter on a message’s nested field values using a combination of 
   ["Dana"] // message 2
 ```
 
-In addition to filtering on primitive values, you can filter on a [variable](/docs/visualizing/variables):
+In addition to filtering on primitive values, you can filter on a [variable](/visualizing/variables):
 
 ```js
 /my_books.readers[:]{id==$my_id} =>

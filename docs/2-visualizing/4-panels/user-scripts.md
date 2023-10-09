@@ -7,11 +7,11 @@ Publish pseudo topics internally to Foxglove using custom scripts. Manipulate, r
 
 User scripts can transform both playback and preloaded data:
 
-- **Playback data** – Messages streaming frame-by-frame into Foxglove; e.g. data for the [Raw Messages](/docs/visualization/panels/raw-messages) or [3D](/docs/visualization/panels/3d) panel
+- **Playback data** – Messages streaming frame-by-frame into Foxglove; e.g. data for the [Raw Messages](/visualization/panels/raw-messages) or [3D](/visualization/panels/3d) panel
 
-- **[Preloaded data](/docs/visualizing/playback#preloading)** – Messages for the entire data range being played back; e.g. data for the [Plot](/docs/visualization/panels/plot) or [State Transitions](/docs/visualization/panels/state-transitions) panel
+- **[Preloaded data](/visualizing/playback#preloading)** – Messages for the entire data range being played back; e.g. data for the [Plot](/visualization/panels/plot) or [State Transitions](/visualization/panels/state-transitions) panel
 
-When transforming preloaded data, Foxglove creates two instances of the running user script – one handles the full data range, while the other handles just the current playback frame of messages. Each instance of the user script receives the messages in [receive time order](/docs/visualizing/playback#message-ordering).
+When transforming preloaded data, Foxglove creates two instances of the running user script – one handles the full data range, while the other handles just the current playback frame of messages. Each instance of the user script receives the messages in [receive time order](/visualizing/playback#message-ordering).
 
 ## Getting started
 
@@ -45,7 +45,7 @@ export default function script(event: Input<"/rosout">): Message<"rosgraph_msgs/
 }
 ```
 
-If you drag in a `.bag` file, you should now be able to inspect the `/studio_script/echo` topic in the [Raw Messages panel](/docs/visualization/panels/raw-messages).
+If you drag in a `.bag` file, you should now be able to inspect the `/studio_script/echo` topic in the [Raw Messages panel](/visualization/panels/raw-messages).
 
 When you create a new script, you’ll be presented with some boilerplate:
 
@@ -137,7 +137,7 @@ export default function script(event: Input<"/rosout"> | Input<"/tf">): { data: 
 
 #### Using global variables
 
-The `script` function will receive all of the [variables](/docs/visualizing/variables) as an object every time it is called. Each time a new message is received, the `script` function will be re-run with the latest variable values:
+The `script` function will receive all of the [variables](/visualizing/variables) as an object every time it is called. Each time a new message is received, the `script` function will be re-run with the latest variable values:
 
 ```typescript
 import { Input, Message } from "./types";

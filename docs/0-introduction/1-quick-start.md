@@ -45,4 +45,4 @@ Explore your imported data via the following views:
 - [Dashboard](https://console.foxglove.dev/dashboard)
 - [Visualization](https://studio.foxglove.dev/)
 - [Desktop app download](https://foxglove.dev/download) (for Linux, Windows, and macOS)
-- [Self-hosting Foxglove](/docs/self-hosting/introduction)
+- [Self-hosting Foxglove](/self-hosting/introduction)

@@ -3,7 +3,7 @@ title: Plot
 description: Plot arbitrary numeric values from topic message paths.
 ---
 
-Plot arbitrary numeric values from topic [message paths](/docs/visualizing/message-path-syntax).
+Plot arbitrary numeric values from topic [message paths](/visualizing/message-path-syntax).
 
 When playing back local or remote data files, this panel will preload the data belonging to the specified topic message paths for the whole playback timeline. Current playback time is indicated by a vertical gray bar.
 
@@ -42,7 +42,7 @@ When playing back local or remote data files, this panel will preload the data b
 | **Message path** | Message path containing Y values for the series                                                                               |
 | **Label**        | Label displayed in the legend for the series                                                                                  |
 | **Color**        | Color used to plot the series                                                                                                 |
-| **Timestamp**    | Timestamp used for [message ordering](/docs/visualizing/playback#message-ordering) (`Receive Time` or `Header Stamp`) |
+| **Timestamp**    | Timestamp used for [message ordering](/visualizing/playback#message-ordering) (`Receive Time` or `Header Stamp`) |
 
 
 ## User interactions
@@ -55,7 +55,7 @@ Use the panel settings to add, edit, or remove data series.
 
 ### Y-Axis
 
-Using [message path syntax](/docs/visualizing/message-path-syntax), specify the path to the y-axis data you want to plot. Alternatively, enter a number to add a horizontal line at that value.
+Using [message path syntax](/visualizing/message-path-syntax), specify the path to the y-axis data you want to plot. Alternatively, enter a number to add a horizontal line at that value.
 
 If you enter a message path that points to multiple values (e.g. `/some_topic/some_array[:].x`), the plot will display a scatter plot of points at each x-axis tick.
 
@@ -75,7 +75,7 @@ All Plot panels with a time-based x-axis will automatically be synced with each 
 
 #### Timestamp
 
-By default, the panel plots y-values against incoming messages' timestamp. It is possible to specify whether the timestamp is taken from a message's [receive time or header stamp](/docs/visualizing/playback#message-ordering) in each series' details menu. All Plot panels with timestamp x-axes in a given layout will be kept in sync for easy comparison.
+By default, the panel plots y-values against incoming messages' timestamp. It is possible to specify whether the timestamp is taken from a message's [receive time or header stamp](/visualizing/playback#message-ordering) in each series' details menu. All Plot panels with timestamp x-axes in a given layout will be kept in sync for easy comparison.
 
 ![plot with timestamp x-axis](/img/docs/visualizing/panels/plot/x-axis/timestamp.webp)
 
@@ -89,7 +89,7 @@ This plots just the data from the latest tick, and should always point to an arr
 
 #### Message path
 
-Using [message path syntax](/docs/visualizing/message-path-syntax), specify the path to the x-axis data you want to plot, e.g. `/some_topic.position.x`. You can choose to plot data from just the most recent tick (`"msg path (current)"`) or from all matching messages throughout playback (`"msg path (accumulated)"`).
+Using [message path syntax](/visualizing/message-path-syntax), specify the path to the x-axis data you want to plot, e.g. `/some_topic.position.x`. You can choose to plot data from just the most recent tick (`"msg path (current)"`) or from all matching messages throughout playback (`"msg path (accumulated)"`).
 
 ![plot with path x-axis - current](/img/docs/visualizing/panels/plot/x-axis/path-current.webp)
 

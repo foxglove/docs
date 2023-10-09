@@ -41,7 +41,7 @@ Select "Foxglove WebSocket" in the "Open data source" dialog, and enter the URL 
 
 ### Remote file
 
-Once you have an MCAP file in remote storage, follow the MCAP directions for [opening it via URL in Foxglove](/docs/connecting-to-data/frameworks/mcap#remote-file).
+Once you have an MCAP file in remote storage, follow the MCAP directions for [opening it via URL in Foxglove](/connecting-to-data/frameworks/mcap#remote-file).
 
 <CorsDirections />
 
@@ -129,7 +129,7 @@ Foxglove also expects `schemaName` to be one of the message types defined in the
 
 Each message should be encoded in the [Protobuf binary wire format](https://developers.google.com/protocol-buffers/docs/encoding) – we provide `.proto` files compatible with Foxglove in our [`foxglove/schemas` repo](https://github.com/foxglove/schemas).
 
-_NOTE: For Protobuf data, time values of type [`google.protobuf.Timestamp`](https://protobuf.dev/reference/protobuf/google.protobuf/#timestamp) or [`google.protobuf.Duration`](https://protobuf.dev/reference/protobuf/google.protobuf/#duration) will appear with `sec` and `nsec` fields (instead of `seconds` and `nanos`) in [user scripts](/docs/visualizing/panels/user-scripts), [message converters](/docs/extensions/getting-started#message-converters), and the rest of Foxglove, for consistency with time and duration types in other data formats._
+_NOTE: For Protobuf data, time values of type [`google.protobuf.Timestamp`](https://protobuf.dev/reference/protobuf/google.protobuf/#timestamp) or [`google.protobuf.Duration`](https://protobuf.dev/reference/protobuf/google.protobuf/#duration) will appear with `sec` and `nsec` fields (instead of `seconds` and `nanos`) in [user scripts](/visualizing/panels/user-scripts), [message converters](/extensions/getting-started#message-converters), and the rest of Foxglove, for consistency with time and duration types in other data formats._
 
 #### FlatBuffers
 

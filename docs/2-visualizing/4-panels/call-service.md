@@ -5,7 +5,7 @@ description: Call a service and view its response.
 
 Call a service and view its response.
 
-Supports live [ROS 1](/docs/connecting-to-data/frameworks/ros1#live-data) and [ROS 2](/docs/connecting-to-data/frameworks/ros2#live-data) connections, as well as [custom Foxglove WebSocket connections](/docs/connecting-to-data/frameworks/custom#foxglove-websocket) that provide services.
+Supports live [ROS 1](/connecting-to-data/frameworks/ros1#live-data) and [ROS 2](/connecting-to-data/frameworks/ros2#live-data) connections, as well as [custom Foxglove WebSocket connections](/connecting-to-data/frameworks/custom#foxglove-websocket) that provide services.
 
 <img width="500" alt="Call service panel" src="/img/docs/visualizing/panels/call-service/panel.png" />
 

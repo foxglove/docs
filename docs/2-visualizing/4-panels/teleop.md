@@ -9,7 +9,7 @@ Teleoperate your robot by publishing [`geometry_msgs/Twist`](https://docs.ros.or
 
 To use the control pad to teleoperate your connected robot, you must be connected to your robot via a native or Rosbridge connection.
 
-For more information on how to connect to a live ROS stack, check out our [supported data sources](/docs/connecting-to-data/introduction#data-sources).
+For more information on how to connect to a live ROS stack, check out our [supported data sources](/connecting-to-data/introduction#data-sources).
 
 ## Settings
 

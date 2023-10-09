@@ -53,7 +53,7 @@ spec:
 
 ## Inbox listener
 
-Unlike the other two services, the inbox listener must be scaled on a custom metric. [Configure Prometheus](/docs/self-hosting/monitoring#configure-prometheus) to expose metrics to Kubernetes.
+Unlike the other two services, the inbox listener must be scaled on a custom metric. [Configure Prometheus](/self-hosting/monitoring#configure-prometheus) to expose metrics to Kubernetes.
 
 ```yml
 apiVersion: autoscaling/v2

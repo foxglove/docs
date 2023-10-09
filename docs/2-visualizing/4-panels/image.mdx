@@ -30,7 +30,7 @@ Display raw and compressed images with 2D annotations like text labels, circles,
 
 ## Supported messages
 
-To use this panel, your data source must provide messages conforming to [3D marker message types](/docs/visualizing/panels/3d#supported-messages) or one of the following supported schemas.
+To use this panel, your data source must provide messages conforming to [3D marker message types](/visualizing/panels/3d#supported-messages) or one of the following supported schemas.
 
 ### `RawImage`
 
@@ -38,7 +38,7 @@ To use this panel, your data source must provide messages conforming to [3D mark
 | --------- | ---------------------------------------------------------------------------------------------------------- |
 | ROS 1     | [`sensor_msgs/Image`](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/Image.html)                  |
 | ROS 2     | [`sensor_msgs/msg/Image`](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/Image.msg) |
-| Custom    | [`foxglove.RawImage`](/docs/visualizing/supported-messages/raw-image)                                                     |
+| Custom    | [`foxglove.RawImage`](/visualizing/supported-messages/raw-image)                                                     |
 
 ### `CompressedImage`
 
@@ -46,7 +46,7 @@ To use this panel, your data source must provide messages conforming to [3D mark
 | --------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | ROS 1     | [`sensor_msgs/CompressedImage`](https://docs.ros.org/en/api/sensor_msgs/html/msg/CompressedImage.html)                         |
 | ROS 2     | [`sensor_msgs/msg/CompressedImage`](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/CompressedImage.msg) |
-| Custom    | [`foxglove.CompressedImage`](/docs/visualizing/supported-messages/compressed-image)                                                           |
+| Custom    | [`foxglove.CompressedImage`](/visualizing/supported-messages/compressed-image)                                                           |
 
 ### `CameraCalibration`
 
@@ -58,7 +58,7 @@ Foxglove currently only supports `plumb_bob` and `rational_polynomial` for the `
 | --------- | -------------------------------------------------------------------------------------------------------------------- |
 | ROS 1     | [`sensor_msgs/CameraInfo`](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/CameraInfo.html)                  |
 | ROS 2     | [`sensor_msgs/msg/CameraInfo`](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/CameraInfo.msg) |
-| Custom    | [`foxglove.CameraCalibration`](/docs/visualizing/supported-messages/camera-calibration)                                             |
+| Custom    | [`foxglove.CameraCalibration`](/visualizing/supported-messages/camera-calibration)                                             |
 
 ### `ImageAnnotation`
 
@@ -72,7 +72,7 @@ Foxglove currently only supports `plumb_bob` and `rational_polynomial` for the `
 | framework | schema                                                                                                               |
 | --------- | -------------------------------------------------------------------------------------------------------------------- |
 | ROS 1     | [`foxglove_msgs/ImageMarkerArray`](https://github.com/foxglove/ros_foxglove_msgs/blob/main/msg/ImageMarkerArray.msg) |
-| Custom    | [`foxglove.ImageAnnotations`](/docs/visualizing/supported-messages/image-annotations)                                               |
+| Custom    | [`foxglove.ImageAnnotations`](/visualizing/supported-messages/image-annotations)                                               |
 
 ## Settings
 
@@ -110,15 +110,15 @@ Foxglove currently only supports `plumb_bob` and `rational_polynomial` for the `
 
 List of transform messages to display.
 
-See the [3D panel docs](/docs/visualizing/panels/3d#transforms-2) for more information on possible settings.
+See the [3D panel docs](/visualizing/panels/3d#transforms-2) for more information on possible settings.
 
 ### Topics
 
-List of [3D marker topics](/docs/visualizing/panels/3d#topics) to superimpose on the image.
+List of [3D marker topics](/visualizing/panels/3d#topics) to superimpose on the image.
 
 ### Custom layers
 
-See the [3D panel docs](/docs/visualizing/panels/3d#custom-layers) for more information on possible settings.
+See the [3D panel docs](/visualizing/panels/3d#custom-layers) for more information on possible settings.
 
 ## User interactions
 

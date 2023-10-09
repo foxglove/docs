@@ -5,7 +5,7 @@ description: Display topic data in a tabular format.
 
 Display topic data in a tabular format.
 
-Use [message path syntax](/docs/visualizing/message-path-syntax) to drill down to an array of values inside a message.
+Use [message path syntax](/visualizing/message-path-syntax) to drill down to an array of values inside a message.
 
 Each element in that array will now be displayed as a separate row in your table, and each field in each element will be displayed as a separate column.
 
