@@ -9,6 +9,9 @@ import foxgloveSchemasPlugin, {
   generateFoxgloveSchemaRedirects,
 } from "./src/plugins/foxglove-schemas";
 
+// eslint-disable-next-line
+require("dotenv").config();
+
 const docusaurusConfig: Config = {
   title: "Foxglove | Docs",
   favicon: "img/favicon.ico",
@@ -138,6 +141,14 @@ const docusaurusConfig: Config = {
     prism: {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme,
+    },
+    algolia: {
+      appId: process.env.ALGOLIA_APP_ID,
+      apiKey: process.env.ALGOLIA_API_KEY,
+      indexName: "foxglove-pages",
+      contextualSearch: true,
+      searchParameters: {}, // optional
+      searchPagePath: "search", // optional; false to disable
     },
   } satisfies import("@docusaurus/preset-classic").ThemeConfig,
 };
