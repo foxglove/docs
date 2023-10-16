@@ -1,0 +1,40 @@
+---
+title: Events
+description: Events represent points or time ranges of interest in your organization's recordings.
+---
+
+Events represent points or time ranges of interest in your organization's recordings. They help you quickly identify, categorize, and search for relevant subsets of your data.
+
+Each event requires an associated device, timestamp, and duration (0 for an instantaneous event). It can also contain optional metadata.
+
+![create event](/img/docs/events/create-event.webp)
+
+### Actions
+
+Create, list, delete, and search events from the [Events page](https://console.foxglove.dev/events).
+
+|            | Definition                                                    | CLI                    |
+| ---------- | ------------------------------------------------------------- | ---------------------- |
+| **Create** | Create an event to flag interesting data in your organization | `TBD`                  |
+| **List**   | View your organization's events                               | `foxglove events list` |
+| **Delete** | Delete an event in your organization                          | `TBD`                  |
+
+### Search
+
+Search events by device, time range, and metadata on the [Events page](https://console.foxglove.dev/events).
+
+Use the syntax below to filter by metadata keys and values:
+
+|                                | Specific key                      | Any key  |
+| ------------------------------ | --------------------------------- | -------- |
+| Specific value                 | `weather:rain`                    | `*:rain` |
+| Any value                      | `weather:*`                       |          |
+| Multiple values (all required) | `weather:rain weather:fog`        |          |
+| Multiple values (1+ required)  | `weather:rain,fog,"mostly sunny"` |          |
+
+A single word (e.g. `error`) will look for matching metadata keys or values.
+
+## Links and resources
+
+- [Add events to your data](/blog/announcing-foxglove-data-platform-events)
+- [API reference](/api#tag/Events)

@@ -1,0 +1,44 @@
+---
+title: Create custom panel
+description: Build a simple panel extension that subscribes to a topic, and then register it so that you can add it to a Foxglove layout.
+---
+
+Build a simple panel extension that subscribes to a topic, and then register it so that you can add it to a Foxglove layout.
+
+## Setting up
+
+In a Terminal window, `cd` into the directory where your source code will live and run the following command:
+
+```bash
+$ npm init foxglove-extension@latest myExtensionName
+```
+
+This uses [`create-foxglove-extension`](https://github.com/foxglove/create-foxglove-extension) to create a `myExtensionName` directory containing source code for an example custom panel.
+
+### `index.ts`
+
+**`index.ts` is the entry point for your extension source code.**
+
+It must export an `activate` function that:
+
+- **Accepts an `extensionContext` argument** - For more info on the `ExtensionContext` type, see [`@foxglove/studio`](https://github.com/foxglove/studio/blob/main/packages/studio)
+
+- **Registers your extension's panels** - i.e. `ExamplePanel`, in this case
+
+  ```ts
+  export function activate(extensionContext: ExtensionContext) {
+    extensionContext.registerPanel({ name: "example-panel", initPanel: initExamplePanel });
+  }
+  ```
+
+### `ExamplePanel.tsx`
+
+**The panel file(s) referenced in `index.ts` define the behavior and UI of the custom panel(s) that your extension will install.**
+
+While `ExamplePanel.tsx` is written in React, panels are framework agnostic - i.e. they can be written using DOM primitives, React, or any other front-end framework. Check out the [turtlesim extension](https://github.com/foxglove/studio-extension-turtlesim/blob/main/src/TurtlePanel.ts) for an example panel written without React.
+
+The `initPanel` function accepts a `PanelExtensionContext` argument, which contains properties and methods for accessing panel data and rendering UI updates. It also returns an optional cleanup function to run when the extension `panelElement` unmounts.
+
+### `PanelExtensionContext`
+
+See the [`PanelExtensionContext`](/docs/visualization/extensions/panel-api) docs for available properties and methods.

@@ -1,0 +1,28 @@
+---
+title: Indicator
+description: Display a color-coded label to indicate threshold values in your data.
+---
+
+Display a color-coded label to indicate threshold values in your data.
+
+![indicator panel](/img/docs/visualization/panels/indicator/panel.webp)
+
+## Settings
+
+### General
+
+| field          | description                                                                                      |
+| --------- | ------------------------------------------------------------------------------------------------- |
+| **Data**  | [Message path](/docs/visualization/message-path-syntax) to the data value you want to track |
+| **Style** | Style of indicator ("Bulb" or "Background")                                                       |
+
+Add, edit, and reorder the rules for when the indicator should display different colors or labels.
+
+### Rules (first matching rule wins)
+
+| field          | description                                                                                                                                                            |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Comparison`   | How you want to compare your incoming data with your threshold value ("Equal to", "Less than", "Less than or equal to", "Greater than", or "Greater than or equal to") |
+| `Compare with` | Threshold value (string, number, or boolean) to compare your incoming data against                                                                                     |
+| `Color`        | Color to display when the above rule is met                                                                                                                            |
+| `Label`        | Text label to display when the above rule is met                                                                                                                       |
