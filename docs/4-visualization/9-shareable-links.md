@@ -13,7 +13,7 @@ https://studio.foxglove.dev/?param1=value2&param2=value2
 
 Supported query parameters are documented below, or you can copy any URL while you are using the app.
 
-## Web vs Desktop
+## Web vs. desktop
 
 By default, links will open in the browser. You can open the desktop app instead using the `openIn` parameter:
 

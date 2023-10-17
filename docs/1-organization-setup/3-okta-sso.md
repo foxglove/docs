@@ -8,7 +8,7 @@ import AccountRequiredHeader from "../../src/components/docs/icons/AccountRequir
 
 Foxglove organizations can use Okta as authorization provider.
 
-### Create an Okta application
+### Create Okta application
 
 Create a new app integration on your Okta dashboard:
 
@@ -22,7 +22,7 @@ Create a new app integration on your Okta dashboard:
 
 ### Enable Okta application tile
 
-Optionally, you can enable Okta application tile signin using these settings:
+Optionally, you can enable Okta application tile sign in using these settings:
 
 - **Login initiated by** – Either Okta or App
 - **Login flow** – Redirect to app to initiate login (OIDC Compliant)
@@ -45,7 +45,7 @@ Configure application settings on the [Okta SSO settings page](https://console.f
 
   <img alt="Okta clientId" src="/img/docs/organization-setup/okta/clientid.png" width="600"/>
 
-### (Optional) Disable non-Okta signin
+### (Optional) Disable non-Okta sign in
 
 Confirm that your Okta SSO setup works by signing out and signing back in with Okta SSO.
 
@@ -53,9 +53,9 @@ Use the [SSO settings tab](https://console.foxglove.dev/settings/oidc) to disabl
 
 ### Manage members
 
-- **Provision members** – Any Okta user with access to the Foxglove Okta application can sign in. A new Foxglove account is automatically created on first signin.
+- **Provision members** – Any Okta user with access to the Foxglove Okta application can sign in. A new Foxglove account is automatically created on first sign in.
 
-- **Remove users** – Revoke the user's access in Okta, then remove the associated user on Foxglove's [Team settings page](https://console.foxglove.dev/settings/team) to sign them out of Foxglove immediately. If non-Okta signin methods are enabled for your account, emails matching your approved domains can always sign up.
+- **Remove users** – Revoke the user's access in Okta, then remove the associated user on Foxglove's [Team settings page](https://console.foxglove.dev/settings/team) to sign them out of Foxglove immediately. If non-Okta sign in methods are enabled for your account, emails matching your approved domains can always sign up.
 
 ## Links and resources
 

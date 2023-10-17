@@ -13,21 +13,21 @@ Use the "Layouts" menu to create, edit, and share layouts.
 
 <img alt="Layouts menu" src="/img/docs/visualization/organization-layouts.png" width="300"/>
 
-## Personal layouts
+### Personal layouts
 
 Personal layouts are accessible to only you – they cannot be viewed, loaded, or edited by anyone else.
 
 When signed in, personal layouts are synced across all your devices, and can be shared with your organization.
 
-### Create
+#### Create
 
 Use the "Layouts" menu's "Create new layout" option to start building a custom workspace.
 
 ![Layouts glossary](/img/docs/visualization/layouts-glossary.webp)
 
-Add and position [panels](TBD), configure their settings, adjust [playback settings](TBD), and set [variable](/docs/visualization/variables) values.
+Add and position [panels](panels/introduction), configure their settings, adjust [playback settings](playback), and set [variable](variables) values.
 
-### Edit
+#### Edit
 
 When switching layouts after making edits to your current personal layout, you can take either of the following actions:
 
@@ -36,17 +36,17 @@ When switching layouts after making edits to your current personal layout, you c
 
 <img alt="Modified personal layout menu" src="/img/docs/visualization/modified-personal-layout.png" width="400"/>
 
-### Import and export
+#### Import and export
 
 Use a layout's context menu to "Export..." it as a JSON file. Alternatively, open the app menu's "View" submenu to "Export layout to file...".
 
 Use the "Layouts" menu's "Import from file..." option to load an exported layout JSON file. Alternatively, open the app menu's "View" submenu to "Import layout from file...".
 
-### Share
+#### Share
 
 Use a layout's context menu to "Share with team..." – this will make a personal layout accessible to your entire organization.
 
-### Other
+#### Other
 
 Use each layout's details menu to rename, duplicate, or delete any personal layout.
 
@@ -57,7 +57,7 @@ To perform a batch action on multiple layouts:
 - Right-click any selected layout's context menu to select a batch action
 
 
-## Organization layouts
+### Organization layouts
 
 <AccountRequiredHeader />
 
@@ -67,7 +67,7 @@ Organization layouts work very similarly to personal layouts – i.e. you can r
 
 <img alt="Modified team layout menu" src="/img/docs/visualization/modified-team-layout.png" width="400"/>
 
-### Edit
+#### Edit
 
 After editing an organization layout, you can take any of the following actions:
 
@@ -76,7 +76,7 @@ After editing an organization layout, you can take any of the following actions:
 - **"Make a personal copy"** – Save changes as a separate personal layout (reverts changes to organization layout)
 
 
-### Share
+#### Share
 
 Use a personal layout's context menu to "Share with team..." – this will make it accessible to your entire organization.
 

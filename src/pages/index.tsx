@@ -14,10 +14,7 @@ export default function index(): ReactElement {
           The leading observability platform for robotics developers
         </h2>
         <div style={{ marginTop: "5em", display: "flex", justifyContent: "center" }}>
-          <a
-            href="/docs/introduction/why-foxglove"
-            style={{ textDecoration: "underline", marginRight: "20px" }}
-          >
+          <a href="/docs/introduction" style={{ textDecoration: "underline", marginRight: "20px" }}>
             View Docs
           </a>
           <a href="/api" style={{ textDecoration: "underline" }}>

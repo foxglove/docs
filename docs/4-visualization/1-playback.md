@@ -51,37 +51,7 @@ Even panels that visualize their most recently seen data can benefit from preloa
 - Seek back and forth at increments of 100ms
 - Loop playback
 - Configure playback speed
-- Create, view, and search events
-
-### Create events
-
-Navigate to the [“Recordings” page](https://console.foxglove.dev/recordings) and select a data recording to “Visualize”.
-
-The window that opens with your Foxglove data source will display a bookmark icon on the playback bar.
-
-![Event icon](/img/docs/visualization/playback/event-icon.webp)
-
-Seek to a point of interest in your data, then click that bookmark icon to add an event to your data at that point on the timeline.
-
-![Create event](/img/docs/visualization/playback/create-event.webp)
-
-These events will also persist to the [“Events” page](https://console.foxglove.dev/events).
-
-### View events
-
-Open "Events" in the left sidebar to see a list of all events associated with the current data source.
-
-When streaming Foxglove data, the playback bar will display events using blue bars. Hovering on a blue bar will display its metadata in a tooltip.
-
-![Event tooltip](/img/docs/visualization/playback/event-tooltip.webp)
-
-If "Events" is open in the sidebar, hovering on an event on the playback timeline will also highlight its corresponding metadata in the sidebar.
-
-![Event hover](/img/docs/visualization/playback/event-hover.webp)
-
-### Search events
-
-View a list of events in the left sidebar's "Events" tab. The search input field uses the [same syntax as Foxglove event search](/docs/events#search). Type in some queries to filter events by metadata keys and values and find events of interest.
+- Create, view, and search [events](/docs/events)
 
 ## Shortcuts
 

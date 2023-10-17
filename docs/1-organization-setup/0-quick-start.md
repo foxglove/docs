@@ -5,7 +5,9 @@ description: Sign up for a free Foxglove account – either as an individual or
 
 [Sign up](https://console.foxglove.dev/signup) for a free Foxglove account to get started.
 
-![Solo vs organization](/img/docs/introduction/solo-vs-organization.png)
+### Individual vs. team
+
+![Solo vs. organization](/img/docs/introduction/solo-vs-organization.png)
 
 If you sign up **as an individual**, you can:
 

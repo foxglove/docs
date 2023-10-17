@@ -7,21 +7,21 @@ Devices represent every real and simulated robot that your organization wants to
 
 When importing data into Foxglove, you can associate each data recording with the device that recorded it.
 
-## Actions
+### Actions
 
-Create, list, delete, and search devices from the [Devices page](https://console.foxglove.dev/devices).
+Add, list, delete, and search devices from the [Devices page](https://console.foxglove.dev/devices).
 
-|            | Definition                                                                      | CLI command                                  |
-| ---------- | ------------------------------------------------------------------------------- | -------------------------------------------- |
-| **Create** | Create a uniquely named device for every robot your organization wants to track | `foxglove devices add --name "my device"`    |
-| **List**   | View your organization's devices                                                | `foxglove devices list`                      |
-| **Delete** | Delete a device in your organization                                            | `foxglove devices delete --name "my device"` |
+|            | Definition                                                                   | CLI command                                  |
+| ---------- | ---------------------------------------------------------------------------- | -------------------------------------------- |
+| **Add**    | Add a uniquely named device for every robot your organization wants to track | `foxglove devices add --name "my device"`    |
+| **List**   | View your organization's devices                                             | `foxglove devices list`                      |
+| **Delete** | Delete a device in your organization                                         | `foxglove devices delete --name "my device"` |
 
-## Custom properties
+### Custom properties
 
 Custom properties are predefined metadata fields that can be associated with a device. They are set by admins for their organization.
 
-### Create
+#### Add
 
 Admins can go into the [Custom properties settings](https://console.foxglove.dev/settings/custom-properties) to create custom properties for their organization's devices.
 
@@ -32,10 +32,10 @@ Each custom property must include:
 
 For example, an admin could create a custom device property called `version` that accepts numeric values. Any organization member can now add a `version` number to the team's robots to track their hardware versions.
 
-### Set and edit values
+#### Set and edit values
 
 Once an admin has created a custom device property, any organization member can now go to any device page to set and edit custom property values (e.g. setting Device A's `version` to 65).
 
-### Filter
+#### Filter
 
 After assigning custom property values to various resources, go to [Devices](https://console.foxglove.dev/devices) to query by those values (e.g. devices with a `version` set to 65).

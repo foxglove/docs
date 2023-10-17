@@ -5,12 +5,6 @@ description: The Foxglove REST API offers a programmatic interface for accessing
 
 The Foxglove REST API offers a programmatic interface for accessing and interacting with Foxglove resources.
 
-## API keys
-
-Organization admins must create an API key from the [Settings page](https://console.foxglove.dev/settings/apikeys).
-
-![API key management](/img/docs/api/keys.webp)
-
 The [Foxglove API](/api) provides endpoints for interacting with the following:
 
 - Data resources
@@ -22,6 +16,12 @@ The [Foxglove API](/api) provides endpoints for interacting with the following:
   - [Extensions](visualization/extensions/introduction)
 
 View the [Foxglove API Reference](/api) for more details on all available endpoints.
+
+## API keys
+
+Organization admins must create an API key from the [Settings page](https://console.foxglove.dev/settings/apikeys).
+
+![API key management](/img/docs/api/keys.webp)
 
 ## Python client
 

@@ -9,11 +9,9 @@ Import [ROS 1](frameworks/ros1#imported-data) (`.bag`) and [MCAP](frameworks/mca
 
 Check out the [MCAP docs](https://mcap.dev) for more information on [converting other data formats](/blog/importing-your-ros2-data-into-foxglove-data-platform) – like ROS 2, Protobuf, JSON, and more – into the MCAP file format.
 
-## Getting started
+### Add devices
 
 Before importing data, you must create uniquely named devices for every real or simulated robot you want to track. This will allow your team members to add data recorded on these devices. All imported files must be associated with a corresponding device.
-
-### Adding devices
 
 Click "Add device" on the [Devices page](https://console.foxglove.dev/devices) to create your devices:
 
@@ -39,6 +37,6 @@ When importing [MCAP files](https://mcap.dev/) with metadata records or attachme
 
 View imported data as a list on the [Recordings page](https://console.foxglove.dev/recordings), or as ranges on a timeline on the [Timeline page](https://console.foxglove.dev/timeline).
 
-## Additional resources
+## Links and resources
 
 - [Import ROS 2 data](/blog/importing-your-ros2-data-into-foxglove-data-platform)
