@@ -4,9 +4,8 @@ const ImportedDataDirections = (): ReactElement => {
   return (
     <>
       <p>
-        After <a href="/docs/organizing/recordings">importing data to Foxglove</a>, select
-        individual resources to "Visualize" on the{" "}
-        <a href="https://console.foxglove.dev/recordings">Recordings</a> or{" "}
+        After <a href="/docs/recordings">importing data to Foxglove</a>, select individual resources
+        to "Visualize" on the <a href="https://console.foxglove.dev/recordings">Recordings</a> or{" "}
         <a href="https://console.foxglove.dev/events">Events</a> pages:
       </p>
 

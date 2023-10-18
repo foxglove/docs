@@ -1,0 +1,74 @@
+---
+title: Create message converter
+description: Build a simple message converter for transforming custom GPS messages to match the `foxglove.LocationFix` schema, for visualization in Foxglove's Map panel.
+---
+
+Build a simple message converter for transforming custom GPS messages to match the `foxglove.LocationFix` schema, for visualization in Foxglove's Map panel.
+
+## Setting up
+
+In a Terminal window, `cd` into the directory where your source code will live and run the following command:
+
+```bash
+$ npm init foxglove-extension@latest myExtensionName
+```
+
+This uses [`create-foxglove-extension`](https://github.com/foxglove/create-foxglove-extension) to create a `myExtensionName` directory containing source code for an example message converter.
+
+## Registering a converter
+
+The `index.ts` file in your project's `src` folder is the entry point for your extension source code. It must export an `activate` function that accepts a single `extensionContext` argument of type [`ExtensionContext`](extension-context).
+
+To register a message converter, we call `registerMessageConverter` on the `extensionContext` argument with three arguments: the source schema type, the destination schema type, and the actual `converter` function.
+
+```typescript
+import { MessageEvent } from "@foxglove/studio";
+
+export function activate(extensionContext: ExtensionContext) {
+  extensionContext.registerMessageConverter({
+    fromSchemaName: "...",
+    toSchemaName: "...",
+    converter: (inputMessage: MyInputType, messageEvent: MessageEvent<MyInputType>) => {
+      // ...
+    },
+  });
+}
+```
+
+The `converter` function takes two arguments – the input topic message, and the full message event. The message event can be used to access other relevant pieces of information – like the message's `publishTime`, `receiveTime`, and `topic` name.
+
+## Writing the converter
+
+Let's assume that our data contains GPS messages of type `sensors.MyGps`, which contain a `lat` and `lon` field.
+
+```typescript
+type MyGps = {
+  lat: number;
+  lon: number;
+};
+```
+
+To visualize GPS coordinates, the [Map panel](/docs/visualization/panels/map) requires messages in the [`foxglove.LocationFix`](/docs/visualization/message-schemas/location-fix) format. In short, our converter needs to turn `MyGps` messages into messages that adhere to the `foxglove.LocationFix` schema.
+
+First, specify the _from_ schema (`sensors.MyGps`) and _to_ schema (`foxglove.LocationFix`), to inform Foxglove that our registered converter will turn `sensors.MyGps` messages into `foxglove.LocationFix` messages.
+
+Then, write the `converter` function. In our example, we'll re-map the `lat` and `lon` fields to the `latitude` and `longitude` fields that the `foxglove.LocationFix` schema expects:
+
+```typescript
+export function activate(extensionContext: ExtensionContext) {
+  extensionContext.registerMessageConverter({
+    fromSchemaName: "sensors.MyGps",
+    toSchemaName: "foxglove.LocationFix",
+    converter: (myGps: MyGps, messageEvent: MessageEvent<MyGps>) => {
+      return {
+        latitude: myGps.lat,
+        longitude: myGps.lon,
+      };
+    },
+  });
+}
+```
+
+## Testing
+
+Once we've packaged and installed our extension, load any data source containing `sensors.MyGps` messages in Foxglove and visualize them with the [Map panel](/docs/visualization/panels/map).

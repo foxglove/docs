@@ -1,0 +1,22 @@
+---
+title: Local development
+description: Build and test custom Foxglove extensions locally before publishing.
+---
+
+Build and test custom Foxglove extensions locally before publishing.
+
+## Installation
+
+To build and install your extension into a local Foxglove extensions folder, run `npm run local-install`. This will create a folder under your home directory (e.g. `~/.foxglove-studio/extensions/unknown.myExtensionName-0.0.0`) with your compiled extension.
+
+Open the latest version of Foxglove. You should now see `myExtensionName` in the list of installed extensions in your [app settings](/docs/visualization/introduction#settings#extensions).
+
+Once installed, you should be able to open the "Add panel" menu and see an option called `ExamplePanel`. You've successfully loaded your first Foxglove extension!
+
+Alternatively, if you've already [published](/docs/visualization/extensions/publish) your extension, you can also just double-click on the produced `.foxe` file to install your extension in Foxglove.
+
+## Development
+
+Each time you make a change to your extension, you must run `npm run local-install` to build it to your local extensions folder.
+
+Reload or restart Foxglove to execute the latest version of your extension code in the app. Alternatively, you can confirm your code compiles without installing it locally by simply running `npm run build`.

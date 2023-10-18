@@ -1,0 +1,54 @@
+---
+title: Built-in types
+description: Primitive types are the building blocks of Foxglove's supported message schemas.
+---
+
+Primitive types are the building blocks of Foxglove's supported message schemas.
+
+Each field in a message schema has a type. This type can be another message schema, an enum, or one of the primitive types documented below:
+
+### `boolean`
+
+Either `true` or `false`.
+
+### `bytes`
+
+Raw binary data, represented as a `Uint8Array` in JavaScript.
+
+### `enum`
+
+Number that serves as a key in a set of named constants.
+
+### `float64`
+
+64-bit floating-point number.
+
+### `string`
+
+String value encoded as UTF-8.
+
+### `time`
+
+| field  | type   | required | description                        |
+| ------ | ------ | -------- | ---------------------------------- |
+| `sec`  | uint32 | ✓        | Seconds since epoch                |
+| `nsec` | uint32 | ✓        | Additional nanoseconds since epoch |
+
+_NOTE: Foxglove's [Protobuf schemas](/docs/visualization/message-schemas/introduction#protobuf-and-json-schema) represent `time` values with [`google.protobuf.Timestamp`](https://protobuf.dev/reference/protobuf/google.protobuf/#timestamp), which uses `seconds` and `nanos` fields. However, in [user scripts](/docs/visualization/panels/user-scripts), [message converters](/docs/visualization/extensions/getting-started#message-converters), and the rest of Foxglove, the values will appear as `sec` and `nsec` fields, for consistency with other data formats._
+
+### `duration`
+
+| field  | type   | required | description                                  |
+| ------ | ------ | -------- | -------------------------------------------- |
+| `sec`  | int32  | ✓        | Seconds offset                               |
+| `nsec` | uint32 | ✓        | Nanoseconds offset in the positive direction |
+
+_NOTE: Foxglove's [Protobuf schemas](/docs/visualization/message-schemas/introduction#protobuf-and-json-schema) represent `duration` values with [`google.protobuf.Duration`](https://protobuf.dev/reference/protobuf/google.protobuf/#duration), which uses `seconds` and `nanos` fields. However, in [user scripts](/docs/visualization/panels/user-scripts), [message converters](/docs/visualization/extensions/getting-started#message-converters), and the rest of Foxglove, the values will appear as `sec` and `nsec` fields, for consistency with other data formats._
+
+### `uint32`
+
+Non-negative integer value between 0 and 2<sup>32</sup>&minus;1.
+
+### `int32`
+
+Integer value between &minus;2<sup>31</sup> and 2<sup>31</sup>&minus;1.

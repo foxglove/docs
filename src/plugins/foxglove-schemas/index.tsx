@@ -13,8 +13,8 @@ export default async function (_context: LoadContext, _options: unknown): Promis
     "..",
     "..",
     "docs",
-    "2-visualizing",
-    "2-supported-messages",
+    "4-visualization",
+    "2-message-schemas",
   );
 
   const existingFiles = await fs.readdir(dir).catch(() => {

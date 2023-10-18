@@ -1,0 +1,22 @@
+---
+title: Introduction
+description: To store and access robotics data with your own cloud storage solution, you can set up a self-hosted Primary Site.
+---
+
+import AccountRequiredHeader from "../../src/components/docs/icons/AccountRequiredHeader";
+
+Primary Sites store your robotics data in the cloud, and can be Foxglove- or self-hosted.
+
+### Foxglove-hosted
+
+When you sign up for a Foxglove organization, you are assigned a Foxglove-hosted Primary Site by default. Your organization's data files will be imported to this Primary Site.
+
+### Self-hosted
+
+<AccountRequiredHeader badgeText="Requires Enterprise plan" />
+
+Set up a self-hosted Primary Site to store and access robotics data with your own cloud storage solution.
+
+Primary Sites are deployed in your own cloud infrastructure to provide highly available storage and access of your data. We currently support Google Cloud Platform (GCP), Amazon Web Services (AWS), and Azure. Set your cloud accounts up in the data region of your choice, for complete control over your data privacy and security requirements.
+
+To deploy and manage your Primary Site, you must be familiar with [Kubernetes](https://kubernetes.io/), [Helm](https://helm.sh/), and cloud environments.
