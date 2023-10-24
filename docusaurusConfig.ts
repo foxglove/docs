@@ -142,14 +142,17 @@ const docusaurusConfig: Config = {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme,
     },
-    algolia: {
-      appId: process.env.ALGOLIA_APP_ID,
-      apiKey: process.env.ALGOLIA_API_KEY,
-      indexName: "foxglove-pages",
-      contextualSearch: true,
-      searchParameters: {}, // optional
-      searchPagePath: "search", // optional; false to disable
-    },
+    algolia:
+      process.env.ALGOLIA_APP_ID && process.env.ALGOLIA_API_KEY
+        ? {
+            appId: process.env.ALGOLIA_APP_ID,
+            apiKey: process.env.ALGOLIA_API_KEY,
+            indexName: "foxglove-pages",
+            contextualSearch: true,
+            searchParameters: {}, // optional
+            searchPagePath: "search", // optional; false to disable
+          }
+        : undefined,
   } satisfies import("@docusaurus/preset-classic").ThemeConfig,
 };
 
