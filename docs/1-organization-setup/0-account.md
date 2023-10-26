@@ -1,5 +1,5 @@
 ---
-title: Quick start
+title: Account
 description: Sign up for a free Foxglove account – either as an individual or with a team.
 ---
 
