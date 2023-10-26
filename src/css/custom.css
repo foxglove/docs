@@ -102,26 +102,24 @@
 .DocSearch.DocSearch-Button {
   height: 28px;
   margin-right: 0.75rem;
+}
 
-  .DocSearch-Button-Container {
-    .DocSearch-Search-Icon {
-      height: 15px;
-      width: 15px;
-    }
+.DocSearch-Search-Icon {
+  height: 15px;
+  width: 15px;
+}
 
-    .DocSearch-Button-Placeholder {
-      font-size: unset;
-      margin-right: 30px;
-    }
-  }
+.DocSearch-Button-Placeholder {
+  font-size: unset;
+  margin-right: 30px;
+}
 
-  .DocSearch-Button-Keys {
-    height: 15px;
-    min-width: 30px;
+.DocSearch-Button-Keys {
+  height: 15px;
+  min-width: 30px;
+}
 
-    .DocSearch-Button-Key {
-      height: 15px;
-      width: 15px;
-    }
-  }
+.DocSearch-Button-Key {
+  height: 15px;
+  width: 15px;
 }
