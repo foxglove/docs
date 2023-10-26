@@ -13,7 +13,7 @@ export default async function (_context: LoadContext, _options: unknown): Promis
     "..",
     "..",
     "docs",
-    "4-visualization",
+    "3-visualization",
     "2-message-schemas",
   );
 
