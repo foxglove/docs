@@ -2,6 +2,7 @@
 title: Custom
 description: Load local and remote MCAP files containing custom data (i.e. Protobuf, JSON, FlatBuffers), or connect directly to live custom data via a Foxglove WebSocket connection.
 ---
+
 import CorsDirections from "../../../src/components/docs/connecting-to-data/CorsDirections";
 import FoxgloveWebSocketResetDirections from "../../../src/components/docs/connecting-to-data/FoxgloveWebSocketResetDirections";
 import ImportedDataDirections from "../../../src/components/docs/connecting-to-data/ImportedDataDirections";
@@ -49,13 +50,13 @@ Once you have an MCAP file in remote storage, follow the MCAP directions for [op
 
 Load custom data into Foxglove by first encoding it in [MCAP](https://mcap.dev) (`.mcap`) files – see [supported data formats here](https://mcap.dev/guides#supported-formats).
 
-<LocalDataDirections/>
+<LocalDataDirections />
 
 ## Imported data
 
 Once converting yoru custom data to MCAP files and uploading them to Foxglove, you can stream them directly for visualization.
 
-<ImportedDataDirections/>
+<ImportedDataDirections />
 
 ## Schema encodings
 
@@ -75,7 +76,13 @@ For Protobuf data, use schema encoding `"protobuf"` and message encoding `"proto
 
 Foxglove expects the schema data to be a binary [FileDescriptorSet](https://developers.google.com/protocol-buffers/docs/techniques#self-description). For Foxglove WebSocket connections, the schema must additionally be base64-encoded because it is represented as a string.
 
-You can generate the FileDescriptorSet at runtime using Python:
+You can generate the FileDescriptorSet offline using:
+
+```
+protoc --include_imports --descriptor_set_out=MySchema.bin --proto_path=<path to proto directory> MySchema.proto
+```
+
+Or generate it at runtime using Python:
 
 ```python
 from typing import Any, Set
@@ -159,10 +166,10 @@ For IDL schemas with CDR data, use schema encoding `"omgidl"` and message encodi
 
 For encoding OMG IDL schemas into MCAP, use the conventions listed in the [MCAP Format Registry](https://mcap.dev/spec/registry#omgidl).
 
-
 Known limitations can be found here in `foxglove/omgidl` library internally used by Foxglove:
- - [IDL Grammar Limitations](https://github.com/foxglove/omgidl/blob/main/packages/omgidl-parser/README.md#omg-idl-subset-support)
- - [CDR and CDR2 Deserialization Limitations](https://github.com/foxglove/omgidl/blob/main/packages/omgidl-serialization/README.md#known-limitations)
+
+- [IDL Grammar Limitations](https://github.com/foxglove/omgidl/blob/main/packages/omgidl-parser/README.md#omg-idl-subset-support)
+- [CDR and CDR2 Deserialization Limitations](https://github.com/foxglove/omgidl/blob/main/packages/omgidl-serialization/README.md#known-limitations)
 
 If there's an IDL feature you want to see supported, file an issue on the [Foxglove](https://github.com/foxglove/studio/issues) or [Foxglove OMG IDL](https://github.com/foxglove/omgidl/issues) GitHub repo.
 
