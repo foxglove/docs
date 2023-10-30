@@ -11,10 +11,10 @@ Display raw and compressed images, as well as compressed videos, with 2D annotat
 
 | Raw images              | Compressed images | Compressed videos |
 | ----------------------- | ----------------- | ----------------- |
-| `8UC1`                  | `webp`            | H.264             |
+| `8UC1`                  | `webp`            | `h264`            |
 | `8UC3`                  | `jpeg`            |                   |
-| `16UC1`                 | `png`             |                   |
-| `32FC1`                 |                   |                   |
+| `16UC1`                 | `jpg`             |                   |
+| `32FC1`                 | `png`             |                   |
 | `bayer_bggr8`           |                   |                   |
 | `bayer_gbrg8`           |                   |                   |
 | `bayer_grbg8`           |                   |                   |
