@@ -1,0 +1,44 @@
+---
+title: Optimize extension performance
+description: Optimize your extensions for production to reduce load times.
+---
+
+Optimize your extensions for production to reduce load times.
+
+## Combine multiple extensions
+
+Combining multiple extensions that share code or dependencies can reduce file size, speed up installation, and reduce load times on app launch.
+
+A single extension's `activate` function can call multiple registration functions to add different features:
+
+```ts
+export function activate(extensionContext: ExtensionContext) {
+  extensionContext.registerPanel({ name: "my-panel", initPanel: initCustomPanel });
+  extensionContext.registerPanel({ name: "my-other-panel", initPanel: initAnotherCustomPanel });
+  extensionContext.registerMessageConverter({
+    fromSchemaName: "...",
+    toSchemaName: "...",
+    converter: (inputMessage: MyInputType, messageEvent: MessageEvent<MyInputType>) => {
+      // ...
+    },
+  });
+  extensionContext.registerTopicAliases((args) => {
+    // ...
+  });
+}
+```
+
+## Disable source maps
+
+By default, extensions are packaged with [source maps](https://developer.chrome.com/docs/devtools/javascript/source-maps/) to improve the debugging experience. However, source maps take up additional space and can slow down extension installation and loading.
+
+If your extension grows, consider disabling source maps by adding a file named `config.ts` with the following contents:
+
+```ts
+module.exports = {
+  webpack: (config) => {
+    config.devtool = undefined; // disable source maps to reduce bundle size
+    return config;
+  },
+};
+```
