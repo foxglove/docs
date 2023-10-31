@@ -31,6 +31,12 @@ jobs:
 
       - run: ALGOLIA_APP_ID=${{ secrets.ALGOLIA_APP_ID }} ALGOLIA_API_KEY=${{ secrets.ALGOLIA_API_KEY }} yarn run build
 
+      - name: Check docs links
+        uses: ruzickap/action-my-broken-link-checker@v2
+        with:
+          url: https://docs.foxglove.dev
+          pages_path: ./build/
+
       - name: Deploy
         uses: cloudflare/pages-action@v1
         with:

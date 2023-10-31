@@ -15,11 +15,7 @@ require("dotenv").config();
 const docusaurusConfig: Config = {
   title: "Foxglove | Docs",
   favicon: "img/favicon.ico",
-
-  // Set the production url of your site here
-  url: "https://foxglove.dev",
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
+  url: "https://docs.foxglove.dev",
   baseUrl: "/",
 
   onBrokenLinks: "warn",
@@ -89,8 +85,7 @@ const docusaurusConfig: Config = {
   ],
 
   themeConfig: {
-    // Replace with your project's social card
-    image: "img/docusaurus-social-card.jpg",
+    image: "img/logo.png",
     navbar: {
       title: undefined,
       logo: {
