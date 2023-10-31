@@ -2439,13 +2439,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@foxglove/schemas@npm:1.5.1":
-  version: 1.5.1
-  resolution: "@foxglove/schemas@npm:1.5.1"
+"@foxglove/schemas@npm:1.6.2":
+  version: 1.6.2
+  resolution: "@foxglove/schemas@npm:1.6.2"
   dependencies:
     "@foxglove/rosmsg-msgs-common": ^3.0.0
     tslib: ^2.5.0
-  checksum: 4dd054a318ead308ce980e51eb50c3bcd1c59f9c94707234f8e293bc9b52f2727a21fdad4516f3c4ba0d19ec8058cd60315fe526b90ed9085d52519aa98d12ad
+  checksum: e8c34b365f5480382b8d190010a3b75191d1633c53cbb9f0010c6f113f6b96d7853a408b7f533374722c3286dd85befde9505b884db714f421cd74582758aba5
   languageName: node
   linkType: hard
 
@@ -5724,7 +5724,7 @@ __metadata:
     "@docusaurus/plugin-client-redirects": 2.4.1
     "@docusaurus/preset-classic": 2.4.1
     "@foxglove/eslint-plugin": 0.23.0
-    "@foxglove/schemas": 1.5.1
+    "@foxglove/schemas": 1.6.2
     "@foxglove/tsconfig": 2.0.0
     "@heroicons/react": 2.0.18
     "@mdx-js/react": ^1.6.22

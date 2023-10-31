@@ -1,32 +1,32 @@
 ---
 title: Image
-description: Display raw and compressed images with 2D annotations like text labels, circles, and points. Superimpose 3D markers on these annotated images for additional context.
+description: Display raw and compressed images, as well as compressed videos, with 2D annotations like text labels, circles, and points. Superimpose 3D markers for additional context.
 ---
 
-Display raw and compressed images with 2D annotations like text labels, circles, and points. Superimpose 3D markers on these annotated images for additional context.
+Display raw and compressed images, as well as compressed videos, with 2D annotations like text labels, circles, and points. Superimpose 3D markers for additional context.
 
 ![image panel](/img/docs/visualization/panels/image/panel.jpeg)
 
 ### Supported encodings
 
-| Raw images              | Compressed images |
-| ----------------------- | ----------------- |
-| `8UC1`                  | `webp`            |
-| `8UC3`                  | `jpeg`            |
-| `16UC1`                 | `png`             |
-| `32FC1`                 |                   |
-| `bayer_bggr8`           |                   |
-| `bayer_gbrg8`           |                   |
-| `bayer_grbg8`           |                   |
-| `bayer_rggb8`           |                   |
-| `bgr8`                  |                   |
-| `bgra8`                 |                   |
-| `mono8`                 |                   |
-| `mono16`                |                   |
-| `rgb8`                  |                   |
-| `rgba8`                 |                   |
-| `uyvy` or `yuv422`      |                   |
-| `yuyv` or `yuv422_yuy2` |                   |
+| Raw images              | Compressed images | Compressed videos |
+| ----------------------- | ----------------- | ----------------- |
+| `8UC1`                  | `webp`            | `h264`            |
+| `8UC3`                  | `jpeg`            |                   |
+| `16UC1`                 | `jpg`             |                   |
+| `32FC1`                 | `png`             |                   |
+| `bayer_bggr8`           |                   |                   |
+| `bayer_gbrg8`           |                   |                   |
+| `bayer_grbg8`           |                   |                   |
+| `bayer_rggb8`           |                   |                   |
+| `bgr8`                  |                   |                   |
+| `bgra8`                 |                   |                   |
+| `mono8`                 |                   |                   |
+| `mono16`                |                   |                   |
+| `rgb8`                  |                   |                   |
+| `rgba8`                 |                   |                   |
+| `uyvy` or `yuv422`      |                   |                   |
+| `yuyv` or `yuv422_yuy2` |                   |                   |
 
 ## Supported messages
 
@@ -47,6 +47,14 @@ To use this panel, your data source must provide messages conforming to [3D mark
 | ROS 1     | [`sensor_msgs/CompressedImage`](https://docs.ros.org/en/api/sensor_msgs/html/msg/CompressedImage.html)                         |
 | ROS 2     | [`sensor_msgs/msg/CompressedImage`](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/CompressedImage.msg) |
 | Custom    | [`foxglove.CompressedImage`](/docs/visualization/message-schemas/compressed-image)                                                           |
+
+### `CompressedVideo`
+
+Record H.264 data using the AnnexB format, avoiding B frames.
+
+| framework | schema                                                                             |
+| --------- | ---------------------------------------------------------------------------------- |
+| Custom    | [`foxglove.CompressedVideo`](/docs/visualization/message-schemas/compressed-video) |
 
 ### `CameraCalibration`
 
