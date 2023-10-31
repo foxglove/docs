@@ -5,7 +5,7 @@ description: Import ROS 1 (.bag) and MCAP (.mcap) data files into the Foxglove p
 
 Export your data to visualize them in Foxglove and other debugging and visualization tools.
 
-Once you've imported data to Foxglove, you can export select ranges of this data to export as a [MCAP](https://mcap.dev) (`.mcap`) or ROS 1 (`.bag`) file, or stream the data directly to third party debugging tools like Jupyter Notebooks or visualization tools like [Foxglove](/studio).
+Once you've imported data to Foxglove, you can export select ranges of this data to export as a [MCAP](https://mcap.dev) (`.mcap`) or ROS 1 (`.bag`) file, or stream the data directly to third party debugging tools like Jupyter Notebooks or visualization tools like [Foxglove](https://foxglove.dev/studio).
 
 ### Download recording or event
 

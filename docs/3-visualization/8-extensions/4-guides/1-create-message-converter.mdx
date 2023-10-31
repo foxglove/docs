@@ -17,7 +17,7 @@ This uses [`create-foxglove-extension`](https://github.com/foxglove/create-foxgl
 
 ## Registering a converter
 
-The `index.ts` file in your project's `src` folder is the entry point for your extension source code. It must export an `activate` function that accepts a single `extensionContext` argument of type [`ExtensionContext`](extension-context).
+The `index.ts` file in your project's `src` folder is the entry point for your extension source code. It must export an `activate` function that accepts a single `extensionContext` argument of type [`ExtensionContext`](/docs/visualization/extensions/api/extension-context).
 
 To register a message converter, we call `registerMessageConverter` on the `extensionContext` argument with three arguments: the source schema type, the destination schema type, and the actual `converter` function.
 

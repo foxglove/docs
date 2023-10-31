@@ -32,14 +32,14 @@ Some features are only available via the desktop app:
 
 ![top nav](/img/docs/visualization/navigation.jpeg)
 
-| component         | description                                                                                                              |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| **App menu**      | Connect to a [data source](/docs/connecting-to-data/introduction#data-sources), toggle the sidebars, or view resources   |
-| **Add panel**     | Add a [panel](/docs/visualization/panels/introduction) to the current layout                                             |
-| **Layout menu**   | Save your workspace view as a [layout](/docs/visualization/layouts) and share it with teammates                            |
-| **Left sidebar**  | Edit panel settings (Panel), view data source's topics (Topics), and troubleshoot issues with your connection (Problems) |
-| **Right sidebar** | Set [variables](/docs/visualization/variables) for your current layout                                                     |
-| **User menu**     | Sign in to your Foxglove account, configure preferences, manage [extensions](/docs/visualization/extensions/getting-started), and more |
+| component         | description                                                                                                                         |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| **App menu**      | Connect to a [data source](/docs/connecting-to-data/introduction#data-sources), toggle the sidebars, or view resources              |
+| **Add panel**     | Add a [panel](/docs/visualization/panels/introduction) to the current layout                                                        |
+| **Layout menu**   | Save your workspace view as a [layout](/docs/visualization/layouts) and share it with teammates                                     |
+| **Left sidebar**  | Edit panel settings (Panel), view data source's topics (Topics), and troubleshoot issues with your connection (Problems)            |
+| **Right sidebar** | Set [variables](/docs/visualization/variables) for your current layout                                                              |
+| **User menu**     | Sign in to your Foxglove account, configure preferences, manage [extensions](/docs/visualization/extensions/introduction), and more |
 
 ## Settings
 
@@ -67,13 +67,13 @@ These settings require an app relaunch to take effect.
 
 ### Extensions
 
-Select the [Foxglove extensions](/docs/visualization/extensions/getting-started) you want to install.
+Select the [Foxglove extensions](/docs/visualization/extensions/introduction) you want to install.
 
 ### Experimental features
 
 These features are not recommended for regular use – they are either deprecated or in active development or testing.
 
-Reach out in the [Slack community](/join-slack), if you have any questions about any of these features.
+Reach out in the [Slack community](https://foxglove.dev/slack), if you have any questions about any of these features.
 
 ## Links and resources
 - [Getting Started with Foxglove](https://www.youtube.com/watch?v=ySVzQ3iFw90)

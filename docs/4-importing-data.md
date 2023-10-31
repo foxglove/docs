@@ -5,9 +5,9 @@ description: Import ROS 1 (.bag) and MCAP (.mcap) data files into the Foxglove p
 
 import ImportedDataDirections from "../src/components/docs/connecting-to-data/ImportedDataDirections";
 
-Import [ROS 1](frameworks/ros1#imported-data) (`.bag`) and [MCAP](frameworks/mcap#imported-data) (`.mcap`) data files into the Foxglove platform for later visualization and analysis.
+Import [ROS 1](/docs/connecting-to-data/frameworks/ros1#imported-data) (`.bag`) and [MCAP](/docs/connecting-to-data/frameworks/mcap#imported-data) (`.mcap`) data files into the Foxglove platform for later visualization and analysis.
 
-Check out the [MCAP docs](https://mcap.dev) for more information on [converting other data formats](/blog/importing-your-ros2-data-into-foxglove-data-platform) – like ROS 2, Protobuf, JSON, and more – into the MCAP file format.
+Check out the [MCAP docs](https://mcap.dev) for more information on [converting other data formats](https://foxglove.dev/blog/importing-your-ros2-data-into-foxglove-data-platform) – like ROS 2, Protobuf, JSON, and more – into the MCAP file format.
 
 ### Add devices
 
@@ -39,4 +39,4 @@ View imported data as a list on the [Recordings page](https://console.foxglove.d
 
 ## Links and resources
 
-- [Import ROS 2 data](/blog/importing-your-ros2-data-into-foxglove-data-platform)
+- [Import ROS 2 data](https://foxglove.dev/blog/importing-your-ros2-data-into-foxglove-data-platform)

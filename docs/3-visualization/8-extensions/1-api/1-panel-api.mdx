@@ -7,7 +7,7 @@ The `PanelExtensionContext` exposes properties and methods for writing a custom 
 
 The more common methods and properties are described below. For full type docs on the `PanelExtensionContext` and `RenderState` types, see [`@foxglove/studio`](https://github.com/foxglove/studio/blob/main/packages/studio).
 
-> The `initPanel` function used in the [`registerPanel` method](/docs/visualization/extensions/extension-context#registerpanel) accepts a `PanelExtensionContext` argument. This argument contains properties and methods for accessing panel data and rendering UI updates. The `initPanel` function also returns an optional cleanup function to run when the extension `panelElement` unmounts.
+> The `initPanel` function used in the [`registerPanel` method](/docs/visualization/extensions/api/extension-context#registerpanel) accepts a `PanelExtensionContext` argument. This argument contains properties and methods for accessing panel data and rendering UI updates. The `initPanel` function also returns an optional cleanup function to run when the extension `panelElement` unmounts.
 
 ## `panelElement`
 
@@ -93,9 +93,9 @@ context.advertise("/my_image_topic", "sensor_msgs/Image");
 
 ### [Native (ROS 1)](/docs/connecting-to-data/frameworks/ros1#native)
 
-| field     | type             | description                                                                                                                                                            |
-| --------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| datatypes | `Map<string, T>` | JavaScript map of datatype names and [`MessageDefinition`](https://github.com/foxglove/message-definition/blob/main/src/index.d.ts#L185) definitions for a given topic |
+| field     | type             | description                                                                                                                                                          |
+| --------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| datatypes | `Map<string, T>` | JavaScript map of datatype names and [`MessageDefinition`](https://github.com/foxglove/message-definition/blob/main/src/types.ts#L185) definitions for a given topic |
 
 Common datatype definitions are available in the `@foxglove/rosmsg-msgs-common` package.
 
@@ -126,9 +126,9 @@ For ROS 1 data, pass datatypes the same way you would for a [native ROS 1](#nati
 
 For ROS 2 data, pass datatypes using the following fields:
 
-| field     | type             | description                                                                                                                                                            |
-| --------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| datatypes | `Map<string, T>` | JavaScript map of datatype names and [`MessageDefinition`](https://github.com/foxglove/message-definition/blob/main/src/index.d.ts#L185) definitions for a given topic |
+| field     | type             | description                                                                                                                                                          |
+| --------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| datatypes | `Map<string, T>` | JavaScript map of datatype names and [`MessageDefinition`](https://github.com/foxglove/message-definition/blob/main/src/types.ts#L185) definitions for a given topic |
 
 Common datatype definitions are available in the `@foxglove/rosmsg-msgs-common` package.
 

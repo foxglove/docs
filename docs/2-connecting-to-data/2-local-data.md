@@ -25,4 +25,4 @@ Since ROS 2 `.db3` files do not contain their message definitions, we recommend 
 ## Links and resources
 
 - [MCAP](https://mcap.dev)
-- [Introducing the MCAP File Format](/blog/introducing-the-mcap-file-format)
+- [Introducing the MCAP File Format](https://foxglove.dev/blog/introducing-the-mcap-file-format)

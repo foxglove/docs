@@ -276,9 +276,9 @@ export default function script(event: Input<"/imu">): Output {
 
 The sidebar's "Utilities" tab includes functions that can be imported for use in any script (e.g. `import { compare } from "./time.ts"`). The `types.ts` utility file is generated from the currently loaded data source, and contains type definitions for all found schemas.
 
-We currently do not allow importing 3rd-party packages, but [let us know](/slack) if there are packages that would be useful to you!
+We currently do not allow importing 3rd-party packages, but [let us know](https://foxglove.dev/slack) if there are packages that would be useful to you!
 
-The _Templates_ tab includes boilerplate for writing common scripts, like one that publishes a `MarkerArray`. If you have any other use cases that would work well as a template, please [let us know](/slack).
+The _Templates_ tab includes boilerplate for writing common scripts, like one that publishes a `MarkerArray`. If you have any other use cases that would work well as a template, please [let us know](https://foxglove.dev/slack).
 
 ## Settings
 

@@ -83,7 +83,7 @@ After a couple minutes, you should see custom metrics:
 $ kubectl get --raw /apis/custom.metrics.k8s.io/v1beta1
 ```
 
-If the output contains metrics, you are ready to create an [autoscaler](/autoscaling) on custom metrics.
+If the output contains metrics, you are ready to create an [autoscaler](autoscaling) on custom metrics.
 
 ### Monitor metrics
 

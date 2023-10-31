@@ -9,7 +9,7 @@ Import, delete, and search recordings from the [Recordings page](https://console
 
 ![Recordings page](/img/docs/recordings/index.png)
 
-Hover over each recording to visualize it using Foxglove [panels](../visualization/panels/introduction). Open the recording's "Actions" menu to delete it or to download it as an `.mcap` or `.bag` file:
+Hover over each recording to visualize it using Foxglove [panels](/docs/visualization/panels/introduction). Open the recording's "Actions" menu to delete it or to download it as an `.mcap` or `.bag` file:
 
 ![Recording actions](/img/docs/recordings/menu.png)
 

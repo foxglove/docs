@@ -14,13 +14,13 @@ Foxglove often requires incoming messages to conform to specific structures to v
 - [TypeScript](https://github.com/foxglove/schemas/tree/main/schemas/typescript)
 - [FlatBuffers](https://github.com/foxglove/schemas/tree/main/schemas/flatbuffer)
 
-If you've already written custom messages, you can transform them into Foxglove-supported schemas using a [message converter](/docs/visualization/extensions/getting-started#message-converters) extension.
+If you've already written custom messages, you can transform them into Foxglove-supported schemas using a [message converter](/docs/visualization/extensions/introduction#message-converters) extension.
 
 ### Protobuf and JSON Schema
 
 Copy the [`.proto` files](https://github.com/foxglove/schemas/tree/main/schemas/proto/foxglove) or [`.json` files](https://github.com/foxglove/schemas/tree/main/schemas/jsonschema) you need directly into your project, and use them to start publishing data via a [live Foxglove WebSocket connection](/docs/connecting-to-data/frameworks/custom#foxglove-websocket) or logging data to an [MCAP file](https://mcap.dev).
 
-_NOTE: For Protobuf data, time values of type [`google.protobuf.Timestamp`](https://protobuf.dev/reference/protobuf/google.protobuf/#timestamp) or [`google.protobuf.Duration`](https://protobuf.dev/reference/protobuf/google.protobuf/#duration) will appear with `sec` and `nsec` fields (instead of `seconds` and `nanos`) in [user scripts](/docs/visualization/panels/user-scripts), [message converters](/docs/visualization/extensions/getting-started#message-converters), and the rest of Foxglove, for consistency with time and duration types in other data formats._
+_NOTE: For Protobuf data, time values of type [`google.protobuf.Timestamp`](https://protobuf.dev/reference/protobuf/google.protobuf/#timestamp) or [`google.protobuf.Duration`](https://protobuf.dev/reference/protobuf/google.protobuf/#duration) will appear with `sec` and `nsec` fields (instead of `seconds` and `nanos`) in [user scripts](/docs/visualization/panels/user-scripts), [message converters](/docs/visualization/extensions/introduction#message-converters), and the rest of Foxglove, for consistency with time and duration types in other data formats._
 
 You can also import JSON schemas via the [`@foxglove/schemas` npm package](https://www.npmjs.com/package/@foxglove/schemas):
 
@@ -30,7 +30,7 @@ import { CompressedImage } from "@foxglove/schemas/jsonschema";
 
 We provide WebSocket libraries for live data ([Python](https://github.com/foxglove/ws-protocol/tree/main/python), [JavaScript](https://github.com/foxglove/ws-protocol/tree/main/typescript/ws-protocol-examples), [C++](https://github.com/foxglove/ws-protocol/tree/main/cpp)), as well as MCAP writers for pre-recorded data files ([Python](https://github.com/foxglove/mcap/tree/main/python), [JavaScript](https://github.com/foxglove/mcap/tree/main/typescript), [C++](https://github.com/foxglove/mcap/tree/main/cpp)).
 
-_Check out the blog post on [Recording Robocar Data with MCAP](/blog/recording-robocar-data-with-mcap) for an example on using an [MCAP](https://mcap.dev) C++ writer to record your Protobuf data._
+_Check out the blog post on [Recording Robocar Data with MCAP](https://foxglove.dev/blog/recording-robocar-data-with-mcap) for an example on using an [MCAP](https://mcap.dev) C++ writer to record your Protobuf data._
 
 ### ROS
 
