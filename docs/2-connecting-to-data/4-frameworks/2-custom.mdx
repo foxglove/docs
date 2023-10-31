@@ -136,7 +136,7 @@ Foxglove also expects `schemaName` to be one of the message types defined in the
 
 Each message should be encoded in the [Protobuf binary wire format](https://developers.google.com/protocol-buffers/docs/encoding) – we provide `.proto` files compatible with Foxglove in our [`foxglove/schemas` repo](https://github.com/foxglove/schemas).
 
-_NOTE: For Protobuf data, time values of type [`google.protobuf.Timestamp`](https://protobuf.dev/reference/protobuf/google.protobuf/#timestamp) or [`google.protobuf.Duration`](https://protobuf.dev/reference/protobuf/google.protobuf/#duration) will appear with `sec` and `nsec` fields (instead of `seconds` and `nanos`) in [user scripts](/docs/visualization/panels/user-scripts), [message converters](/docs/visualization/extensions/getting-started#message-converters), and the rest of Foxglove, for consistency with time and duration types in other data formats._
+_NOTE: For Protobuf data, time values of type [`google.protobuf.Timestamp`](https://protobuf.dev/reference/protobuf/google.protobuf/#timestamp) or [`google.protobuf.Duration`](https://protobuf.dev/reference/protobuf/google.protobuf/#duration) will appear with `sec` and `nsec` fields (instead of `seconds` and `nanos`) in [user scripts](/docs/visualization/panels/user-scripts), [message converters](/docs/visualization/extensions/introduction#message-converters), and the rest of Foxglove, for consistency with time and duration types in other data formats._
 
 #### FlatBuffers
 
@@ -179,5 +179,5 @@ All Foxglove-compatible `.idl` files are available in the [`foxglove/schemas` re
 
 - [MCAP docs and guides](https://mcap.dev)
 - [WebSocket protocol specification](https://github.com/foxglove/ws-protocol/blob/main/docs/spec.md)
-- [Use Protobuf data with the Foxglove WebSocket connection](/blog/using-protobuf-data-with-the-foxglove-websocket-connection)
-- [Use FlatBuffers data in Foxglove](/blog/announcing-flatbuffers-support-in-foxglove)
+- [Use Protobuf data with the Foxglove WebSocket connection](https://foxglove.dev/blog/using-protobuf-data-with-the-foxglove-websocket-connection)
+- [Use FlatBuffers data in Foxglove](https://foxglove.dev/blog/announcing-flatbuffers-support-in-foxglove)

@@ -69,5 +69,5 @@ cors {
 ## Links and resources
 
 - [MCAP](https://mcap.dev)
-- [Introducing the MCAP File Format](/blog/introducing-the-mcap-file-format)
-- [Open a Foxglove bridge connection](/blog/announcing-the-new-foxglove-bridge-for-live-ros-data)
+- [Introducing the MCAP File Format](https://foxglove.dev/blog/introducing-the-mcap-file-format)
+- [Open a Foxglove bridge connection](https://foxglove.dev/blog/announcing-the-new-foxglove-bridge-for-live-ros-data)

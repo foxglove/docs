@@ -60,5 +60,5 @@ A single word (e.g. `error`) will look for matching metadata keys or values.
 
 ## Links and resources
 
-- [Add events to your data](/blog/announcing-foxglove-data-platform-events)
+- [Add events to your data](https://foxglove.dev/blog/announcing-foxglove-data-platform-events)
 - [API reference](/api#tag/Events)
