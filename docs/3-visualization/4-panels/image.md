@@ -88,7 +88,7 @@ Foxglove currently only supports `plumb_bob` and `rational_polynomial` for the `
 
 | field                | description                                                                                                                                                                    |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Topic**            | Camera image topic to display                                                                                                                                                  |
+| **Topic**            | Camera image or video topic to display                                                                                                                                         |
 | **Calibration**      | Calibration topic to use for distortion and 3D markers                                                                                                                         |
 | **Sync annotations** | Display images and 2D annotations only when their messages' timestamps match. Newly received 2D annotation messages will be buffered until a matching set can be displayed.    |
 | **Flip horizontal**  | Flip image horizontally over a vertical axis                                                                                                                                   |
