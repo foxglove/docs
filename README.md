@@ -8,21 +8,11 @@ Documentation for the [Foxglove observability platform](https://foxglove.dev) an
 
 ### Contributing
 
-Contribute edits by creating a feature branch with your proposed changes:
+We welcome edits and contributions to the Foxglove docs.
 
-```bash
-$ git clone https://github.com/foxglove/docs.git
-$ cd docs/
-$ git checkout -b your-feature-branch-name
+Start by cloning this repo, and creating a feature branch with your proposed changes.
 
-# Make edits
-
-$ git add .
-$ git commit -m "Describe edits here"
-$ git push origin your-feature-branch-name
-```
-
-Open a [pull request](https://github.com/foxglove/docs/pulls) in this repo – a Foxglove team member will approve before deploying the edits.
+Once you push your feature branch, you can open a [pull request](https://github.com/foxglove/docs/pulls). A Foxglove team member will review the proposed changes before merging and deploying.
 
 ### Local development
 
@@ -36,14 +26,6 @@ Start the local development server:
 
 ```bash
 $ yarn start
-```
-
-### Build
-
-Generate static content into the `build` directory, to be served by any static contents hosting service:
-
-```bash
-$ yarn build
 ```
 
 ### Credits
