@@ -135,12 +135,17 @@ tags:
     description: |
       A site is a logical grouping of storage and compute for storing Recording data.
 
+  - name: Device tokens
+    description: |
+      Device tokens are used by Foxglove device agents to authenticate to the API.
+
 x-tagGroups:
   - name: Data Platform
     tags:
       - Coverage
       - Custom Properties
       - Devices
+      # - Device tokens
       - Events
       - Recordings
       - Recording Attachments
@@ -2536,3 +2541,21 @@ components:
         - id
         - name
         - type
+
+    DeviceToken:
+      type: object
+      description: A DeviceToken authenticates device agents to the API.
+      properties:
+        id:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp of the device token's creation
+        deviceId:
+          type: string
+          description: ID of the associated device
+      required:
+        - id
+        - createdAt
+        - deviceId
