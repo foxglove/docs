@@ -18,13 +18,22 @@ Download Foxglove as a [desktop app](https://foxglove.dev/download) (available o
 
 ### Desktop-only features
 
-Some features are only available via the desktop app:
+Some features are only available via the [desktop app](https://foxglove.dev/download).
 
-- Opening a [native ROS 1 or ROS 2 connection](../connecting-to-data/frameworks/ros1#native)
+#### [Connecting to data](/docs/connecting-to-data/introduction)
+
+- Opening a [native ROS 1 connection](../connecting-to-data/frameworks/ros1#native)
 - Connecting to your [Velodyne LIDAR hardware](../connecting-to-data/frameworks/velodyne)
 - Loading local URDF and mesh resources in the [3D panel](panels/3d) using URLs prefixed with `package://`
+
+#### [Extensions](extensions/introduction)
+
+- Installing extensions via the [marketplace](https://github.com/foxglove/studio-extension-marketplace)
+- Installing extensions locally
+
+#### Other
+
 - [Creating shareable links](shareable-links) prefixed with `foxglove://`
-- Installing [extensions](extensions/introduction) via the [extension marketplace](https://github.com/foxglove/studio-extension-marketplace)
 
 ### Interface
 
