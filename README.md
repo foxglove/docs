@@ -1,36 +1,33 @@
 # Foxglove docs
 
-Built using [Docusaurus 2](https://docusaurus.io/).
+Hosted at [docs.foxglove.dev](https://docs.foxglove.dev).
 
-### Installation
+Documentation for the [Foxglove observability platform](https://foxglove.dev) and [Foxglove API](https://docs.foxglove.dev/api).
 
+![Foxglove app](/static/img/docs/introduction/hero.png)
 
-### Local Development
+### Contributing
+
+We welcome edits and contributions to the Foxglove docs.
+
+Start by cloning this repo, and creating a feature branch with your proposed changes.
+
+Once you push your feature branch, you can open a [pull request](https://github.com/foxglove/docs/pulls). A Foxglove team member will review the proposed changes before merging and deploying.
+
+### Local development
 
 Install dependencies:
 
-```
+```bash
 $ yarn
 ```
 
-Start the local development server and open a browser window:
+Start the local development server:
 
-```
+```bash
 $ yarn start
 ```
 
-### Build
+### Credits
 
-Generate static content into the `build` directory to serve using any static contents hosting service:
-
-```
-$ yarn build
-```
-
-### Deployment
-
-With SSH:
-
-```
-$ USE_SSH=true yarn deploy
-```
+Built using [Docusaurus 2](https://docusaurus.io/).
