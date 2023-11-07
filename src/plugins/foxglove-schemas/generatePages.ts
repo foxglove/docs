@@ -5,6 +5,12 @@ import {
   foxgloveMessageSchemas,
 } from "@foxglove/schemas/internal";
 import { kebabCase } from "lodash";
+import path from "path";
+
+const editUrl = `https://github.com/foxglove/docs/tree/main/${path.relative(
+  path.join(__dirname, "../../.."),
+  __filename,
+)}`;
 
 const panels = {
   "3d": { name: "3D", slug: "3d" },
@@ -86,6 +92,7 @@ function generateMessagePage(schema: FoxgloveMessageSchema): GeneratedPage {
 ---
 title: ${schema.name}
 slug: ${slug}
+custom_edit_url: ${editUrl}
 ---
 `,
     `# \`${schema.name}\``,
@@ -183,6 +190,7 @@ function generateEnumPage(schema: FoxgloveEnumSchema): GeneratedPage {
 ---
 title: Enum ${schema.name}
 slug: ${slug}
+custom_edit_url: ${editUrl}
 ---
 `,
     `# Enum \`${schema.name}\``,
