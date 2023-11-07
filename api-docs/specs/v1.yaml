@@ -1132,6 +1132,7 @@ paths:
       security:
         - ApiKey: ["data.upload"]
         - Session: ["org_member"]
+        - SiteToken: []
 
       x-codeSamples:
         - lang: "python"
