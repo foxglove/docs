@@ -27,7 +27,7 @@ Message converters allow you to leverage the visualization features of built-in 
 
 The converter function is invoked when a panel subscribes to a topic with the `convertTo` option indicating it would like to run the converter on the original message. The return value of the converter function is the converted message and is provided to the panel.
 
-If the converter function invocation returns _undefined_, the output of the converter for that message is ignored and no message is provided to the panel. This is useful in instances where you might want to selectively output a converted schema depending on the input message.
+If the converter function invocation returns `undefined`, the output of the converter for that message is ignored and no message is provided to the panel. This is useful in instances where you might want to selectively output a converted schema depending on the input message.
 
 See the [Creating a message converter](../guides/create-message-converter) guide for more details.
 
