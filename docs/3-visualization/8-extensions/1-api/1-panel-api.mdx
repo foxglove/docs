@@ -65,9 +65,9 @@ By default, subscriptions will provide only the messages for the current frame. 
 
 > NOTE: Message preloading is done on a best-effort basis. If your preloaded messages exceed available memory limits for the browser or desktop app, then the preloaded data may not represent the full dataset range. Preloading results in more data transfer and memory use and is recommended only for panels which should display the entire dataset (e.g. the [Plot panel](/docs/visualization/panels/plot)) rather than the current frame.
 
-### Message Converters
+### Message converters
 
-Users may have one or more message converters registered. Message converters can convert messages from one schema to another. For example, user might register a message converter to convert their custom `MyGps` message into `foxglove.LocationFix` so the Map panel can visualize it.
+Message converters can convert messages from one schema to another – for example, a user might convert custom GPS message into [`foxglove.LocationFix`](/docs/visualization/message-schemas/location-fix) messages for visualization in the [Map panel](/docs/visualization/panels/map). Users may have one or more message converters registered.
 
 If your panel expects messages with specific schema names you can leverage registered message converters to convert from one schema to another.
 
