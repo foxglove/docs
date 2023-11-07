@@ -23,7 +23,11 @@ See the [Creating a custom panel](../guides/create-custom-panel) guide for more 
 
 `registerMessageConverter` register a function to convert messages from one schema to another.
 
-Message converters allow you to leverage the visualization features of built-in Foxglove panels for your own custom messages by writing a conversion from your custom message to a set of well-known messages supported within the panels.
+Message converters allow you to leverage the visualization features of built-in Foxglove panels for your own custom messages by writing a conversion from your custom message to a set of well-known messages supported within the panels. For example, by conerting your own GPS messages to `foxglove.LocationFix` for visualization in the Map panel.
+
+The converter function is invoked when a panel subscribes to a topic with the `convertTo` option indicating it would like to run the converter on the original message. The return value of the converter function is the converted message and is provided to the panel.
+
+If the converter function invocation returns _undefined_, the output of the converter for that message is ignored and no message is provided to the panel. This is useful in instances where you might want to selectively output a converted schema depending on the input message.
 
 See the [Creating a message converter](../guides/create-message-converter) guide for more details.
 
