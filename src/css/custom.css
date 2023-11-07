@@ -22,7 +22,7 @@
   --ifm-navbar-items-color: var(--ifm-font-color-base-inverse);
   --ifm-navbar-item-padding-vertical: 1rem;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-  --ifm-font-family-base: 'Inter', sans-serif;
+  --ifm-font-family-base: "Inter", sans-serif;
   --ifm-color-content-inverse: #ffffff;
   --ifm-menu-link-sublist-icon: url('data:image/svg+xml;utf8,<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path opacity="0.5" d="M3.15 10.35c.2.2.5.2.7 0L8 6.21l4.15 4.14a.5.5 0 0 0 .7-.7l-4.5-4.5a.5.5 0 0 0-.7 0l-4.5 4.5a.5.5 0 0 0 0 .7Z" fill="currentColor" /></svg>');
   --ifm-font-size-base: 16px;
@@ -31,7 +31,7 @@
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
+[data-theme="dark"] {
   --ifm-color-primary: #bea1ff;
   --ifm-color-primary-dark: #a177ff;
   --ifm-color-primary-darker: #9363ff;
@@ -39,7 +39,7 @@
   --ifm-color-primary-light: #dbcbff;
   --ifm-color-primary-lighter: #e9dfff;
   --ifm-color-primary-lightest: #ffffff;
-  --ifm-navbar-background-color: #35363A;
+  --ifm-navbar-background-color: #35363a;
   --ifm-navbar-link-hover-color: #bea1ff;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
   --ifm-footer-background-color: #27272b;
@@ -47,7 +47,7 @@
 
 .navbar {
   --ifm-color-emphasis-200: var(--ifm-color-gray-800);
-  color: var(--ifm-navbar-color)
+  color: var(--ifm-navbar-color);
 }
 
 .navbar__link:hover,
@@ -68,7 +68,8 @@
 }
 
 .menu__link {
-  padding: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .menu__link--sublist-caret:after {
