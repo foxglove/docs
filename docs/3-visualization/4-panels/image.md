@@ -50,7 +50,7 @@ To use this panel, your data source must provide messages conforming to [3D mark
 
 ### `CompressedVideo`
 
-Record H.264 data using the AnnexB format, avoiding B frames.
+Record H.264 data using the Annex B format, avoiding B frames.
 
 | framework | schema                                                                             |
 | --------- | ---------------------------------------------------------------------------------- |
