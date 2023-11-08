@@ -1133,6 +1133,7 @@ paths:
         - ApiKey: ["data.upload"]
         - Session: ["org_member"]
         - SiteToken: []
+        - DeviceToken: []
 
       x-codeSamples:
         - lang: "python"
