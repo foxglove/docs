@@ -27,10 +27,10 @@ On the [Team settings page](https://console.foxglove.dev/settings/team), admins 
 
 On the [Sites settings page](https://console.foxglove.dev/settings/sites), admins can:
 
-- Look up the status, name, and ID of their Foxglove- and self-hosted [Primary Sites](/docs/primary-sites/introduction)
-- Look up the status, name, and ID of their on-premises [Edge Sites](/docs/edge-sites/introduction)
-- Add Foxglove-hosted Primary Sites
-- Add Edge Sites
+- Look up the status, name, and ID of their Foxglove- and self-hosted [Primary sites](/docs/primary-sites/introduction)
+- Look up the status, name, and ID of their on-premises [Edge sites](/docs/edge-sites/introduction)
+- Add Foxglove-hosted Primary sites
+- Add Edge sites
 
 ### Custom properties
 

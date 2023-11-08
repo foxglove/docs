@@ -1,9 +1,9 @@
 ---
 title: Configure cloud credentials
-description: Self-managed Primary Sites need additional cloud credentials to import data from its corresponding Foxglove Edge Sites.
+description: Self-managed Primary sites need additional cloud credentials to import data from its corresponding Foxglove Edge sites.
 ---
 
-Self-managed Primary Sites need additional cloud credentials to import data from its corresponding Foxglove Edge Sites.
+Self-managed Primary sites need additional cloud credentials to import data from its corresponding Foxglove Edge sites.
 
 ## Google Cloud Platform (GCP)
 
