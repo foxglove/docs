@@ -2557,7 +2557,11 @@ components:
         deviceId:
           type: string
           description: ID of the associated device
+        enabled:
+          type: boolean
+          description: Whether this token is enabled or not
       required:
         - id
         - createdAt
         - deviceId
+        - enabled
