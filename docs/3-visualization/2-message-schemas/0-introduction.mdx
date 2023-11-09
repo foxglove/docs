@@ -32,6 +32,10 @@ We provide WebSocket libraries for live data ([Python](https://github.com/foxglo
 
 _Check out the blog post on [Recording Robocar Data with MCAP](https://foxglove.dev/blog/recording-robocar-data-with-mcap) for an example on using an [MCAP](https://mcap.dev) C++ writer to record your Protobuf data._
 
+### Empty JSON Schemas
+
+MCAP allows empty schemas for the JSON message encoding, but you must define a valid JSON schema for visualization. If you don't want to define your schema, you can specify a JSON Schema representing any object, which by default allows additional properties: `{"type": "object"}`.
+
 ### ROS
 
 Install the [`foxglove_msgs` package](https://index.ros.org/r/foxglove_msgs/):
