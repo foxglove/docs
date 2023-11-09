@@ -1128,7 +1128,7 @@ paths:
         request body should contain your file content._
 
         Note: If you are using a self-managed site, see [this
-        guide](https://foxglove.dev/docs/data-platform/primary-sites/manage-data) for uploading data.
+        guide](https://docs.foxglove.dev/docs/primary-sites/self-hosting/manage-data) for uploading data.
       security:
         - ApiKey: ["data.upload"]
         - Session: ["org_member"]
@@ -1408,14 +1408,14 @@ paths:
       description: |-
         **Requires Team plan or above**
 
-        Publish a new [Foxglove Studio extension](https://foxglove.dev/docs/studio/extensions/getting-started)
+        Publish a new [Foxglove Studio extension](https://docs.foxglove.dev/docs/visualization/extensions/introduction)
         or an updated version of an existing extension. When uploaded, the extension will automatically be
         installed for users in your organization.
 
         See our packaging tool [`create-foxglove-extension`](https://github.com/foxglove/create-foxglove-extension/)
         for more information on how to create an extension.
 
-        Read the [docs](https://foxglove.dev/docs/studio/extensions/getting-started)
+        Read the [docs](https://docs.foxglove.dev/docs/visualization/extensions/introduction)
         for more information on Foxglove Studio extensions.
 
       requestBody:
@@ -1474,7 +1474,7 @@ paths:
       description: |-
         Foxglove Data Platform allows organization admins to share and manage
         Foxglove Studio extensions. Check out the
-        [Foxglove Studio docs](https://foxglove.dev/docs/studio/extensions/getting-started)
+        [Foxglove Studio docs](https://docs.foxglove.dev/docs/visualization/extensions/introduction)
         to learn more.
 
       security:
