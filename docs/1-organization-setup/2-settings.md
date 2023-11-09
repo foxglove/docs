@@ -52,7 +52,7 @@ Foxglove currently supports both [Microsoft](https://foxglove.dev/blog/announcin
 
 ### Extensions
 
-On the [Insights settings page](https://console.foxglove.dev/settings/insights), admins can install Foxglove [extensions](/docs/visualization/extensions/introduction) across the organization to better support the team's unique workflows. Enabled extensions are automatically installed for all signed in team members.
+On the [Extensions settings page](https://console.foxglove.dev/settings/extensions), admins can install Foxglove [extensions](/docs/visualization/extensions/introduction) across the organization to better support the team's unique workflows. Enabled extensions are automatically installed for all signed in team members.
 
 Use the `foxglove` CLI to [write](/docs/visualization/extensions/introduction#writing-an-extension) and [publish](/docs/visualization/extensions/publish) Foxglove extensions.
 
@@ -67,11 +67,3 @@ Track the net and cumulative volume of data your Foxglove organization has impor
 ![imports](/img/docs/organization-setup/insights/imports.webp)
 
 Understand your team's data storage bill, whether you are nearing your plan’s data limit, and the time periods during which the team imported the most data.
-
-#### Occurring events
-
-Track the number of events added for a given week of collected data, by week:
-
-![events](/img/docs/organization-setup/insights/events.webp)
-
-Understand your team's data coverage, as well as whether you're taking full advantage of this data organization strategy.
