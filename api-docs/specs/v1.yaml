@@ -369,7 +369,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Recording"
+                  $ref: "ref/components/responses.yaml#/Recording"
 
   /recordings/{id}:
     parameters:
@@ -396,7 +396,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Recording"
+                $ref: "ref/components/responses.yaml#/Recording"
+
     delete:
       tags: [Recordings]
       summary: Delete a recording
@@ -462,7 +463,7 @@ paths:
                     type: string
                     description: Recording ID
                   importStatus:
-                    $ref: "#/components/schemas/RecordingImportStatus"
+                    $ref: "ref/components/responses.yaml#/RecordingImportStatus"
 
   /data/imports:
     get:
@@ -2151,7 +2152,7 @@ components:
             - import-pending
             - imported
         importStatus:
-          $ref: "#/components/schemas/RecordingImportStatus"
+          $ref: "ref/components/responses.yaml#/RecordingImportStatus"
 
       required:
         - deviceId
@@ -2159,89 +2160,6 @@ components:
         - start
         - end
         - status
-
-    Recording:
-      type: object
-      description: |
-        A resource representing the content of an MCAP file or ROS bag managed by Data Platform.
-      properties:
-        id:
-          type: string
-          description: "ID of the recording"
-        path:
-          type: string
-          description: |
-            filepath of the recording as it was originally provided to Data Platform.
-            for recordings originated at the edge, this is the full path of the recording file in
-            the edge controller store. For recordings uploaded directly to Data Platform, this is
-            the `filename` query arg provided to `/data/upload`.
-        size:
-          type: number
-          description: |
-            Size of the recording file in bytes
-          format: bigint
-        messageCount:
-          type: number
-          description: number of messages in the recording file.
-        createdAt:
-          type: string
-          format: date-time
-          description: |
-            Timestamp when the recording file was added to Data Platform.
-        importedAt:
-          type: string
-          format: date-time
-          description: Timestamp when the recording was imported to a primary site.
-        start:
-          type: string
-          format: date
-          description: log time of first message in the recording.
-        end:
-          type: string
-          format: date
-          description: log time of last message in the recording.
-        importStatus:
-          $ref: "#/components/schemas/RecordingImportStatus"
-        site:
-          description: The primary site for this recording.
-          $ref: "#/components/schemas/SiteSummary"
-        edgeSite:
-          description: The edge site for this recording.
-          $ref: "#/components/schemas/SiteSummary"
-        device:
-          $ref: "ref/components/responses.yaml#/DeviceSummary"
-        metadata:
-          type: array
-          description: The metadata records of the original MCAP file content
-          items:
-            $ref: "#/components/schemas/RecordingMetadata"
-      required:
-        - "id"
-        - "path"
-        - "size"
-        - "start"
-        - "end"
-        - "createdAt"
-        - "importStatus"
-
-    RecordingImportStatus:
-      type: string
-      description: |
-        The import status of recordings. Status will be one of:
-        - `none`: The recording has not yet been imported, and import has not been requested.
-        - `pending`: Data Platform has received a request to import this recording.
-        - `importing`: The recording data is being processed for access via Data Platform.
-        - `failed`: The recording data could not be imported.
-        - `complete`: The contents of the recording are available for access via Data Platform.
-
-        The set of importStatus values may expand in the future.
-
-      enum:
-        - "none"
-        - "pending"
-        - "importing"
-        - "failed"
-        - "complete"
 
     RecordingActivity:
       type: object
@@ -2269,34 +2187,6 @@ components:
         - createdAt
         - status
         - message
-
-    RecordingMetadata:
-      type: object
-      description: |
-        MCAP metadata pertaining to a recording.
-      properties:
-        name:
-          type: string
-        metadata:
-          type: object
-          additionalProperties:
-            type: string
-      required:
-        - "name"
-        - "metadata"
-
-    SiteSummary:
-      type: object
-      description: |
-        ID and name of a site.
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-      required:
-        - id
-        - name
 
     Topic:
       type: object
