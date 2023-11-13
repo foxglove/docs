@@ -30,16 +30,15 @@ Clicking different panels in your layout while the sidebar's panel settings are 
 
 ### Drag-and-drop topics
 
-Filter your data source's topics – and their contained [message paths](../message-path-syntax) – using the sidebar's Topics tab:
-
+Filter your data source's topics – and their contained [message paths](/docs/visualization/message-path-syntax) – using the sidebar's Topics tab:
 
 ![panel settings tab](/img/docs/visualization/panels/filter-topics.png)
 
 Drag-and-drop filter results into certain panels for easy instant visualization:
 
-- **All topics** – [Raw Messages](./raw-messages) and [Table](./table) panels
-- **[Image and image annotation topics](./image#message-schemas)** – [Image](./image) panel
-- **Message paths** – [Plot](./plot) and [State Transitions](./state-transitions) panels
+- **All topics** – [Raw Messages](/docs/visualization/panels/raw-messages) and [Table](/docs/visualization/panels/table) panels
+- **[Image and image annotation topics](/docs/visualization/panels/image#message-schemas)** – [Image](/docs/visualization/panels/image) panel
+- **Message paths** – [Plot](/docs/visualization/panels/plot) and [State Transitions](/docs/visualization/panels/state-transitions) panels
 
 To drag-and-drop multiple message paths, use `Shift` to select a range of adjacent items, or `Ctrl` (`Cmd` on macOS) to select multiple non-adjacent items:
 

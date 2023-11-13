@@ -22,22 +22,22 @@ Some features are only available via the [desktop app](https://foxglove.dev/down
 
 #### [Connecting to data](/docs/connecting-to-data/introduction)
 
-- Opening a [native ROS 1 connection](../connecting-to-data/frameworks/ros1#native)
-- Connecting to your [Velodyne LIDAR hardware](../connecting-to-data/frameworks/velodyne)
-- Loading local URDF and mesh resources in the [3D panel](panels/3d) using URLs prefixed with `package://`
+- Opening a [native ROS 1 connection](/docs/connecting-to-data/frameworks/ros1#native)
+- Connecting to your [Velodyne LIDAR hardware](/docs/connecting-to-data/frameworks/velodyne)
+- Loading local URDF and mesh resources in the [3D panel](/docs/visualization/panels/3d) using URLs prefixed with `package://`
 
-#### [Extensions](extensions/introduction)
+#### [Extensions](/docs/visualization/extensions/introduction)
 
 - Installing extensions via the [marketplace](https://github.com/foxglove/studio-extension-marketplace)
 - Installing extensions locally
 
 #### Other
 
-- [Creating shareable links](shareable-links) prefixed with `foxglove://`
+- [Creating shareable links](/docs/visualization/shareable-links) prefixed with `foxglove://`
 
 ### Interface
 
-[Connect to a data source](../connecting-to-data/introduction) to explore it with Foxglove's visualization and debugging tools.
+[Connect to a data source](/docs/connecting-to-data/introduction) to explore it with Foxglove's visualization and debugging tools.
 
 ![top nav](/img/docs/visualization/navigation.jpeg)
 
@@ -85,4 +85,5 @@ These features are not recommended for regular use – they are either deprecat
 Reach out in the [Slack community](https://foxglove.dev/slack), if you have any questions about any of these features.
 
 ## Links and resources
+
 - [Getting Started with Foxglove](https://www.youtube.com/watch?v=ySVzQ3iFw90)

@@ -8,12 +8,12 @@ The Foxglove REST API offers a programmatic interface for accessing and interact
 The [Foxglove API](/api) provides endpoints for interacting with the following:
 
 - Data resources
-  - [Devices](devices)
-  - [Recordings](recordings)
-  - [Events](events)
+  - [Devices](/docs/devices)
+  - [Recordings](/docs/recordings)
+  - [Events](/docs/events)
 - Visualization tools
-  - [Layouts](visualization/layouts)
-  - [Extensions](visualization/extensions/introduction)
+  - [Layouts](/docs/visualization/layouts)
+  - [Extensions](/docs/visualization/extensions/introduction)
 
 View the [Foxglove API Reference](/api) for more details on all available endpoints.
 

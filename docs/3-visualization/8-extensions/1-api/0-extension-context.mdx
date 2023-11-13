@@ -17,7 +17,7 @@ export function activate(extensionContext: ExtensionContext) {
 
 The `initPanel` function accepts a `PanelExtensionContext` argument, which contains properties and methods for accessing panel data and rendering UI updates. It also returns an optional cleanup function to run when the extension `panelElement` unmounts.
 
-See the [Creating a custom panel](../guides/create-custom-panel) guide for more details.
+See the [Creating a custom panel](/docs/visualization/extensions/guides/create-custom-panel) guide for more details.
 
 ## registerMessageConverter
 
@@ -27,7 +27,7 @@ Message converters allow you to leverage Foxglove's built-in visualization panel
 
 Whenever a panel subscribes to a topic with the [`convertTo`](/docs/visualization/extensions/api/panel-api#message-converters) option, the converter function runs on the original message and outputs the converted message, which it then provides it to the panel. If the function returns `undefined`, the output is ignored, and no message is provided to the panel. This is useful if you want to selectively output converted messages depending on the input messages' contents.
 
-See the [Creating a message converter](../guides/create-message-converter) guide for more details.
+See the [Creating a message converter](/docs/visualization/extensions/guides/create-message-converter) guide for more details.
 
 ## API Reference
 

@@ -100,7 +100,7 @@ custom_edit_url: ${editUrl}
 
     supportedPanels.length > 0 &&
       `## Panel support\n\n\`${schema.name}\` is used in the ${new Intl.ListFormat().format(
-        supportedPanels.map((panel) => `[${panel.name}](../panels/${panel.slug})`),
+        supportedPanels.map((panel) => `[${panel.name}](/docs/visualization/panels/${panel.slug})`),
       )} panel${supportedPanels.length > 1 ? "s" : ""}.`,
 
     parentTypes.size > 0 &&

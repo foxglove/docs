@@ -38,7 +38,7 @@ $ kubectl create namespace foxglove
 
 Create a service account with read and write access to the storage buckets. The Kubernetes workloads will use this service account.
 
-See [Configure cloud credentials](configure-cloud-credentials) for details on how to provide this credential to the deployment.
+See [Configure cloud credentials](/docs/primary-sites/self-hosting/configure-cloud-credentials) for details on how to provide this credential to the deployment.
 
 ### Create secret with site token
 

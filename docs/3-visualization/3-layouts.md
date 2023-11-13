@@ -25,7 +25,7 @@ Use the "Layouts" menu's "Create new layout" option to start building a custom w
 
 ![Layouts glossary](/img/docs/visualization/layouts-glossary.webp)
 
-Add and position [panels](panels/introduction), configure their settings, adjust [playback settings](playback), and set [variable](variables) values.
+Add and position [panels](/docs/visualization/panels/introduction), configure their settings, adjust [playback settings](/docs/visualization/playback), and set [variable](/docs/visualization/variables) values.
 
 #### Edit
 
@@ -56,7 +56,6 @@ To perform a batch action on multiple layouts:
 - Use `Shift` to select a range of adjacent layouts
 - Right-click any selected layout's context menu to select a batch action
 
-
 ### Organization layouts
 
 <AccountRequiredHeader />
@@ -74,7 +73,6 @@ After editing an organization layout, you can take any of the following actions:
 - **"Save changes"** – Overwrite the organization layout with your changes
 - **"Revert"** – Discard changes and revert to the last explicitly saved layout version
 - **"Make a personal copy"** – Save changes as a separate personal layout (reverts changes to organization layout)
-
 
 #### Share
 
