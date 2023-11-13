@@ -121,15 +121,15 @@ custom_edit_url: ${editUrl}
         let linkText: string;
         switch (field.type.type) {
           case "primitive":
-            linkTarget = `built-in-types#${field.type.name}`;
+            linkTarget = `/docs/visualization/message-schemas/built-in-types#${field.type.name}`;
             linkText = field.type.name;
             break;
           case "nested":
-            linkTarget = `${kebabCase(field.type.schema.name)}`;
+            linkTarget = `/docs/visualization/message-schemas/${kebabCase(field.type.schema.name)}`;
             linkText = field.type.schema.name;
             break;
           case "enum":
-            linkTarget = `${kebabCase(field.type.enum.name)}`;
+            linkTarget = `/docs/visualization/message-schemas/${kebabCase(field.type.enum.name)}`;
             linkText = field.type.enum.name;
             break;
         }
