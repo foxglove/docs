@@ -17,7 +17,7 @@ Custom panels are ideal when your visualization or interaction needs are bespoke
 
 #### Links and resources
 
-- [Guide: Create custom panel](guides/create-custom-panel)
+- [Guide: Create custom panel](/docs/visualization/extensions/guides/create-custom-panel)
 - [Build a custom panel extension (React)](https://foxglove.dev/blog/building-a-custom-react-panel-with-foxglove-studio-extensions)
 
 ### Message converters
@@ -26,7 +26,7 @@ Message converter extensions allow you to convert messages from one schema to an
 
 #### Links and resources
 
-- [Guide: Create message converter](guides/create-message-converter)
+- [Guide: Create message converter](/docs/visualization/extensions/guides/create-message-converter)
 - [Write a message converter extension (Map panel)](https://foxglove.dev/blog/announcing-message-converter-extensions-in-foxglove-studio)
 - [Write a message converter extension (3D panel)](https://foxglove.dev/blog/using-message-converters-to-display-3d-markers-in-foxglove-studio)
 
@@ -101,12 +101,11 @@ export function activate(extensionContext: ExtensionContext): void {
     ];
   });
 }
-
 ```
 
 This `registerTopicAliases` function is rerun whenever the data source's original topics or the current layout's global variables change.
 
 ## API reference
 
-- [ExtensionContext](api/extension-context)
+- [ExtensionContext](/docs/visualization/extensions/api/extension-context)
 - [@foxglove/studio](https://github.com/foxglove/studio/blob/main/packages/studio)

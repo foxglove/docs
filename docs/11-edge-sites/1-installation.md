@@ -116,7 +116,7 @@ $ kubectl create secret generic foxglove-site-token --from-literal=FOXGLOVE_SITE
 
 There are multiple other ways to create secrets that may be preferable. See [Create a Secret](https://kubernetes.io/docs/tasks/configmap-secret/managing-secret-using-kubectl/#create-a-secret) for more info.
 
-Additionally, your edge site will need cloud credentials to import data to the self-hosted Primary Site. See [Configure cloud credentials](configure-cloud-credentials) for more details.
+Additionally, your edge site will need cloud credentials to import data to the self-hosted Primary Site. See [Configure cloud credentials](/docs/edge-sites/configure-cloud-credentials) for more details.
 
 ### Install the release
 
