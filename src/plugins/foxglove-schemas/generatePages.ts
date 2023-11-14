@@ -95,7 +95,7 @@ slug: ${slug}
 custom_edit_url: ${editUrl}
 ---
 `,
-    `# \`${schema.name}\``,
+    `# ${schema.name}`,
     schema.description,
 
     supportedPanels.length > 0 &&
