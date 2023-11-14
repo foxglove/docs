@@ -66,5 +66,5 @@ export default async function (_context: LoadContext, _options: unknown): Promis
 }
 
 function isExistsError(error: unknown) {
-  return error != null && typeof error === "object" && "code" in error && error.code === "EEXIST";
+  return error instanceof Error && "code" in error && error.code === "EEXIST";
 }
