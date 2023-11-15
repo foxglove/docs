@@ -5,11 +5,27 @@ description: Start processing data with your Foxglove On-Device Agent
 
 Start processing data with your Foxglove On-Device Agent.
 
+All recordings should be placed in a directory identified by the `--storage-root` flag given to the binary.
+
 ### Watch mode
 
-The On-Device Agent watches the directory supplied with the `--storage-root` command-line argument. No further steps are needed for the agent to become aware of recordings on the device.
+If `--watch-mode[=true]` is supplied to the binary, the On-Device Agent watches the directory supplied with the `--storage-root` command-line argument. No further steps are needed for the agent to become aware of recordings on the device.
 
 ### Manual mode
+
+If you are not running in watch mode, you may notify the agent of new recordings via an HTTP request.
+
+0. Start the agent with the `--port` command to start a server on the specified port
+1. Write the recording to the storage root directory
+2. Make an HTTP POST request to the agent's `/v1/recordings` endpoint. The request body must include a `path` (string path to the recording within the storage volume) and `deviceName` (for the recording). Use the optional `autoImport`` parameter to trigger an immediate import of the data:
+
+Example:
+
+```shell
+$ curl -X POST http://localhost:9099/v1/recordings -d '{"path": "path/to/log.mcap" }'
+```
+
+The agent will store information about the file and notify the Foxglove control plane. Your recording will appear on the [Recordings page](https://console.foxglove.dev/recordings) and be available via the recordings API endpoint.
 
 ### Import to cloud
 

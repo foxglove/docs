@@ -15,9 +15,19 @@ Create a device [Devices page](https://console.foxglove.dev/devices), or select 
 
 ### Create a device token
 
+This requires the `admin` role.
+
 On the device details page, click the Device Tokens tab.
 
 Click "Create new token". When you create the token, a secret key is generated and displayed only once. Copy this secret, which you'll need to provide when running the binary on your robot.
+
+#### API
+
+You may also create a device token using the Foxglove API.
+
+In Console, visit the [API keys settings](https://console.foxglove.dev/settings/apikeys) and create an API key with the appropriate "deviceToken" capabilities (list, create, etc).
+
+Use this key to create device tokens using the [device token API endpoints](/api#tag/Device-Tokens) <span class="Debug">(verify link once published)</span>.
 
 ### Download the device agent binary
 
