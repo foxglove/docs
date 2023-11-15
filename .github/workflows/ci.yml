@@ -34,8 +34,10 @@ jobs:
       - name: Check docs links
         uses: ruzickap/action-my-broken-link-checker@v2
         with:
-          url: https://docs.foxglove.dev
-          pages_path: ./build/
+          url: https://docs.foxglove.dev/docs
+          pages_path: ./build/docs/
+          debug: true
+          # cmd_params: '--exclude="(fonts.googleapis.com|fonts.gstatic.com)"'
 
       - name: Deploy
         uses: cloudflare/pages-action@v1

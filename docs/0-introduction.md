@@ -15,5 +15,5 @@ With Foxglove, robotics teams can spend less time worrying about their developer
 
 ## Links and resources
 
-- [Web app](https://studio.foxglove.dev/)
-- [Desktop app download](https://foxglove.dev/download) (for Linux, Windows, and macOS)
+- [Web app](https://studio.foxglove.dev/x)
+- [Desktop app download](https://foxglove.dev/download/x) (for Linux, Windows, and macOS)

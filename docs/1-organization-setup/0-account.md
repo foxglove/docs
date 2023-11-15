@@ -33,4 +33,4 @@ This selection applies only to imported data files – import metadata, user ac
 
 - [Sign up](https://console.foxglove.dev/signup)
 - [Desktop app download](https://foxglove.dev/download) (for Linux, Windows, and macOS)
-- [Self-hosting Foxglove](/docs/primary-sites/introduction)
+- [Self-hosting Foxglove](/docs/primary-sites/introduction/x)
