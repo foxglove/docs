@@ -7,7 +7,11 @@ Install and configure a Foxglove On-Device Agent.
 
 ### Prerequisites
 
-<p class="Debug">System requirements on-robot?</p>
+The On-Device Agent runs in Linux on AMD64 or ARM64 systems. The agent is designed to run with minimal memory usage and does not impose hard requirements.
+
+The agent must have an internet connection which is able to reach https://api.foxglove.dev, at least intermittently.
+
+For _watch mode_, the agent requires a filesystem that supports `fsnotify`. See [Manage Data](./manage-data) for more information on watch mode and its alternative.
 
 ### Create a device
 
@@ -31,15 +35,19 @@ Use this key to create device tokens using the [device token API endpoints](/api
 
 ### Download the device agent binary
 
-Download the latest On-Device Agent binary <span class="Debug">{name?} from {?}</span>
+Download the latest On-Device Agent binary <span class="Debug">{name?} from {github repo releases/latest - TBD}</span>
+
+```sh
+curl https://example.com
+```
+
+<span class="Debug">command tbd</span>
 
 ### Run the agent
 
 Copy the binary to your device, and run with the provided command-line arguments.
 
-<p class="Debug">suggest some sort of process management tool here? init.d or whatever</p>
-
-<p class="Debug">Note: code block below is TBD — what are the minimum set of flags?</p>
+<p class="Debug">[todo] wyatt to create a systemd file</p>
 
 ```sh
 ./foxglove-device-agent \
@@ -47,12 +55,21 @@ Copy the binary to your device, and run with the provided command-line arguments
     --storage-root "./my-directory"
 ```
 
+<p class="Debug">[todo] wyatt to confirm minimal set of flags</p>
+
+Additional flags may be supplied as documented in this section. <span class="Debug">list the relevant ones here?</span>
+
+Configuration may also be supplied by environment variables (e.g. `STORAGE_ROOT='./my-directory'`).
+
 #### Upload Credentials
 
 If you will be uploading recordings from your On-Device Agent to the Foxglove-hosted platform, you do not need to take additional steps.
 
+<p class="Debug">TBD if self-managed is supported (FG-5761)</p>
+
 If you want to upload recordings to a Primary Site that you manage, you will need to provide credentials to the binary.
 
+<!--
 ##### Google Cloud Platform
 
 <p class="Debug">TBD</p>
@@ -75,15 +92,14 @@ If you want to upload recordings to a Primary Site that you manage, you will nee
   --azure-storage-account-name
   --azure-storage-service-url
 ```
+-->
 
 ### Confirm running
 
 If misconfigured, the agent will log errors and exit with a nonzero status.
 
-<p class="Debug">status will depend on how you launch...?</p>
-
-<p class="Debug">Future: Can we have a step that confirms running? Maybe a check-in timestamp on device-info?</p>
+For systemd, `sysctl status` will report that the agent is running.
 
 ### Next steps
 
-To add recordings to your site, see [Manage Data](./manage-data).
+To add recordings to your On-Device Agent, see [Manage Data](./manage-data).

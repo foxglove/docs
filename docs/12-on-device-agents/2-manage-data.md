@@ -5,7 +5,7 @@ description: Start processing data with your Foxglove On-Device Agent
 
 Start processing data with your Foxglove On-Device Agent.
 
-All recordings should be placed in a directory identified by the `--storage-root` flag given to the binary.
+All recordings should be placed in a directory identified by the `--storage-root` flag given to the binary. Subdirectories within this storage root are allowed.
 
 ### Watch mode
 
@@ -15,9 +15,9 @@ If `--watch-mode[=true]` is supplied to the binary, the On-Device Agent watches 
 
 If you are not running in watch mode, you may notify the agent of new recordings via an HTTP request.
 
-0. Start the agent with the `--port` command to start a server on the specified port
-1. Write the recording to the storage root directory
-2. Make an HTTP POST request to the agent's `/v1/recordings` endpoint. The request body must include a `path` (string path to the recording within the storage volume) and `deviceName` (for the recording). Use the optional `autoImport`` parameter to trigger an immediate import of the data:
+1. Start the agent with the `--port` command to start a server on the specified port. If not specified, a default of 9099 is used.
+2. Write the recording to the storage root directory
+3. Make an HTTP POST request to the agent's `/v1/recordings` endpoint. The request body must include a `path` relative to the `--storage-root` setting:
 
 Example:
 
