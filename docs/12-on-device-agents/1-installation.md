@@ -1,9 +1,9 @@
 ---
 title: Installation
-description: Install and configure a Foxglove Device Agent.
+description: Install and configure a Foxglove On-Device Agent.
 ---
 
-Install and configure a Foxglove Device Agent.
+Install and configure a Foxglove On-Device Agent.
 
 ### Prerequisites
 
@@ -21,7 +21,7 @@ Click "Create new token". When you create the token, a secret key is generated a
 
 ### Download the device agent binary
 
-Download the latest Device Agent binary <span class="Debug">{name?} from {?}</span>
+Download the latest On-Device Agent binary <span class="Debug">{name?} from {?}</span>
 
 ### Run the agent
 
@@ -39,7 +39,7 @@ Copy the binary to your device, and run with the provided command-line arguments
 
 #### Upload Credentials
 
-If you will be uploading recordings from your Device Agent to the Foxglove-hosted platform, you do not need to take additional steps.
+If you will be uploading recordings from your On-Device Agent to the Foxglove-hosted platform, you do not need to take additional steps.
 
 If you want to upload recordings to a Primary Site that you manage, you will need to provide credentials to the binary.
 

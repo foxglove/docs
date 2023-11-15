@@ -1,13 +1,15 @@
 ---
 title: Manage data
-description: Start processing data with your Foxglove Device Agent
+description: Start processing data with your Foxglove On-Device Agent
 ---
 
-Start processing data with your Foxglove Device Agent.
+Start processing data with your Foxglove On-Device Agent.
 
 ### Watch mode
 
-The Device Agent watches the directory supplied with the `--storage-root` command-line argument. No further steps are needed for the agent to become aware of recordings on the device.
+The On-Device Agent watches the directory supplied with the `--storage-root` command-line argument. No further steps are needed for the agent to become aware of recordings on the device.
+
+### Manual mode
 
 ### Import to cloud
 
