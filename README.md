@@ -6,7 +6,7 @@ Documentation for the [Foxglove observability platform](https://foxglove.dev) an
 
 ![Foxglove app](/static/img/docs/introduction/hero.png)
 
-### Contributing
+## Contributing
 
 We welcome edits and contributions to the Foxglove docs.
 
@@ -14,7 +14,7 @@ Start by cloning this repo, and creating a feature branch with your proposed cha
 
 Once you push your feature branch, you can open a [pull request](https://github.com/foxglove/docs/pulls). A Foxglove team member will review the proposed changes before merging and deploying.
 
-### Local development
+## Local development
 
 Install dependencies:
 
@@ -28,6 +28,10 @@ Start the local development server:
 $ yarn start
 ```
 
-### Credits
+## Credits
 
 Built using [Docusaurus 2](https://docusaurus.io/).
+
+## License
+
+Copyright &copy; Foxglove Technologies Inc. All rights reserved.
