@@ -1,15 +1,15 @@
 ---
 title: Manage data
-description: Start processing data with your Foxglove On-Device Agent
+description: Start processing data with your Foxglove Agent
 ---
 
-Start processing data with your Foxglove On-Device Agent.
+Start processing data with your Foxglove Agent.
 
 All recordings should be placed in a directory identified by the `--storage-root` flag given to the binary. Subdirectories within this storage root are allowed.
 
 ### Watch mode
 
-If `--watch-mode[=true]` is supplied to the binary, the On-Device Agent watches the directory supplied with the `--storage-root` command-line argument. No further steps are needed for the agent to become aware of recordings on the device.
+If `--watch-mode[=true]` is supplied to the binary, the agent watches the directory supplied with the `--storage-root` command-line argument. No further steps are needed for the agent to become aware of recordings on the device.
 
 ### Manual mode
 

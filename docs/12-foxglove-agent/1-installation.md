@@ -1,19 +1,21 @@
 ---
 title: Installation
-description: Install and configure a Foxglove On-Device Agent.
+description: Install and configure a Foxglove Agent.
 ---
 
-Install and configure a Foxglove On-Device Agent.
+Install and configure a Foxglove Agent.
 
 ### Prerequisites
 
-The On-Device Agent runs in Linux on AMD64 or ARM64 systems. The agent is designed to run with minimal memory usage and does not impose hard requirements.
+The Foxglove Agent runs in Linux on AMD64 or ARM64 systems. The agent is designed to run with minimal memory usage and does not impose hard requirements.
 
 The agent must have an internet connection which is able to reach https://api.foxglove.dev, at least intermittently.
 
 For _watch mode_, the agent requires a filesystem that supports `fsnotify`. See [Manage Data](./manage-data) for more information on watch mode and its alternative.
 
 ### Create a device
+
+The Foxglove Agent runs on one of your devices.
 
 Create a device [Devices page](https://console.foxglove.dev/devices), or select a device you have already created.
 
@@ -35,7 +37,7 @@ Use this key to create device tokens using the [device token API endpoints](/api
 
 ### Download the device agent binary
 
-Download the latest On-Device Agent binary <span class="Debug">{name?} from {github repo releases/latest - TBD}</span>
+Download the latest `foxglove-device-agent` binary from <span class="Debug">{github repo releases/latest - TBD}</span>
 
 ```sh
 curl https://example.com
@@ -63,7 +65,7 @@ Configuration may also be supplied by environment variables (e.g. `STORAGE_ROOT=
 
 #### Upload Credentials
 
-If you will be uploading recordings from your On-Device Agent to the Foxglove-hosted platform, you do not need to take additional steps.
+If you will be uploading recordings from your Foxglove Agent to the Foxglove-hosted platform, you do not need to take additional steps.
 
 <p class="Debug">TBD if self-managed is supported (FG-5761)</p>
 
@@ -98,7 +100,7 @@ If you want to upload recordings to a Primary Site that you manage, you will nee
 
 If misconfigured, the agent will log errors and exit with a nonzero status.
 
-For systemd, `sysctl status` will report that the agent is running.
+For systemd, `sysctl status foxglove-device-agent` will report that the agent is running.
 
 ### Next steps
 
