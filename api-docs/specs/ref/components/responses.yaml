@@ -18,10 +18,16 @@ Device:
     updatedAt:
       type: string
       format: date-time
-    deletedAt:
-      type: string
-      format: date-time
-
+    properties:
+      type: object
+      additionalProperties:
+        oneOf:
+          - type: string
+          - type: number
+          - type: boolean
+      description: |
+        A key-value map, where each key is one of your pre-defined device custom properties.
+        Keys which are not recognized as custom properties will be ignored.
   required:
     - id
     - name
