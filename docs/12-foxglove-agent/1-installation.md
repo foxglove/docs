@@ -11,7 +11,7 @@ Install and configure the Foxglove Agent.
 
 ### Prerequisites
 
-The Foxglove Agent runs on debian-based Linux distributions. ARM64 and AMD64 architectures are supported. The agent requires HTTPS connectivity to api.foxglove.dev, but a stable connection is not required.
+The Foxglove Agent runs on debian-based Linux distributions. ARM64 and AMD64 architectures are supported. The agent requires HTTPS connectivity to `api.foxglove.dev`, but a stable connection is not required.
 
 The agent expects recordings to be stored on a filesystem that supports `fsnotify`. The agent also requires a directory for storage of local state files.
 
