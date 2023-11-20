@@ -1,16 +1,14 @@
 ---
 title: Upgrading
-description: Upgrade the version of your Foxglove Agent.
+description: Upgrade your Foxglove Agent.
 ---
 
-Upgrade the version of your Foxglove Agent.
+import AccountRequiredHeader from "../../src/components/docs/icons/AccountRequiredHeader";
 
-Foxglove does not provide remote updates or fleet management. To get the latest version, download the updated binary from <span class="Debug">TBD</span> and deploy it to your devices.
+<AccountRequiredHeader badgeText="Requires Enterprise plan" />
+
+To get the latest version, download the latest `foxglove-agent` package for your architecture from the [releases page](https://github.com/foxglove/agent/releases) and install with dpkg.
 
 ```sh
-curl https://example.com
+dpkg -i foxglove-agent-linux-amd64.deb
 ```
-
-<span class="Debug">command tbd</span>
-
-<p class="Debug">[todo] wyatt — instructions for systemd restart</p>

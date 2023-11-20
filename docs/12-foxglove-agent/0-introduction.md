@@ -1,12 +1,12 @@
 ---
 title: Introduction
-description: The Foxglove Agent is a process that runs on your robot. It's designed to monitor the robot's filesystem for logs and notify the Foxglove control plane when recordings are available for import.
+description: The Foxglove Agent runs on your device and monitors its filesystem for recordings.
 ---
 
 import AccountRequiredHeader from "../../src/components/docs/icons/AccountRequiredHeader";
 
 <AccountRequiredHeader badgeText="Requires Enterprise plan" />
 
-The Foxglove Agent is a process that runs on your robot. It's designed to monitor the robot's filesystem for logs and notify the Foxglove control plane when recordings are available for import. You control which recordings are imported and when by selecting them for import.
+The Foxglove Agent runs on your device and monitors its filesystem for recordings. It then notifies Foxglove when they are available for import. These recordings appear on your [Recordings page](https://console.foxglove.dev/recordings) and can be imported on demand.
 
-Your [Devices page](https://console.foxglove.dev/devices) lists the robots in your organization. Each device may or may not have an agent running. To set up a Foxglove Agent, you'll create a Device Token for authorization, and install a single binary on your robot. You are responsible for the monitoring and lifecycle of the agent process.
+Follow the [installation instructions](./1-installation.md) to get started.

@@ -1,107 +1,68 @@
 ---
 title: Installation
-description: Install and configure a Foxglove Agent.
+description: Install and configure the Foxglove Agent.
 ---
 
-Install and configure a Foxglove Agent.
+import AccountRequiredHeader from "../../src/components/docs/icons/AccountRequiredHeader";
+
+<AccountRequiredHeader badgeText="Requires Enterprise plan" />
+
+Install and configure the Foxglove Agent.
 
 ### Prerequisites
 
-The Foxglove Agent runs in Linux on AMD64 or ARM64 systems. The agent is designed to run with minimal memory usage and does not impose hard requirements.
+The Foxglove Agent runs on debian-based Linux distributions. ARM64 and AMD64 architectures are supported. The agent requires HTTPS connectivity to api.foxglove.dev, but a stable connection is not required.
 
-The agent must have an internet connection which is able to reach https://api.foxglove.dev, at least intermittently.
-
-For _watch mode_, the agent requires a filesystem that supports `fsnotify`. See [Manage Data](./manage-data) for more information on watch mode and its alternative.
+The agent expects recordings to be stored on a filesystem that supports `fsnotify`. The agent also requires a directory for storage of local state files.
 
 ### Create a device
 
-The Foxglove Agent runs on one of your devices.
+The Foxglove Agent runs on your device.
 
 Create a device [Devices page](https://console.foxglove.dev/devices), or select a device you have already created.
 
 ### Create a device token
 
-This requires the `admin` role.
+This requires the `admin` role in Foxglove.
 
 On the device details page, click the Device Tokens tab.
 
-Click "Create new token". When you create the token, a secret key is generated and displayed only once. Copy this secret, which you'll need to provide when running the binary on your robot.
+Click "Create new token". When you create the token, a secret token is generated and displayed only once. This will be supplied to the agent in configuration.
 
 #### API
 
-You may also create a device token using the Foxglove API.
+An admin may also create a device token using the Foxglove API.
 
-In Console, visit the [API keys settings](https://console.foxglove.dev/settings/apikeys) and create an API key with the appropriate "deviceToken" capabilities (list, create, etc).
+Visit the [API key settings](https://console.foxglove.dev/settings/apikeys) and create an API key with the appropriate "deviceToken" capabilities (list, create, etc).
 
-Use this key to create device tokens using the [device token API endpoints](/api#tag/Device-Tokens) <span class="Debug">(verify link once published)</span>.
+Use this key to create device tokens using the [device tokens API](/api#tag/Device-Tokens) <span class="Debug">(verify link once published)</span>.
 
-### Download the device agent binary
+### Download the device agent package
 
-Download the latest `foxglove-device-agent` binary from <span class="Debug">{github repo releases/latest - TBD}</span>
+Download the latest `foxglove-agent` package for your architecture from the [releases page](https://github.com/foxglove/agent/releases) and install with dpkg, for example:
 
 ```sh
-curl https://example.com
+dpkg -i foxglove-agent-linux-amd64.deb
 ```
-
-<span class="Debug">command tbd</span>
 
 ### Run the agent
 
-Copy the binary to your device, and run with the provided command-line arguments.
+Configure the `FOXGLOVE_DEVICE_TOKEN` setting in `/etc/foxglove/agent/envfile` with the secret token obtained above. Some additional configuration options such as your recording directory may also be set according to the instructions in that file.
 
-<p class="Debug">[todo] wyatt to create a systemd file</p>
-
-```sh
-./foxglove-device-agent \
-    --device-token ${DEVICE_TOKEN_SECRET} \
-    --storage-root "./my-directory"
-```
-
-<p class="Debug">[todo] wyatt to confirm minimal set of flags</p>
-
-Additional flags may be supplied as documented in this section. <span class="Debug">list the relevant ones here?</span>
-
-Configuration may also be supplied by environment variables (e.g. `STORAGE_ROOT='./my-directory'`).
-
-#### Upload Credentials
-
-If you will be uploading recordings from your Foxglove Agent to the Foxglove-hosted platform, you do not need to take additional steps.
-
-<p class="Debug">TBD if self-managed is supported (FG-5761)</p>
-
-If you want to upload recordings to a Primary Site that you manage, you will need to provide credentials to the binary.
-
-<!--
-##### Google Cloud Platform
-
-<p class="Debug">TBD</p>
+When configuration is complete, restart the service and check its status with
+systemctl.
 
 ```sh
-
+systemctl restart foxglove-agent
+systemctl status foxglove-agent
 ```
 
-##### AWS
-
-<p class="Debug">TBD</p>
-
-```sh
+Consult the logs with journalctl for debugging.
 
 ```
-
-##### Azure
-
-```sh
-  --azure-storage-account-name
-  --azure-storage-service-url
+journalctl -u foxglove-agent
 ```
--->
-
-### Confirm running
-
-If misconfigured, the agent will log errors and exit with a nonzero status.
-
-For systemd, `sysctl status foxglove-device-agent` will report that the agent is running.
 
 ### Next steps
 
-To add recordings to your On-Device Agent, see [Manage Data](./manage-data).
+To add recordings to your On-Device Agent, see [Manage Data](./2-manage-data).
