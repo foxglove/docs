@@ -1,15 +1,13 @@
 ---
 title: Introduction
-description: As a robotics observability platform, Foxglove helps teams explore, collaborate on, and ultimately make sense of their data more efficiently.
+description: Foxglove helps teams explore, collaborate on, and ultimately make sense of their data more efficiently.
 ---
 
-To take your robots out of the lab and into production, you must first understand how your robots sense, think, and act.
-
-**As an observability platform, Foxglove helps robotics teams explore, collaborate on, and make sense of their robots' data – for more intelligent iteration and accelerated development.**
+**Foxglove helps robotics teams explore, collaborate on, and make sense of their robots' data – for more intelligent iteration and accelerated development.**
 
 ![Foxglove](/img/docs/introduction/hero.png)
 
-## Supported workflows
+## Workflows
 
 Foxglove provides a wide array of developer tooling for every step of the robotics development process.
 
@@ -21,19 +19,12 @@ Foxglove provides a wide array of developer tooling for every step of the roboti
   - Index the data by device, time, and topic
   - Set retention policies to manage your team's data store
   - Configure webhooks to integrate with the rest of your data pipeline
+- ## **Visualize**
+  - Configure [panels](/docs/visualization/panels/introduction) to understand how your robots sense, think, and act
+  - Create shared [layouts](/docs/visualization/layouts) for tackling repeated visualization and debugging tasks
 - **Collaborate**
   - Annotate logs with [metadata and events](/docs/events) for easier search and discovery
-  - Create shared [layouts](/docs/visualization/layouts) for tackling repeated visualization and debugging tasks
   - Rely on collective knowledge to triage incidents and analyze the root cause of an issue
-
-### General setup
-
-- [Create a free account](/docs/organization-setup/account), or [upgrade to a paid plan](https://foxglove.dev/pricing) for your robotics organization
-- (Optional) [Implement Okta SSO](/docs/organization-setup/okta-sso)
-- Invite collaborators to join your Foxglove organization
-- Use the default Foxglove-hosted [cloud account](/docs/primary-sites/introduction), or set up a [self-hosted alternative](/docs/primary-sites/self-hosting/installation) for finer-grained control
-- Build data ingestion pipelines using the [Foxglove REST API](/api)
-- Install [Edge sites](/docs/edge-sites/installation) to import data from wherever your robots are recording – even in connectivity-constrained environments
 
 ### Getting started
 
