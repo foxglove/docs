@@ -185,9 +185,7 @@ Invoking `log()` outside your `script` function will invoke it once, when your s
 
 Note that if your topic publishes at a high rate, using `log()` will significantly slow down your code.
 
-### FAQ
-
-**What if I don't want to produce a message every time publish is called?**
+### Skipping output
 
 Do an early (or late) `return` in your function body when you don't want to publish. For example, let's say you only wanted to publish messages when a constant in the input is not 3:
 
@@ -209,41 +207,6 @@ export default function script(event: Input<"/state">): { metrics: number } | un
 ```
 
 In Typescript, if you return without a value, it will implicitly return `undefined`. Note the union return type for the `script` function – we've indicated to Typescript that this function can return `undefined`.
-
-**Can I return arbitrary JSON data in a message?**
-
-Yes! User Scripts supports the json type. You can import it from the `./types` module:
-
-```typescript
-import { Input } from "./types";
-
-export const inputs = ["/state"];
-export const output = "/studio_script/json_data";
-
-type Output = {
-  data: {
-    foo: number,
-    bar: string,
-    nestedData: {
-       foo: number[],
-       bar: boolean,
-    }
-  }
-}
-
-export default function script(event: Input<"/state">): Output => {
-  return {
-    data: {
-      foo: 123,
-      bar: "string",
-      nestedData: {
-        foo: [1, 2, 3],
-        bar: true,
-      },
-    },
-  };
-};
-```
 
 ### Using `@foxglove/schemas`
 
