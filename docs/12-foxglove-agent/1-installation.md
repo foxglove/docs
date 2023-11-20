@@ -50,14 +50,14 @@ dpkg -i foxglove-agent-linux-amd64.deb
 Configure the `FOXGLOVE_DEVICE_TOKEN` setting in `/etc/foxglove/agent/envfile` with the secret token obtained above. Some additional configuration options such as your recording directory may also be set according to the instructions in that file.
 
 When configuration is complete, restart the service and check its status with
-systemctl.
+`systemctl`.
 
 ```sh
 systemctl restart foxglove-agent
 systemctl status foxglove-agent
 ```
 
-Consult the logs with journalctl for debugging.
+Consult the logs with `journalctl` for debugging.
 
 ```
 journalctl -u foxglove-agent
