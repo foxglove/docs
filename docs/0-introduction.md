@@ -19,7 +19,7 @@ Foxglove provides a wide array of developer tooling for every step of the roboti
   - Index the data by device, time, and topic
   - Set retention policies to manage your team's data store
   - Configure webhooks to integrate with the rest of your data pipeline
-- ## **Visualize**
+- **Visualize**
   - Configure [panels](/docs/visualization/panels/introduction) to understand how your robots sense, think, and act
   - Create shared [layouts](/docs/visualization/layouts) for tackling repeated visualization and debugging tasks
 - **Collaborate**
