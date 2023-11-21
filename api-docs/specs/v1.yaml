@@ -145,7 +145,7 @@ x-tagGroups:
       - Coverage
       - Custom Properties
       - Devices
-      # - Device tokens
+      - Device Tokens
       - Events
       - Recordings
       - Recording Attachments
@@ -1952,6 +1952,144 @@ paths:
                 properties:
                   id:
                     type: string
+                required:
+                  - id
+
+  /device-tokens:
+    get:
+      tags: [Device tokens]
+      summary: List device tokens
+      security:
+        - Session: [org_admin]
+        - ApiKey: ["deviceTokens.list"]
+
+      parameters:
+        - in: query
+          name: deviceId
+          description: Filter by device ID
+          schema:
+            type: string
+          required: false
+
+      responses:
+        "200":
+          description: List of device tokens
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/DeviceToken"
+
+    post:
+      tags: [Device tokens]
+      summary: Create a device token
+      description: You must have an Enterprise account to create and use device tokens
+
+      security:
+        - Session: [org_admin]
+        - ApiKey: ["deviceTokens.create"]
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                deviceId:
+                  type: string
+                  description: Device ID associated with the newly created token
+              required:
+                - deviceId
+
+      responses:
+        "200":
+          description: A new device token
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/DeviceToken"
+                  - type: object
+                    properties:
+                      token:
+                        type: string
+                        description: Generated token. This is only available on creation.
+
+  /device-tokens/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: Device token ID
+
+    get:
+      tags: [Device tokens]
+      summary: Get a device token
+
+      security:
+        - Session: [org_admin]
+        - ApiKey: ["deviceTokens.list"]
+
+      responses:
+        "200":
+          description: The device token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeviceToken"
+
+    patch:
+      tags: [Device tokens]
+      summary: Edit a device token
+
+      security:
+        - Session: [org_admin]
+        - ApiKey: ["deviceTokens.update"]
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enabled:
+                  type: boolean
+                  description: Enables or disables the device token.
+              required:
+                - enabled
+
+      responses:
+        "200":
+          description: The device token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeviceToken"
+
+    delete:
+      tags: [Device tokens]
+      summary: Delete a device token
+
+      security:
+        - Session: [org_admin]
+        - ApiKey: ["deviceTokens.delete"]
+
+      responses:
+        "200":
+          description: The deleted device token ID
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The device token ID
                 required:
                   - id
 
