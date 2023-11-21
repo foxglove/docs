@@ -42,7 +42,7 @@ Use this key to create device tokens using the [device tokens API](/api#tag/Devi
 Download the latest `foxglove-agent` package for your architecture from the [releases page](https://github.com/foxglove/agent/releases) and install with dpkg, for example:
 
 ```sh
-dpkg -i foxglove-agent-linux-amd64.deb
+dpkg -i foxglove-agent_1.0.0_amd64.deb
 ```
 
 ### Run the agent
