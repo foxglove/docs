@@ -3,7 +3,7 @@ title: Introduction
 description: Foxglove helps teams explore, collaborate on, and ultimately make sense of their data more efficiently.
 ---
 
-**Foxglove helps robotics teams explore, collaborate on, and make sense of their robots' data – for more intelligent iteration and accelerated development.**
+Foxglove helps robotics teams explore, collaborate on, and make sense of their robots' data – for more intelligent iteration and accelerated development.
 
 ![Foxglove](/img/docs/introduction/hero.png)
 
@@ -26,7 +26,7 @@ Foxglove provides a wide array of developer tooling for every step of the roboti
   - Annotate logs with [metadata and events](/docs/events) for easier search and discovery
   - Rely on collective knowledge to triage incidents and analyze the root cause of an issue
 
-### Getting started
+## Getting started
 
 - Record multimodal data using a variety of [supported encoding formats](/docs/connecting-to-data/local-data#supported-formats)
   - [MCAP](https://mcap.dev) allows multiple streams of structured and unstructured data in one file (e.g. ROS, Protobuf, JSON Schema, etc.)
