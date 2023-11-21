@@ -35,7 +35,7 @@ An admin may also create a device token using the Foxglove API.
 
 Visit the [API key settings](https://console.foxglove.dev/settings/apikeys) and create an API key with the appropriate "deviceToken" capabilities (list, create, etc).
 
-Use this key to create device tokens using the [device tokens API](/api#tag/Device-Tokens) <span class="Debug">(verify link once published)</span>.
+Use this key to create device tokens using the [device tokens API](/api#tag/Device-Tokens).
 
 ### Download the device agent package
 
