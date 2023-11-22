@@ -13,7 +13,7 @@ Install and configure the Foxglove Agent.
 
 - Debian-based Linux distribution (ARM64 and AMD64 architectures supported)
 - HTTPS connectivity to `api.foxglove.dev` (stable connection not required)
-- Filesystem that supports `fsnotify`
+- The filesystem hosting your recordings storage directory must support`fsnotify`
 - Directory for storing local state files
 
 ### Create a device and device token
