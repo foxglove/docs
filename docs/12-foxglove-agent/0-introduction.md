@@ -1,12 +1,14 @@
 ---
 title: Introduction
-description: The Foxglove Agent runs on your device and monitors its filesystem for recordings.
+description: The Foxglove Agent runs on a device and monitors a designated directory in its filesystem for newly recorded data files.
 ---
 
 import AccountRequiredHeader from "../../src/components/docs/icons/AccountRequiredHeader";
 
 <AccountRequiredHeader badgeText="Requires Enterprise plan" />
 
-The Foxglove Agent runs on your device and monitors its filesystem for recordings. It then notifies Foxglove when they are available for import. These recordings appear on your [Recordings page](https://console.foxglove.dev/recordings) and can be imported on demand.
+The Foxglove Agent runs on a device and monitors a designated directory in its filesystem for newly recorded data files.
 
-Follow the [installation instructions](./1-installation.md) to get started.
+Once recordings are available, they appear on your Foxglove account's [Recordings page](https://console.foxglove.dev/recordings) and can be imported on demand.
+
+[Install the agent](./1-installation.md) on your robots to get started.

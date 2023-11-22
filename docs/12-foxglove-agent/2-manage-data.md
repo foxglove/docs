@@ -1,15 +1,17 @@
 ---
 title: Manage data
-description: Start processing data with your Foxglove Agent
+description: Start processing data recordings with your Foxglove Agent.
 ---
 
 import AccountRequiredHeader from "../../src/components/docs/icons/AccountRequiredHeader";
 
 <AccountRequiredHeader badgeText="Requires Enterprise plan" />
 
-Start processing data with your Foxglove Agent.
+Start processing data recordings with your Foxglove Agent.
 
-All recordings should be placed in a directory identified by the `STORAGE_ROOT` configuration setting in `/etc/foxglove/agent/envfile`.
+### Set up directory
+
+Configure the `STORAGE_ROOT` setting in `/etc/foxglove/agent/envfile` with the directory you want to monitor for newly recorded data files.
 
 ### Import to cloud
 

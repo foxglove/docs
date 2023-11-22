@@ -11,58 +11,42 @@ Install and configure the Foxglove Agent.
 
 ### Prerequisites
 
-The Foxglove Agent runs on debian-based Linux distributions. ARM64 and AMD64 architectures are supported. The agent requires HTTPS connectivity to `api.foxglove.dev`, but a stable connection is not required.
+- Debian-based Linux distribution (ARM64 and AMD64 architectures supported)
+- HTTPS connectivity to `api.foxglove.dev` (stable connection not required)
+- Filesystem that supports `fsnotify`
+- Directory for storing local state files
 
-The agent expects recordings to be stored on a filesystem that supports `fsnotify`. The agent also requires a directory for storage of local state files.
+### Create a device and device token
 
-### Create a device
+Create a device from the [Devices page](https://console.foxglove.dev/devices), or select one that you've already created.
 
-The Foxglove Agent runs on your device.
+An admin for your Foxglove organization can then go to that device's details page, navigate to the "Device Tokens" tab, and generate a secret token. This token will be displayed only once, and is required for agent configuration.
 
-Create a device [Devices page](https://console.foxglove.dev/devices), or select a device you have already created.
+An admin can also create a device token via the Foxglove API. On the [API key settings page](https://console.foxglove.dev/settings/apikeys), create an API key with the appropriate `deviceToken` capabilities (list, create, etc), and use it to create device tokens via the [device tokens API endpoint](/api#tag/Device-Tokens).
 
-### Create a device token
+### Download and upgrade the Foxglove Agent package
 
-This requires the `admin` role in Foxglove.
-
-On the device details page, click the Device Tokens tab.
-
-Click "Create new token". When you create the token, a secret token is generated and displayed only once. This will be supplied to the agent in configuration.
-
-#### API
-
-An admin may also create a device token using the Foxglove API.
-
-Visit the [API key settings](https://console.foxglove.dev/settings/apikeys) and create an API key with the appropriate "deviceToken" capabilities (list, create, etc).
-
-Use this key to create device tokens using the [device tokens API](/api#tag/Device-Tokens).
-
-### Download the device agent package
-
-Download the latest `foxglove-agent` package for your architecture from the [releases page](https://github.com/foxglove/agent/releases) and install with dpkg, for example:
+Download the latest `foxglove-agent` package for your architecture from the [releases page](https://github.com/foxglove/agent/releases). Install with a package manager like `dpkg`:
 
 ```sh
-dpkg -i foxglove-agent_1.0.0_amd64.deb
+$ dpkg -i foxglove-agent_1.0.0_amd64.deb
 ```
 
-### Run the agent
+To upgrade the package, check the releases page for newer release versions to download.
 
-Configure the `FOXGLOVE_DEVICE_TOKEN` setting in `/etc/foxglove/agent/envfile` with the secret token obtained above. Some additional configuration options such as your recording directory may also be set according to the instructions in that file.
+### Run the Foxglove Agent
 
-When configuration is complete, restart the service and check its status with
-`systemctl`.
+Configure the `FOXGLOVE_DEVICE_TOKEN` setting in `/etc/foxglove/agent/envfile` with the secret device token generated above. Set additional configuration options, such as your recording directory, according to instructions in that file.
+
+Then, restart the service and check its status with `systemctl`:
 
 ```sh
-systemctl restart foxglove-agent
-systemctl status foxglove-agent
+$ systemctl restart foxglove-agent
+$ systemctl status foxglove-agent
 ```
 
-Consult the logs with `journalctl` for debugging.
+Consult the logs with `journalctl` for debugging:
 
 ```
-journalctl -u foxglove-agent
+$ journalctl -u foxglove-agent
 ```
-
-### Next steps
-
-To add recordings to your On-Device Agent, see [Manage Data](./2-manage-data).
