@@ -26,7 +26,7 @@ An admin can also create a device token via the Foxglove API. On the [API key se
 
 ### Download and upgrade the Foxglove Agent package
 
-Download the latest `foxglove-agent` package for your architecture from the [releases page](https://github.com/foxglove/agent/releases). Install with a package manager like `dpkg`:
+Download the latest `foxglove-agent` package for your architecture from the [releases page](https://github.com/foxglove/agent/releases). Install with `dpkg`:
 
 ```sh
 $ dpkg -i foxglove-agent_1.0.0_amd64.deb
