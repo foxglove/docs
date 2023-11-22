@@ -135,7 +135,7 @@ tags:
     description: |
       A site is a logical grouping of storage and compute for storing Recording data.
 
-  - name: Device tokens
+  - name: Device Tokens
     description: |
       Device tokens are used by Foxglove device agents to authenticate to the API.
 
@@ -1957,7 +1957,7 @@ paths:
 
   /device-tokens:
     get:
-      tags: [Device tokens]
+      tags: [Device Tokens]
       summary: List device tokens
       security:
         - Session: [org_admin]
@@ -1982,7 +1982,7 @@ paths:
                   $ref: "#/components/schemas/DeviceToken"
 
     post:
-      tags: [Device tokens]
+      tags: [Device Tokens]
       summary: Create a device token
       description: You must have an Enterprise account to create and use device tokens
 
@@ -2027,7 +2027,7 @@ paths:
         description: Device token ID
 
     get:
-      tags: [Device tokens]
+      tags: [Device Tokens]
       summary: Get a device token
 
       security:
@@ -2043,7 +2043,7 @@ paths:
                 $ref: "#/components/schemas/DeviceToken"
 
     patch:
-      tags: [Device tokens]
+      tags: [Device Tokens]
       summary: Edit a device token
 
       security:
@@ -2072,7 +2072,7 @@ paths:
                 $ref: "#/components/schemas/DeviceToken"
 
     delete:
-      tags: [Device tokens]
+      tags: [Device Tokens]
       summary: Delete a device token
 
       security:
