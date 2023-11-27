@@ -5,7 +5,7 @@ description: Secure your webhook endpoint.
 
 import AccountRequiredHeader from "../../src/components/docs/icons/AccountRequiredHeader";
 
-<AccountRequiredHeader badgeText="Requires Enterprise plan" />
+<AccountRequiredHeader badgeText="Closed Beta, contact us for access" />
 
 Secure your webhook endpoint.
 
@@ -42,7 +42,7 @@ In order to keep this cache from growing indefinitely, it is neccessary to expir
 In summary, a good practice for securing your webhook endpoint is to maintain a cache of recent (`webhookId`, `eventId`) values received, and for each request:
 
 1. Verify the request body against `fg-webhook-signature` with your secret token. If verification fails, reject the request.
-2. Parse the body content
+2. Parse the body content.
 3. Check if `deliveryAttemptedAt` is older than your cache expiry period. If so, reject the request.
 4. Check if the `webhookId` and `eventId` match an existing entry in your cache. If so, reject the request.
 5. Insert (`webhookId`, `eventId`) into your cache.

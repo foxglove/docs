@@ -5,11 +5,11 @@ description: Webhooks notify your software when events happen within your Org.
 
 import AccountRequiredHeader from "../../src/components/docs/icons/AccountRequiredHeader";
 
-<AccountRequiredHeader badgeText="Requires Enterprise plan" />
+<AccountRequiredHeader badgeText="Closed Beta, contact us for access" />
 
 Webhooks notify your software when events happen within your Org. Webhooks are useful when building automated systems that consume data after it has been uploaded, or to synchronize state between your Org and your own internal services.
 
-You create a _webhook_ that causes _notifications_ about _events_ to be _delivered_ to your _webhook endpoint_. Notifications are delivered as HTTP POST requests with a JSON payload.
+You create a _webhook_ that causes _notifications_ about _events_ to be _delivered_ to your _webhook endpoint_. Notifications are delivered as HTTP(S) POST requests with a JSON payload.
 
 ### Webhooks
 
@@ -38,7 +38,7 @@ The following event types are available:
 
 ### Notification
 
-A notification is what your webhook endpoint receives when an event occurs. Notifications are delivered as JSON-formatted POST requests to an HTTPS endpoint on the public internet.
+A notification is what your webhook endpoint receives when an event occurs. Notifications are delivered as JSON-formatted POST requests to an HTTP(S) endpoint on the public internet.
 
 A notification is delivered in the following form:
 

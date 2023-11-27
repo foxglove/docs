@@ -5,7 +5,7 @@ description: Set up your first webhook.
 
 import AccountRequiredHeader from "../../src/components/docs/icons/AccountRequiredHeader";
 
-<AccountRequiredHeader badgeText="Requires Enterprise plan" />
+<AccountRequiredHeader badgeText="Closed Beta, contact us for access" />
 
 Set up your first Webhook.
 
