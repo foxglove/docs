@@ -53,7 +53,17 @@ if __name__ == "__main__":
     run(host="localhost", port=8080, debug=False)
 ```
 
-Run your server in a terminal window with `python3 serve.py`. In a second window, open a tunnel to the public internet with `ngrok http 8080`. Take note of the forwarding URL, and test it with `curl`:
+You can use this example dockerfile to run it:
+
+```Dockerfile title=Dockerfile
+FROM python:3.11
+RUN pip install bottle
+COPY serve.py .
+EXPOSE 8080
+CMD python3 serve.py
+```
+
+Run your server in one terminal window with `docker run -it $(docker build -q .)`. In a second window, open a tunnel to the public internet with `ngrok http 8080`. Take note of the forwarding URL, and test it with `curl`:
 
 ```bash
 $ curl -X POST -H Content-Type:application/json https://your-forwarding-url.ngrok-free.dev/webhooks -d '["hello"]'
