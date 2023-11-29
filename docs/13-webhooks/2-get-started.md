@@ -7,9 +7,7 @@ import AccountRequiredHeader from "../../src/components/docs/icons/AccountRequir
 
 <AccountRequiredHeader badgeText="Closed Beta, contact us for access" />
 
-Set up your first Webhook.
-
-This section will guide you through these steps:
+This page will guide you through these steps:
 
 - Create a webhook
 - Test connectivity with a `ping` event
@@ -20,7 +18,7 @@ This section will guide you through these steps:
 
 To start using webhooks, you will need:
 
-- a service that exposes an HTTP(S) endpoint on the public internet. If your service runs inside a VPN, you can use a webhook proxy or HTTP proxy to forward notifications to your internal service.
+- A service that exposes an HTTP(S) endpoint on the public internet. If your service runs inside a VPN, you can use a webhook proxy or HTTP proxy to forward notifications to your internal service. This guide includes instructions to set up an example service.
 - Admin access to a Foxglove Org on a Enterprise plan.
 
 ### Set up an example service
