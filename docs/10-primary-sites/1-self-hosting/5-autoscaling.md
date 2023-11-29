@@ -72,7 +72,7 @@ spec:
       object:
         describedObject:
           kind: Namespace
-          name: foxglove-aws
+          name: foxglove
           apiVersion: v1
         metric:
           name: foxglove_site_controller_unleased_pending_import_count
