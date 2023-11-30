@@ -19,7 +19,7 @@ This page will guide you through these steps:
 To start using webhooks, you will need:
 
 - A service that exposes an HTTP(S) endpoint on the public internet. If your service runs inside a VPN, you can use a webhook proxy or HTTP proxy to forward notifications to your internal service. This guide includes instructions to set up an example service.
-- Admin access to a Foxglove Org on a Enterprise plan.
+- Admin access to a Foxglove organization on a Enterprise plan.
 
 ### Set up an example service
 
