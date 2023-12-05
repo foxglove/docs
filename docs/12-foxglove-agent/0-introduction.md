@@ -5,7 +5,7 @@ description: The Foxglove Agent runs on a device and monitors a designated direc
 
 import AccountRequiredHeader from "../../src/components/docs/icons/AccountRequiredHeader";
 
-<AccountRequiredHeader badgeText="Requires Enterprise plan" />
+<AccountRequiredHeader badgeText="Requires Team or Enterprise plan" />
 
 The Foxglove Agent runs on a device and monitors a designated directory in its filesystem for newly recorded data files.
 
