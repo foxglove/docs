@@ -144,6 +144,20 @@ Scroll to zoom, and drag to pan. Annotations will re-render on zoom to remain sh
 
 - Scroll – Zoom in and out
 
+## Troubleshooting Video Delay
+
+You may see delay errors for `foxglove.CompressedVideo` topics saying that the frame being displayed could be X number of frames behind the most recent frame. What this means is that the video decoder that's being needs to fill up an internal buffer before it starts returning decoded frames. This could due to the configuration of the video stream, but whether this behavior occurs is very inherent to the decoder on your platform and its capabilities. On some platforms achieving zero latency decoding could be impossible to guarantee, but there are ways to configure your video stream to give a best-effort attempt at achieving low-latency when decoding.
+
+Here are some tips on how configure the video encoding to best achieve low-latency decoding:
+ - Encoder configuration could require an internal buffer for decoding. This _can_ happen if your stream uses a profile which supports B frames, even if you don't use them. We recommend the `BASELINE` profile for `h264` encoded streams because it does not support B frames.
+ - Disable frame reordering on your encoder.
+ - Lower profile levels (`level_idc`) usually have smaller buffers. This would result in a lower-latency decoding.
+ - If your encoder allows it, use a `bitstream_restriction` in the VUI parameters to limit the size of the buffer (`max_dec_frame_buffering`) and also disable frame reordering (`max_num_reorder_frames`).
+
+Another possibility why this might be happening is because of decoder responding to high-CPU load or energy considerations along with the use of software-accelerated decoding (CPU based). You might want to check that hardware decoding is active and/or supported on your platform. Hardware-accelerated decoding is generally faster, and more energy efficient. You can see whether it's disabled by going to `chrome://gpu` in your chrome address bar. If you do not see `Video Decode: Hardware accelerated`, then you will want to look into seeing if decoder hardware acceleration is supported for your platform, and if it is, take the platform-specific steps to enable it.
+
+Again, due to the decoder behavior being inherent to your platform and device it is not a guarantee that decoding will be low latency, but these are things you can do to allow your platform to give a best effort at low-latency decoding.
+
 ## Links and resources
 
 - [Annotate camera images with image markers](https://foxglove.dev/blog/annotate-your-robots-camera-images-with-image-markers)
