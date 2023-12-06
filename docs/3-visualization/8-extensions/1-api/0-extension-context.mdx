@@ -31,9 +31,9 @@ See the [Creating a message converter](/docs/visualization/extensions/guides/cre
 
 ## registerTopicAliases
 
-`registerTopicAliases` register a function to compute topic aliases. The provided alias function
-accepts an argument with two fields – `topics` with the data source's original topics and
-`globalVariables` with current layout's variables – and outputs a list of aliased topics.
+`registerTopicAliases` registers a function to compute topic aliases. The provided alias function
+should accept an argument with two fields – `topics` with the data source's original topics and
+`globalVariables` with the current layout's variables – and return a list of aliased topics.
 
 Your alias function runs whenever there are changes to the data source topics or variables. Any
 aliases it returns are added to the data source topics (replacing any previously returned aliases)
