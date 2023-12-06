@@ -81,7 +81,7 @@ export function activate(extensionContext: ExtensionContext) {
 
 ### Topic aliases
 
-The `registerTopicAliases` function accepts two arguments – the data source's original topics and the current layout's global variables – and outputs a list of aliased topics:
+The `registerTopicAliases` function accepts an argument with two fields – `topics` with the data source's original topics and `globalVariables` with the current layout's variables – and returns a list of aliased topics:
 
 ```typescript
 import { ExtensionContext } from "@foxglove/studio";
@@ -90,6 +90,8 @@ export function activate(extensionContext: ExtensionContext): void {
   // Register a topic alias function that takes the current list of datasource topics and
   // global variables and outputs a list of topic aliases.
   extensionContext.registerTopicAliases((args) => {
+    // Use args.topics if you want to access the list of available topics in your data source.
+
     const { globalVariables } = args;
     // Output a list of aliased topics, in this case influenced by the current value of
     // the global variable `camera`.
