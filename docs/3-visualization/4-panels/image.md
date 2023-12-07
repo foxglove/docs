@@ -148,7 +148,7 @@ Scroll to zoom, and drag to pan. Annotations will re-render on zoom to remain sh
 
 You may see errors for `foxglove.CompressedVideo` topics stating that the frame being displayed is delayed relative to the most recent frame. Video decoding is implemented differently on each platform, and some platforms may experience delays while others do not. It is possible to configure your video stream to optimize for low-latency decoding, but it may be impossible to _guarantee_ that a video stream can be decoded with zero latency on all platforms.
 
-Here are some tips on how configure the video encoding to best achieve low-latency decoding:
+Some tips on how configure the video encoding to best achieve low-latency decoding:
  - Use the `BASELINE` profile for `h264` encoded streams. This profile is preferred because it does not support B frames. Profiles which support B frames may introduce decoding delay, even if the encoded stream doesn't actually contain B frames.
  - Disable frame reordering on your encoder.
  - Lower profile levels (`level_idc`) usually require smaller buffers, resulting in lower-latency decoding.
@@ -156,7 +156,7 @@ Here are some tips on how configure the video encoding to best achieve low-laten
 
 System CPU load and power consumption may also contribute to decoding delays. Hardware-accelerated decoding is generally faster and more energy-efficient. You can check that your platform supports hardware-accelerated decoding by opening Google Chrome and entering `chrome://gpu` in the address bar. If you do not see `Video Decode: Hardware accelerated` on this page, but you believe that it should be supported, then you may need to take additional platform-specific steps to enable it.
 
-These steps should help your platform achieve low-latency decoding, but remember that guaranteeing it may not be possible depending on the platform and device being used.
+These steps can help your platform achieve low-latency decoding, but there is no guarantee depending on the platform and device being used.
 
 ## Links and resources
 
