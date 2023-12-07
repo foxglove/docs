@@ -146,7 +146,7 @@ Scroll to zoom, and drag to pan. Annotations will re-render on zoom to remain sh
 
 ## Troubleshooting video delay
 
-You may see errors for `foxglove.CompressedVideo` topics stating that the frame being displayed is delayed relative to the most recent frame. Video decoding is implemented differently on each platform, and some platforms may experience delays while others do not. It is possible to configure your video stream to optimize for low-latency decoding, but it may be impossible to _guarantee_ that a video stream can be decoded with zero latency on all platforms.
+You may see errors for `foxglove.CompressedVideo` topics stating that the frame being displayed is delayed relative to the most recent frame. Video decoding behavior can vary across platforms, and some platforms may experience delays while others do not. It is possible to configure your video stream to optimize for low-latency decoding, but it may be impossible to _guarantee_ that a video stream can be decoded with zero latency on all platforms.
 
 Some tips on how configure the video encoding to best achieve low-latency decoding:
  - Use the `BASELINE` profile for `h264` encoded streams. This profile is preferred because it does not support B frames. Profiles which support B frames may introduce decoding delay, even if the encoded stream doesn't actually contain B frames.
