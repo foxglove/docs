@@ -109,7 +109,10 @@ custom_edit_url: ${editUrl}
       }\` appears in the ${new Intl.ListFormat().format(
         [...parentTypes]
           .sort()
-          .map((parentType) => `[\`${parentType}\`](${kebabCase(parentType)})`),
+          .map(
+            (parentType) =>
+              `[\`${parentType}\`](/docs/visualization/message-schemas/${kebabCase(parentType)})`,
+          ),
       )} message schema${parentTypes.size > 1 ? "s" : ""}.`,
 
     "## Schema",
