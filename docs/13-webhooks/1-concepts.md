@@ -25,12 +25,12 @@ Webhook events are records of occurrences within your Foxglove org. A webhook ev
 
 The following event types are available:
 
-| Name                 | Description                                                                              | Payload Data                                                                          |
-| -------------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `recording.imported` | Occurs when a recording finishes [importing](./importing-data).                          | `recordingId`: The recording ID.                                                      |
-| `device.created`     | Occurs when a new [Device](./importing-data#add-a-device) is added to your organization. | `deviceId`: The device ID.                                                            |
-| `event.created`      | Occurs when a new [Event](./events) is added to your organization.                       | `eventId`: The event ID.                                                              |
-| `ping`               | Ping event for debugging webhook endpoint connectivity.                                  | `webhookId`: The webhook being pinged. Only this webhook will receive a notification. |
+| Name                 | Description                                                                              |
+| -------------------- | ---------------------------------------------------------------------------------------- |
+| `recording.imported` | Occurs when a recording finishes [importing](./importing-data).                          |
+| `device.created`     | Occurs when a new [Device](./importing-data#add-a-device) is added to your organization. |
+| `event.created`      | Occurs when a new [Event](./events) is added to your organization.                       |
+| `ping`               | Ping event for debugging webhook endpoint connectivity.                                  |
 
 ### Notifications
 
@@ -54,10 +54,17 @@ A JSON object with the following keys:
 | `timestamp`           | RFC3339-formatted timestamp | When the webhook event occurred                   |
 | `deliveryAttemptedAt` | RFC3339-formatted timestamp | When this delivery was attempted                  |
 | `webhookId`           | string                      | The ID of the webhook that notified your endpoint |
-| `eventId`             | string                      | The ID of the associated webhook event.           |
-| `payload`             | object                      | Data about the event.                             |
+| `webhookEventId`      | string                      | The ID of the associated webhook event.           |
+| `type`                | string                      | The type of event                                 |
 
-The `payload` attribute will be an object with a `type` attribute matching the event type and some additional keys depending on the event type. See [Webhook Events](#webhook-events) above for descriptions of those keys.
+There is also an additional property with an object value type. The property name and value properties depend on the event type:
+
+| Event Type           | Name        | Value Properties                                                                     |
+| -------------------- | ----------- | ------------------------------------------------------------------------------------ |
+| `recording.imported` | `recording` | - `id`: The recording ID <p/> - `path`: The filepath the recording was created with. |
+| `device.created`     | `device`    | - `id`: The device ID.                                                               |
+| `event.created`      | `event`     | - `id`: The event ID.                                                                |
+| `ping`               | `webhook`   | - `id`: The webhook ID.                                                              |
 
 ### Deliveries
 
