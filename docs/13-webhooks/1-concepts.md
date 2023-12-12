@@ -9,7 +9,7 @@ import AccountRequiredHeader from "../../src/components/docs/icons/AccountRequir
 
 ### Endpoints
 
-Webhooks deliver HTTP(S) POST requests to an HTTP endpoint of your application. Your endpoint must be accessible over the public internet.
+Webhooks deliver HTTPS POST requests to an HTTP endpoint of your application. Your endpoint must be accessible over the public internet.
 
 ### Webhooks
 
@@ -34,7 +34,7 @@ The following event types are available:
 
 ### Notifications
 
-A notification is what your webhook endpoint receives when an event occurs. Notifications are delivered as POST requests to your HTTP(S) endpoint.
+A notification is what your webhook endpoint receives when an event occurs. Notifications are delivered as POST requests to your HTTPS endpoint.
 
 A notification is delivered in the following form:
 
@@ -49,13 +49,13 @@ A notification is delivered in the following form:
 
 A JSON object with the following keys:
 
-| Key                   | Type                        | Description                                       |
-| --------------------- | --------------------------- | ------------------------------------------------- |
-| `timestamp`           | RFC3339-formatted timestamp | When the webhook event occurred                   |
-| `deliveryAttemptedAt` | RFC3339-formatted timestamp | When this delivery was attempted                  |
-| `webhookId`           | string                      | The ID of the webhook that notified your endpoint |
-| `webhookEventId`      | string                      | The ID of the associated webhook event.           |
-| `type`                | string                      | The type of event                                 |
+| Key              | Type                        | Description                                       |
+| ---------------- | --------------------------- | ------------------------------------------------- |
+| `timestamp`      | RFC3339-formatted timestamp | When the webhook event occurred                   |
+| `attemptedAt`    | RFC3339-formatted timestamp | When this delivery was attempted                  |
+| `webhookId`      | string                      | The ID of the webhook that notified your endpoint |
+| `webhookEventId` | string                      | The ID of the associated webhook event.           |
+| `type`           | string                      | The type of event                                 |
 
 There is also an additional property with an object value type. The property name and value properties depend on the event type:
 

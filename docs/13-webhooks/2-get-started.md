@@ -18,7 +18,7 @@ This page will guide you through these steps:
 
 To start using webhooks, you will need:
 
-- An application that exposes an HTTP(S) endpoint on the public internet. If your application runs inside a VPN, you can use a webhook proxy or HTTP proxy to forward notifications to your internal application.
+- An application that exposes an HTTPS endpoint on the public internet. If your application runs inside a VPN, you can use a webhook proxy or HTTPS proxy to forward notifications to your internal application.
 - Admin access to a Foxglove organization on a Enterprise plan.
 
 ### Create a new webhook
