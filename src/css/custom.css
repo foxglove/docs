@@ -6,6 +6,24 @@
 
 /* You can override the default Infima variables here. */
 /* Colors generated using: https://docusaurus.io/docs/styling-layout#styling-your-site-with-infima */
+
+@font-face {
+  font-family: "Inter var";
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+  font-named-instance: "Regular";
+  src: url("/static/fonts/Inter-var/Inter-roman.var.woff2?v=3.19") format("woff2");
+}
+@font-face {
+  font-family: "Inter var";
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: italic;
+  font-named-instance: "Italic";
+  src: url("/static/fonts/Inter-var/Inter-italic.var.woff2?v=3.19") format("woff2");
+}
+
 :root {
   --ifm-color-primary: #6f3be8;
   --ifm-color-primary-dark: #5c21e5;
@@ -22,7 +40,7 @@
   --ifm-navbar-items-color: var(--ifm-font-color-base-inverse);
   --ifm-navbar-item-padding-vertical: 1rem;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-  --ifm-font-family-base: "Inter", sans-serif;
+  --ifm-font-family-base: "Inter var", sans-serif;
   --ifm-color-content-inverse: #ffffff;
   --ifm-menu-link-sublist-icon: url('data:image/svg+xml;utf8,<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path opacity="0.5" d="M3.15 10.35c.2.2.5.2.7 0L8 6.21l4.15 4.14a.5.5 0 0 0 .7-.7l-4.5-4.5a.5.5 0 0 0-.7 0l-4.5 4.5a.5.5 0 0 0 0 .7Z" fill="currentColor" /></svg>');
   --ifm-font-size-base: 16px;
