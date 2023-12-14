@@ -19,7 +19,7 @@ theme:
         primary:
           main: "#32329f"
       typography:
-        fontFamily: "Inter"
+        fontFamily: "Inter var"
         fontSize: "14px"
         code:
           fontSize: "14px"
