@@ -13,8 +13,8 @@ Secure your webhook endpoint.
 
 When you create a webhook, you will be shown a secret token which is only displayed once.
 
-This token is used as a HMAC secret key to sign the webhook delivery request body. This signature
-will be included with the request in a `fg-webhook-signature` header.
+This token is used as a HMAC secret key to sign the bytes of the full webhook delivery request body.
+This signature will be included with the request in a `fg-webhook-signature` header.
 
 Here's an example of a verification function in Python.
 

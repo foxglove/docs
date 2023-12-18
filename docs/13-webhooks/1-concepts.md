@@ -34,16 +34,16 @@ The following event types are available:
 
 ### Notifications
 
-A notification is what your webhook endpoint receives when an event occurs. Notifications are delivered as POST requests to your HTTPS endpoint.
+A notification is what your webhook endpoint receives when an event occurs. Notifications are delivered as POST requests to your HTTPS endpoint. Notifications may be delivered more than once.
 
-A notification is delivered in the following form:
+The HTTP request of a notification contains the signature in the header and the notification details in the body.
 
 #### Request headers
 
-| Key                    | Value                                                                                                                             |
-| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| `Content-Type`         | `application/json`                                                                                                                |
-| `fg-webhook-signature` | a SHA256 HMAC digest of the entire request body, with your webhook token as the secret. Used to verify the sender of the request. |
+| Key                    | Value                                                                                                                                   |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `Content-Type`         | `application/json`                                                                                                                      |
+| `fg-webhook-signature` | a SHA256 HMAC digest of the entire request body bytes, with your webhook token as the secret. Used to verify the sender of the request. |
 
 #### Request body
 
@@ -68,7 +68,7 @@ There is also an additional property with an object value type. The property nam
 
 ### Deliveries
 
-A delivery is an attempt to deliver a notification to your endpoint. Foxglove records recent deliveries along with details of failures, which can be viewed in the [setting for your Webhook](https://console.foxglove.dev/settings/webhooks/).
+A delivery is a record of an attempt to deliver a notification to your endpoint. Foxglove records recent deliveries along with details of failures, which can be viewed in the [setting for your Webhook](https://console.foxglove.dev/settings/webhooks/).
 
 #### Delivery semantics
 

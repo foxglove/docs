@@ -45,9 +45,9 @@ Your application will receive a POST request with a body similar to this:
   "deliveryAttemptedAt": "2022-10-01T06:54:31.021Z",
   "eventId": "whev_uDYJSMFeVF2y5ZfL",
   "webhookId": "whk_KS6UE8rZfJ5CrBSY",
-  "payload": {
-    "type": "ping",
-    "webhookId": "whk_KS6UE8rZfJ5CrBSY"
+  "type": "ping",
+  "webhook": {
+    "id": "whk_KS6UE8rZfJ5CrBSY"
   }
 }
 ```
