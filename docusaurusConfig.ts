@@ -93,7 +93,7 @@ const docusaurusConfig: Config = {
         appUrl: "https://docs.foxglove.dev",
         enableInDevelopment: false,
         sanitize_properties: (properties: Record<string, unknown>): Record<string, unknown> => {
-          return { ...properties, Source: "Docs" };
+          return { ...properties, Platform: "Web", Source: "Docs" };
         },
       },
     ],
