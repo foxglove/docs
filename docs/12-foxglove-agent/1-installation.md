@@ -41,8 +41,14 @@ Configure the `FOXGLOVE_DEVICE_TOKEN` setting in `/etc/foxglove/agent/envfile` w
 Then, restart the service and check its status with `systemctl`:
 
 ```sh
-$ systemctl restart foxglove-agent
+$ sudo systemctl restart foxglove-agent
 $ systemctl status foxglove-agent
+```
+
+You may want to enable the service to ensure it is started on boot:
+
+```sh
+$ sudo systemctl enable foxglove-agent
 ```
 
 Consult the logs with `journalctl` for debugging:
