@@ -22,7 +22,7 @@ const docusaurusConfig: Config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
 
-  onBrokenLinks: "warn",
+  onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
 
   // Even if you don't use internalization, you can use this field to set useful

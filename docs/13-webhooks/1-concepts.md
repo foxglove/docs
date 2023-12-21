@@ -25,12 +25,12 @@ Webhook events are records of occurrences within your Foxglove org. A webhook ev
 
 The following event types are available:
 
-| Name                 | Description                                                                              |
-| -------------------- | ---------------------------------------------------------------------------------------- |
-| `recording.imported` | Occurs when a recording finishes [importing](./importing-data).                          |
-| `device.created`     | Occurs when a new [Device](./importing-data#add-a-device) is added to your organization. |
-| `event.created`      | Occurs when a new [Event](./events) is added to your organization.                       |
-| `ping`               | Ping event for debugging webhook endpoint connectivity.                                  |
+| Name                 | Description                                                                             |
+| -------------------- | --------------------------------------------------------------------------------------- |
+| `recording.imported` | Occurs when a recording finishes [importing](/importing-data).                          |
+| `device.created`     | Occurs when a new [Device](/importing-data#add-a-device) is added to your organization. |
+| `event.created`      | Occurs when a new [Event](/events) is added to your organization.                       |
+| `ping`               | Ping event for debugging webhook endpoint connectivity.                                 |
 
 ### Notifications
 
