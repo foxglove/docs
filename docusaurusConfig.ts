@@ -17,12 +17,12 @@ const docusaurusConfig: Config = {
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
-  url: "https://foxglove.dev",
+  url: "https://docs.foxglove.dev",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
 
-  onBrokenLinks: "warn",
+  onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
 
   // Even if you don't use internalization, you can use this field to set useful
