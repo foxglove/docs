@@ -2151,8 +2151,6 @@ components:
         - id
         - importId
         - orgId
-        - deviceId
-        - deviceName
         - filename
         - importTime
         - start
