@@ -8,7 +8,7 @@ info:
   x-logo:
     url: https://foxglove.dev/images/logo-icon-round.png
   description: |
-    # Authentication
+    # FIXME Authentication
 
     All routes require an API key with specific capabilities. Org admins can create an api key.
 
@@ -2151,8 +2151,6 @@ components:
         - id
         - importId
         - orgId
-        - deviceId
-        - deviceName
         - filename
         - importTime
         - start
