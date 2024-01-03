@@ -25,7 +25,7 @@ See the [Creating a custom panel](/docs/visualization/extensions/guides/create-c
 
 Message converters allow you to leverage Foxglove's built-in visualization panels by transforming messages to adhere to Foxglove-supported schemas — for example, you can convert your custom GPS messages to [`foxglove.LocationFix`](/docs/visualization/message-schemas/location-fix) messages for visualization in the [Map panel](/docs/visualization/panels/map).
 
-Whenever a panel subscribes to a topic with the [`convertTo`](/docs/visualization/extensions/api/panel-api#message-converters) option, the converter function runs on the original message and outputs the converted message, which it then provides it to the panel. If the function returns `undefined`, the output is ignored, and no message is provided to the panel. This is useful if you want to selectively output converted messages depending on the input messages' contents.
+Whenever a panel subscribes to a topic with the [`convertTo`](/docs/visualization/extensions/api/panel#message-converters) option, the converter function runs on the original message and outputs the converted message, which it then provides it to the panel. If the function returns `undefined`, the output is ignored, and no message is provided to the panel. This is useful if you want to selectively output converted messages depending on the input messages' contents.
 
 See the [Creating a message converter](/docs/visualization/extensions/guides/create-message-converter) guide for more details.
 
