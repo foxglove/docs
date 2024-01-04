@@ -72,6 +72,17 @@ const docusaurusConfig: Config = {
         redirects: [...generateFoxgloveSchemaRedirects()],
       } satisfies import("@docusaurus/plugin-client-redirects").Options,
     ],
+    [
+      "posthog-docusaurus",
+      {
+        apiKey: process.env.POSTHOG_KEY,
+        appUrl: "https://docs.foxglove.dev",
+        enableInDevelopment: false,
+        sanitize_properties: (properties: Record<string, unknown>): Record<string, unknown> => {
+          return { ...properties, Platform: "Web", Source: "Docs" };
+        },
+      },
+    ],
   ],
 
   themeConfig: {
