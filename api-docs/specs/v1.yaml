@@ -2264,12 +2264,13 @@ components:
 
     Coverage:
       type: object
-      description: A coverage range represents a time span for which Foxglove Data Platform has data for a given device.
+      description: A coverage range represents a time span for which Foxglove Data Platform has data for a given device. Deviceless recordings are omitted except when queried by recording ID or import ID.
       properties:
         deviceId:
           type: string
-          description: ID of device
+          description: ID of device.
         device:
+          description: Device summary.
           $ref: "ref/components/responses.yaml#/DeviceSummary"
         start:
           type: string
@@ -2291,8 +2292,6 @@ components:
           $ref: "ref/components/responses.yaml#/RecordingImportStatus"
 
       required:
-        - deviceId
-        - device
         - start
         - end
         - status
