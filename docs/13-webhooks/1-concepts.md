@@ -72,6 +72,10 @@ A delivery is a record of an attempt to deliver a notification to your endpoint.
 
 #### Delivery semantics
 
-We guarantee at-least-once delivery for webhook notifications. This means a notification can be delivered more than once. Admins may also manually retry failed deliveries.
+We guarantee at-least-once delivery for webhook notifications. This means a notification can be delivered more than once.
+
+If a notification delivery fails, it will be automatically retried up to five times. Either a non-response or a non-2xx HTTP status are considered failures and will be retried.
+
+Admins can also manually retry from the webhook details page. Manually triggering a retry cancels automatic retries for that notification.
 
 The combination of the `webhookId` and `webhookEventId` in the notification request body is unique to that notification.
