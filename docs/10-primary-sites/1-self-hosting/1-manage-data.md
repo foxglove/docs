@@ -25,7 +25,7 @@ processed only once, preventing duplicates.
    same upload more than once. Data files for duplicate requests will be written
    to a deterministic location and thus require no clean up.
 
-#### Importing your files
+### Importing your files
 Your self-hosted deployment is connected to object notifications from your
 configured inbox bucket. To import a recording, you will upload it to your inbox
 bucket.
@@ -39,13 +39,13 @@ file. The supported metadata keys are,
 * Device ID: The ID of a device to associate with the recording. Must match one that exists in Foxglove.
 * Key: An idempotency key to associate with the recording.
 
-##### Object metadata
+#### Object metadata
 If configuring the above with object metadata, use the key names
 `foxglove_device_name`, `foxglove_device_id`, and `foxglove_key`. To ensure that
 your file is not read before your metadata is set, ensure that you set write the
 file and set the metadata in the same operation.
 
-##### MCAP metadata
+#### MCAP metadata
 To accomplish the same with MCAP metadata, add a Metadata record to your MCAP
 file with the name "foxglove", and use the `deviceName`, `deviceId`, or `key`
 values.
@@ -63,25 +63,25 @@ If the device ID is specified in both MCAP metadata and object metadata as docum
 
 If more than one metadata record is present in the MCAP with the name `foxglove`, only the last record in the file will be used.
 
-#### Cloud CLI uploads
+### Cloud CLI uploads
 
 The following are some examples of how to upload objects with metadata to the
 various cloud SDKs. You can adapt to your needs according to the directions
 above.
 
-##### Microsoft Azure
+#### Microsoft Azure
 
 ```bash
 $ az storage blob upload -f ~/data/bags/gps.bag --container-name inbox --account-name yourorgfgstorage -n gps.bag --overwrite --metadata foxglove_device_id=dev_03ooHzt1GRRdnGrP
 ```
 
-##### Google Cloud Storage
+#### Google Cloud Storage
 
 ```bash
 $ gsutil -h "x-goog-meta-foxglove_device_id:<your device id>" cp <input.bag> gs://<your inbox bucket>/<path>
 ```
 
-##### Amazon S3
+#### Amazon S3
 
 ```bash
 $ aws s3 cp input.bag s3://<inbox-bucket>/<path> --metadata '{"foxglove_device_id": "<your device ID>"}'
