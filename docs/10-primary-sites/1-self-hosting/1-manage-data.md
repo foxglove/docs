@@ -72,17 +72,17 @@ above.
 ##### Microsoft Azure
 
 ```bash
-$ az storage blob upload -f ~/data/bags/gps.bag --container-name inbox --account-name yourorgfgstorage -n gps.bag --overwrite
+$ az storage blob upload -f ~/data/bags/gps.bag --container-name inbox --account-name yourorgfgstorage -n gps.bag --overwrite --metadata foxglove_device_id=dev_03ooHzt1GRRdnGrP
 ```
 
 ##### Google Cloud Storage
 
 ```bash
-$ gsutil cp <input.bag> gs://<your inbox bucket>/<path>
+$ gsutil -h "x-goog-meta-foxglove_device_id:<your device id>" cp <input.bag> gs://<your inbox bucket>/<path>
 ```
 
 ##### Amazon S3
 
 ```bash
-$ aws s3 cp input.bag s3://<inbox-bucket>/<path>
+$ aws s3 cp input.bag s3://<inbox-bucket>/<path> --metadata '{"foxglove_device_id": "<your device ID>"}'
 ```
