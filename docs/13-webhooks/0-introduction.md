@@ -17,7 +17,7 @@ Go to the [Webhooks settings page](https://console.foxglove.dev/settings/webhook
 
 ### Endpoints
 
-Webhooks deliver HTTPS POST requests to an HTTP endpoint of your application. Your endpoint must be accessible over the public internet.
+Webhooks deliver POST requests to an HTTPS endpoint of your application. Your endpoint must be accessible over the public internet.
 
 ### Webhooks
 
