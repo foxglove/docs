@@ -82,4 +82,4 @@ A delivery is a record of an attempt to deliver a notification to your endpoint.
 
 Foxglove guarantees that webhooks notifications can be delivered more than once. Admins may also manually retry failed deliveries.
 
-The notification request body's `webhookId` and `webhookEventId` pairing are unique to that notification.
+Each notification has a unique combination of `webhookId` and `webhookEventId` values. 
