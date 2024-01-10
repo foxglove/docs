@@ -35,7 +35,7 @@ To ensure that your layout still displays something reasonable, Foxglove perform
 
 By default, ROS 1 `.bag` files, MCAP files, and Foxglove data streams will play back using message latching.
 
-When seeking within your data, oxglove fetches the last message on all subscribed topics – even if they occurred multiple minutes before your seek location. Every panel in the layout will then automatically display the last data it saw for that topic – even if that data is infrequently published or was not published at that exact moment in time. For Foxglove data streams, Foxglove will load the last seen messages for each subscribed topic – even if those messages are from before your current data segment's start time.
+When seeking within your data, Foxglove fetches the last message on all subscribed topics – even if they occurred multiple minutes before your seek location. Every panel in the layout will then automatically display the last data it saw for that topic – even if that data is infrequently published or was not published at that exact moment in time. For Foxglove data streams, Foxglove will load the last seen messages for each subscribed topic – even if those messages are from before your current data segment's start time.
 
 Message latching allows panels to accurately display data from infrequently published topics (like a map, for example), even while seeking around to multiple points in your data at random.
 
