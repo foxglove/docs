@@ -371,10 +371,10 @@ paths:
                 items:
                   $ref: "ref/components/responses.yaml#/Recording"
 
-  /recordings/{id}:
+  /recordings/{keyOrId}:
     parameters:
       - in: path
-        name: id
+        name: keyOrId
         schema:
           type: string
         required: true
@@ -424,10 +424,10 @@ paths:
                 required:
                   - recordingId
 
-  /recordings/{id}/import:
+  /recordings/{keyOrId}/import:
     parameters:
       - in: path
-        name: id
+        name: keyOrId
         schema:
           type: string
         required: true
@@ -674,6 +674,11 @@ paths:
         - in: query
           name: requestId
           description: A specific import request ID
+          schema:
+            type: string
+        - in: query
+          name: key
+          description: The unique key optionally provided when importing
           schema:
             type: string
         - in: query
@@ -1099,6 +1104,9 @@ paths:
                 recordingId:
                   type: string
                   description: ID of the recording to stream
+                key:
+                  type: string
+                  description: Key of recording to stream
 
       responses:
         "200":
@@ -1170,6 +1178,9 @@ paths:
                   type: string
                 filename:
                   type: string
+                key:
+                  type: string
+                  minLength: 1
               required:
                 - filename
 
@@ -2264,7 +2275,7 @@ components:
 
     Coverage:
       type: object
-      description: A coverage range represents a time span for which Foxglove Data Platform has data for a given device. Deviceless recordings are omitted except when queried by recording ID or import ID.
+      description: A coverage range represents a time span for which Foxglove Data Platform has data for a given device. Recordings without devices are omitted except when queried by recording ID or import ID.
       properties:
         deviceId:
           type: string
