@@ -19,6 +19,8 @@ Go to the [Webhooks settings page](https://console.foxglove.dev/settings/webhook
 
 Webhooks deliver POST requests to an HTTPS endpoint of your application. Your endpoint must be accessible over the public internet.
 
+Your endpoint must respond quickly to HTTPS requests. A response time over 5 seconds is considered a timeout and the delivery may be retried.
+
 ### Webhooks
 
 A webhook subscribes your endpoint to notifications for a set of event types.
@@ -80,6 +82,8 @@ A delivery is a record of an attempt to deliver a notification to your endpoint.
 
 #### Delivery semantics
 
-Foxglove guarantees at-least-once delivery for webhook notifications. Admins may also manually retry failed deliveries.
+Foxglove guarantees at-least-once delivery for webhook notifications. Each notification has a unique combination of `webhookId` and `webhookEventId` values. This can be used to de-duplicate deliveries of notifications received by your endpoint.
 
-Each notification has a unique combination of `webhookId` and `webhookEventId` values. This can be used to de-duplicate deliveries of notifications received by your endpoint.
+Either a non-response or a non-2xx HTTP status are considered failures. Failures will be automatically retried up to 5 times, with an increasing delay between attempts. You can use the [Retry-After](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After) header on your endpoint's response to set a minimum bound on this delay time.
+
+Admins can also manually retry failed deliveries. Manual retries disable the automatic retry mechanism for that notification.
