@@ -5,13 +5,64 @@ description: Manage your self-hosted Primary Site's data.
 
 Manage your self-hosted Primary Site's data.
 
-### Upload data
+### Uploading data
 
-When uploading data to the inbox bucket, you need to add a `foxglove_device_id` metadata key that corresponds to a device ID in your Foxglove organization.
+To import data to Foxglove, self-managed users must upload their recordings to their configured inbox bucket. Once acknowledged, the pending import will appear on the [Recordings page](https://console.foxglove.dev/recordings). Once processed, its data will be available via the [API](/api) and [CLI](/docs/cli).
 
-Create a device from the [Devices page](https://console.foxglove.dev/devices) or using the CLI's `foxglove devices add` command.
+#### Prevent duplication with idempotency keys
 
-Then, import data for that device according to your cloud provider.
+Foxglove's upload APIs use one of two mechanisms to ensure recordings are processed only once:
+
+- Internally, Foxglove creates a unique idempotency key to avoid duplicates after reception.
+- For recordings associated with a device, Foxglove will verify that its content hash doesn't match any other recording already processed for that device before indexing it. For recordings without an associated device, users can provide a unique `key` parameter to help Foxglove avoids processing the same upload more than once. Data files for duplicate requests are written to a deterministic location and thus require no clean up.
+
+### Adding metadata to imports
+
+Associate your recording with metadata information for more self-contained files:
+
+- **Object metadata** - For ROS bag files
+- **MCAP metadata** – For [MCAP files](https://mcap.dev)
+
+Both types of metadata support the following keys:
+
+- **Device name** – Name of device associated with the recording (must match an existing Foxglove device)
+- **Device ID** – ID of device associated with the recording (must match an existing Foxglove device)
+- **Key** – Idempotency key associated with the recording
+
+If a device ID is specified in both MCAP metadata and object metadata, object metadata will take precedence.
+
+If an MCAP file has more than one metadata record with `name="foxglove"`, the file's last record will take precedence.
+
+#### Object metadata
+
+Add object metadata to your files using the following key names:
+
+- `foxglove_device_name`
+- `foxglove_device_id`
+- `foxglove_key`
+
+To ensure that your file is not read before your metadata is set, write the file and set the metadata in the same operation.
+
+#### MCAP metadata
+
+Add MCAP metadata to your files using `name="foxglove` and the following key names:
+
+- `deviceName`
+- `deviceId`
+- `key`
+
+An example using [MCAP's Python library](https://mcap.dev/docs/python/):
+
+```py
+mcap_writer.add_metadata(
+  name="foxglove",
+  metadata={ "deviceId": "dev_abc123" },
+)
+```
+
+### Cloud CLI uploads
+
+You can use the command line to upload objects with metadata to various cloud SDKs. Adapt the following examples to your team's unique needs.
 
 #### Microsoft Azure
 
@@ -30,29 +81,3 @@ $ gsutil -h "x-goog-meta-foxglove_device_id:<your device id>" cp <input.bag> gs:
 ```bash
 $ aws s3 cp input.bag s3://<inbox-bucket>/<path> --metadata '{"foxglove_device_id": "<your device ID>"}'
 ```
-
-You will see the pending import on the [Recordings page](https://console.foxglove.dev/recordings). Once processed, the uploaded data will be available via the API and CLI.
-
-### Specify a device in MCAP metadata
-
-If you are importing MCAP files, you can specify the associated device ID in an [MCAP metadata record](https://mcap.dev/specification/index.html#metadata-op0x0c) rather than in object metadata as described above. You may also specify a device name rather than an ID.
-
-1. Include a metadata record named `foxglove`
-2. In that record, either:
-   - add your device ID with a key of "deviceId"
-   - add your device name with a key of "deviceName"
-
-Note, if referring to a device by name, that the device must be known to Foxglove in advance. If you supply a device name which doesn't have an associated Foxglove ID, your import will fail. Add the device from the [Devices page](https://console.foxglove.dev/devices).
-
-Python example:
-
-```py
-mcap_writer.add_metadata(
-  name="foxglove",
-  metadata={ "deviceId": "dev_abc123" },
-)
-```
-
-If the device ID is specified in both MCAP metadata and object metadata as documented above, object metadata takes precedence.
-
-If more than one metadata record is present in the MCAP with the name `foxglove`, only the last record in the file will be used.

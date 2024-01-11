@@ -7,9 +7,9 @@ Import [ROS 1](/docs/connecting-to-data/frameworks/ros1#imported-data) (`.bag`) 
 
 Check out the [MCAP docs](https://mcap.dev) for more information on [converting other data formats](https://foxglove.dev/blog/importing-your-ros2-data-into-foxglove-data-platform) – like ROS 2, Protobuf, JSON, and more – into the MCAP file format.
 
-### Add devices
+### (Optional) Add devices
 
-Before importing data, you must create uniquely named devices for every real or simulated robot you want to track. This will allow your team members to add data recorded on these devices. All imported files must be associated with a corresponding device.
+To organize files by the robot they were recorded on, create uniquely named devices for every real or simulated robot you want to track. Files do not have to be associated with a device to import them.
 
 Click "Add device" on the [Devices page](https://console.foxglove.dev/devices) to create your devices:
 
@@ -17,13 +17,13 @@ Click "Add device" on the [Devices page](https://console.foxglove.dev/devices) t
 
 ### Import files
 
-Click the "Import data" button on the [Recordings](https://console.foxglove.dev/recordings) or [Timeline](https://console.foxglove.dev/timeline) page:
+Import data from the [Recordings](https://console.foxglove.dev/recordings) or [Timeline](https://console.foxglove.dev/timeline) page:
 
 ![Recordings page](/img/docs/recordings/index.png)
 
 Alternatively, you can click on one of your created devices on the [Devices page](https://console.foxglove.dev/devices) to go to its details page – from there, you can import data directly to that device.
 
-Select the file you want to import, as well as the device you want to associate with the recording:
+Select the file you want to import, and the device you want to associate with the recording if desired:
 
 ![import](/img/docs/importing-data/import.webp)
 
