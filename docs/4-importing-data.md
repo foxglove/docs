@@ -9,7 +9,7 @@ Check out the [MCAP docs](https://mcap.dev) for more information on [converting 
 
 ### (Optional) Add devices
 
-If your recordings are associated with devices, you must create uniquely named devices for every real or simulated robot you want to track. This will allow your team members to add data recorded on these devices.
+To organize files by the robot they were recorded on, create uniquely named devices for every real or simulated robot you want to track. Files do not have to be associated with a device to import them.
 
 Click "Add device" on the [Devices page](https://console.foxglove.dev/devices) to create your devices:
 
@@ -17,7 +17,7 @@ Click "Add device" on the [Devices page](https://console.foxglove.dev/devices) t
 
 ### Import files
 
-Click the "Import data" button on the [Recordings](https://console.foxglove.dev/recordings) or [Timeline](https://console.foxglove.dev/timeline) page:
+Import data from the [Recordings](https://console.foxglove.dev/recordings) or [Timeline](https://console.foxglove.dev/timeline) page:
 
 ![Recordings page](/img/docs/recordings/index.png)
 

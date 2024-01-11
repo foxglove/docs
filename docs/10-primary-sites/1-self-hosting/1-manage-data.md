@@ -5,52 +5,53 @@ description: Manage your self-hosted Primary Site's data.
 
 Manage your self-hosted Primary Site's data.
 
-### Upload data
+### Uploading data
 
-To import data to the platform, self-managed users must upload their recordings
-to the inbox bucket using one of the methods below.
+To import data to Foxglove, self-managed users must upload their recordings to their configured inbox bucket. Once acknowledged, the pending import will appear on the [Recordings page](https://console.foxglove.dev/recordings). Once processed, its data will be available via the [API](/api) and [CLI](/docs/cli).
 
-Once the import is acknowledged by the platform, you will see the pending
-import on the [Recordings page](https://console.foxglove.dev/recordings). Once
-processed, the uploaded data will be available via the API and CLI.
+#### Prevent duplication with idempotency keys
 
-#### Usage note: Idempotency keys
-Foxglove's upload APIs use one of two mechanisms to ensure recordings are
-processed only once, preventing duplicates.
-1. Internally, Foxglove creates a unique idempotency key to avoid duplicates after reception.
-2. For uploaders, if the recording is associated with a device, Foxglove will
-   skip indexing of a recording if its content hash matches a recording already
-   processed for that device. Without a device link, users can provide a `key`
-   parameter to ensure Foxglove's backend identifies and avoids processing the
-   same upload more than once. Data files for duplicate requests will be written
-   to a deterministic location and thus require no clean up.
+Foxglove's upload APIs use one of two mechanisms to ensure recordings are processed only once:
 
-### Importing your files
-Your self-hosted deployment is connected to object notifications from your
-configured inbox bucket. To import a recording, you will upload it to your inbox
-bucket.
+- Internally, Foxglove creates a unique idempotency key to avoid duplicates after reception.
+- For recordings associated with a device, Foxglove will verify that its content hash doesn't match any other recording already processed for that device before indexing it. For recordings without an associated device, users can provide a unique `key` parameter to help Foxglove avoids processing the same upload more than once. Data files for duplicate requests are written to a deterministic location and thus require no clean up.
 
-To associate your recording with metadata information, there are two available
-mechanisms: object metadata and MCAP metadata. The primary advantage of using
-object metadata is that it is applicable to ROS bag files. For MCAP files, MCAP
-metadata accomplishes the same task while resulting in a more self-contained
-file. The supported metadata keys are,
-* Device name:  The name of a device to associate with the recording. Must match one that exists in Foxglove.
-* Device ID: The ID of a device to associate with the recording. Must match one that exists in Foxglove.
-* Key: An idempotency key to associate with the recording.
+### Adding metadata to imports
+
+Associate your recording with metadata information for more self-contained files:
+
+- **Object metadata** - For ROS bag files
+- **MCAP metadata** – For [MCAP files](https://mcap.dev)
+
+Both types of metadata support the following keys:
+
+- **Device name** – Name of device associated with the recording (must match an existing Foxglove device)
+- **Device ID** – ID of device associated with the recording (must match an existing Foxglove device)
+- **Key** – Idempotency key associated with the recording
+
+If a device ID is specified in both MCAP metadata and object metadata, object metadata will take precedence.
+
+If an MCAP file has more than one metadata record with `name="foxglove"`, the file's last record will take precedence.
 
 #### Object metadata
-If configuring the above with object metadata, use the key names
-`foxglove_device_name`, `foxglove_device_id`, and `foxglove_key`. To ensure that
-your file is not read before your metadata is set, ensure that you set write the
-file and set the metadata in the same operation.
+
+Add object metadata to your files using the following key names:
+
+- `foxglove_device_name`
+- `foxglove_device_id`
+- `foxglove_key`
+
+To ensure that your file is not read before your metadata is set, write the file and set the metadata in the same operation.
 
 #### MCAP metadata
-To accomplish the same with MCAP metadata, add a Metadata record to your MCAP
-file with the name "foxglove", and use the `deviceName`, `deviceId`, or `key`
-values.
 
-Python example:
+Add MCAP metadata to your files using `name="foxglove` and the following key names:
+
+- `deviceName`
+- `deviceId`
+- `key`
+
+An example using [MCAP's Python library](https://mcap.dev/docs/python/):
 
 ```py
 mcap_writer.add_metadata(
@@ -59,15 +60,9 @@ mcap_writer.add_metadata(
 )
 ```
 
-If the device ID is specified in both MCAP metadata and object metadata as documented above, object metadata takes precedence.
-
-If more than one metadata record is present in the MCAP with the name `foxglove`, only the last record in the file will be used.
-
 ### Cloud CLI uploads
 
-The following are some examples of how to upload objects with metadata to the
-various cloud SDKs. You can adapt to your needs according to the directions
-above.
+You can use the command line to upload objects with metadata to various cloud SDKs. Adapt the following examples to your team's unique needs.
 
 #### Microsoft Azure
 
