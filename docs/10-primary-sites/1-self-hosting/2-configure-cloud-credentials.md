@@ -67,7 +67,7 @@ $ kubectl apply -f ./cloud-credentials-secret.yaml
 
 #### S3-Compatible
 
-The configuration is similar to AWS, but requires the addition of a service URL, and uses different environment variable names.
+The configuration is similar to AWS, but requires the addition of a service URL and uses different environment variable names.
 
 Install a [Secret](https://kubernetes.io/docs/concepts/configuration/secret/) named
 `cloud-credentials` into the `foxglove` namespace. This secret should contain the credentials for your AWS key:
@@ -84,7 +84,7 @@ stringData:
   S3_COMPATIBLE_ACCESS_KEY_ID: AKIAIOSFODNN7EXAMPLE
   S3_COMPATIBLE_SECRET_ACCESS_KEY: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
   S3_COMPATIBLE_SERVICE_REGION: default
-  S3_COMPATIBLE_SERVICE_URL: https://s3-compatible-service.example.com:6418
+  S3_COMPATIBLE_SERVICE_URL: https://s3-compatible-service:6418
 ```
 
 Example application of a secrets file:

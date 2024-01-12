@@ -17,7 +17,7 @@ To deploy your Primary Site in the cloud, you will first need an account with on
 
 You will need to provision storage buckets, a Kubernetes cluster, and cloud credentials before installing the Primary Site.
 
-Foxglove provides a set of [Terraform examples](https://github.com/foxglove/terraform-examples) to help with the initial provisioning steps in a supported cloud provider.
+Foxglove provides a set of [Terraform examples](https://github.com/foxglove/terraform-examples) to help with these initial provisioning steps in a supported cloud provider.
 
 ### Create storage buckets
 
