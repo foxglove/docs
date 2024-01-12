@@ -11,11 +11,13 @@ Install and configure a self-hosted Primary Site.
 - [Kubectl](https://kubernetes.io/docs/tasks/tools/) - Kubernetes command line tool
 - [Helm](https://helm.sh/) - Kubernetes package manager
 
-To deploy your Primary Site, you will first need an account with one of the supported cloud providers (AWS, Azure, GCP).
+To deploy your Primary Site in the cloud, you will first need an account with one of the supported cloud providers (AWS, Azure, GCP). You may also choose to self-host a Kubernetes installation and an S3-compatible object store such as MinIO.
+
+> We have tested the S3-compatible setup with MinIO. Other compatible services may work. Object creation events are required in order to process files from your inbox.
 
 You will need to provision storage buckets, a Kubernetes cluster, and cloud credentials before installing the Primary Site.
 
-Foxglove provides a set of [Terraform examples](https://github.com/foxglove/terraform-examples) to help with these initial provisioning steps.
+Foxglove provides a set of [Terraform examples](https://github.com/foxglove/terraform-examples) to help with the initial provisioning steps in a supported cloud provider.
 
 ### Create storage buckets
 
@@ -38,7 +40,7 @@ $ kubectl create namespace foxglove
 
 Create a service account with read and write access to the storage buckets. The Kubernetes workloads will use this service account.
 
-See [Configure cloud credentials](/docs/primary-sites/self-hosting/configure-cloud-credentials) for details on how to provide this credential to the deployment.
+See [Configure cloud credentials](/docs/primary-sites/self-hosting/configure-cloud-credentials) for details on how to provide this credential to the deployment. This section also covers configuration of S3-compatible object storage.
 
 ### Create secret with site token
 
@@ -47,7 +49,7 @@ Find your Primary Site token on the ["Sites" settings page](https://console.foxg
 Install a [Secret](https://kubernetes.io/docs/concepts/configuration/secret/) named `foxglove-site-token` into the `foxglove` namespace containing your site token:
 
 ```shell
-$ kubectl create secret generic foxglove-site-token --from-literal=FOXGLOVE_SITE_TOKEN='fox_sk_...' --namespace foxglove
+$ kubectl create secret generic foxglove-site-token --from-literal=FOXGLOVE_SITE_TOKEN='fox_st_...' --namespace foxglove
 ```
 
 There are multiple other ways to create secrets that may be preferable. See [Create a Secret](https://kubernetes.io/docs/tasks/configmap-secret/managing-secret-using-kubectl/#create-a-secret) for more info.
@@ -73,6 +75,14 @@ globals:
 Be sure to include any additional values required by your storage provider:
 
 - **AWS** – Configure a region for requests:
+
+```yaml
+globals:
+  aws:
+    region: us-east-1
+```
+
+- **S3-Compatible** – The setup is the same for AWS. Configure a region for requests:
 
 ```yaml
 globals:
@@ -153,13 +163,14 @@ The site inbox processor needs to know when new files are uploaded to the inbox 
 new uploads, configure a push notification to the foxglove data platform inbox-notifications
 endpoint.
 
-Configuring a push notification for new file uploads is specific to your cloud provider.
+Configuring a push notification for new file uploads is specific to your cloud provider (or S3-compatible service).
 
-The [Foxglove AWS Terraform examples](https://github.com/foxglove/terraform-examples), configure these resources for you. For manual setup, or for more information, see the cloud provider documentation below.
+The [Foxglove AWS Terraform examples](https://github.com/foxglove/terraform-examples) for cloud providers configure these resources for you. For manual setup, or for more information, see the documentation below.
 
 - Azure: [https://learn.microsoft.com/en-us/azure/event-grid/blob-event-quickstart-portal#create-a-message-endpoint](https://learn.microsoft.com/en-us/azure/event-grid/blob-event-quickstart-portal#create-a-message-endpoint)
 - GCP:
   [https://cloud.google.com/storage/docs/pubsub-notifications](https://cloud.google.com/storage/docs/pubsub-notifications)
 - AWS: If you are using the [Foxglove AWS Terraform example](https://github.com/foxglove/terraform-examples/blob/main/primary-site/aws/README.md), this setup is done for you. You should see an SNS topic with an https subscription attached to the inbox bucket's `s3:ObjectCreated:*` events.
+- MinIO: [https://min.io/docs/minio/linux/administration/monitoring/publish-events-to-webhook.html#minio-bucket-notifications-publish-webhook](https://min.io/docs/minio/linux/administration/monitoring/publish-events-to-webhook.html#minio-bucket-notifications-publish-webhook)
 
 > Org admins can find the inbox notification endpoint on the [Sites settings page](https://console.foxglove.dev/settings/sites).

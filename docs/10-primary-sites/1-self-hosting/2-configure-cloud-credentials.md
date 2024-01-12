@@ -59,6 +59,40 @@ stringData:
   AWS_DEFAULT_REGION: us-west-2
 ```
 
+Example application of a secrets file:
+
+```shell
+$ kubectl apply -f ./cloud-credentials-secret.yaml
+```
+
+#### S3-Compatible
+
+The configuration is similar to AWS, but requires the addition of a service URL, and uses different environment variable names.
+
+Install a [Secret](https://kubernetes.io/docs/concepts/configuration/secret/) named
+`cloud-credentials` into the `foxglove` namespace. This secret should contain the credentials for your AWS key:
+
+Check out the following example secret configuration file:
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cloud-credentials
+type: Opaque
+stringData:
+  S3_COMPATIBLE_ACCESS_KEY_ID: AKIAIOSFODNN7EXAMPLE
+  S3_COMPATIBLE_SECRET_ACCESS_KEY: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+  S3_COMPATIBLE_SERVICE_REGION: default
+  S3_COMPATIBLE_SERVICE_URL: https://s3-compatible-service.example.com:6418
+```
+
+Example application of a secrets file:
+
+```shell
+$ kubectl apply -f ./cloud-credentials-secret.yaml
+```
+
 ## Azure
 
 Install a [Secret](https://kubernetes.io/docs/concepts/configuration/secret/) named
@@ -78,4 +112,10 @@ stringData:
   AZURE_CLIENT_SECRET: f02f3819-b046-4c9d-a5e8-853f16e5c687
   AZURE_INBOX_STORAGE_SERVICE_URL: ...
   AZURE_INBOX_STORAGE_ACCOUNT_NAME: ...
+```
+
+Example application of a secrets file:
+
+```shell
+$ kubectl apply -f ./cloud-credentials-secret.yaml
 ```

@@ -27,7 +27,7 @@ Configure cluster resources required by the deployment – these are specific to
 Create a `foxglove` namespace in your cluster.
 
 ```shell
-$ kubectl create namesapce foxglove
+$ kubectl create namespace foxglove
 ```
 
 #### Recording storage
@@ -111,7 +111,7 @@ spec:
 Install a [Secret](https://kubernetes.io/docs/concepts/configuration/secret/) named `foxglove-site-token` into the `foxglove` namespace containing your site token:
 
 ```shell
-$ kubectl create secret generic foxglove-site-token --from-literal=FOXGLOVE_SITE_TOKEN='fox_sk_...' --namespace foxglove
+$ kubectl create secret generic foxglove-site-token --from-literal=FOXGLOVE_SITE_TOKEN='fox_st_...' --namespace foxglove
 ```
 
 There are multiple other ways to create secrets that may be preferable. See [Create a Secret](https://kubernetes.io/docs/tasks/configmap-secret/managing-secret-using-kubectl/#create-a-secret) for more info.
