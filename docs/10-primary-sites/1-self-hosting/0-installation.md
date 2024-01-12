@@ -60,7 +60,7 @@ Install your Primary Site using Helm.
 
 #### Prepare a values file
 
-Create a `values.yaml` file to configure the installation. You'll need to include a `storageProvider` (`aws`, `azure`, or `google_cloud`) and the names of your `lake` and `inbox` buckets:
+Create a `values.yaml` file to configure the installation. You'll need to include a `storageProvider` (`aws`, `azure`, `google_cloud`, or `s3_compatible`) and the names of your `lake` and `inbox` buckets:
 
 ```yaml
 globals:
