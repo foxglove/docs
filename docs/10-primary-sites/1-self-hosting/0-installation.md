@@ -82,14 +82,6 @@ globals:
     region: us-east-1
 ```
 
-- **S3-Compatible** – The setup is the same for AWS. Configure a region for requests:
-
-```yaml
-globals:
-  aws:
-    region: us-east-1
-```
-
 - **Azure** - Configure your storage service:
 
 ```yaml
