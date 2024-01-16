@@ -65,7 +65,7 @@ Example application of a secrets file:
 $ kubectl apply -f ./cloud-credentials-secret.yaml
 ```
 
-#### S3-Compatible
+## S3-Compatible
 
 The configuration is similar to AWS, but requires the addition of a service URL and uses different environment variable names.
 
