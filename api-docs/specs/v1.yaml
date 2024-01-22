@@ -1163,7 +1163,7 @@ paths:
 
       requestBody:
         required: true
-        description: In addition to `filename`, one of `device.id`, `device.name`, or `deviceId` is required.
+        description: In addition to `filename`, one of `device.id`, `device.name`, `key`, or `deviceId` is required.
         content:
           application/json:
             schema:
