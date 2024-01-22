@@ -1093,11 +1093,11 @@ paths:
                 start:
                   type: string
                   format: date-time
-                  description: Inclusive start of requested time range
+                  description: Inclusive start of requested time range. If start is provided, end must be too.
                 end:
                   type: string
                   format: date-time
-                  description: Inclusive end of requested time range
+                  description: Inclusive end of requested time range. If end is provided, start must be too.
                 importId:
                   type: string
                   description: ID of the import to stream
