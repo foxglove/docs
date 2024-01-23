@@ -1013,7 +1013,7 @@ paths:
           1. Make a request to this endpoint.
           2. Make a `GET` request to the `link` URL.
 
-        Either `recordingId`, `importId`, or all three of
+        One of `recordingId`, `importId`, `key` or all three of
         `device.id`/`device.name`, `start`, and `end` must be specified.
 
         _Note: You can only export a `.bag` file if you originally uploaded a `.bag` file._
