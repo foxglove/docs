@@ -321,15 +321,27 @@ paths:
           schema:
             type: string
         - in: query
-          name: device.id
+          name: deviceId
           description: Filter response to recordings for the device with this ID
           schema:
             type: string
         - in: query
-          name: device.name
+          name: deviceName
           description: Filter response to recordings for the device with this name
           schema:
             type: string
+        - in: query
+          name: device.id
+          description: Equivalent to deviceId, and ignored if deviceId is supplied
+          schema:
+            type: string
+          deprecated: true
+        - in: query
+          name: device.name
+          description: Equivalent to deviceName, and ignored if deviceName is supplied
+          schema:
+            type: string
+          deprecated: true
         - in: query
           name: importStatus
           description: Filter response to recordings with this import status
@@ -352,6 +364,7 @@ paths:
           schema:
             type: string
             enum:
+              - deviceName
               - device.name
               - createdAt
               - start
@@ -686,17 +699,23 @@ paths:
           description: ID of device associated with the pending import
           schema:
             type: string
-          deprecated: true
         - in: query
-          name: device.name
+          name: deviceName
           description: Name of device associated with the pending import
           schema:
             type: string
         - in: query
-          name: device.id
-          description: ID of device associated with the pending import
+          name: device.name
+          description: Equivalent to deviceName, and ignored if deviceName is supplied
           schema:
             type: string
+          deprecated: true
+        - in: query
+          name: device.id
+          description: Equivalent to deviceId, and ignored if deviceId is supplied
+          schema:
+            type: string
+          deprecated: true
         - in: query
           name: error
           description: A string to filter based on error messages
@@ -738,6 +757,7 @@ paths:
             enum:
               - createdAt
               - deviceId
+              - deviceName
               - device.name
               - device.id
               - error
@@ -794,17 +814,23 @@ paths:
           description: filter by device ID
           schema:
             type: string
-          deprecated: true
         - in: query
-          name: device.id
-          description: filter by device ID
-          schema:
-            type: string
-        - in: query
-          name: device.name
+          name: deviceName
           description: filter by device name
           schema:
             type: string
+        - in: query
+          name: device.id
+          description: Equivalent to deviceId, and ignored if deviceId is supplied
+          schema:
+            type: string
+          deprecated: true
+        - in: query
+          name: device.name
+          description: Equivalent to deviceName, and ignored if deviceName is supplied
+          schema:
+            type: string
+          deprecated: true
         - in: query
           name: sortBy
           description: Sort by a single field of the attachment
@@ -940,14 +966,21 @@ paths:
           required: false
           deprecated: true
         - in: query
-          name: device.name
+          name: deviceName
           description: Name of device associated with the data
           schema:
             type: string
           required: false
         - in: query
+          name: device.name
+          description: Equivalent to deviceName, and ignored if deviceName is supplied
+          schema:
+            type: string
+          required: false
+          deprecated: true
+        - in: query
           name: device.id
-          description: ID of device associated with the data
+          description: Equivalent to deviceId, and ignored if deviceId is supplied
           schema:
             type: string
           required: false
@@ -984,6 +1017,7 @@ paths:
               - deviceId
               - device.id
               - device.name
+              - deviceName
               - start
               - end
           required: false
@@ -1014,7 +1048,7 @@ paths:
           2. Make a `GET` request to the `link` URL.
 
         One of `recordingId`, `importId`, `key` or all three of
-        `device.id`/`device.name`, `start`, and `end` must be specified.
+        `deviceId`/`deviceName`, `start`, and `end` must be specified.
 
         _Note: You can only export a `.bag` file if you originally uploaded a `.bag` file._
       security:
@@ -1083,13 +1117,17 @@ paths:
                 deviceId:
                   type: string
                   description: ID of device associated with the exported data
-                  deprecated: true
                 device.id:
                   type: string
-                  description: ID of device associated with the exported data.
-                device.name:
+                  description: Equivalent to deviceId, and ignored if deviceId is supplied
+                  deprecated: true
+                deviceName:
                   type: string
                   description: Name of device associated with the exported data.
+                device.name:
+                  type: string
+                  description: Equivalent to deviceName, and ignored if deviceName is supplied
+                  deprecated: true
                 start:
                   type: string
                   format: date-time
@@ -1163,7 +1201,7 @@ paths:
 
       requestBody:
         required: true
-        description: In addition to `filename`, one of `device.id`, `device.name`, `key`, or `deviceId` is required.
+        description: In addition to `filename`, one of `deviceId`, `deviceName`, or `key` is required.
         content:
           application/json:
             schema:
@@ -1171,16 +1209,25 @@ paths:
               properties:
                 deviceId:
                   type: string
-                  deprecated: true
+                  description: Foxglove ID of the associated device
+                deviceName:
+                  type: string
+                  description: Unique name of the associated device
                 device.name:
                   type: string
+                  deprecated: true
+                  description: Equivalent to deviceName, and ignored if deviceName is supplied
                 device.id:
                   type: string
+                  deprecated: true
+                  description: Equivalent to deviceId, and ignored if deviceId is supplied
                 filename:
                   type: string
+                  description: Name of the file that will be uploaded
                 key:
                   type: string
                   minLength: 1
+                  description: A unique key to identify the recording
               required:
                 - filename
 
@@ -1255,19 +1302,26 @@ paths:
           schema:
             type: string
           required: false
-          deprecated: true
         - in: query
           name: device.name
+          description: Equivalent to deviceName, and ignored if deviceName is supplied
+          schema:
+            type: string
+          required: false
+          deprecated: true
+        - in: query
+          name: deviceName
           description: Name of device being queried
           schema:
             type: string
           required: false
         - in: query
           name: device.id
-          description: ID of device being queried
+          description: Equivalent to deviceId, and ignored if deviceId is supplied
           schema:
             type: string
           required: false
+          deprecated: true
         - in: query
           name: includeSchemas
           description: Whether full schemas should be included in the repsonse
@@ -1610,17 +1664,23 @@ paths:
           description: Filter events matching device ID
           schema:
             type: string
-          deprecated: true
         - in: query
-          name: device.name
+          name: deviceName
           description: Name of device associated with the event
           schema:
             type: string
         - in: query
-          name: device.id
-          description: ID of device associated with the event
+          name: device.name
+          description: Equivalent to deviceName, and ignored if deviceName is supplied
           schema:
             type: string
+          deprecated: true
+        - in: query
+          name: device.id
+          description: Equivalent to deviceId, and ignored if deviceId is supplied
+          schema:
+            type: string
+          deprecated: true
         - in: query
           name: query
           description: Event query string. Comprises a space-separated list of event queries, where the syntax of those queries is described above.
@@ -1634,6 +1694,7 @@ paths:
             enum:
               - id
               - deviceId
+              - deviceName
               - device.name
               - device.id
               - start
@@ -1694,13 +1755,17 @@ paths:
                 deviceId:
                   type: string
                   description: ID of the device to associate with the event
-                  deprecated: true
+                deviceName:
+                  type: string
+                  description: Name of the device to associate with the event
                 device.id:
                   type: string
-                  description: ID of the device to associate with the event
+                  description: Equivalent to deviceId, and ignored if deviceId is supplied
+                  deprecated: true
                 device.name:
                   type: string
-                  description: ID of the device to associate with the event
+                  description: Equivalent to deviceName, and ignored if deviceName is supplied
+                  deprecated: true
                 metadata:
                   type: object
                   additionalProperties:
