@@ -5,7 +5,7 @@ description: Webhooks notify your software when events happen within your Foxglo
 
 import AccountRequiredHeader from "../../src/components/docs/icons/AccountRequiredHeader";
 
-<AccountRequiredHeader badgeText="Closed Beta, contact us for access" />
+<AccountRequiredHeader badgeText="Requires Team or Enterprise plan" />
 
 Webhooks notify your software when events happen within your Foxglove organization.
 
