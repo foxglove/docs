@@ -111,6 +111,10 @@ Display playback and data-streaming performance statistics. Displayed only when 
 
 The following statistics are displayed for a given playback session. "Instantaneous" statistics are reported based on the most recent frame, and also are averaged over the last 5 seconds.
 
+#### Memory usage
+
+Details the `jsHeapSizeLimit`, `usedJSHeapSize`, and `totalJSHeapSize`.
+
 #### Main thread
 
 ##### Frame rate
