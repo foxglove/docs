@@ -41,20 +41,20 @@ Some features are only available via the [desktop app](https://foxglove.dev/down
 
 ![top nav](/img/docs/visualization/navigation.jpeg)
 
-| component         | description                                                                                                                         |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **App menu**      | Connect to a [data source](/docs/connecting-to-data/introduction#data-sources), toggle the sidebars, or view resources              |
-| **Add panel**     | Add a [panel](/docs/visualization/panels/introduction) to the current layout                                                        |
-| **Layout menu**   | Save your workspace view as a [layout](/docs/visualization/layouts) and share it with teammates                                     |
-| **Left sidebar**  | Edit panel settings (Panel), view data source's topics (Topics), and troubleshoot issues with your connection (Problems)            |
-| **Right sidebar** | Set [variables](/docs/visualization/variables) for your current layout                                                              |
-| **User menu**     | Sign in to your Foxglove account, configure preferences, manage [extensions](/docs/visualization/extensions/introduction), and more |
+| component         | description                                                                                                                                                                                                                                     |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **App menu**      | Connect to a [data source](/docs/connecting-to-data/introduction#data-sources), toggle the sidebars, or view resources                                                                                                                          |
+| **Add panel**     | Add a [panel](/docs/visualization/panels/introduction) to the current layout                                                                                                                                                                    |
+| **Layout menu**   | Save your workspace view as a [layout](/docs/visualization/layouts) and share it with teammates                                                                                                                                                 |
+| **Left sidebar**  | Edit panel settings (Panel), view data source's topics (Topics), and troubleshoot issues with your connection (Problems)                                                                                                                        |
+| **Right sidebar** | Set layout-wide [variables](/docs/visualization/variables) (Variables), view playback metrics (Performance), and view logs by level (Logs). Must enable debugging features in the _Visualization settings_ to see the Performance and Logs tabs |
+| **User menu**     | Sign in to your Foxglove account, configure preferences, manage [extensions](/docs/visualization/extensions/introduction), and more                                                                                                             |
 
 ## Settings
 
 Configure Foxglove app settings, privacy preferences, and experimental features.
 
-Click into the _Preferences_ tab in the app sidebar to configure the following settings.
+Open _Visualization settings_ from the user menu to configure the following settings.
 
 ### General
 
@@ -67,6 +67,7 @@ Click into the _Preferences_ tab in the app sidebar to configure the following s
 | **Language**                                                                           | App language ([contribute translations](https://github.com/foxglove/studio/blob/main/CONTRIBUTING.md#localization))                                                              |
 | **Updates**                                                                            | Toggle ability to automatically update the desktop app                                                                                                                           |
 | [**ROS_PACKAGE_PATH**](https://wiki.ros.org/ROS/EnvironmentVariables#ROS_PACKAGE_PATH) | Paths to search for ROS packages (local file paths or `package://` URLs); separate paths with standard OS path separator (e.g. ':' on Unix)                                      |
+| **Advanced**                                                                           | Enable features for debugging Foxglove                                                                                                                                           |
 
 ### Privacy
 
@@ -83,6 +84,69 @@ Select the [Foxglove extensions](/docs/visualization/extensions/introduction) yo
 These features are not recommended for regular use – they are either deprecated or in active development or testing.
 
 Reach out in the [Slack community](https://foxglove.dev/slack), if you have any questions about any of these features.
+
+## Sidebars
+
+### Panel
+
+[Edit panel settings](/docs/visualization/panels/introduction#edit-settings) for any selected [panel](/docs/visualization/panels/introduction).
+
+### Topics
+
+View all topics available in the data source, along with their data types and message rates.
+
+### Problems
+
+See a list of playback errors to troubleshoot.
+
+### Variables
+
+Set layout-wide [variables](/docs/visualization/variables) that can be used in different panels with the [message path syntax](/docs/visualization/message-path-syntax).
+
+### Performance
+
+Display playback and data-streaming performance statistics. Displayed only when the "Studio debug panels" [experimental feature](/docs/visualization/introduction#settings#experimental-features) is toggled on in the app settings.
+
+![playback performance panel](/img/docs/visualization/panels/studio-playback-performance/panel.webp)
+
+The following statistics are displayed for a given playback session. "Instantaneous" statistics are reported based on the most recent frame, and also are averaged over the last 5 seconds.
+
+#### Main thread
+
+##### Frame rate
+
+The number of frames played per second. Though the player can play back at up to 60fps, this statistic will be lower if frames take longer than 16ms to render.
+
+##### Latency
+
+Measures time for information to travel from the data source to the visualization panels.
+
+#### User scripts
+
+Measures time spent executing user scripts, both individually and in total.
+
+#### Data pipeline
+
+##### Playback speed
+
+The player tries to play at the speed specified by the user, but may not be able to keep up, given heavy layouts and large amounts of data. This chart displays the actual playback speed as a ratio of bag time to playback time.
+
+##### Frame rate
+
+The number of frames played per second. Though the player can play back at up to 60fps, this statistic will be lower if frames take longer than 16ms to render.
+
+##### Bag frame time
+
+The duration in bag-time for the rendered frames in milliseconds. To "keep up" with playback, Foxglove will often emit "larger" frames.
+
+##### Data throughput
+
+The amount of data received by the player in megabits per second. For remote bags, this includes topics that the player is not subscribed to.
+This statistic does not account for Content-Encoding compression, so it may be larger than the actual network bandwidth.
+
+### Logs
+
+Filter logs by level (debug, info, warn, error) to troubleshoot.
 
 ## Links and resources
 
