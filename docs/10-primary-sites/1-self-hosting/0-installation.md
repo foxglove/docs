@@ -115,7 +115,7 @@ globals:
     bucketName: foxglove-lake
   inbox:
     storageProvider: s3_compatible
-    bucketName: s3_compatible
+    bucketName: foxglove-lake
 ```
 
 #### Install
