@@ -114,7 +114,7 @@ globals:
     storageProvider: s3_compatible
     bucketName: foxglove-lake
   inbox:
-    storageProvider: google_cloud
+    storageProvider: s3_compatible
     bucketName: s3_compatible
 ```
 
