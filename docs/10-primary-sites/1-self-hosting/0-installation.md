@@ -74,7 +74,7 @@ globals:
     bucketName: foxglove-inbox
 ```
 
-**AWS** – Configure a region for requests:
+**AWS**
 
 ```yaml
 globals:
@@ -89,7 +89,20 @@ globals:
     region: <us-east-1>
 ```
 
-**Azure** - Configure your storage service:
+**S3 Compatible**
+For S3 compatible storage like MinIO
+
+```yaml
+globals:
+  lake:
+    storageProvider: s3_compatible
+    bucketName: foxglove-lake
+  inbox:
+    storageProvider: s3_compatible
+    bucketName: foxglove-lake
+```
+
+**Azure**
 
 ```yaml
 globals:
@@ -103,19 +116,6 @@ globals:
   azure:
     storageAccountName: <my-storage-account>
     serviceUrl: "https://<resourcegroup>.blob.core.windows.net"
-```
-
-**S3 Compatible**
-For S3 compatible storage like MinIO
-
-```yaml
-globals:
-  lake:
-    storageProvider: s3_compatible
-    bucketName: foxglove-lake
-  inbox:
-    storageProvider: s3_compatible
-    bucketName: foxglove-lake
 ```
 
 #### Install
