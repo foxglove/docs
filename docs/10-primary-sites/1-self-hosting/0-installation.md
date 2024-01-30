@@ -62,7 +62,8 @@ Install your Primary Site using Helm.
 
 Create a `values.yaml` file to configure the installation. You'll need to include a `storageProvider` (`aws`, `azure`, `google_cloud`, or `s3_compatible`) and the names of your `lake` and `inbox` buckets:
 
-**Google Cloud**
+##### Google Cloud
+Optionally change the lake and inbox `bucketName`
 
 ```yaml
 globals:
@@ -74,7 +75,8 @@ globals:
     bucketName: foxglove-inbox
 ```
 
-**AWS**
+##### AWS
+Change the 'region' to suit your environment.
 
 ```yaml
 globals:
@@ -89,20 +91,21 @@ globals:
     region: <us-east-1>
 ```
 
-**S3 Compatible**
-For S3 compatible storage like MinIO
+##### S3 Compatible
+For S3 compatible storage like MinIO Optionally change the lake and inbox `bucketName`
 
-```yaml
+```yaml filename="values.yaml"
 globals:
   lake:
     storageProvider: s3_compatible
     bucketName: foxglove-lake
   inbox:
     storageProvider: s3_compatible
-    bucketName: foxglove-lake
+    bucketName: foxglove-inbox
 ```
 
-**Azure**
+##### Azure
+When preparing your `values.yaml` file for Azure, ensure that you change the `storageAccountName` and 'resourcegroup' in the `serviceUrl`. You can optionally change the `bucketName` for the lake and inbox buckets.
 
 ```yaml
 globals:
