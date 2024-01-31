@@ -17,7 +17,9 @@ Configure the `STORAGE_ROOT` setting in `/etc/foxglove/agent/envfile` with the d
 
 Move your completed recordings into the `STORAGE_ROOT`. The Agent will be notified by the filesystem when a new recording is available.
 
-You should take care that the file contents are complete when the create notification occurs. For example, you should not stream log data directly to an mcap file in the storage root. You should also move (`mv`) files into place rather than copy (`cp`) them. If using ROS1, this is handled correctly for you because recordings are written to an ".active" file, and the Agent ignores the "active" suffix by default.
+The Foxglove Agent receives filesystem notifications when files are created in the data directory. This notification is triggered when a file is created. To avoid triggering notifications on incomplete files, data files should be [renamed](https://man7.org/linux/man-pages/man1/rename.1.html) into the `STORAGE_ROOT` directory after writing (use `mv` rather than `cp`). Alternatively, you can write files into the `STORAGE_ROOT` directory with an ignored filename suffix, and then rename it to remove the suffix after writing. The ignored suffix defaults to `.active` and can be customized with the `WATCH_IGNORE_SUFFIX` environment variable.
+
+**Note:** The ROS 1 bag writer uses an `.active` suffix on incomplete files by default, and can be used to write directly into the `STORAGE_ROOT`.
 
 ### Import to cloud
 
