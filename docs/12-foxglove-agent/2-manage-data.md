@@ -9,17 +9,17 @@ import AccountRequiredHeader from "../../src/components/docs/icons/AccountRequir
 
 Start processing data recordings with your Foxglove Agent.
 
-### Set up directory
+### Set up the data directory
 
-Configure the `STORAGE_ROOT` setting in `/etc/foxglove/agent/envfile` with the directory you want to monitor for newly recorded data files.
+Configure the `STORAGE_ROOT` setting in `/etc/foxglove/agent/envfile` with the directory you want to monitor for newly recorded data files. This will serve as the Agent's _data directory_.
 
 ### Adding recording files
 
-Move your completed recordings into the `STORAGE_ROOT`. The Agent will be notified by the filesystem when a new recording is available.
+Move your completed recordings into the data directory. The Agent will be notified by the filesystem when a new recording is available.
 
-The Foxglove Agent receives filesystem notifications when files are created in the data directory. This notification is triggered when a file is created. To avoid triggering notifications on incomplete files, data files should be [renamed](https://man7.org/linux/man-pages/man1/rename.1.html) into the `STORAGE_ROOT` directory after writing (use `mv` rather than `cp`). Alternatively, you can write files into the `STORAGE_ROOT` directory with an ignored filename suffix, and then rename it to remove the suffix after writing. The ignored suffix defaults to `.active` and can be customized with the `WATCH_IGNORE_SUFFIX` environment variable.
+The Foxglove Agent receives filesystem notifications when files are created in the data directory. This notification is triggered when a file is created. To avoid triggering notifications on incomplete files, data files should be [renamed](https://man7.org/linux/man-pages/man1/rename.1.html) into the data directory after writing (use `mv` rather than `cp`). Alternatively, you can write files into the data directory with an ignored filename suffix, and then rename it to remove the suffix after writing. The ignored suffix defaults to `.active` and can be customized with the `WATCH_IGNORE_SUFFIX` environment variable.
 
-**Note:** The ROS 1 bag writer uses an `.active` suffix on incomplete files by default, and can be used to write directly into the `STORAGE_ROOT`.
+**Note:** The ROS 1 bag writer uses an `.active` suffix on incomplete files by default, and can be used to write directly into the data directory.
 
 ### Import to cloud
 
