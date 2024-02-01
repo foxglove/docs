@@ -62,7 +62,7 @@ stringData:
 Example application of a secrets file:
 
 ```shell
-$ kubectl apply -f ./cloud-credentials-secret.yaml
+$ kubectl apply -f ./cloud-credentials-secret.yaml -n foxglove
 ```
 
 ## S3-Compatible
@@ -90,7 +90,7 @@ stringData:
 Example application of a secrets file:
 
 ```shell
-$ kubectl apply -f ./cloud-credentials-secret.yaml
+$ kubectl apply -f ./cloud-credentials-secret.yaml -n foxglove
 ```
 
 ## Azure
@@ -117,5 +117,5 @@ stringData:
 Example application of a secrets file:
 
 ```shell
-$ kubectl apply -f ./cloud-credentials-secret.yaml
+$ kubectl apply -f ./cloud-credentials-secret.yaml -n foxglove
 ```
