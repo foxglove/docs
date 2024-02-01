@@ -35,18 +35,21 @@ Webhook events are records of occurrences within your Foxglove organization.
 
 A webhook event consists of a _timestamp_, an _event type_, and additional data about the event specific to that type.
 
-| event type           | description                                                                          |
-| -------------------- | ------------------------------------------------------------------------------------ |
-| `recording.imported` | When a recording finishes [importing](/docs/importing-data)                          |
-| `device.created`     | When a new [Device](/docs/importing-data#add-a-device) is added to your organization |
-| `event.created`      | When a new [Event](/docs/events) is added to your organization                       |
-| `ping`               | Ping event for debugging webhook endpoint connectivity                               |
+| Event Type                                                           | Description                                                                                                                                                                                                                                                                                             |
+| -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`recording.created`](/api#tag/Webhook-Payloads/recording.created)   | Occurs when a recording is created. For direct uploads, this occurs at the same time as `recording.imported`. Otherwise, this event occurs when a recording is created at an [Edge Site](/docs/edge-sites/introduction) or on a device running the [Foxglove Agent](/docs/foxglove-agent/introduction). |
+| [`recording.imported`](/api#tag/Webhook-Payloads/recording.imported) | Occurs when a recording finishes [importing](/docs/importing-data).                                                                                                                                                                                                                                     |
+| [`device.created`](/api#tag/Webhook-Payloads/device.created)         | Occurs when a new [Device](/docs/importing-data#add-a-device) is added to your organization.                                                                                                                                                                                                            |
+| [`event.created`](/api#tag/Webhook-Payloads/event.created)           | Occurs when a new [Event](/docs/events) is added to your organization.                                                                                                                                                                                                                                  |
+| [`ping`](/api#tag/Webhook-Payloads/ping)                             | Ping event for debugging webhook endpoint connectivity.                                                                                                                                                                                                                                                 |
 
 ### Notifications
 
 A notification is what your webhook endpoint receives when an event occurs. Notifications are delivered as POST requests to your HTTPS endpoint. Notifications may be delivered more than once.
 
 The HTTP request of a notification contains the signature in the header and the notification details in the body.
+
+The full set expected notification payloads can be found in the [API Reference](/api#tag/Webhook-Payloads).
 
 #### Request headers
 
@@ -57,24 +60,8 @@ The HTTP request of a notification contains the signature in the header and the 
 
 #### Request body
 
-The request body is formatted as a JSON object with the following keys:
-
-| key              | type                        | description                                   |
-| ---------------- | --------------------------- | --------------------------------------------- |
-| `timestamp`      | RFC3339-formatted timestamp | When the webhook event occurred               |
-| `attemptedAt`    | RFC3339-formatted timestamp | When the delivery was attempted               |
-| `webhookId`      | string                      | ID of the webhook that notified your endpoint |
-| `webhookEventId` | string                      | ID of the associated webhook event            |
-| `type`           | string                      | Type of event                                 |
-
-An additional property has an object type – its name and value properties depend on the event type:
-
-| event type           | name        | value properties                                                                |
-| -------------------- | ----------- | ------------------------------------------------------------------------------- |
-| `recording.imported` | `recording` | - `id`: Recording ID <p/> - `path`: The filepath the recording was created with |
-| `device.created`     | `device`    | `id`: Device ID                                                                 |
-| `event.created`      | `event`     | `id`: Event ID                                                                  |
-| `ping`               | `webhook`   | `id`: Webhook ID                                                                |
+The request body is formatted as a JSON object, with some keys common to all event types
+others dependent on the event type. The full definition is available in the [API reference](/api#tag/Webhook-Payloads).
 
 ### Deliveries
 
