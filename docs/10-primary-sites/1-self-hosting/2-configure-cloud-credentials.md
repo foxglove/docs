@@ -11,7 +11,7 @@ To access the strage buckets in GCP we will need to create a service account and
 1. Create a service account to give read and write access to the storage buckets in GCP.
 2. Create a key for the service account
 3. Download and rename the key to `credentials.json`
-4. Use the `kubectl` command to set the secret from an existing `credentials.json` file.
+4. Use the `kubectl` command to set the secret from the existing `credentials.json` file.
 
 ```
 kubectl create secret generic gcp-cloud-credential \
