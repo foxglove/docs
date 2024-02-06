@@ -139,6 +139,41 @@ tags:
     description: |
       Device tokens are used by Foxglove device agents to authenticate to the API.
 
+  - name: Webhook Payloads
+    description: |
+      [Webhooks](/docs/webhooks/introduction) send POST request notifications to your HTTPS endpoint
+      when events occur within Data Platform. This section describes the JSON request body format
+      your endpoint should expect for each event type.
+
+      ## recording.created
+
+      `recording.created` events occur when a recording is created. Recordings are created
+      when a file is [uploaded](/api#tag/Recordings/paths/~1data~1upload/post), added to
+      [Edge Site](/docs/edge-sites/introduction) storage, or created on a device that runs the
+      [Foxglove Agent](/docs/foxglove-agent/introduction).
+      <SchemaDefinition schemaRef="#/components/schemas/webhook_payloads/RecordingCreated" />
+
+      ## recording.imported
+
+      `recording.imported` events occur when a recording is [imported](/docs/importing-data)
+      and is ready for streaming.
+      <SchemaDefinition schemaRef="#/components/schemas/webhook_payloads/RecordingImported" />
+
+      ## device.created
+
+      `device.created` events occur when a new [Device](/docs/importing-data#add-a-device) is created.
+      <SchemaDefinition schemaRef="#/components/schemas/webhook_payloads/DeviceCreated" />
+
+      ## event.created
+
+      `event.created` events occur when a new [Event](/docs/events) is created in Data Platform.
+      <SchemaDefinition schemaRef="#/components/schemas/webhook_payloads/EventCreated" />
+
+      ## ping
+
+      The `ping` event type is used to test webhook connectivity.
+      <SchemaDefinition schemaRef="#/components/schemas/webhook_payloads/Ping" />
+
 x-tagGroups:
   - name: Data Platform
     tags:
@@ -152,6 +187,10 @@ x-tagGroups:
       - Imports
       - Stream data
       - Topics
+
+  - name: Webhooks
+    tags:
+      - Webhook Payloads
 
   - name: Studio
     tags:
@@ -2666,3 +2705,173 @@ components:
         - createdAt
         - deviceId
         - enabled
+    RecordingImportStatus:
+      # https://github.com/Redocly/redoc/issues/1128
+      # Used in webhook payload definitions. They need an internal reference to any external
+      # definition so that redoc can find them when parsing SchemaDefinition tags in descriptions.
+      $ref: "ref/components/responses.yaml#/RecordingImportStatus"
+
+    webhook_payloads:
+      Common:
+        type: object
+        properties:
+          type:
+            description: The event type
+            type: string
+          timestamp:
+            description: When the webhook event occurred
+            format: date-time
+            type: string
+          attemptedAt:
+            description: When the delivery was attempted
+            format: date-time
+            type: string
+          webhookEventId:
+            description: ID of the associated webhook event
+            type: string
+          webhookId:
+            description: ID of the webhook that notified your endpoint
+            type: string
+        required:
+          - type
+          - timestamp
+          - attemptedAt
+          - webhookId
+          - webhookEventId
+      RecordingImported:
+        allOf:
+          - $ref: "#/components/schemas/webhook_payloads/Common"
+          - properties:
+              recording:
+                properties:
+                  id:
+                    description: Recording ID
+                    type: string
+                  path:
+                    description: The filepath the recording was created with
+                    type: string
+                required:
+                  - id
+                  - path
+                type: object
+              type:
+                type: string
+                const: "recording.imported"
+            required:
+              - recording
+            type: object
+      RecordingCreated:
+        allOf:
+          - $ref: "#/components/schemas/webhook_payloads/Common"
+          - properties:
+              device:
+                properties:
+                  id:
+                    description: Device ID
+                    type: string
+                  name:
+                    description: Device Name
+                    type: string
+                required:
+                  - id
+                  - name
+                type: object
+              edgeSite:
+                properties:
+                  id:
+                    description: Site ID
+                    type: string
+                  name:
+                    description: Site Name
+                    type: string
+                required:
+                  - id
+                  - name
+                type: object
+              recording:
+                properties:
+                  id:
+                    description: Recording ID
+                    type: string
+                  importStatus:
+                    $ref: "#/components/schemas/RecordingImportStatus"
+                  path:
+                    description: The filepath the recording was created with
+                    type: string
+                required:
+                  - id
+                  - path
+                  - importStatus
+                type: object
+              site:
+                properties:
+                  id:
+                    description: Site ID
+                    type: string
+                  name:
+                    description: Site Name
+                    type: string
+                required:
+                  - id
+                  - name
+                type: object
+              type:
+                type: string
+                const: "recording.created"
+            required:
+              - recording
+            type: object
+      DeviceCreated:
+        allOf:
+          - $ref: "#/components/schemas/webhook_payloads/Common"
+          - properties:
+              device:
+                properties:
+                  id:
+                    description: Device ID
+                    type: string
+                required:
+                  - id
+                type: object
+              type:
+                type: string
+                const: "device.created"
+            required:
+              - device
+            type: object
+      EventCreated:
+        allOf:
+          - $ref: "#/components/schemas/webhook_payloads/Common"
+          - properties:
+              event:
+                properties:
+                  id:
+                    description: Event ID
+                    type: string
+                required:
+                  - id
+                type: object
+              type:
+                type: string
+                const: "event.created"
+            required:
+              - event
+            type: object
+      Ping:
+        allOf:
+          - $ref: "#/components/schemas/webhook_payloads/Common"
+          - properties:
+              webhook:
+                properties:
+                  id:
+                    description: Webhook ID
+                    type: string
+                required:
+                  - id
+                type: object
+              type:
+                type: string
+                const: "event.created"
+            required:
+              - event
+            type: object
