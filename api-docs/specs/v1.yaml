@@ -2705,11 +2705,15 @@ components:
         - createdAt
         - deviceId
         - enabled
+    # https://github.com/Redocly/redoc/issues/1128
+    # Used in webhook payload definitions. They need an internal reference to any external
+    # definition so that redoc can find them when parsing SchemaDefinition tags in descriptions.
     RecordingImportStatus:
-      # https://github.com/Redocly/redoc/issues/1128
-      # Used in webhook payload definitions. They need an internal reference to any external
-      # definition so that redoc can find them when parsing SchemaDefinition tags in descriptions.
       $ref: "ref/components/responses.yaml#/RecordingImportStatus"
+    DeviceSummary:
+      $ref: "ref/components/responses.yaml#/DeviceSummary"
+    SiteSummary:
+      $ref: "ref/components/responses.yaml#/SiteSummary"
 
     webhook_payloads:
       Common:
@@ -2764,30 +2768,6 @@ components:
         allOf:
           - $ref: "#/components/schemas/webhook_payloads/Common"
           - properties:
-              device:
-                properties:
-                  id:
-                    description: Device ID
-                    type: string
-                  name:
-                    description: Device Name
-                    type: string
-                required:
-                  - id
-                  - name
-                type: object
-              edgeSite:
-                properties:
-                  id:
-                    description: Site ID
-                    type: string
-                  name:
-                    description: Site Name
-                    type: string
-                required:
-                  - id
-                  - name
-                type: object
               recording:
                 properties:
                   id:
@@ -2798,22 +2778,16 @@ components:
                   path:
                     description: The filepath the recording was created with
                     type: string
+                  device:
+                    $ref: "#/components/schemas/DeviceSummary"
+                  edgeSite:
+                    $ref: "#/components/schemas/SiteSummary"
+                  site:
+                    $ref: "#/components/schemas/SiteSummary"
                 required:
                   - id
                   - path
                   - importStatus
-                type: object
-              site:
-                properties:
-                  id:
-                    description: Site ID
-                    type: string
-                  name:
-                    description: Site Name
-                    type: string
-                required:
-                  - id
-                  - name
                 type: object
               type:
                 type: string
