@@ -38,7 +38,7 @@ To use this panel, your data source must provide messages conforming to [3D mark
 | --------- | ---------------------------------------------------------------------------------------------------------- |
 | ROS 1     | [`sensor_msgs/Image`](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/Image.html)                  |
 | ROS 2     | [`sensor_msgs/msg/Image`](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/Image.msg) |
-| Custom    | [`foxglove.RawImage`](/docs/visualization/message-schemas/raw-image)                                                     |
+| Custom    | [`foxglove.RawImage`](/docs/visualization/message-schemas/raw-image)                                       |
 
 ### `CompressedImage`
 
@@ -46,7 +46,7 @@ To use this panel, your data source must provide messages conforming to [3D mark
 | --------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | ROS 1     | [`sensor_msgs/CompressedImage`](https://docs.ros.org/en/api/sensor_msgs/html/msg/CompressedImage.html)                         |
 | ROS 2     | [`sensor_msgs/msg/CompressedImage`](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/CompressedImage.msg) |
-| Custom    | [`foxglove.CompressedImage`](/docs/visualization/message-schemas/compressed-image)                                                           |
+| Custom    | [`foxglove.CompressedImage`](/docs/visualization/message-schemas/compressed-image)                                             |
 
 ### `CompressedVideo`
 
@@ -58,15 +58,15 @@ Record H.264 data using the Annex B format, avoiding B frames.
 
 ### `CameraCalibration`
 
-Must be publishing `CameraCalibration` messages for the selected camera to display its corresponding 2D and 3D annotations.
+Provide optional camera calibration data to render 3D entities in the Image panel, or render images in the 3D panel. Calibration data is not required to display `ImageAnnotations` since they use pixel coordinates.
 
-Foxglove currently only supports `plumb_bob` and `rational_polynomial` for the `distortion_model` field value.
+Foxglove supports distortion models `plumb_bob` and `rational_polynomial`.
 
 | framework | schema                                                                                                               |
 | --------- | -------------------------------------------------------------------------------------------------------------------- |
 | ROS 1     | [`sensor_msgs/CameraInfo`](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/CameraInfo.html)                  |
 | ROS 2     | [`sensor_msgs/msg/CameraInfo`](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/CameraInfo.msg) |
-| Custom    | [`foxglove.CameraCalibration`](/docs/visualization/message-schemas/camera-calibration)                                             |
+| Custom    | [`foxglove.CameraCalibration`](/docs/visualization/message-schemas/camera-calibration)                               |
 
 ### `ImageAnnotation`
 
@@ -80,7 +80,7 @@ Foxglove currently only supports `plumb_bob` and `rational_polynomial` for the `
 | framework | schema                                                                                                               |
 | --------- | -------------------------------------------------------------------------------------------------------------------- |
 | ROS 1     | [`foxglove_msgs/ImageMarkerArray`](https://github.com/foxglove/ros_foxglove_msgs/blob/main/msg/ImageMarkerArray.msg) |
-| Custom    | [`foxglove.ImageAnnotations`](/docs/visualization/message-schemas/image-annotations)                                               |
+| Custom    | [`foxglove.ImageAnnotations`](/docs/visualization/message-schemas/image-annotations)                                 |
 
 ## Settings
 
@@ -149,10 +149,11 @@ Scroll to zoom, and drag to pan. Annotations will re-render on zoom to remain sh
 You may see errors for `foxglove.CompressedVideo` topics stating that the frame being displayed is delayed relative to the most recent frame. Video decoding behavior can vary across platforms, and some platforms may experience delays while others do not. It is possible to configure your video stream to optimize for low-latency decoding, but it may be impossible to _guarantee_ that a video stream can be decoded with zero latency on all platforms.
 
 Some tips on how configure the video encoding to best achieve low-latency decoding:
- - Use the `BASELINE` profile for `h264` encoded streams. This profile is preferred because it does not support B frames. Profiles which support B frames may introduce decoding delay, even if the encoded stream doesn't actually contain B frames.
- - Disable frame reordering on your encoder.
- - Lower profile levels (`level_idc`) usually require smaller buffers, resulting in lower-latency decoding.
- - If your encoder allows it, use a `bitstream_restriction` in the VUI parameters to limit the size of the buffer (`max_dec_frame_buffering`) and also disable frame reordering (`max_num_reorder_frames`).
+
+- Use the `BASELINE` profile for `h264` encoded streams. This profile is preferred because it does not support B frames. Profiles which support B frames may introduce decoding delay, even if the encoded stream doesn't actually contain B frames.
+- Disable frame reordering on your encoder.
+- Lower profile levels (`level_idc`) usually require smaller buffers, resulting in lower-latency decoding.
+- If your encoder allows it, use a `bitstream_restriction` in the VUI parameters to limit the size of the buffer (`max_dec_frame_buffering`) and also disable frame reordering (`max_num_reorder_frames`).
 
 System CPU load and power consumption may also contribute to decoding delays. Hardware-accelerated decoding is generally faster and more energy-efficient. You can check that your platform supports hardware-accelerated decoding by opening Google Chrome and entering `chrome://gpu` in the address bar. If you do not see `Video Decode: Hardware accelerated` on this page, but you believe that it should be supported, then you may need to take additional platform-specific steps to enable it.
 
