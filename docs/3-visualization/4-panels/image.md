@@ -58,7 +58,7 @@ Record H.264 data using the Annex B format, avoiding B frames.
 
 ### `CameraCalibration`
 
-Providing optional camera calibration data allows you to render 3D entities in the Image panel, or render images in the 3D panel. Calibration data not required to display image annotations if your images are already rectified.
+Provide optional camera calibration data to render 3D entities in the Image panel, or render images in the 3D panel. Calibration data is not required to display `ImageAnnotations` since they use pixel coordinates.
 
 Foxglove supports distortion models `plumb_bob` and `rational_polynomial`.
 
