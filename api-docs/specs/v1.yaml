@@ -185,6 +185,7 @@ x-tagGroups:
       - Recordings
       - Recording Attachments
       - Imports
+      - Sites
       - Stream data
       - Topics
 
@@ -2070,6 +2071,157 @@ paths:
                 required:
                   - id
 
+  /sites:
+    get:
+      tags: [Sites]
+      summary: List sites
+      description: |
+        Retrieve a list of sites.
+      security:
+        - Session: [org_member]
+        - ApiKey: ["sites.list"]
+      responses:
+        "200":
+          description: List of sites
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Site"
+    post:
+      tags: [Sites]
+      summary: Create a Site
+      description: |
+        Create a new site.
+      security:
+        - Session: [org_admin]
+        - ApiKey: ["sites.create"]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: A name for this site
+                type:
+                  type: string
+                  description: |
+                    The type of site to create.
+                  enum:
+                    - edge
+                retainRecordingsSeconds:
+                  type: number
+                  minimum: 0
+                  description: |
+                    Optionally set a retention period for recordings created at
+                    this site. (only available on edge sites)
+              required:
+                - name
+                - type
+      responses:
+        "200":
+          description: The new site
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Site"
+
+  /sites/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: Site ID
+    get:
+      tags: [Sites]
+      summary: Get site details
+      security:
+        - Session: [org_member]
+        - ApiKey: ["sites.list"]
+      description: |
+        Get details for a specific site.
+      responses:
+        "200":
+          description: Site
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Site"
+    patch:
+      tags: [Sites]
+      summary: Update site details
+      description: |
+        Update the name or retention period for a Site.
+      security:
+        - Session: [org_admin]
+        - ApiKey: ["sites.update"]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: A name for this site
+                retainRecordingsSeconds:
+                  type: number
+                  description: |
+                    Optionally set a retention period for recordings created at this edge site.
+                url:
+                  type: string
+                  description: |
+                    The URL a self-hosted primary site exposes for accessing available data.
+                    See [The self-hosting installation guide](https://docs.foxglove.dev/docs/primary-sites/self-hosting/installation#configure-foxglove)
+                    for details.
+      responses:
+        "200":
+          description: Updated site
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Site"
+
+    delete:
+      tags: [Sites]
+      summary: Delete a site
+      security:
+        - Session: [org_admin]
+        - ApiKey: ["sites.delete"]
+      description: |
+        Delete a site.
+
+        _NOTE: Site deletion is permanent and cannot be undone. Any recordings stored at this site
+        will no longer be available through Foxglove._
+
+        For `edge` and `self-hosted` sites, you should shut down your deployment before deleting
+        the site through the API.
+
+        If the site type is `self-hosted`, the contents of your inbox and lake buckets will not be
+        affected by this action, and should be cleaned up separately after deleting the site.
+
+        If the site type is `edge`, any files in edge storage will not be affected by this action.
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: ID of the deleted site
+                required:
+                  - id
+
   /device-tokens:
     get:
       tags: [Device Tokens]
@@ -2669,13 +2821,21 @@ components:
           type: string
           description: |
             The type of the site.
-            - primary: stores your robotics data in the cloud, and can be Foxglove-hosted or self-managed
-            - edge: store robotics data in physical proximity to where your robots are operating
+            - `foxglove-hosted`: A [Foxglove-hosted Primary Site](https://docs.foxglove.dev/docs/primary-sites/introduction/#foxglove-hosted).
+            - `self-hosted`: A [Self-hosted Primary Site](https://docs.foxglove.dev/docs/primary-sites/introduction/#self-hosted).
+            - `edge`: An [Edge Site](https://docs.foxglove.dev/docs/edge-sites/introduction/).
           enum:
-            - primary
+            - foxglove-hosted
+            - self-hosted
             - edge
+        url:
+          type: string
+          description: |
+            The REST API endpoint your site deployment exposes
+            (only available for Self-hosted Primary Sites).
         retainRecordingsSeconds:
           type: number
+          minimum: 0
           description: |
             An optional recording retention period (only available on edge sites).
 
