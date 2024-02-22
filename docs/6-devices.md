@@ -3,9 +3,13 @@ title: Devices
 description: Devices represent every real and simulated robot that your organization wants to track.
 ---
 
+import AccountRequiredHeader from "../src/components/docs/icons/AccountRequiredHeader";
+
 Devices represent every real and simulated robot that your organization wants to track.
 
 When importing data into Foxglove, you can associate each data recording with the device that recorded it.
+
+On the free plan, your organization may create up to ten devices.
 
 ### Actions
 
@@ -18,6 +22,8 @@ Add, list, delete, and search devices from the [Devices page](https://console.fo
 | **Delete** | Delete a device in your organization                                         | `foxglove devices delete --name "my device"` |
 
 ### Custom properties
+
+<AccountRequiredHeader badgeText="Requires Team or Enterprise plan" />
 
 Custom properties are predefined metadata fields that can be associated with a device. They are set by admins for their organization.
 
