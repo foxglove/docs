@@ -34,9 +34,42 @@ $ dpkg -i foxglove-agent_1.0.0_amd64.deb
 
 To upgrade the package, check the releases page for newer release versions to download.
 
-### Run the Foxglove Agent
+### Configure and run the Foxglove Agent
 
 Configure the `FOXGLOVE_DEVICE_TOKEN` setting in `/etc/foxglove/agent/envfile` with the secret device token generated above. Set additional configuration options, such as your recording directory, according to instructions in that file.
+
+#### Upload to self-managed primary site
+
+If your Foxglove organization uses a self-managed Primary site, your device will need credentials
+to upload recordings to its inbox bucket. Configure these additional keys in `envfile`:
+
+```bash
+# Must be set to self-managed to enable direct inbox bucket upload
+PRIMARY_SITE_MODE=self-managed
+# Must be set to `google_cloud`, `aws`, or `azure`
+INBOX_STORAGE_PROVIDER=google_cloud
+# Must be set to a valid bucket name.
+INBOX_BUCKET_NAME=...
+
+# Required for the `azure` inbox storage provider
+AZURE_TENANT_ID=tenant-id
+AZURE_CLIENT_ID=client-id
+AZURE_CLIENT_SECRET=f02f3819-b046-4c9d-a5e8-853f16e5c687
+AZURE_INBOX_STORAGE_SERVICE_URL=...
+AZURE_INBOX_STORAGE_ACCOUNT_NAME=...
+
+# Required for the `google_cloud` inbox storage provider
+# You will need to install a `credentials.json` file into the device filesystem, and set
+# the path to that file here. The `foxglove` user must have permissions to read this file.
+GOOGLE_APPLICATION_CREDENTIALS=/path/to/credentials.json
+
+# Required for the `aws` inbox storage provider
+AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
+AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+AWS_DEFAULT_REGION=us-west-2
+```
+
+#### Run the agent
 
 Then, restart the service and check its status with `systemctl`:
 
