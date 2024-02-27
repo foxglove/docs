@@ -46,6 +46,14 @@ const docusaurusConfig: Config = {
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
+        blog: {
+          path: "changelog",
+          routeBasePath: "changelog",
+          blogTitle: "Changelog",
+          blogDescription: "Changelog | Foxglove",
+          blogSidebarTitle: "Recent releases",
+          showReadingTime: false,
+        },
       } satisfies import("@docusaurus/preset-classic").Options,
     ],
     [
@@ -70,7 +78,10 @@ const docusaurusConfig: Config = {
     [
       "@docusaurus/plugin-client-redirects",
       {
-        redirects: [...generateFoxgloveSchemaRedirects()],
+        redirects: [
+          ...generateFoxgloveSchemaRedirects(),
+          { from: "/docs/release-notes", to: "/changelog" },
+        ],
       } satisfies import("@docusaurus/plugin-client-redirects").Options,
     ],
   ],
@@ -96,6 +107,11 @@ const docusaurusConfig: Config = {
         {
           to: "/api",
           label: "API Reference",
+          position: "left",
+        },
+        {
+          to: "/changelog",
+          label: "Changelog",
           position: "left",
         },
         {
