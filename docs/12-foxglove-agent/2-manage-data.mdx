@@ -25,6 +25,10 @@ The Foxglove Agent receives filesystem notifications when files are created in t
 
 Recordings for your device will initially appear in the [Recordings page](https://console.foxglove.dev/recordings). In order to visualize and download this data, you can select these recordings and click "Import". Once the import status is displayed as "complete", the recording is available. You can also do this with the [Recordings API](https://docs.foxglove.dev/api/#tag/Recordings/paths/~1recordings~1%7Bid%7D~1import/post).
 
+### Automatically import recording files
+
+The Agent can be configured to automatically upload recording files that match a configured [glob](<https://en.wikipedia.org/wiki/Glob_(programming)>) pattern. Set the `WATCH_AUTO_IMPORT_PATTERN` variable in `/etc/foxglove/agent/envfile` to a valid glob pattern to enable this functionality. This pattern supports `*` and `?` wildcards.
+
 ### Delete recording files
 
 You can delete recording files as needed to manage disk space on your device. Files that were imported will remain available in Foxglove after the original is deleted. Files that were not imported before deletion will no longer appear in the Recordings page.
