@@ -35,17 +35,17 @@ Select "Foxglove WebSocket" in the "Open data source" dialog, then enter the URL
 
 #### Limitations
 
-Foxglove WebSocket connections support publishing back to your ROS stack, but not reading or setting ROS parameters.
+Foxglove WebSocket connections support publishing back to your ROS stack, as well as reading and setting ROS parameters.
 
 ### Rosbridge
 
 _NOTE: For performance reasons, we recommend using the [Foxglove WebSocket](#foxglove-websocket) connection instead._
 
-<RosbridgeDirections rosVersion={2}/>
+<RosbridgeDirections rosVersion={2} />
 
 #### Limitations
 
-Rosbridge connections support publishing back to your ROS stack, but not reading or setting [ROS parameters](https://github.com/foxglove/studio/issues/1662).
+Rosbridge connections support publishing back to your ROS stack, but not reading or setting [ROS parameters](https://github.com/orgs/foxglove/discussions/223).
 
 ### Remote file
 
@@ -75,13 +75,13 @@ $ mcap convert ros2_input.db3 ros2_output.mcap --ament-prefix-path=/your/first/d
 
 Once you have your MCAP (`.mcap`) file, you're ready to load it for visualization.
 
-<LocalDataDirections/>
+<LocalDataDirections />
 
 ## Imported data
 
 First [convert your ROS 2 files to MCAP](#local-data).
 
-<ImportedDataDirections/>
+<ImportedDataDirections />
 
 ## Links and resources
 
