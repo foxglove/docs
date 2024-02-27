@@ -1,0 +1,6 @@
+{
+  "private": true,
+  "name": "plugin-foxglove-schemas",
+  "type": "module",
+  "exports": "./index.tsx"
+}

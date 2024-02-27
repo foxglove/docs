@@ -1,13 +1,14 @@
-import { Config } from "@docusaurus/types";
+// eslint-disable-next-line filenames/match-exported
+import type { Options as RedirectsOptions } from "@docusaurus/plugin-client-redirects";
+import type * as Preset from "@docusaurus/preset-classic";
+import type { Config } from "@docusaurus/types";
+import { config } from "dotenv";
+import foxgloveSchemasPlugin, { generateFoxgloveSchemaRedirects } from "plugin-foxglove-schemas";
 import { themes } from "prism-react-renderer";
 import "redocusaurus";
+import type { PresetOptions as RedocusaurusPresetOptions } from "redocusaurus";
 
-import foxgloveSchemasPlugin, {
-  generateFoxgloveSchemaRedirects,
-} from "./src/plugins/foxglove-schemas";
-
-// eslint-disable-next-line
-require("dotenv").config();
+config();
 
 const docusaurusConfig: Config = {
   title: "Foxglove | Docs",
@@ -46,7 +47,7 @@ const docusaurusConfig: Config = {
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
-      } satisfies import("@docusaurus/preset-classic").Options,
+      } satisfies Preset.Options,
     ],
     [
       "redocusaurus",
@@ -61,7 +62,7 @@ const docusaurusConfig: Config = {
         theme: {
           primaryColor: "#9480ed",
         },
-      } satisfies import("redocusaurus").PresetOptions,
+      } satisfies RedocusaurusPresetOptions,
     ],
   ],
 
@@ -71,7 +72,7 @@ const docusaurusConfig: Config = {
       "@docusaurus/plugin-client-redirects",
       {
         redirects: [...generateFoxgloveSchemaRedirects()],
-      } satisfies import("@docusaurus/plugin-client-redirects").Options,
+      } satisfies RedirectsOptions,
     ],
   ],
 
@@ -140,7 +141,7 @@ const docusaurusConfig: Config = {
             searchPagePath: "search", // optional; false to disable
           }
         : undefined,
-  } satisfies import("@docusaurus/preset-classic").ThemeConfig,
+  } satisfies Preset.ThemeConfig,
 };
 
-export = docusaurusConfig;
+export default docusaurusConfig;
