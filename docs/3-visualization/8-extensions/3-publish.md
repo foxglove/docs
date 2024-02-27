@@ -46,7 +46,7 @@ $ foxglove extensions unpublish [ID]
 
 ## Sharing publicly
 
-Share your extension with all Foxglove users by adding it to the [`studio-extension-marketplace`](https://github.com/foxglove/studio-extension-marketplace) - installing extensions via the marketplace is only supported on the [desktop app](https://foxglove.dev/download).
+Share your extension with all Foxglove users by adding it to the [extension marketplace](https://github.com/foxglove/studio-extension-marketplace) (installing extensions via the marketplace is only supported on the [desktop app](https://foxglove.dev/download)).
 
 Publish your `.foxe` file somewhere public – we recommend GitHub releases alongside your code. Then, open a PR in the repo to update extensions.json and this README's "Extensions" section with your extension information.
 
