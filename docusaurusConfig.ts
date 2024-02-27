@@ -1,8 +1,5 @@
-/// <reference types="prism-react-renderer" />
-
 import { Config } from "@docusaurus/types";
-import darkCodeTheme from "prism-react-renderer/themes/dracula";
-import lightCodeTheme from "prism-react-renderer/themes/github";
+import { themes } from "prism-react-renderer";
 import "redocusaurus";
 
 import foxgloveSchemasPlugin, {
@@ -24,6 +21,10 @@ const docusaurusConfig: Config = {
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
+  markdown: {
+    // Use CommonMark for .md and MDX for .mdx
+    format: "detect",
+  },
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -125,8 +126,8 @@ const docusaurusConfig: Config = {
       copyright: `Copyright © Foxglove`,
     },
     prism: {
-      theme: lightCodeTheme,
-      darkTheme: darkCodeTheme,
+      theme: themes.github,
+      darkTheme: themes.dracula,
     },
     algolia:
       process.env.ALGOLIA_APP_ID && process.env.ALGOLIA_API_KEY

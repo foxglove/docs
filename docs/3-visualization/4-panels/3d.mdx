@@ -21,7 +21,7 @@ Calibration parameters for your scene's camera.
 | --------- | -------------------------------------------------------------------------------------------------------------------- |
 | ROS 1     | [`sensor_msgs/CameraInfo`](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/CameraInfo.html)                  |
 | ROS 2     | [`sensor_msgs/msg/CameraInfo`](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/CameraInfo.msg) |
-| Custom    | [`foxglove.CameraCalibration`](/docs/visualization/message-schemas/camera-calibration)                                             |
+| Custom    | [`foxglove.CameraCalibration`](/docs/visualization/message-schemas/camera-calibration)                               |
 
 ### Grid
 
@@ -33,7 +33,7 @@ Calibration parameters for your scene's camera.
 | --------- | -------------------------------------------------------------------------------------------------------------------- |
 | ROS 1     | [`nav_msgs/OccupancyGrid`](https://docs.ros.org/en/noetic/api/nav_msgs/html/msg/OccupancyGrid.html)                  |
 | ROS 2     | [`nav_msgs/msg/OccupancyGrid`](https://github.com/ros2/common_interfaces/blob/master/nav_msgs/msg/OccupancyGrid.msg) |
-| Custom    | [`foxglove.Grid`](/docs/visualization/message-schemas/grid)                                                                        |
+| Custom    | [`foxglove.Grid`](/docs/visualization/message-schemas/grid)                                                          |
 
 #### `foxglove.Grid` settings
 
@@ -77,8 +77,8 @@ Images displayed in the 3D scene, using the corresponding [Camera field-of-view]
 | ROS 2     | [`sensor_msgs/msg/Image`](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/Image.msg)                     |
 | ROS 1     | [`sensor_msgs/CompressedImage`](https://docs.ros.org/en/api/sensor_msgs/html/msg/CompressedImage.html)                         |
 | ROS 2     | [`sensor_msgs/msg/CompressedImage`](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/CompressedImage.msg) |
-| Custom    | [`foxglove.RawImage`](/docs/visualization/message-schemas/raw-image)                                                                         |
-| Custom    | [`foxglove.CompressedImage`](/docs/visualization/message-schemas/compressed-image)                                                           |
+| Custom    | [`foxglove.RawImage`](/docs/visualization/message-schemas/raw-image)                                                           |
+| Custom    | [`foxglove.CompressedImage`](/docs/visualization/message-schemas/compressed-image)                                             |
 
 ### Laser scan
 
@@ -88,7 +88,7 @@ A single scan from a planar laser range-finder.
 | --------- | ------------------------------------------------------------------------------------------------------------------ |
 | ROS 1     | [`sensor_msgs/LaserScan`](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/LaserScan.html)                  |
 | ROS 2     | [`sensor_msgs/msg/LaserScan`](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/LaserScan.msg) |
-| Custom    | [`foxglove.LaserScan`](/docs/visualization/message-schemas/laser-scan)                                                           |
+| Custom    | [`foxglove.LaserScan`](/docs/visualization/message-schemas/laser-scan)                                             |
 
 ### ROS polygons
 
@@ -157,7 +157,7 @@ An array of timestamped poses in a named coordinate frame, denoting an object's 
 | --------- | -------------------------------------------------------------------------------------------------- |
 | ROS 1     | [`nav_msgs/Path`](https://docs.ros.org/en/noetic/api/nav_msgs/html/msg/Path.html)                  |
 | ROS 2     | [`nav_msgs/msg/Path`](https://github.com/ros2/common_interfaces/blob/master/nav_msgs/msg/Path.msg) |
-| Custom    | [`foxglove.PosesInFrame`](/docs/visualization/message-schemas/poses-in-frame)                                    |
+| Custom    | [`foxglove.PosesInFrame`](/docs/visualization/message-schemas/poses-in-frame)                      |
 
 ### Point cloud
 
@@ -169,7 +169,7 @@ A collection of N-dimensional points, which may contain additional fields with i
 | --------- | ---------------------------------------------------------------------------------------------------------------------- |
 | ROS 1     | [`sensor_msgs/PointCloud2`](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/PointCloud2.html)                  |
 | ROS 2     | [`sensor_msgs/msg/PointCloud2`](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/PointCloud2.msg) |
-| Custom    | [`foxglove.PointCloud`](/docs/visualization/message-schemas/point-cloud)                                                             |
+| Custom    | [`foxglove.PointCloud`](/docs/visualization/message-schemas/point-cloud)                                               |
 
 #### Settings
 
@@ -219,7 +219,7 @@ Poses in a named coordinate frame.
 | ROS 2     | [`geometry_msgs/msg/PoseArray`](https://github.com/ros2/common_interfaces/blob/master/geometry_msgs/msg/PoseArray.msg)     |
 | ROS 1     | [`geometry_msgs/PoseStamped`](https://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/PoseStamped.html)                  |
 | ROS 2     | [`geometry_msgs/msg/PoseStamped`](https://github.com/ros2/common_interfaces/blob/master/geometry_msgs/msg/PoseStamped.msg) |
-| Custom    | [`foxglove.PosesInFrame`](/docs/visualization/message-schemas/poses-in-frame)                                                            |
+| Custom    | [`foxglove.PosesInFrame`](/docs/visualization/message-schemas/poses-in-frame)                                              |
 
 ### Scene entity
 
@@ -227,8 +227,8 @@ A collection of primitive shapes (cubes, spheres, text, meshes, lines, etc) used
 
 Scene entities must be wrapped in a `SceneUpdate` message.
 
-| framework | schema                                                       |
-| --------- | ------------------------------------------------------------ |
+| framework | schema                                                                     |
+| --------- | -------------------------------------------------------------------------- |
 | Custom    | [`foxglove.SceneEntity`](/docs/visualization/message-schemas/scene-entity) |
 | Custom    | [`foxglove.SceneUpdate`](/docs/visualization/message-schemas/scene-update) |
 
@@ -241,7 +241,7 @@ A transform (translation and rotation) between two reference frames in 3D space.
 | ROS 1     | [`tf/tfMessage`](https://docs.ros.org/en/noetic/api/tf/html/msg/tfMessage.html)                    |
 | ROS 1     | [`tf2_msgs/TFMessage`](https://docs.ros.org/en/noetic/api/tf2_msgs/html/msg/TFMessage.html)        |
 | ROS 2     | [`tf2_msgs/msg/TFMessage`](https://github.com/ros2/geometry2/blob/ros2/tf2_msgs/msg/TFMessage.msg) |
-| Custom    | [`foxglove.FrameTransform`](/docs/visualization/message-schemas/frame-transform)                                 |
+| Custom    | [`foxglove.FrameTransform`](/docs/visualization/message-schemas/frame-transform)                   |
 
 ### Velodyne scan
 
@@ -375,7 +375,6 @@ You can add URDF models with a custom layer. Use each layer's menu to duplicate 
 | **Frame prefix** | (Optional) Prefix for robot's transforms. Also commonly known as a TF prefix.                                                                                                                                                                   |
 | **Display mode** | Robot link geometries to display <ul><li>**Auto** – Defaults to visual geometries, but falls back to collision geometries if there are no visuals</li><li>**Visual** – Visual geometries</li><li>**Collision** – Collision geometries</li></ul> |
 | **Color**        | Fallback color for the URDF model, if the source doesn't contain colors                                                                                                                                                                         |
-
 
 ### Publish
 
