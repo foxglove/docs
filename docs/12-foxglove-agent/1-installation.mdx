@@ -40,33 +40,68 @@ Configure the `FOXGLOVE_DEVICE_TOKEN` setting in `/etc/foxglove/agent/envfile` w
 
 #### Upload to self-managed primary site
 
-If your Foxglove organization uses a self-managed Primary site, your device will need credentials
-to upload recordings to its inbox bucket. Configure these additional keys in `envfile`:
+If your Foxglove organization uses a [self-managed primary site](../10-primary-sites/0-introduction.mdx), your device will need credentials
+to upload recordings, depending on the cloud service hosting your primary site inbox bucket.
+
+##### GCS
+
+First, install a `credentials.json` file into the device filesystem that authorizes the agent to write into your inbox bucket. The `foxglove` user must have permissions to read this file.
+
+Then, configure the following keys in `/etc/foxglove/agent/envfile`:
 
 ```bash
-# Must be set to self-managed to enable direct inbox bucket upload
 PRIMARY_SITE_MODE=self-managed
-# Must be set to `google_cloud`, `aws`, or `azure`
 INBOX_STORAGE_PROVIDER=google_cloud
-# Must be set to a valid bucket name.
+# Must be set to a valid bucket name, excluding any `gs://` scheme
 INBOX_BUCKET_NAME=...
+# Set this to the absolute path of the credentials.json file
+GOOGLE_APPLICATION_CREDENTIALS=...
+```
 
-# Required for the `azure` inbox storage provider
-AZURE_TENANT_ID=tenant-id
-AZURE_CLIENT_ID=client-id
-AZURE_CLIENT_SECRET=f02f3819-b046-4c9d-a5e8-853f16e5c687
+##### Azure
+
+Configure the following keys in `/etc/foxglove/agent/envfile`:
+
+```bash
+PRIMARY_SITE_MODE=self-managed
+INBOX_STORAGE_PROVIDER=azure
+# Must be set to a valid bucket name
+INBOX_BUCKET_NAME=...
+# Set these according to your Azure deployment
+AZURE_TENANT_ID=...
+AZURE_CLIENT_ID=...
+AZURE_CLIENT_SECRET=...
 AZURE_INBOX_STORAGE_SERVICE_URL=...
 AZURE_INBOX_STORAGE_ACCOUNT_NAME=...
+```
 
-# Required for the `google_cloud` inbox storage provider
-# You will need to install a `credentials.json` file into the device filesystem, and set
-# the path to that file here. The `foxglove` user must have permissions to read this file.
-GOOGLE_APPLICATION_CREDENTIALS=/path/to/credentials.json
+##### AWS
 
-# Required for the `aws` inbox storage provider
-AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
-AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
-AWS_DEFAULT_REGION=us-west-2
+Configure the following keys in `/etc/foxglove/agent/envfile`:
+
+```bash
+PRIMARY_SITE_MODE=self-managed
+INBOX_STORAGE_PROVIDER=aws
+# Must be set to a valid bucket name
+INBOX_BUCKET_NAME=...
+# Set these according to your AWS deployment
+AWS_ACCESS_KEY_ID=...
+AWS_SECRET_ACCESS_KEY=...
+AWS_DEFAULT_REGION=...
+```
+
+##### S3-compatible
+
+If your primary site inbox bucket uses a S3-compatible service like [MinIO](https://min.io), configure the following keys in `/etc/foxglove/agent/envfile`:
+
+```bash
+PRIMARY_SITE_MODE=self-managed
+INBOX_STORAGE_PROVIDER=s3_compatible
+# Set these according to your S3-compatible service deployment
+S3_COMPATIBLE_ACCESS_KEY_ID=...
+S3_COMPATIBLE_SECRET_ACCESS_KEY=...
+S3_COMPATIBLE_SERVICE_REGION=...
+S3_COMPATIBLE_SERVICE_URL=...
 ```
 
 #### Run the agent
