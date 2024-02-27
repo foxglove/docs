@@ -5743,6 +5743,7 @@ __metadata:
     eslint-plugin-react: 7.33.0
     eslint-plugin-react-hooks: 4.6.0
     lodash: 4.17.21
+    posthog-docusaurus: 2.0.0
     prettier: 3.0.0
     prism-react-renderer: ^1.3.5
     react: ^17.0.2
@@ -10582,6 +10583,13 @@ __metadata:
     picocolors: ^1.0.0
     source-map-js: ^1.0.2
   checksum: 1cf08ee10d58cbe98f94bf12ac49a5e5ed1588507d333d2642aacc24369ca987274e1f60ff4cbf0081f70d2ab18a5cd3a4a273f188d835b8e7f3ba381b184e57
+  languageName: node
+  linkType: hard
+
+"posthog-docusaurus@npm:2.0.0":
+  version: 2.0.0
+  resolution: "posthog-docusaurus@npm:2.0.0"
+  checksum: c190b0b28c35a839dfd5e0dfb0baf638d63ff14456b3125f25fce6618fd34b1e80d05622347efefac4532c2858828a9a6ad4a46a7cf6758e47f3034134ef17cd
   languageName: node
   linkType: hard
 

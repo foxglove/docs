@@ -10,6 +10,7 @@ jobs:
   all:
     name: all
     runs-on: ubuntu-latest
+    environment: ${{ github.ref == 'refs/heads/main' && 'foxglove-docs (Production)' || 'foxglove-docs (Preview)' }}
 
     permissions:
       contents: read
@@ -31,7 +32,11 @@ jobs:
 
       - run: yarn run lint:ci
 
-      - run: ALGOLIA_APP_ID=${{ secrets.ALGOLIA_APP_ID }} ALGOLIA_API_KEY=${{ secrets.ALGOLIA_API_KEY }} yarn run build
+      - run: yarn run build
+        env:
+          ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
+          ALGOLIA_API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
+          POSTHOG_KEY: ${{ secrets.POSTHOG_KEY }}
 
       - name: Deploy
         uses: cloudflare/pages-action@v1
