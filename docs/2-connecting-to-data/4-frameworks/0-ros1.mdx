@@ -36,16 +36,17 @@ Select "Foxglove WebSocket" in the "Open data source" dialog, then enter the URL
 
 #### Limitations
 
-Foxglove WebSocket connections support publishing back to your ROS stack, but not reading or setting ROS parameters.
+Foxglove WebSocket connections support publishing back to your ROS stack, as well as reading and setting ROS parameters.
 
 ### Rosbridge
+
 _NOTE: For performance reasons, we recommend using the [Foxglove WebSocket](#foxglove-websocket) connection instead._
 
-<RosbridgeDirections rosVersion={1}/>
+<RosbridgeDirections rosVersion={1} />
 
 #### Limitations
 
-Rosbridge connections support publishing back to your ROS stack, but not reading or setting [ROS parameters](https://github.com/foxglove/studio/issues/1662).
+Rosbridge connections support publishing back to your ROS stack, but not reading or setting [ROS parameters](https://github.com/orgs/foxglove/discussions/223).
 
 ### Native
 
@@ -65,10 +66,6 @@ If you're experiencing any issues, ensure you have unrestricted network connecti
 
 If you're running ROS and Foxglove on different machines see the ROS 1 [Network Setup](http://wiki.ros.org/ROS/NetworkSetup) docs to make sure your environment is configured correctly.
 
-#### Limitations
-
-ROS 1 connections do not yet support reading or setting [ROS parameters](https://github.com/foxglove/studio/issues/1662).
-
 ### Remote file
 
 Select "Remote file" in the "Open data source" dialog, and enter the URL to your remote `.bag` file.
@@ -77,11 +74,11 @@ Select "Remote file" in the "Open data source" dialog, and enter the URL to your
 
 ## Local data
 
-<LocalDataDirections/>
+<LocalDataDirections />
 
 ## Imported data
 
-<ImportedDataDirections/>
+<ImportedDataDirections />
 
 ## Links and resources
 
