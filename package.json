@@ -2,6 +2,9 @@
   "name": "docs",
   "version": "0.0.0",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "lint": "eslint --report-unused-disable-directives --fix .",
     "lint:ci": "eslint --report-unused-disable-directives .",
@@ -40,13 +43,13 @@
     "eslint-plugin-react": "7.33.0",
     "eslint-plugin-react-hooks": "4.6.0",
     "lodash": "4.17.21",
+    "plugin-foxglove-schemas": "workspace:*",
     "prettier": "3.0.0",
     "prism-react-renderer": "2.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-router-dom": "6.22.1",
     "redocusaurus": "2.0.1",
-    "ts-node": "10.9.1",
     "typescript": "5.1.6"
   },
   "browserslist": {
