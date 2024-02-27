@@ -29,6 +29,12 @@ Recordings for your device will initially appear in the [Recordings page](https:
 
 The Agent can be configured to automatically upload recording files that match a configured [glob](<https://en.wikipedia.org/wiki/Glob_(programming)>) pattern. Set the `WATCH_AUTO_IMPORT_PATTERN` variable in `/etc/foxglove/agent/envfile` to a valid glob pattern to enable this functionality. This pattern supports `*` and `?` wildcards.
 
+For example, the following configuration in `/etc/foxglove/agent/envfile` will cause MCAP files in the `auto_import/` subdirectory of `STORAGE_ROOT` to be imported as soon as they are created:
+
+```bash
+WATCH_AUTO_IMPORT_PATTERN="auto_import/*.mcap"
+```
+
 ### Delete recording files
 
 You can delete recording files as needed to manage disk space on your device. Files that were imported will remain available in Foxglove after the original is deleted. Files that were not imported before deletion will no longer appear in the Recordings page.
