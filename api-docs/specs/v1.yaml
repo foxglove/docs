@@ -1049,6 +1049,12 @@ paths:
             type: string
           required: false
         - in: query
+          name: recordingKey
+          description: Filter coverage by recordingKey
+          schema:
+            type: string
+          required: false
+        - in: query
           name: sortBy
           description: Field to sort items by
           schema:
@@ -1333,6 +1339,12 @@ paths:
         - in: query
           name: recordingId
           description: ID of the recording from which to list topics
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: recordingKey
+          description: Key of the recording from which to list topics
           schema:
             type: string
           required: false
