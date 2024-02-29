@@ -10,7 +10,7 @@ import * as typedoc from "typedoc";
  * Generate typedoc for the extension API.
  */
 export default async function (_context: LoadContext, _options: unknown): Promise<Plugin> {
-  const typedocOutputPath = path.join(__dirname, "..", "..", "..", "static", "extension-api-docs");
+  const typedocOutputPath = path.join(__dirname, "..", "..", "..", "static", "extension-api");
   const tmpdir = await fs.mkdtemp(path.join(os.tmpdir(), "foxglove-extension-api-docs"));
 
   // Install the latest version of @foxglove/studio from NPM into a temp directory

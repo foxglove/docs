@@ -8,7 +8,7 @@
 .docusaurus
 .cache-loader
 *.generated.md*
-static/extension-api-docs
+static/extension-api
 
 # Misc
 .DS_Store
