@@ -166,7 +166,7 @@ You can check whether your platform supports hardware-accelerated video decoding
 
 The desktop app uses Electron (based on Chromium), and should automatically use hardware acceleration when available. If you're seeing issues here, we recommend following the steps above to see if the same issue exists in Chrome. If so, there's a good chance it's affecting our application for the same reasons. We recommend getting things working in Chrome first, and if the desktop app is still having issues afterward please let us know and we'll look into it.
 
-## Enabling video acceleration:
+## Enabling video acceleration
 
 Tips for Foxglove web in Chromium browsers:
  - Go to `chrome://settings`, search your settings for `acceleration` and ensure that the "Use graphics acceleration when available" toggle is enabled.
