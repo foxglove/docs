@@ -2,6 +2,7 @@ import { Config } from "@docusaurus/types";
 import { themes } from "prism-react-renderer";
 import "redocusaurus";
 
+import extensionApiDocsPlugin from "./src/plugins/extension-api-docs";
 import foxgloveSchemasPlugin, {
   generateFoxgloveSchemaRedirects,
 } from "./src/plugins/foxglove-schemas";
@@ -66,6 +67,7 @@ const docusaurusConfig: Config = {
   ],
 
   plugins: [
+    extensionApiDocsPlugin,
     foxgloveSchemasPlugin,
     [
       "@docusaurus/plugin-client-redirects",

@@ -46,7 +46,9 @@
     "react-dom": "18.2.0",
     "react-router-dom": "6.22.1",
     "redocusaurus": "2.0.1",
+    "strip-json-comments": "5.0.1",
     "ts-node": "10.9.1",
+    "typedoc": "0.25.9",
     "typescript": "5.1.6"
   },
   "browserslist": {
