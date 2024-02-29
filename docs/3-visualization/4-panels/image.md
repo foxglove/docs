@@ -164,7 +164,7 @@ These steps can help your platform achieve low-latency decoding, but there is no
 
 You can check whether your platform supports hardware-accelerated video decoding by opening Google Chrome and entering `chrome://gpu` in the address bar. If you do not see `Video Decode: Hardware accelerated` or the `Video Acceleration` section is empty on this page, but you believe that it should be supported, then you may need to take additional platform-specific steps to enable it.
 
-The desktop app uses Electron (based on Chromium), and should automatically use hardware acceleration when available. If you're seeing issues here, we recommend following the steps above to see if the same issue exists in Chrome. If so, there's a good chance it's affecting our application for the same reasons. We recommend getting things working in Chrome first, and if the desktop app is still having issues afterward please let us know and we'll look into it.
+The desktop app uses Electron (based on Chromium), and should automatically use hardware acceleration when available. If you're seeing issues here, we recommend following the steps above to see if the same issue exists in Chrome. If so, there's a good chance it's affecting our application for the same reasons. We recommend getting things working in Chrome first, and if the desktop app is still having issues afterward please [let us know](https://foxglove.dev/slack) and we'll look into it.
 
 ## Enabling video acceleration
 

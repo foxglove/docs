@@ -412,13 +412,13 @@ To move the camera:
 - Right-click + Drag horizontally – Rotate the camera around the world's z-axis
 - Right-click + Drag vertically – Pan the camera around the world's x- and y- axes
 
-## Performance: hardware acceleration
+## Performance troubleshooting
 
 If you are experiencing poor performance while interacting with the 3D panel, it may be because hardware acceleration is not enabled. Hardware acceleration will significantly improve performance by rendering on the GPU rather than the CPU.
 
 If you're using Google Chrome, you can check that hardware graphics acceleration is enabled by going to `chrome://gpu` and seeing that "WebGL" and/or "WebGL2" are "Hardware accelerated". If not, go to `chrome://settings`, search your settings for `acceleration` and ensure that the "Use graphics acceleration when available" toggle is enabled. If after these steps you still see that WebGL is still not "Hardware accelerated" in `chrome://gpu` then you might have to investigate platform-specific steps for enabling your GPU.
 
-The desktop app uses Electron (based on Chromium), and should automatically use hardware acceleration when available. If you're seeing issues here, we recommend following the steps above to see if the same issue exists in Chrome. If so, there's a good chance it's affecting our application for the same reasons. Therefore we recommend getting things working in Chrome first, and if the desktop app is still having issues afterward please let us know and we'll look into it.
+The desktop app uses Electron (based on Chromium), and should automatically use hardware acceleration when available. If you're seeing issues here, we recommend following the steps above to see if the same issue exists in Chrome. If so, there's a good chance it's affecting our application for the same reasons. Therefore we recommend getting things working in Chrome first, and if the desktop app is still having issues afterward please [let us know](https://foxglove.dev/slack) and we'll look into it.
 
 Some reasons hardware acceleration might be disabled:
  - Your graphics drivers are out of date or not installed such that Chrome can make use of them.
