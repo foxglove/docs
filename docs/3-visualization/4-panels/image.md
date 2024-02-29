@@ -160,7 +160,7 @@ System CPU load and power consumption may also contribute to decoding delays. Ha
 
 These steps can help your platform achieve low-latency decoding, but there is no guarantee depending on the platform and device being used.
 
-## Checking video acceleration:
+## Checking video acceleration
 
 You can check whether your platform supports hardware-accelerated video decoding by opening Google Chrome and entering `chrome://gpu` in the address bar. If you do not see `Video Decode: Hardware accelerated` or the `Video Acceleration` section is empty on this page, but you believe that it should be supported, then you may need to take additional platform-specific steps to enable it.
 
