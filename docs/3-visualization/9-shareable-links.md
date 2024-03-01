@@ -81,14 +81,15 @@ https://studio.foxglove.dev/?ds=rosbridge-websocket&ds.url=ws%3A%2F%2Flocalhost%
 
 ### Foxglove
 
-| parameter         | type                                                                     | required                                             | description                  |
-| ----------------- | ------------------------------------------------------------------------ | ---------------------------------------------------- | ---------------------------- |
-| `ds`              | string                                                                   | ✓                                                    | `foxglove-data-platform`     |
-| `ds.deviceId`     | string                                                                   | One of `ds.deviceId` or `ds.recordingId` is required | Robot ID                     |
-| `ds.start`        | timestamp<br/>([RFC3339](https://datatracker.ietf.org/doc/html/rfc3339)) | With `ds.deviceId`                                   | Start of data playback range |
-| `ds.end`          | timestamp<br/>([RFC3339](https://datatracker.ietf.org/doc/html/rfc3339)) | With `ds.deviceId`                                   | End of data playback range   |
-| `ds.recordingId`  | string                                                                   | One of `ds.deviceId` or `ds.recordingId` is required | ID of the recording to open  |
-| ~~`ds.importId`~~ | string                                                                   | Deprecated. Prefer `ds.recordingId` instead          | ID of the import to open     |
+| parameter         | type                                                                     | required                                                                | description                  |
+| ----------------- | ------------------------------------------------------------------------ | ----------------------------------------------------------------------- | ---------------------------- |
+| `ds`              | string                                                                   | ✓                                                                       | `foxglove-data-platform`     |
+| `ds.deviceId`     | string                                                                   | One of `ds.deviceId`, `ds.recordingId` or `ds.recordingKey` is required | Robot ID                     |
+| `ds.start`        | timestamp<br/>([RFC3339](https://datatracker.ietf.org/doc/html/rfc3339)) | With `ds.deviceId`                                                      | Start of data playback range |
+| `ds.end`          | timestamp<br/>([RFC3339](https://datatracker.ietf.org/doc/html/rfc3339)) | With `ds.deviceId`                                                      | End of data playback range   |
+| `ds.recordingId`  | string                                                                   | One of `ds.deviceId`, `ds.recordingId` or `ds.recordingKey` is required | ID of the recording to open  |
+| `ds.recordingKey` | string                                                                   | One of `ds.deviceId`, `ds.recordingId` or `ds.recordingKey` is required | Key of the recording to open |
+| ~~`ds.importId`~~ | string                                                                   | Deprecated. Prefer `ds.recordingId` instead                             | ID of the import to open     |
 
 ### Remote files
 

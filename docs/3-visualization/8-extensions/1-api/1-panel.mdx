@@ -5,7 +5,7 @@ description: The `PanelExtensionContext` exposes properties and methods for writ
 
 The `PanelExtensionContext` exposes properties and methods for writing a custom panel. The context has methods to subscribe for messages, receive updates, configure your panel's settings, and render your panel to the UI.
 
-The more common methods and properties are described below. For full type docs on the `PanelExtensionContext` and `RenderState` types, see [`@foxglove/studio`](https://github.com/foxglove/studio/blob/main/packages/studio).
+The more common methods and properties are described below. For full type docs on the `PanelExtensionContext` and `RenderState` types, see [`@foxglove/studio`](pathname:///extension-api).
 
 > The `initPanel` function used in the [`registerPanel` method](/docs/visualization/extensions/api/extension-context#registerpanel) accepts a `PanelExtensionContext` argument. This argument contains properties and methods for accessing panel data and rendering UI updates. The `initPanel` function also returns an optional cleanup function to run when the extension `panelElement` unmounts.
 
@@ -36,7 +36,7 @@ context.onRender = (renderState: RenderState, done) => {
 
 > `watch(field: keyof RenderState)`
 
-Use `context.watch` to indicate which fields in `renderState` (e.g. `allFrames`, [`appSettings`](https://github.com/foxglove/studio/blob/main/packages/studio-base/src/AppSetting.ts), `currentFrame`, `currentTime`, `previewTime`, `parameters`, `topics`) should trigger panel re-renders when their contained values change.
+Use `context.watch` to indicate which fields in `renderState` (e.g. `allFrames`, `appSettings`, `currentFrame`, `currentTime`, `previewTime`, `parameters`, `topics`) should trigger panel re-renders when their contained values change.
 
 ```tsx
 context.watch("topics");
@@ -242,7 +242,7 @@ context.setDefaultPanelTitle("Camera Calibration");
 
 > `addPanel({ position: "sibling", type: string, updateIfExists: boolean, getState(existingState?: unknown): unknown; })`
 
-Use `context.layout.addPanel` to add a sibling panel of a given panel type (e.g. `"RawMessages"`) to the layout. All panel types can be referenced [here](https://github.com/foxglove/studio/blob/main/packages/studio-base/src/panels/index.ts).
+Use `context.layout.addPanel` to add a sibling panel of a given panel type (e.g. `"RawMessages"`) to the layout.
 
 If `updateIfExists` is set to true, this will update a sibling panel of the same panel type, if it already exists in the layout.
 
