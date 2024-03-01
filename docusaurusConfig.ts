@@ -130,6 +130,7 @@ const docusaurusConfig: Config = {
           items: [
             { label: "Docs", to: "/" },
             { label: "API reference", to: "/api" },
+            { label: "Changelog", to: "/changelog" },
           ],
         },
         {
