@@ -1524,7 +1524,7 @@ paths:
       tags: [Extensions]
       summary: Publish an extension
       description: |-
-        **Requires Team plan or above**
+        **Available on Free, Team, and Enterprise plans**
 
         Publish a new [Foxglove extension](https://docs.foxglove.dev/docs/visualization/extensions/introduction)
         or an updated version of an existing extension. When uploaded, the extension will automatically be
