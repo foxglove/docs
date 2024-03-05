@@ -38,10 +38,13 @@ To upgrade the package, check the releases page for newer release versions to do
 
 Configure the `FOXGLOVE_DEVICE_TOKEN` setting in `/etc/foxglove/agent/envfile` with the secret device token generated above. Set additional configuration options, such as your recording directory, according to instructions in that file.
 
+#### Upload to Foxglove-hosted site
+
+By default, your Organization will be configured with a Foxglove-hosted primary site. No additional configuration is required in this case.
+
 #### Upload to self-managed primary site
 
-If your Foxglove organization uses a [self-managed primary site](../10-primary-sites/0-introduction.mdx), your device will need credentials
-to upload recordings, depending on the cloud service hosting your primary site inbox bucket.
+If your Foxglove organization uses a [self-managed primary site](../10-primary-sites/0-introduction.mdx), your device will need credentials to upload recordings, depending on the cloud service hosting your primary site inbox bucket.
 
 ##### GCS
 
