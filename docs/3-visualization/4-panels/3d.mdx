@@ -374,7 +374,17 @@ You can add URDF models with a custom layer. Use each layer's menu to duplicate 
 | **Label**        | (Optional) Label with which the custom layer will appear in the sidebar.                                                                                                                                                                        |
 | **Frame prefix** | (Optional) Prefix for robot's transforms. Also commonly known as a TF prefix.                                                                                                                                                                   |
 | **Display mode** | Robot link geometries to display <ul><li>**Auto** – Defaults to visual geometries, but falls back to collision geometries if there are no visuals</li><li>**Visual** – Visual geometries</li><li>**Collision** – Collision geometries</li></ul> |
-| **Color**        | Fallback color for the URDF model, if the source doesn't contain colors                                                                                                                                                                         |
+| **Color**        | Fallback color for the URDF model, if the source doesn't contain colors
+
+##### Resolution of URDF assets with `package://` URLs
+Foxglove is able fetch meshes and other assests referenced by `package://` in a number of different ways:
+
+1. When using the desktop app, package paths can be resolved by finding packages in directories specified by the [ROS_PACKAGE_PATH](/docs/visualization/introduction#general) setting
+2. When using a live connection that supports asset fetching such as [Foxglove Bridge](/docs/2-connecting-to-data/4-ros-foxglove-bridge.md), assets can be fetched over the websocket connection
+3. When the URDF is given as http(s) or local file path, package paths can be resolved when the URL or file path contains the package name. Consider the following example where the package name `leo_description` is contained in the URDF URL:
+    - URDF URL: `https://raw.githubusercontent.com/LeoRover/leo_common-ros2/humble/leo_description/urdf/leo.urdf.xacro`
+    - Asset URL: `package://leo_description/models/Rocker.dae`
+    - Resolved asset URL: `https://raw.githubusercontent.com/LeoRover/leo_common-ros2/humble/leo_description/urdf/leo.urdf.xacro`
 
 ### Publish
 
