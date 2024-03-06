@@ -25,10 +25,10 @@ Using `openIn=desktop` will attempt to open the Foxglove desktop app (assuming i
 
 Alternatively, if you are sure the user has the desktop app installed, you can use the `foxglove://` URL scheme to open it. This provides no browser fallback, and will fail silently if the desktop app is not installed.
 
-| prefix                            | example                                                           |
-| --------------------------------- | ----------------------------------------------------------------- |
-| `https://app.foxglove.dev/~/view` | https://app.foxglove.dev/~/view?ds=sample-nuscenes&openIn=desktop |
-| `foxglove://open`                 | foxglove://open?ds=sample-nuscenes                                |
+| prefix                                               | example                                                                              |
+| ---------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| `https://app.foxglove.dev/{YOUR-FOXGLOVE-SLUG}/view` | https://app.foxglove.dev/{YOUR-FOXGLOVE-SLUG}/view?ds=sample-nuscenes&openIn=desktop |
+| `foxglove://open`                                    | foxglove://open?ds=sample-nuscenes                                                   |
 
 ## Layouts
 

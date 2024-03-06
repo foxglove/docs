@@ -15,7 +15,7 @@ Create a new app integration on your Okta dashboard:
 - **Sign-in method** – OIDC - OpenID Connect
 - **Application type** – Single-Page Application
 - **Grant type** – Authorization code
-- **Sign-in redirect URI** – In `https://app.foxglove.dev/~/{YOUR-FOXGLOVE-SLUG}/signin` format (find `YOUR-FOXGLOVE-SLUG` on the [Settings page](https://app.foxglove.dev/~/settings))
+- **Sign-in redirect URI** – In `https://app.foxglove.dev/{YOUR-FOXGLOVE-SLUG}/signin` format (find `YOUR-FOXGLOVE-SLUG` on the [Settings page](https://app.foxglove.dev/~/settings))
 - **Sign-out redirect URI** – `https://app.foxglove.dev/signin`
 - **Trusted Origins** – Add `https://console.foxglove.dev`
 - **Access** – Note that "Federation Broker Mode" is [incompatible](https://help.okta.com/en-us/Content/Topics/Apps/apps-fbm-known-issues.htm) with Okta tiles
@@ -26,7 +26,7 @@ Optionally, you can enable Okta application tile sign in using these settings:
 
 - **Login initiated by** – Either Okta or App
 - **Login flow** – Redirect to app to initiate login (OIDC Compliant)
-- **Login URI** – Same as the sign-in redirect URL in the previous step (`https://app.foxglove.dev/~/{YOUR-FOXGLOVE-SLUG}/signin`)
+- **Login URI** – Same as the sign-in redirect URL in the previous step (`https://app.foxglove.dev/{YOUR-FOXGLOVE-SLUG}/signin`)
 - **Application visibility** – Display application icon to users
 
 This [Foxglove logo](/img/docs/organization-setup/okta/foxglove-logo-okta.png) works well as a custom tile icon.
