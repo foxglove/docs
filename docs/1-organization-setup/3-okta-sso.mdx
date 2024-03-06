@@ -4,7 +4,7 @@ title: Okta SSO
 
 import AccountRequiredHeader from "../../src/components/docs/icons/AccountRequiredHeader";
 
-<AccountRequiredHeader badgeText="Requires Enterprise plan" />
+<AccountRequiredHeader plans={["Enterprise"]} />
 
 Foxglove organizations can use Okta as authorization provider.
 
@@ -39,11 +39,11 @@ Configure application settings on the [Okta SSO settings page](https://console.f
 
 - **Okta domain** – Find in the Okta dashboard's profile dropdown (`xxxxx.okta.com`)
 
-  <img alt="Okta domain" src="/img/docs/organization-setup/okta/domain.png" width="400"/>
+  <img alt="Okta domain" src="/img/docs/organization-setup/okta/domain.png" width="400" />
 
 - **Client ID** – Find in the Applications list, below the app name
 
-  <img alt="Okta clientId" src="/img/docs/organization-setup/okta/clientid.png" width="600"/>
+  <img alt="Okta clientId" src="/img/docs/organization-setup/okta/clientid.png" width="600" />
 
 ### (Optional) Disable non-Okta sign in
 
