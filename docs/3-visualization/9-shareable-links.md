@@ -8,7 +8,7 @@ Build and share deep links with your teammates to open Foxglove with specific la
 To open Foxglove using a specific layout or data source, construct a "deep link" URL using the format:
 
 ```
-https://studio.foxglove.dev/?param1=value2&param2=value2
+https://app.foxglove.dev/~/view?param1=value2&param2=value2
 ```
 
 Supported query parameters are documented below, or you can copy any URL while you are using the app.
@@ -25,10 +25,10 @@ Using `openIn=desktop` will attempt to open the Foxglove desktop app (assuming i
 
 Alternatively, if you are sure the user has the desktop app installed, you can use the `foxglove://` URL scheme to open it. This provides no browser fallback, and will fail silently if the desktop app is not installed.
 
-| prefix                         | example                                                        |
-| ------------------------------ | -------------------------------------------------------------- |
-| `https://studio.foxglove.dev/` | https://studio.foxglove.dev/?ds=sample-nuscenes&openIn=desktop |
-| `foxglove://open`              | foxglove://open?ds=sample-nuscenes                             |
+| prefix                            | example                                                           |
+| --------------------------------- | ----------------------------------------------------------------- |
+| `https://app.foxglove.dev/~/view` | https://app.foxglove.dev/~/view?ds=sample-nuscenes&openIn=desktop |
+| `foxglove://open`                 | foxglove://open?ds=sample-nuscenes                                |
 
 ## Layouts
 
@@ -53,7 +53,7 @@ To specify your data source, use the `ds` parameter as documented according to y
 For example, a Rosbridge connection may look like the following:
 
 ```
-https://studio.foxglove.dev/?ds=rosbridge-websocket&ds.url=ws%3A%2F%2Flocalhost%3A9090&layoutId=2644147b-f205-456c-ace9-69466aaac0b7
+https://app.foxglove.dev/~/view?ds=rosbridge-websocket&ds.url=ws%3A%2F%2Flocalhost%3A9090&layoutId=2644147b-f205-456c-ace9-69466aaac0b7
 ```
 
 ### Foxglove WebSocket
