@@ -8,7 +8,7 @@ Build and share deep links with your teammates to open Foxglove with specific la
 To open Foxglove using a specific layout or data source, construct a "deep link" URL using the format:
 
 ```
-https://app.foxglove.dev/~/view?param1=value2&param2=value2
+https://app.foxglove.dev/{YOUR-FOXGLOVE-SLUG}/view?param1=value2&param2=value2
 ```
 
 Supported query parameters are documented below, or you can copy any URL while you are using the app.
@@ -53,7 +53,7 @@ To specify your data source, use the `ds` parameter as documented according to y
 For example, a Rosbridge connection may look like the following:
 
 ```
-https://app.foxglove.dev/~/view?ds=rosbridge-websocket&ds.url=ws%3A%2F%2Flocalhost%3A9090&layoutId=2644147b-f205-456c-ace9-69466aaac0b7
+https://app.foxglove.dev/{YOUR-FOXGLOVE-SLUG}/view?ds=rosbridge-websocket&ds.url=ws%3A%2F%2Flocalhost%3A9090&layoutId=2644147b-f205-456c-ace9-69466aaac0b7
 ```
 
 ### Foxglove WebSocket
