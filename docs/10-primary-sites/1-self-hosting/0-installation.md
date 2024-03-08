@@ -44,7 +44,7 @@ See [Configure cloud credentials](/docs/primary-sites/self-hosting/configure-clo
 
 ### Create secret with site token
 
-Find your Primary Site token on the ["Sites" settings page](https://console.foxglove.dev/settings/sites).
+Find your Primary Site token on the ["Sites" settings page](https://app.foxglove.dev/~/settings/sites).
 
 Install a [Secret](https://kubernetes.io/docs/concepts/configuration/secret/) named `foxglove-site-token` into the `foxglove` namespace containing your site token:
 
@@ -172,7 +172,7 @@ ingress:
 
 ### Configure Foxglove
 
-Once the site's ingress public URL is known, you can configure it on a Site page, linked from the ["Sites" settings page](https://console.foxglove.dev/settings/sites).
+Once the site's ingress public URL is known, you can configure it on a Site page, linked from the ["Sites" settings page](https://app.foxglove.dev/~/settings/sites).
 
 Under Site URL, enter the HTTPS URL you've assigned to the Ingress.
 
@@ -192,4 +192,4 @@ The [Foxglove AWS Terraform examples](https://github.com/foxglove/terraform-exam
 - AWS: If you are using the [Foxglove AWS Terraform example](https://github.com/foxglove/terraform-examples/blob/main/primary-site/aws/README.md), this setup is done for you. You should see an SNS topic with an https subscription attached to the inbox bucket's `s3:ObjectCreated:*` events.
 - MinIO: [https://min.io/docs/minio/linux/administration/monitoring/publish-events-to-webhook.html#minio-bucket-notifications-publish-webhook](https://min.io/docs/minio/linux/administration/monitoring/publish-events-to-webhook.html#minio-bucket-notifications-publish-webhook)
 
-> Org admins can find the inbox notification endpoint on the [Sites settings page](https://console.foxglove.dev/settings/sites).
+> Org admins can find the inbox notification endpoint on the [Sites settings page](https://app.foxglove.dev/~/settings/sites).

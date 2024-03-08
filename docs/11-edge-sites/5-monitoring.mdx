@@ -7,7 +7,7 @@ Monitor your Foxglove edge site.
 
 ### Online status
 
-The edge site performs periodic pings to the Foxglove API control plane to report health. Organization admins can see this status on the [Sites settings page](https://console.foxglove.dev/settings/sites).
+The edge site performs periodic pings to the Foxglove API control plane to report health. Organization admins can see this status on the [Sites settings page](https://app.foxglove.dev/~/settings/sites).
 
 ### Prometheus
 
@@ -34,6 +34,7 @@ Check out the [Prometheus documentation](https://prometheus.io/docs/introduction
 - `recording_upload_ms` – Histogram of timings for upload of a recording file to the configured inbox bucket
 - `control_plane_patch_recordings_imported_ms` – Histogram of timings for batched status updates issued to console after submission of recordings
 - `pending_import_request_poll_ms` – Histogram of timings for requests against Foxglove for pending import requests
+
 * `database_recordings_count`: Count of recordings indexed in the database.
 * `database_topics_count`: Count of unique topics/schemas indexed in the database.
 * `database_recording_reports_count`: Count of recording reports indexed in the database.
@@ -52,7 +53,8 @@ $ curl -X GET http://localhost:6002/metrics
 ### Slow query logging
 
 Slow query logging in the edge site can be enabled by supplying the following environment variables. Using these should have negligible performance impact.
-* `SLOW_QUERY_LOG_MIN_DURATION`: A positive integer indicating the minimum execution time in milliseconds for a query to be considered "slow". Queries slower than this will be written to logs.
-* `SLOW_QUERY_LOG_PARAMETERS`: A boolean indicating whether parameters should be logged, defaulting to "false".
+
+- `SLOW_QUERY_LOG_MIN_DURATION`: A positive integer indicating the minimum execution time in milliseconds for a query to be considered "slow". Queries slower than this will be written to logs.
+- `SLOW_QUERY_LOG_PARAMETERS`: A boolean indicating whether parameters should be logged, defaulting to "false".
 
 These environment variables can be supplied in the "edgeController.env" section of the helm chart.

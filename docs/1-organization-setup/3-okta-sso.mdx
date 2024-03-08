@@ -15,8 +15,8 @@ Create a new app integration on your Okta dashboard:
 - **Sign-in method** – OIDC - OpenID Connect
 - **Application type** – Single-Page Application
 - **Grant type** – Authorization code
-- **Sign-in redirect URI** – In `https://console.foxglove.dev/{YOUR-FOXGLOVE-SLUG}/signin` format (find `YOUR-FOXGLOVE-SLUG` on the [Settings page](https://console.foxglove.dev/settings))
-- **Sign-out redirect URI** – `https://console.foxglove.dev/signin`
+- **Sign-in redirect URI** – In `https://app.foxglove.dev/{YOUR-FOXGLOVE-SLUG}/signin` format (find `YOUR-FOXGLOVE-SLUG` on the [Settings page](https://app.foxglove.dev/~/settings))
+- **Sign-out redirect URI** – `https://app.foxglove.dev/signin`
 - **Trusted Origins** – Add `https://console.foxglove.dev`
 - **Access** – Note that "Federation Broker Mode" is [incompatible](https://help.okta.com/en-us/Content/Topics/Apps/apps-fbm-known-issues.htm) with Okta tiles
 
@@ -26,14 +26,14 @@ Optionally, you can enable Okta application tile sign in using these settings:
 
 - **Login initiated by** – Either Okta or App
 - **Login flow** – Redirect to app to initiate login (OIDC Compliant)
-- **Login URI** – Same as the sign-in redirect URL in the previous step (`https://console.foxglove.dev/{YOUR-FOXGLOVE-SLUG}/signin`)
+- **Login URI** – Same as the sign-in redirect URL in the previous step (`https://app.foxglove.dev/{YOUR-FOXGLOVE-SLUG}/signin`)
 - **Application visibility** – Display application icon to users
 
 This [Foxglove logo](/img/docs/organization-setup/okta/foxglove-logo-okta.png) works well as a custom tile icon.
 
 ### Foxglove OIDC configuration
 
-Configure application settings on the [Okta SSO settings page](https://console.foxglove.dev/settings/oidc):
+Configure application settings on the [Okta SSO settings page](https://app.foxglove.dev/~/settings/oidc):
 
 ![Foxglove SSO settings](/img/docs/organization-setup/okta/settings.png)
 
@@ -49,13 +49,13 @@ Configure application settings on the [Okta SSO settings page](https://console.f
 
 Confirm that your Okta SSO setup works by signing out and signing back in with Okta SSO.
 
-Use the [SSO settings tab](https://console.foxglove.dev/settings/oidc) to disable or re-enable all other authentication methods.
+Use the [SSO settings tab](https://app.foxglove.dev/~/settings/oidc) to disable or re-enable all other authentication methods.
 
 ### Manage members
 
 - **Provision members** – Any Okta user with access to the Foxglove Okta application can sign in. A new Foxglove account is automatically created on first sign in.
 
-- **Remove users** – Revoke the user's access in Okta, then remove the associated user on Foxglove's [Team settings page](https://console.foxglove.dev/settings/team) to sign them out of Foxglove immediately. If non-Okta sign in methods are enabled for your account, emails matching your approved domains can always sign up.
+- **Remove users** – Revoke the user's access in Okta, then remove the associated user on Foxglove's [Team settings page](https://app.foxglove.dev/~/settings/team) to sign them out of Foxglove immediately. If non-Okta sign in methods are enabled for your account, emails matching your approved domains can always sign up.
 
 ## Links and resources
 

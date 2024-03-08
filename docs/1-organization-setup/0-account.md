@@ -3,7 +3,7 @@ title: Account
 description: Sign up for a free Foxglove account – either as an individual or with a team.
 ---
 
-[Sign up](https://console.foxglove.dev/signup) for a free Foxglove account to get started.
+[Sign up](https://app.foxglove.dev/signup) for a free Foxglove account to get started.
 
 ### Individual vs. team
 
@@ -31,6 +31,6 @@ This selection applies only to imported data files – import metadata, user ac
 
 ## Links and resources
 
-- [Sign up](https://console.foxglove.dev/signup)
+- [Sign up](https://app.foxglove.dev/signup)
 - [Desktop app download](https://foxglove.dev/download) (for Linux, Windows, and macOS)
 - [Self-hosting Foxglove](/docs/primary-sites/introduction)

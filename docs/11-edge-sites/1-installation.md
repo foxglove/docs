@@ -13,7 +13,7 @@ Install and configure a Foxglove edge site.
 
 ### Create a site
 
-Create an edge site from the [Sites settings page](https://console.foxglove.dev/settings/sites):
+Create an edge site from the [Sites settings page](https://app.foxglove.dev/~/settings/sites):
 
 - "Create site" – Name and create your edge site
 - "Automatically delete recordings after (days)" – Enable garbage collection for your edge site; files past the expiration period are no longer eligible for import
@@ -124,7 +124,7 @@ Install your Foxglove edge site deployment to your current Kubernetes [context](
 
 #### Prepare a values file
 
-Create a `values.yaml` file to configure the installation. You'll need your edge site's site token, which can be found on the [Sites settings page](https://console.foxglove.dev/settings/sites), and the name of your `inbox` bucket.
+Create a `values.yaml` file to configure the installation. You'll need your edge site's site token, which can be found on the [Sites settings page](https://app.foxglove.dev/~/settings/sites), and the name of your `inbox` bucket.
 
 Accepted values for `provider` are: `aws`, `azure`, or `google_cloud`.
 

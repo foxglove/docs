@@ -19,7 +19,7 @@ View the [Foxglove API Reference](/api) for more details on all available endpoi
 
 ## API keys
 
-Organization admins must create an API key from the [Settings page](https://console.foxglove.dev/settings/apikeys).
+Organization admins must create an API key from the [Settings page](https://app.foxglove.dev/~/settings/apikeys).
 
 ![API key management](/img/docs/api/keys.webp)
 

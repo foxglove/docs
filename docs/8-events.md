@@ -9,7 +9,7 @@ Each event requires an associated device, timestamp, and duration (0 for an inst
 
 ### Add event during playback
 
-Click “Visualize” for a recording on the [“Recordings” page](https://console.foxglove.dev/recordings). The data will open for playback in a new window  – locate the bookmark icon on the playback bar:
+Click “Visualize” for a recording on the [“Recordings” page](https://app.foxglove.dev/~/recordings). The data will open for playback in a new window – locate the bookmark icon on the playback bar:
 
 ![Event icon](/img/docs/visualization/playback/event-icon.webp)
 
@@ -17,7 +17,7 @@ Seek to a point of interest in your data, then click the bookmark icon to add an
 
 ![Add event](/img/docs/visualization/playback/create-event.webp)
 
-Added events will also persist to the [“Events” page](https://console.foxglove.dev/events).
+Added events will also persist to the [“Events” page](https://app.foxglove.dev/~/events).
 
 #### View and search during playback
 
@@ -33,7 +33,7 @@ If the "Events" sidebar is open, hovering on an event on the playback timeline w
 
 ### Actions
 
-Add, list, delete, and search events from the [Events page](https://console.foxglove.dev/events).
+Add, list, delete, and search events from the [Events page](https://app.foxglove.dev/~/events).
 
 ![create event](/img/docs/events/create-event.webp)
 
@@ -45,7 +45,7 @@ Add, list, delete, and search events from the [Events page](https://console.foxg
 
 #### Search
 
-Search events by device, time range, and metadata on the [Events page](https://console.foxglove.dev/events).
+Search events by device, time range, and metadata on the [Events page](https://app.foxglove.dev/~/events).
 
 Use the syntax below to filter by metadata keys and values:
 
