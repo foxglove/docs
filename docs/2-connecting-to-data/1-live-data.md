@@ -49,7 +49,7 @@ Finally, set up your CORS configuration. Check out the following example of a [T
 ```
 cors_rule {
   allowed_methods = ["GET", "HEAD", "OPTIONS"]
-  allowed_origins = ["https://studio.foxglove.dev"]
+  allowed_origins = ["https://app.foxglove.dev"]
   allowed_headers = ["*"]
   expose_headers = ["ETag", "Content-Type", "Accept-Ranges", "Content-Length"]
 }
@@ -59,7 +59,7 @@ And a Terraform config for a GCS bucket ([docs](https://registry.terraform.io/pr
 
 ```
 cors {
-  origin = ["https://studio.foxglove.dev"]
+  origin = ["https://app.foxglove.dev"]
   method = ["GET", "HEAD", "OPTIONS"]
   response_header = ["ETag", "Content-Type", "Accept-Ranges", "Content-Length"]
 }
