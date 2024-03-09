@@ -175,7 +175,7 @@ tags:
       <SchemaDefinition schemaRef="#/components/schemas/webhook_payloads/Ping" />
 
 x-tagGroups:
-  - name: Data Platform
+  - name: Data Management
     tags:
       - Coverage
       - Custom Properties
