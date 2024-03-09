@@ -179,7 +179,7 @@ Under Site URL, enter the HTTPS URL you've assigned to the Ingress.
 ### Bucket push notification
 
 The site inbox processor needs to know when new files are uploaded to the inbox bucket. To notify of
-new uploads, configure a push notification to the foxglove data platform inbox-notifications
+new uploads, configure a push notification to Foxglove inbox-notifications
 endpoint.
 
 Configuring a push notification for new file uploads is specific to your cloud provider (or S3-compatible service).
