@@ -2912,29 +2912,7 @@ components:
           - attemptedAt
           - webhookId
           - webhookEventId
-      RecordingImported:
-        allOf:
-          - $ref: "#/components/schemas/webhook_payloads/Common"
-          - properties:
-              recording:
-                properties:
-                  id:
-                    description: Recording ID
-                    type: string
-                  path:
-                    description: The filepath the recording was created with
-                    type: string
-                required:
-                  - id
-                  - path
-                type: object
-              type:
-                type: string
-                const: "recording.imported"
-            required:
-              - recording
-            type: object
-      RecordingCreated:
+      Recording:
         allOf:
           - $ref: "#/components/schemas/webhook_payloads/Common"
           - properties:
@@ -2959,12 +2937,24 @@ components:
                   - path
                   - importStatus
                 type: object
-              type:
-                type: string
-                const: "recording.created"
+
             required:
               - recording
             type: object
+      RecordingCreated:
+        allOf:
+          - $ref: "#/components/schemas/webhook_payloads/Recording"
+          - properties:
+              type:
+                type: string
+                const: "recording.created"
+      RecordingImported:
+        allOf:
+          - $ref: "#/components/schemas/webhook_payloads/Recording"
+          - properties:
+              type:
+                type: string
+                const: "recording.imported"
       DeviceCreated:
         allOf:
           - $ref: "#/components/schemas/webhook_payloads/Common"
