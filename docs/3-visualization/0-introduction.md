@@ -10,7 +10,7 @@ Download Foxglove as a [desktop app](https://foxglove.dev/download) (available o
   width="840"
   height="472"
   src="https://www.youtube.com/embed/ySVzQ3iFw90"
-  title="YouTube video player – Getting Started with Foxglove Studio"
+  title="YouTube video player – Getting Started with Foxglove"
   frameBorder="0"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
   allowFullScreen
