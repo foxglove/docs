@@ -88,7 +88,7 @@ tags:
 
       For example, you can create a device custom property identified with a key
       `locationId` and a type of `string`. assign location IDs. This enables you
-      to assign a location to each of your devices, view that data in Foxglove, and
+      to assign a location to each of your devices, view that data in Console, and
       filter devices by a location ID.
 
   - name: Devices
@@ -100,7 +100,7 @@ tags:
 
   - name: Coverage
     description: |
-      Coverage provides the ability to see which time spans are available within Foxglove.
+      Coverage provides the ability to see which time spans are available within data platform.
 
   - name: Imports
     description: |
@@ -127,7 +127,7 @@ tags:
   - name: Recording Attachments
     description: |
       A recording attachment resource represents information about an MCAP attachment
-      imported to Foxglove.
+      imported to the data platform.
 
       Attachments are available for individual download or with their recording.
 
@@ -142,7 +142,7 @@ tags:
   - name: Webhook Payloads
     description: |
       [Webhooks](/docs/webhooks/introduction) send POST request notifications to your HTTPS endpoint
-      when events occur within Foxglove. This section describes the JSON request body format
+      when events occur within Data Platform. This section describes the JSON request body format
       your endpoint should expect for each event type.
 
       ## recording.created
@@ -166,7 +166,7 @@ tags:
 
       ## event.created
 
-      `event.created` events occur when a new [Event](/docs/events) is created in Foxglove.
+      `event.created` events occur when a new [Event](/docs/events) is created in Data Platform.
       <SchemaDefinition schemaRef="#/components/schemas/webhook_payloads/EventCreated" />
 
       ## ping
@@ -175,7 +175,7 @@ tags:
       <SchemaDefinition schemaRef="#/components/schemas/webhook_payloads/Ping" />
 
 x-tagGroups:
-  - name: Data Management
+  - name: Data Platform
     tags:
       - Coverage
       - Custom Properties
@@ -960,7 +960,7 @@ paths:
       tags: [Coverage]
       summary: List coverage
       description: |-
-        A coverage range represents a time span for which Foxglove has data for a
+        A coverage range represents a time span for which Foxglove Data Platform has data for a
         given device.
 
         Your must specify the `start` and `end` arguments when making a coverage request.
@@ -2541,7 +2541,7 @@ components:
 
     Coverage:
       type: object
-      description: A coverage range represents a time span for which Foxglove has data for a given device. Recordings without devices are omitted except when queried by recording ID or import ID.
+      description: A coverage range represents a time span for which Foxglove Data Platform has data for a given device. Recordings without devices are omitted except when queried by recording ID or import ID.
       properties:
         deviceId:
           type: string
@@ -2671,7 +2671,7 @@ components:
 
     RecordingAttachment:
       type: object
-      description: An attachment resource represents information about an MCAP attachment imported to Foxglove.
+      description: An attachment resource represents information about an MCAP attachment imported to the data platform.
       properties:
         id:
           type: string
