@@ -70,6 +70,8 @@ Schemas are required for Foxglove WebSocket, and must be a [JSON Schema](https:/
 
 Each message should be UTF8-encoded JSON representing an object. Binary data should be represented as a base64-encoded string in the JSON object, and should use [`"contentEncoding": "base64"`](https://json-schema.org/draft/2020-12/json-schema-validation.html#rfc.section.8.3) (e.g. `{ "type": "string", "contentEncoding": "base64" }`) in the schema.
 
+_NOTE: Foxglove does not support the use of JSON references (`$ref`)._
+
 #### Protobuf
 
 For Protobuf data, use schema encoding `"protobuf"` and message encoding `"protobuf"`.
