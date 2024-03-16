@@ -41,14 +41,14 @@ Some features are only available via the [desktop app](https://foxglove.dev/down
 
 ![top nav](/img/docs/visualization/navigation.jpeg)
 
-| component         | description                                                                                                                                                                                                                                     |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **App menu**      | Connect to a [data source](/docs/connecting-to-data/introduction#data-sources), toggle the sidebars, or view resources                                                                                                                          |
-| **Add panel**     | Add a [panel](/docs/visualization/panels/introduction) to the current layout                                                                                                                                                                    |
-| **Layout menu**   | Save your workspace view as a [layout](/docs/visualization/layouts) and share it with teammates                                                                                                                                                 |
-| **Left sidebar**  | Edit panel settings (Panel), view data source's topics (Topics), and troubleshoot issues with your connection (Problems)                                                                                                                        |
-| **Right sidebar** | Set layout-wide [variables](/docs/visualization/variables) (Variables), view playback metrics (Performance), and view logs by level (Logs). Must enable debugging features in the _Visualization settings_ to see the Performance and Logs tabs |
-| **User menu**     | Sign in to your Foxglove account, configure preferences, manage [extensions](/docs/visualization/extensions/introduction), and more                                                                                                             |
+| component         | description                                                                                                                                                                                            |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **App menu**      | Connect to a [data source](/docs/connecting-to-data/introduction#data-sources), toggle the sidebars, or view resources                                                                                 |
+| **Add panel**     | Add a [panel](/docs/visualization/panels/introduction) to the current layout                                                                                                                           |
+| **Layout menu**   | Save your workspace view as a [layout](/docs/visualization/layouts) and share it with teammates                                                                                                        |
+| **Left sidebar**  | Edit panel settings (Panel), view data source's topics (Topics), and troubleshoot issues with your connection (Problems)                                                                               |
+| **Right sidebar** | Set layout-wide [variables](/docs/visualization/variables) (Variables), view playback metrics (Performance). Must enable debugging features in the _Visualization settings_ to see the Performance tab |
+| **User menu**     | Sign in to your Foxglove account, configure preferences, manage [extensions](/docs/visualization/extensions/introduction), and more                                                                    |
 
 ## Settings
 
@@ -105,7 +105,7 @@ Set layout-wide [variables](/docs/visualization/variables) that can be used in d
 
 ### Performance
 
-Display playback and data-streaming performance statistics. Displayed only when the "Studio debug panels" [experimental feature](/docs/visualization/introduction#settings#experimental-features) is toggled on in the app settings.
+Display playback and data-streaming performance statistics. Displayed only when the "Enable panels and features for debugging Foxglove" setting is enabled in the app settings.
 
 ![playback performance panel](/img/docs/visualization/panels/studio-playback-performance/panel.webp)
 
