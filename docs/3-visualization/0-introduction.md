@@ -3,14 +3,14 @@ title: Introduction
 description: After connecting to a data source, leverage Foxglove's visualization and debugging tools to start exploring your data.
 ---
 
-Download Foxglove as a [desktop app](https://foxglove.dev/download) (available on Linux, Windows, or macOS), or navigate to the [web app](https://studio.foxglove.dev) in a Chrome browser window.
+Download Foxglove as a [desktop app](https://foxglove.dev/download) (available on Linux, Windows, or macOS), or navigate to the [web app](https://app.foxglove.dev) in a Chrome browser window.
 
 <iframe
   className="max-w-full max-h-full"
   width="840"
   height="472"
   src="https://www.youtube.com/embed/ySVzQ3iFw90"
-  title="YouTube video player – Getting Started with Foxglove Studio"
+  title="YouTube video player – Getting Started with Foxglove"
   frameBorder="0"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
   allowFullScreen
@@ -58,6 +58,7 @@ Open _Visualization settings_ from the user menu to configure the following sett
 
 ### General
 
+<<<<<<< HEAD
 | field                                                                                  | description                                                                                                                                                                      |
 | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Color scheme**                                                                       | Choose between light or dark mode, or follow your OS settings                                                                                                                    |
@@ -68,6 +69,17 @@ Open _Visualization settings_ from the user menu to configure the following sett
 | **Updates**                                                                            | Toggle ability to automatically update the desktop app                                                                                                                           |
 | [**ROS_PACKAGE_PATH**](https://wiki.ros.org/ROS/EnvironmentVariables#ROS_PACKAGE_PATH) | Paths to search for ROS packages (local file paths or `package://` URLs); separate paths with standard OS path separator (e.g. ':' on Unix)                                      |
 | **Advanced**                                                                           | Enable features for debugging Foxglove                                                                                                                                           |
+=======
+| field                                                                                  | description                                                                                                                                                                                                 |
+| -------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Color scheme**                                                                       | Choose between light or dark mode, or follow your OS settings                                                                                                                                               |
+| **Display timestamps in**                                                              | Timezone used to display timestamps                                                                                                                                                                         |
+| **Timestamp format**                                                                   | Formatting used to display timestamps                                                                                                                                                                       |
+| **Message rate (Hz)**                                                                  | Message pipeline's frame rate; lowering frame rate will reduce CPU usage and redraw frequency for certain panels; rendering will continue at the usual 60fps for smooth playback                            |
+| **Language**                                                                           | App language                                                                                                                                                                                                |
+| **Updates**                                                                            | Toggle ability to automatically update the desktop app                                                                                                                                                      |
+| [**ROS_PACKAGE_PATH**](https://wiki.ros.org/ROS/EnvironmentVariables#ROS_PACKAGE_PATH) | Paths to search for ROS packages (local file paths or `package://` URLs); separate paths with standard OS path separator (e.g. ':' on Unix). <br/>_Example_: `/path/to/workspace/src:/opt/ros/noetic/share` |
+>>>>>>> main
 
 ### Privacy
 

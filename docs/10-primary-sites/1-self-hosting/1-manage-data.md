@@ -7,7 +7,7 @@ Manage your self-hosted Primary Site's data.
 
 ### Uploading data
 
-To import data to Foxglove, self-managed users must upload their recordings to their configured inbox bucket. Once acknowledged, the pending import will appear on the [Recordings page](https://console.foxglove.dev/recordings). Once processed, its data will be available via the [API](/api) and [CLI](/docs/cli).
+To import data to Foxglove, self-managed users must upload their recordings to their configured inbox bucket. Once acknowledged, the pending import will appear on the [Recordings page](https://app.foxglove.dev/~/recordings). Once processed, its data will be available via the [API](/api) and [CLI](/docs/cli).
 
 #### Prevent duplication with idempotency keys
 

@@ -3,11 +3,11 @@ title: Settings
 description: Foxglove organization admins can use the settings to modify the subscription plan, invite and manage team members, and configure organization-wide settings like sites and custom device properties.
 ---
 
-Foxglove organization admins can use the [Settings page](https://console.foxglove.dev/settings) to modify the subscription plan, invite and manage team members, and configure organization-wide settings like sites and custom device properties.
+Foxglove organization admins can use the [Settings page](https://app.foxglove.dev/~/settings) to modify the subscription plan, invite and manage team members, and configure organization-wide settings like sites and custom device properties.
 
 ### General
 
-On the [General settings page](https://console.foxglove.dev/settings/general), admins can:
+On the [General settings page](https://app.foxglove.dev/~/settings/general), admins can:
 
 - **Organization name** – Edit the organization name
 - **Subscription** – View and modify plan details
@@ -17,7 +17,7 @@ On the [General settings page](https://console.foxglove.dev/settings/general), a
 
 ### Team
 
-On the [Team settings page](https://console.foxglove.dev/settings/team), admins can:
+On the [Team settings page](https://app.foxglove.dev/~/settings/team), admins can:
 
 - View a list of all team members (name, email address, last seen, role)
 - Invite or remove team members
@@ -25,7 +25,7 @@ On the [Team settings page](https://console.foxglove.dev/settings/team), admins 
 
 ### Sites
 
-On the [Sites settings page](https://console.foxglove.dev/settings/sites), admins can:
+On the [Sites settings page](https://app.foxglove.dev/~/settings/sites), admins can:
 
 - Look up the status, name, and ID of their Foxglove- and self-hosted [Primary Sites](/docs/primary-sites/introduction)
 - Look up the status, name, and ID of their on-premises [Edge Sites](/docs/edge-sites/introduction)
@@ -34,11 +34,11 @@ On the [Sites settings page](https://console.foxglove.dev/settings/sites), admin
 
 ### Custom properties
 
-On the [Custom properties settings page](https://console.foxglove.dev/settings/custom-properties), admins can set predefined metadata fields (i.e. [custom properties](/docs/devices#custom-properties)) for the whole organization to associate with their devices.
+On the [Custom properties settings page](https://app.foxglove.dev/~/settings/custom-properties), admins can set predefined metadata fields (i.e. [custom properties](/docs/devices#custom-properties)) for the whole organization to associate with their devices.
 
 ### API keys
 
-On the [API keys settings page](https://console.foxglove.dev/settings/apikeys), admins can:
+On the [API keys settings page](https://app.foxglove.dev/~/settings/apikeys), admins can:
 
 - Generate API keys for accessing the [Foxglove API](/docs/api)
 - Enable, disable, or permanently delete generated API keys
@@ -46,19 +46,19 @@ On the [API keys settings page](https://console.foxglove.dev/settings/apikeys), 
 
 ### SSO
 
-On the [SSO settings page](https://console.foxglove.dev/settings/oidc), admins can configure Okta SSO OIDC settings like the Okta domain, client ID, and more.
+On the [SSO settings page](https://app.foxglove.dev/~/settings/oidc), admins can configure Okta SSO OIDC settings like the Okta domain, client ID, and more.
 
 Foxglove currently supports both [Microsoft](https://foxglove.dev/blog/announcing-microsoft-sign-in) and [Okta SSO](/docs/organization-setup/okta-sso).
 
 ### Extensions
 
-On the [Extensions settings page](https://console.foxglove.dev/settings/extensions), admins can install Foxglove [extensions](/docs/visualization/extensions/introduction) across the organization to better support the team's unique workflows. Enabled extensions are automatically installed for all signed in team members.
+On the [Extensions settings page](https://app.foxglove.dev/~/settings/extensions), admins can install Foxglove [extensions](/docs/visualization/extensions/introduction) across the organization to better support the team's unique workflows. Enabled extensions are automatically installed for all signed in team members.
 
 Use the `foxglove` CLI to [write](/docs/visualization/extensions/introduction#writing-an-extension) and [publish](/docs/visualization/extensions/publish) Foxglove extensions.
 
 ### Insights
 
-On the [Insights settings page](https://console.foxglove.dev/settings/insights), admins can understand how their team members are leveraging the platform.
+On the [Insights settings page](https://app.foxglove.dev/~/settings/insights), admins can understand how their team members are leveraging the platform.
 
 #### Import volume
 

@@ -11,17 +11,17 @@ Check out the [MCAP docs](https://mcap.dev) for more information on [converting 
 
 To organize files by the robot they were recorded on, create uniquely named devices for every real or simulated robot you want to track. Files do not have to be associated with a device to import them.
 
-Click "Add device" on the [Devices page](https://console.foxglove.dev/devices) to create your devices:
+Click "Add device" on the [Devices page](https://app.foxglove.dev/~/devices) to create your devices:
 
 ![add device](/img/docs/importing-data/add-device.webp)
 
 ### Import files
 
-Import data from the [Recordings](https://console.foxglove.dev/recordings) or [Timeline](https://console.foxglove.dev/timeline) page:
+Import data from the [Recordings](https://app.foxglove.dev/~/recordings) or [Timeline](https://app.foxglove.dev/~/timeline) page:
 
 ![Recordings page](/img/docs/recordings/index.png)
 
-Alternatively, you can click on one of your created devices on the [Devices page](https://console.foxglove.dev/devices) to go to its details page – from there, you can import data directly to that device.
+Alternatively, you can click on one of your created devices on the [Devices page](https://app.foxglove.dev/~/devices) to go to its details page – from there, you can import data directly to that device.
 
 Select the file you want to import, and the device you want to associate with the recording if desired:
 
@@ -33,7 +33,7 @@ When importing [MCAP files](https://mcap.dev/) with metadata records or attachme
 
 ### View recordings
 
-View imported data as a list on the [Recordings page](https://console.foxglove.dev/recordings), or as ranges on a timeline on the [Timeline page](https://console.foxglove.dev/timeline).
+View imported data as a list on the [Recordings page](https://app.foxglove.dev/~/recordings), or as ranges on a timeline on the [Timeline page](https://app.foxglove.dev/~/timeline).
 
 ## Links and resources
 

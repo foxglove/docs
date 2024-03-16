@@ -6,11 +6,12 @@ description: Self-managed Primary Sites need additional cloud credentials to imp
 Self-managed Primary Sites need additional cloud credentials to import data from its corresponding Foxglove Edge Sites.
 
 ## Google Cloud Platform (GCP)
+To access the strage buckets in GCP we will need to create a service account and configure the primary site to use the credentials of that account. 
 
-Install a [Secret](https://kubernetes.io/docs/concepts/configuration/secret/) named
-`gcp-cloud-credential` into the `foxglove` namespace. This secret should contain a single key `credentials.json` with the contents of json key file.
-
-Use the `kubectl` command to set the secret from an existing `credentials.json` file.
+1. Create a service account to give read and write access to the storage buckets in GCP.
+2. Create a key for the service account
+3. Download and rename the key to `credentials.json`
+4. Use the `kubectl` command to set the secret from the existing `credentials.json` file.
 
 ```
 kubectl create secret generic gcp-cloud-credential \
@@ -62,7 +63,7 @@ stringData:
 Example application of a secrets file:
 
 ```shell
-$ kubectl apply -f ./cloud-credentials-secret.yaml
+$ kubectl apply -f ./cloud-credentials-secret.yaml -n foxglove
 ```
 
 ## S3-Compatible
@@ -90,7 +91,7 @@ stringData:
 Example application of a secrets file:
 
 ```shell
-$ kubectl apply -f ./cloud-credentials-secret.yaml
+$ kubectl apply -f ./cloud-credentials-secret.yaml -n foxglove
 ```
 
 ## Azure
@@ -117,5 +118,5 @@ stringData:
 Example application of a secrets file:
 
 ```shell
-$ kubectl apply -f ./cloud-credentials-secret.yaml
+$ kubectl apply -f ./cloud-credentials-secret.yaml -n foxglove
 ```

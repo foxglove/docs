@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: ["*"]
 
+  # Allow triggering this workflow from another repo to update the docs after a release
+  repository_dispatch:
+
 jobs:
   all:
     name: all
@@ -24,7 +27,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 16.x
+          node-version: 20.x
           cache: yarn
 
       - run: yarn install --immutable

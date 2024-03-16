@@ -5,17 +5,17 @@ description: Import ROS 1 (.bag) and MCAP (.mcap) data files into the Foxglove p
 
 Export your data to visualize them in Foxglove and other debugging and visualization tools.
 
-Once you've imported data to Foxglove, you can export select ranges of this data to export as a [MCAP](https://mcap.dev) (`.mcap`) or ROS 1 (`.bag`) file, or stream the data directly to third party debugging tools like Jupyter Notebooks or visualization tools like [Foxglove](https://foxglove.dev/studio).
+Once you've imported data to Foxglove, you can export select ranges of this data to export as a [MCAP](https://mcap.dev) (`.mcap`) or ROS 1 (`.bag`) file, or stream the data directly to third party debugging tools like Jupyter Notebooks or visualization tools like [Foxglove](https://foxglove.dev/product).
 
 ### Download recording or event
 
-Select a recording from the [Recordings page](https://console.foxglove.dev/recordings) or an event from the [Events](https://console.foxglove.dev/events) to download it.
+Select a recording from the [Recordings page](https://app.foxglove.dev/~/recordings) or an event from the [Events](https://app.foxglove.dev/~/events) to download it.
 
 When downloading MCAP files, all associated metadata records and attachments are included. You can also download MCAP files' attachments separately, under the recording details page's _Attachments_ tab.
 
 ### Download time range
 
-Use the [Timeline page](https://console.foxglove.dev/timeline) to find the data you are interested in:
+Use the [Timeline page](https://app.foxglove.dev/~/timeline) to find the data you are interested in:
 
 ![search](/img/docs/exporting-data/search.webp)
 

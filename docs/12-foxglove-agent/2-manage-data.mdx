@@ -1,0 +1,40 @@
+---
+title: Manage data
+description: Start processing data recordings with your Foxglove Agent.
+---
+
+import AccountRequiredHeader from "../../src/components/docs/icons/AccountRequiredHeader";
+
+<AccountRequiredHeader plans={["Team", "Enterprise"]} />
+
+Start processing data recordings with your Foxglove Agent.
+
+### Set up the data directory
+
+Configure the `STORAGE_ROOT` setting in `/etc/foxglove/agent/envfile` with the directory you want to monitor for newly recorded data files. This will serve as the Agent's _data directory_.
+
+### Adding recording files
+
+Move your completed recordings into the data directory. The Agent will be notified by the filesystem when a new recording is available.
+
+The Foxglove Agent receives filesystem notifications when files are created in the data directory. This notification is triggered when a file is created. To avoid triggering notifications on incomplete files, data files should be [renamed](https://man7.org/linux/man-pages/man1/rename.1.html) into the data directory after writing (use `mv` rather than `cp`). Alternatively, you can write files into the data directory with an ignored filename suffix, and then rename it to remove the suffix after writing. The ignored suffix defaults to `.active` and can be customized with the `WATCH_IGNORE_SUFFIX` environment variable.
+
+**Note:** The ROS 1 bag writer uses an `.active` suffix on incomplete files by default, and can be used to write directly into the data directory.
+
+### Import to cloud
+
+Recordings for your device will initially appear in the [Recordings page](https://app.foxglove.dev/~/recordings). In order to visualize and download this data, you can select these recordings and click "Import". Once the import status is displayed as "complete", the recording is available. You can also do this with the [Recordings API](https://docs.foxglove.dev/api/#tag/Recordings/paths/~1recordings~1%7Bid%7D~1import/post).
+
+### Automatically import recording files
+
+The Agent can be configured to automatically upload recording files that match a configured [glob](<https://en.wikipedia.org/wiki/Glob_(programming)>) pattern. Set the `WATCH_AUTO_IMPORT_PATTERN` variable in `/etc/foxglove/agent/envfile` to a valid glob pattern to enable this functionality. This pattern supports `*` and `?` wildcards.
+
+For example, the following configuration in `/etc/foxglove/agent/envfile` will cause MCAP files in the `auto_import/` subdirectory of `STORAGE_ROOT` to be imported as soon as they are created:
+
+```bash
+WATCH_AUTO_IMPORT_PATTERN="auto_import/*.mcap"
+```
+
+### Delete recording files
+
+You can delete recording files as needed to manage disk space on your device. Files that were imported will remain available in Foxglove after the original is deleted. Files that were not imported before deletion will no longer appear in the Recordings page.

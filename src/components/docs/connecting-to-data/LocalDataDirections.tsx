@@ -7,7 +7,7 @@ const LocalDataDirections = (): ReactElement => {
       <ul>
         <li>Double-click the file from your file manager</li>
         <li>
-          Drag-and-drop the file into <a href="https://studio.foxglove.dev">Foxglove</a> directly
+          Drag-and-drop the file into <a href="https://app.foxglove.dev">Foxglove</a> directly
         </li>
         <li>
           <span style={{ display: "block" }}>

@@ -70,6 +70,8 @@ Schemas are required for Foxglove WebSocket, and must be a [JSON Schema](https:/
 
 Each message should be UTF8-encoded JSON representing an object. Binary data should be represented as a base64-encoded string in the JSON object, and should use [`"contentEncoding": "base64"`](https://json-schema.org/draft/2020-12/json-schema-validation.html#rfc.section.8.3) (e.g. `{ "type": "string", "contentEncoding": "base64" }`) in the schema.
 
+_NOTE: Foxglove does not support the use of JSON references (`$ref`)._
+
 #### Protobuf
 
 For Protobuf data, use schema encoding `"protobuf"` and message encoding `"protobuf"`.
@@ -171,7 +173,7 @@ Known limitations can be found here in `foxglove/omgidl` library internally used
 - [IDL Grammar Limitations](https://github.com/foxglove/omgidl/blob/main/packages/omgidl-parser/README.md#omg-idl-subset-support)
 - [CDR and CDR2 Deserialization Limitations](https://github.com/foxglove/omgidl/blob/main/packages/omgidl-serialization/README.md#known-limitations)
 
-If there's an IDL feature you want to see supported, file an issue on the [Foxglove](https://github.com/foxglove/studio/issues) or [Foxglove OMG IDL](https://github.com/foxglove/omgidl/issues) GitHub repo.
+If there's an IDL feature you want to see supported, create a [community discussion](https://github.com/orgs/foxglove/discussions) or file an issue on the [Foxglove OMG IDL](https://github.com/foxglove/omgidl/issues) GitHub repo.
 
 All Foxglove-compatible `.idl` files are available in the [`foxglove/schemas` repo](https://github.com/foxglove/schemas/tree/main/schemas/omgidl).
 

@@ -29,6 +29,6 @@ Foxglove provides a wide array of developer tooling for every step of the roboti
 
 ## Links and resources
 
-- [Create a free account](https://console.foxglove.dev/) - [Dashboard](https://console.foxglove.dev/dashboard)
+- [Create a free account](https://app.foxglove.dev/signup) - [Dashboard](https://app.foxglove.dev/~/dashboard)
 - [Download the desktop app](https://foxglove.dev/download) (for Linux, Windows, and macOS)
 - [Browse tutorials](https://foxglove.dev/tutorials)

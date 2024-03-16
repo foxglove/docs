@@ -44,7 +44,7 @@ See [Configure cloud credentials](/docs/primary-sites/self-hosting/configure-clo
 
 ### Create secret with site token
 
-Find your Primary Site token on the ["Sites" settings page](https://console.foxglove.dev/settings/sites).
+Find your Primary Site token on the ["Sites" settings page](https://app.foxglove.dev/~/settings/sites).
 
 Install a [Secret](https://kubernetes.io/docs/concepts/configuration/secret/) named `foxglove-site-token` into the `foxglove` namespace containing your site token:
 
@@ -62,6 +62,8 @@ Install your Primary Site using Helm.
 
 Create a `values.yaml` file to configure the installation. You'll need to include a `storageProvider` (`aws`, `azure`, `google_cloud`, or `s3_compatible`) and the names of your `lake` and `inbox` buckets:
 
+**Google Cloud**
+
 ```yaml
 globals:
   lake:
@@ -72,22 +74,47 @@ globals:
     bucketName: foxglove-inbox
 ```
 
-Be sure to include any additional values required by your storage provider:
-
-- **AWS** – Configure a region for requests:
+**AWS**
 
 ```yaml
+globals:
+  lake:
+    storageProvider: aws
+    bucketName: foxglove-lake
+  inbox:
+    storageProvider: aws
+    bucketName: foxglove-inbox
 globals:
   aws:
-    region: us-east-1
+    region: <us-east-1>
 ```
 
-- **Azure** - Configure your storage service:
+**S3 Compatible**
+For S3 compatible storage like MinIO
 
 ```yaml
 globals:
+  lake:
+    storageProvider: s3_compatible
+    bucketName: foxglove-lake
+  inbox:
+    storageProvider: s3_compatible
+    bucketName: foxglove-lake
+```
+
+**Azure**
+
+```yaml
+globals:
+  lake:
+    storageProvider: azure
+    bucketName: foxglove-lake
+  inbox:
+    storageProvider: azure
+    bucketName: foxglove-inbox
+globals:
   azure:
-    storageAccountName: my-storage-account
+    storageAccountName: <my-storage-account>
     serviceUrl: "https://<resourcegroup>.blob.core.windows.net"
 ```
 
@@ -145,14 +172,14 @@ ingress:
 
 ### Configure Foxglove
 
-Once the site's ingress public URL is known, you can configure it on a Site page, linked from the ["Sites" settings page](https://console.foxglove.dev/settings/sites).
+Once the site's ingress public URL is known, you can configure it on a Site page, linked from the ["Sites" settings page](https://app.foxglove.dev/~/settings/sites).
 
 Under Site URL, enter the HTTPS URL you've assigned to the Ingress.
 
 ### Bucket push notification
 
 The site inbox processor needs to know when new files are uploaded to the inbox bucket. To notify of
-new uploads, configure a push notification to the foxglove data platform inbox-notifications
+new uploads, configure a push notification to Foxglove inbox-notifications
 endpoint.
 
 Configuring a push notification for new file uploads is specific to your cloud provider (or S3-compatible service).
@@ -165,4 +192,4 @@ The [Foxglove AWS Terraform examples](https://github.com/foxglove/terraform-exam
 - AWS: If you are using the [Foxglove AWS Terraform example](https://github.com/foxglove/terraform-examples/blob/main/primary-site/aws/README.md), this setup is done for you. You should see an SNS topic with an https subscription attached to the inbox bucket's `s3:ObjectCreated:*` events.
 - MinIO: [https://min.io/docs/minio/linux/administration/monitoring/publish-events-to-webhook.html#minio-bucket-notifications-publish-webhook](https://min.io/docs/minio/linux/administration/monitoring/publish-events-to-webhook.html#minio-bucket-notifications-publish-webhook)
 
-> Org admins can find the inbox notification endpoint on the [Sites settings page](https://console.foxglove.dev/settings/sites).
+> Org admins can find the inbox notification endpoint on the [Sites settings page](https://app.foxglove.dev/~/settings/sites).

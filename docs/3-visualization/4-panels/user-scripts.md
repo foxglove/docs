@@ -32,20 +32,20 @@ Every script must declare 3 exports:
 - `output` – Name of the transformed output topic
 - `script` – A function that takes messages from input topics, transforms them, and then publishes messages on the output topic; must be the [default export](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export#description)
 
-Here is a basic script that echoes its input on a new output topic, `/studio_script/echo`:
+Here is a basic script that echoes its input on a new output topic, `/foxglove_script/echo`:
 
 ```typescript
 import { Input, Message } from "./types";
 
 export const inputs = ["/rosout"];
-export const output = "/studio_script/echo";
+export const output = "/foxglove_script/echo";
 
 export default function script(event: Input<"/rosout">): Message<"rosgraph_msgs/Log"> => {
   return event.message;
 }
 ```
 
-If you drag in a `.bag` file, you should now be able to inspect the `/studio_script/echo` topic in the [Raw Messages panel](/docs/visualization/panels/raw-messages).
+If you drag in a `.bag` file, you should now be able to inspect the `/foxglove_script/echo` topic in the [Raw Messages panel](/docs/visualization/panels/raw-messages).
 
 When you create a new script, you’ll be presented with some boilerplate:
 
@@ -57,7 +57,7 @@ type Output = {
 };
 
 export const inputs = ["/input/topic"];
-export const output = "/studio_script/output_topic";
+export const output = "/foxglove_script/output_topic";
 
 export default function script(event: Input<"/input/topic">): Output {
   return {
@@ -85,7 +85,7 @@ In some cases, you will want to define multiple input topics:
 import { Input, Message } from "./types";
 
 export const inputs = ["/rosout", "/tf"];
-export const output = "/studio_script/echo";
+export const output = "/foxglove_script/echo";
 
 export default function script(event: Input<"/rosout"> | Input<"/tf">): { data: number[] } => {
   if (event.topic === "/rosout") {
@@ -106,7 +106,7 @@ To combine messages from multiple topics, create a variable in your script's glo
 import { Input, Message, Time } from "./types";
 
 export const inputs = ["/rosout", "/tf"];
-export const output = "/studio_script/echo";
+export const output = "/foxglove_script/echo";
 
 let lastReceiveTime: Time = { sec: 0, nsec: 0 };
 const myScope: {
@@ -146,7 +146,7 @@ type Output = {};
 type GlobalVariables = { someNumericaVar: number };
 
 export const inputs = [];
-export const output = "/studio_script/";
+export const output = "/foxglove_script/";
 
 export default function script(event: Input<"/foo_marker">, globalVars: GlobalVariables): Output => {
   if (event.message.id === globalVars.someNumericaVar) {
@@ -193,7 +193,7 @@ Do an early (or late) `return` in your function body when you don't want to publ
 import { Input } from "./types";
 
 export const inputs = ["/state"];
-export const output = "/studio_script/manual_metrics";
+export const output = "/foxglove_script/manual_metrics";
 
 export default function script(event: Input<"/state">): { metrics: number } | undefined => {
   if (event.message.constant === 3) {
@@ -217,7 +217,7 @@ import { Input } from "./types";
 import { Color, Pose } from "@foxglove/schemas";
 
 export const inputs = ["/imu"];
-export const output = "/studio_script/json_data";
+export const output = "/s_script/json_data";
 
 type Output = {
   color: Color;

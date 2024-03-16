@@ -3,7 +3,7 @@ title: Introduction
 description: Connect to a live data source for real-time visualization. You can also load local and Foxglove-imported data files for playback.
 ---
 
-Clicking "Visualize" from the [Foxglove dashboard](https://console.foxglove.dev/dashboard) will take you to an "Open data source" dialog.
+Clicking "Visualize" from the [Foxglove dashboard](https://app.foxglove.dev/~/dashboard) will take you to an "Open data source" dialog.
 
 ![Data source dialog](/img/docs/connecting-to-data/dialog.png)
 

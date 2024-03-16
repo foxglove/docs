@@ -1,10 +1,8 @@
-/// <reference types="prism-react-renderer" />
-
 import { Config } from "@docusaurus/types";
-import darkCodeTheme from "prism-react-renderer/themes/dracula";
-import lightCodeTheme from "prism-react-renderer/themes/github";
+import { themes } from "prism-react-renderer";
 import "redocusaurus";
 
+import extensionApiDocsPlugin from "./src/plugins/extension-api-docs";
 import foxgloveSchemasPlugin, {
   generateFoxgloveSchemaRedirects,
 } from "./src/plugins/foxglove-schemas";
@@ -24,6 +22,10 @@ const docusaurusConfig: Config = {
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
+  markdown: {
+    // Use CommonMark for .md and MDX for .mdx
+    format: "detect",
+  },
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -45,6 +47,14 @@ const docusaurusConfig: Config = {
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
+        blog: {
+          path: "changelog",
+          routeBasePath: "changelog",
+          blogTitle: "Changelog",
+          blogDescription: "Changelog | Foxglove",
+          blogSidebarTitle: "Recent releases",
+          showReadingTime: false,
+        },
       } satisfies import("@docusaurus/preset-classic").Options,
     ],
     [
@@ -65,11 +75,15 @@ const docusaurusConfig: Config = {
   ],
 
   plugins: [
+    extensionApiDocsPlugin,
     foxgloveSchemasPlugin,
     [
       "@docusaurus/plugin-client-redirects",
       {
-        redirects: [...generateFoxgloveSchemaRedirects()],
+        redirects: [
+          ...generateFoxgloveSchemaRedirects(),
+          { from: "/docs/release-notes", to: "/changelog" },
+        ],
       } satisfies import("@docusaurus/plugin-client-redirects").Options,
     ],
   ],
@@ -98,6 +112,11 @@ const docusaurusConfig: Config = {
           position: "left",
         },
         {
+          to: "/changelog",
+          label: "Changelog",
+          position: "left",
+        },
+        {
           href: "https://foxglove.dev/",
           label: "Back to Foxglove",
           position: "right",
@@ -111,6 +130,7 @@ const docusaurusConfig: Config = {
           items: [
             { label: "Docs", to: "/" },
             { label: "API reference", to: "/api" },
+            { label: "Changelog", to: "/changelog" },
           ],
         },
         {
@@ -125,8 +145,8 @@ const docusaurusConfig: Config = {
       copyright: `Copyright © Foxglove`,
     },
     prism: {
-      theme: lightCodeTheme,
-      darkTheme: darkCodeTheme,
+      theme: themes.github,
+      darkTheme: themes.dracula,
     },
     algolia:
       process.env.ALGOLIA_APP_ID && process.env.ALGOLIA_API_KEY

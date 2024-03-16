@@ -139,6 +139,41 @@ tags:
     description: |
       Device tokens are used by Foxglove device agents to authenticate to the API.
 
+  - name: Webhook Payloads
+    description: |
+      [Webhooks](/docs/webhooks/introduction) send POST request notifications to your HTTPS endpoint
+      when events occur within Data Platform. This section describes the JSON request body format
+      your endpoint should expect for each event type.
+
+      ## recording.created
+
+      `recording.created` events occur when a recording is created. Recordings are created
+      when a file is [uploaded](/api#tag/Recordings/paths/~1data~1upload/post), added to
+      [Edge Site](/docs/edge-sites/introduction) storage, or created on a device that runs the
+      [Foxglove Agent](/docs/foxglove-agent/introduction).
+      <SchemaDefinition schemaRef="#/components/schemas/webhook_payloads/RecordingCreated" />
+
+      ## recording.imported
+
+      `recording.imported` events occur when a recording is [imported](/docs/importing-data)
+      and is ready for streaming.
+      <SchemaDefinition schemaRef="#/components/schemas/webhook_payloads/RecordingImported" />
+
+      ## device.created
+
+      `device.created` events occur when a new [Device](/docs/importing-data#add-a-device) is created.
+      <SchemaDefinition schemaRef="#/components/schemas/webhook_payloads/DeviceCreated" />
+
+      ## event.created
+
+      `event.created` events occur when a new [Event](/docs/events) is created in Data Platform.
+      <SchemaDefinition schemaRef="#/components/schemas/webhook_payloads/EventCreated" />
+
+      ## ping
+
+      The `ping` event type is used to test webhook connectivity.
+      <SchemaDefinition schemaRef="#/components/schemas/webhook_payloads/Ping" />
+
 x-tagGroups:
   - name: Data Platform
     tags:
@@ -150,10 +185,15 @@ x-tagGroups:
       - Recordings
       - Recording Attachments
       - Imports
+      - Sites
       - Stream data
       - Topics
 
-  - name: Studio
+  - name: Webhooks
+    tags:
+      - Webhook Payloads
+
+  - name: Visualization
     tags:
       - Extensions
       - Layouts
@@ -1009,6 +1049,12 @@ paths:
             type: string
           required: false
         - in: query
+          name: recordingKey
+          description: Filter coverage by recordingKey
+          schema:
+            type: string
+          required: false
+        - in: query
           name: sortBy
           description: Field to sort items by
           schema:
@@ -1297,6 +1343,12 @@ paths:
             type: string
           required: false
         - in: query
+          name: recordingKey
+          description: Key of the recording from which to list topics
+          schema:
+            type: string
+          required: false
+        - in: query
           name: deviceId
           description: ID of device being queried
           schema:
@@ -1472,9 +1524,9 @@ paths:
       tags: [Extensions]
       summary: Publish an extension
       description: |-
-        **Requires Team plan or above**
+        **Available on Free, Team, and Enterprise plans**
 
-        Publish a new [Foxglove Studio extension](https://docs.foxglove.dev/docs/visualization/extensions/introduction)
+        Publish a new [Foxglove extension](https://docs.foxglove.dev/docs/visualization/extensions/introduction)
         or an updated version of an existing extension. When uploaded, the extension will automatically be
         installed for users in your organization.
 
@@ -1482,7 +1534,7 @@ paths:
         for more information on how to create an extension.
 
         Read the [docs](https://docs.foxglove.dev/docs/visualization/extensions/introduction)
-        for more information on Foxglove Studio extensions.
+        for more information on Foxglove extensions.
 
       requestBody:
         description: |-
@@ -1501,7 +1553,7 @@ paths:
           be unique to each extension. There are no other restrictions on versioning schemes.
 
           To publish an extension to your organization, your `package.json` must define
-          a `displayName`. This is displayed to Studio users in your organization.
+          a `displayName`. This is displayed to users in your organization.
 
           Once an extension is uploaded, its `displayName` may not be changed by future versions.
         required: true
@@ -1538,10 +1590,8 @@ paths:
       tags: [Extensions]
       summary: List extensions
       description: |-
-        Foxglove Data Platform allows organization admins to share and manage
-        Foxglove Studio extensions. Check out the
-        [Foxglove Studio docs](https://docs.foxglove.dev/docs/visualization/extensions/introduction)
-        to learn more.
+        Organization admins can share and manage Foxglove extensions. Check out the
+        [docs](https://docs.foxglove.dev/docs/visualization/extensions/introduction) to learn more.
 
       security:
         - Session: [org_member]
@@ -1555,7 +1605,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/StudioExtension"
+                  $ref: "#/components/schemas/Extension"
 
   /extensions/{id}:
     parameters:
@@ -1579,7 +1629,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/StudioExtensionWithSignedLink"
+                $ref: "#/components/schemas/ExtensionWithSignedLink"
 
     delete:
       tags: [Extensions]
@@ -2031,6 +2081,157 @@ paths:
                 required:
                   - id
 
+  /sites:
+    get:
+      tags: [Sites]
+      summary: List sites
+      description: |
+        Retrieve a list of sites.
+      security:
+        - Session: [org_member]
+        - ApiKey: ["sites.list"]
+      responses:
+        "200":
+          description: List of sites
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Site"
+    post:
+      tags: [Sites]
+      summary: Create a Site
+      description: |
+        Create a new site.
+      security:
+        - Session: [org_admin]
+        - ApiKey: ["sites.create"]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: A name for this site
+                type:
+                  type: string
+                  description: |
+                    The type of site to create.
+                  enum:
+                    - edge
+                retainRecordingsSeconds:
+                  type: number
+                  minimum: 0
+                  description: |
+                    Optionally set a retention period for recordings created at
+                    this site. (only available on edge sites)
+              required:
+                - name
+                - type
+      responses:
+        "200":
+          description: The new site
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Site"
+
+  /sites/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: Site ID
+    get:
+      tags: [Sites]
+      summary: Get site details
+      security:
+        - Session: [org_member]
+        - ApiKey: ["sites.list"]
+      description: |
+        Get details for a specific site.
+      responses:
+        "200":
+          description: Site
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Site"
+    patch:
+      tags: [Sites]
+      summary: Update site details
+      description: |
+        Update the name or retention period for a Site.
+      security:
+        - Session: [org_admin]
+        - ApiKey: ["sites.update"]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: A name for this site
+                retainRecordingsSeconds:
+                  type: number
+                  description: |
+                    Optionally set a retention period for recordings created at this edge site.
+                url:
+                  type: string
+                  description: |
+                    The URL a self-hosted primary site exposes for accessing available data.
+                    See [The self-hosting installation guide](https://docs.foxglove.dev/docs/primary-sites/self-hosting/installation#configure-foxglove)
+                    for details.
+      responses:
+        "200":
+          description: Updated site
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Site"
+
+    delete:
+      tags: [Sites]
+      summary: Delete a site
+      security:
+        - Session: [org_admin]
+        - ApiKey: ["sites.delete"]
+      description: |
+        Delete a site.
+
+        _NOTE: Site deletion is permanent and cannot be undone. Any recordings stored at this site
+        will no longer be available through Foxglove._
+
+        For `edge` and `self-hosted` sites, you should shut down your deployment before deleting
+        the site through the API.
+
+        If the site type is `self-hosted`, the contents of your inbox and lake buckets will not be
+        affected by this action, and should be cleaned up separately after deleting the site.
+
+        If the site type is `edge`, any files in edge storage will not be affected by this action.
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: ID of the deleted site
+                required:
+                  - id
+
   /device-tokens:
     get:
       tags: [Device Tokens]
@@ -2291,7 +2492,7 @@ components:
         - requestId
         - updatedAt
 
-    StudioExtension:
+    Extension:
       type: object
       properties:
         id:
@@ -2327,9 +2528,9 @@ components:
         - activeVersion
         - sha256Sum
 
-    StudioExtensionWithSignedLink:
+    ExtensionWithSignedLink:
       allOf:
-        - ref: "#/components/schemas/StudioExtension"
+        - ref: "#/components/schemas/Extension"
         - type: object
           properties:
             foxe:
@@ -2630,13 +2831,21 @@ components:
           type: string
           description: |
             The type of the site.
-            - primary: stores your robotics data in the cloud, and can be Foxglove-hosted or self-managed
-            - edge: store robotics data in physical proximity to where your robots are operating
+            - `foxglove-hosted`: A [Foxglove-hosted Primary Site](https://docs.foxglove.dev/docs/primary-sites/introduction/#foxglove-hosted).
+            - `self-hosted`: A [Self-hosted Primary Site](https://docs.foxglove.dev/docs/primary-sites/introduction/#self-hosted).
+            - `edge`: An [Edge Site](https://docs.foxglove.dev/docs/edge-sites/introduction/).
           enum:
-            - primary
+            - foxglove-hosted
+            - self-hosted
             - edge
+        url:
+          type: string
+          description: |
+            The REST API endpoint your site deployment exposes
+            (only available for Self-hosted Primary Sites).
         retainRecordingsSeconds:
           type: number
+          minimum: 0
           description: |
             An optional recording retention period (only available on edge sites).
 
@@ -2666,3 +2875,137 @@ components:
         - createdAt
         - deviceId
         - enabled
+    # https://github.com/Redocly/redoc/issues/1128
+    # Used in webhook payload definitions. They need an internal reference to any external
+    # definition so that redoc can find them when parsing SchemaDefinition tags in descriptions.
+    RecordingImportStatus:
+      $ref: "ref/components/responses.yaml#/RecordingImportStatus"
+    DeviceSummary:
+      $ref: "ref/components/responses.yaml#/DeviceSummary"
+    SiteSummary:
+      $ref: "ref/components/responses.yaml#/SiteSummary"
+
+    webhook_payloads:
+      Common:
+        type: object
+        properties:
+          type:
+            description: The event type
+            type: string
+          timestamp:
+            description: When the webhook event occurred
+            format: date-time
+            type: string
+          attemptedAt:
+            description: When the delivery was attempted
+            format: date-time
+            type: string
+          webhookEventId:
+            description: ID of the associated webhook event
+            type: string
+          webhookId:
+            description: ID of the webhook that notified your endpoint
+            type: string
+        required:
+          - type
+          - timestamp
+          - attemptedAt
+          - webhookId
+          - webhookEventId
+      Recording:
+        allOf:
+          - $ref: "#/components/schemas/webhook_payloads/Common"
+          - properties:
+              recording:
+                properties:
+                  id:
+                    description: Recording ID
+                    type: string
+                  importStatus:
+                    $ref: "#/components/schemas/RecordingImportStatus"
+                  path:
+                    description: The filepath the recording was created with
+                    type: string
+                  device:
+                    $ref: "#/components/schemas/DeviceSummary"
+                  edgeSite:
+                    $ref: "#/components/schemas/SiteSummary"
+                  site:
+                    $ref: "#/components/schemas/SiteSummary"
+                required:
+                  - id
+                  - path
+                  - importStatus
+                type: object
+
+            required:
+              - recording
+            type: object
+      RecordingCreated:
+        allOf:
+          - $ref: "#/components/schemas/webhook_payloads/Recording"
+          - properties:
+              type:
+                type: string
+                const: "recording.created"
+      RecordingImported:
+        allOf:
+          - $ref: "#/components/schemas/webhook_payloads/Recording"
+          - properties:
+              type:
+                type: string
+                const: "recording.imported"
+      DeviceCreated:
+        allOf:
+          - $ref: "#/components/schemas/webhook_payloads/Common"
+          - properties:
+              device:
+                properties:
+                  id:
+                    description: Device ID
+                    type: string
+                required:
+                  - id
+                type: object
+              type:
+                type: string
+                const: "device.created"
+            required:
+              - device
+            type: object
+      EventCreated:
+        allOf:
+          - $ref: "#/components/schemas/webhook_payloads/Common"
+          - properties:
+              event:
+                properties:
+                  id:
+                    description: Event ID
+                    type: string
+                required:
+                  - id
+                type: object
+              type:
+                type: string
+                const: "event.created"
+            required:
+              - event
+            type: object
+      Ping:
+        allOf:
+          - $ref: "#/components/schemas/webhook_payloads/Common"
+          - properties:
+              webhook:
+                properties:
+                  id:
+                    description: Webhook ID
+                    type: string
+                required:
+                  - id
+                type: object
+              type:
+                type: string
+                const: "event.created"
+            required:
+              - event
+            type: object
