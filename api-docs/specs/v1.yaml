@@ -1710,6 +1710,20 @@ paths:
         - $ref: "ref/components/parameters.yaml#/start"
         - $ref: "ref/components/parameters.yaml#/end"
         - in: query
+          name: createdAfter
+          description: |
+            Start of exclusive time range: return all events created after this date and time
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: updatedAfter
+          description: |
+            Start of exclusive time range: return all events updated after this date and time
+          schema:
+            type: string
+            format: date-time
+        - in: query
           name: deviceId
           description: Filter events matching device ID
           schema:
