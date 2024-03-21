@@ -29,21 +29,22 @@ When playing back local or remote data files, this panel will preload the data b
 | **Min**         | Fixed minimum value for y-axis |
 | **Max**         | Fixed maximum value for y-axis |
 
-| X Axis              |                                                                                    |
-| ------------------- | ---------------------------------------------------------------------------------- |
-| **Value**           | Value plotted on x-axis; a timestamp, an index or a message path                   |
-| **Show labels**     | Display label for the x-axis                                                       |
-| **Min**             | Fixed minimum value for x-axis                                                     |
-| **Max**             | Fixed maximum value for x-axis                                                     |
+| X Axis              |                                                                                   |
+| ------------------- | --------------------------------------------------------------------------------- |
+| **Value**           | Value plotted on x-axis; a timestamp, an index or a message path                  |
+| **Show labels**     | Display label for the x-axis                                                      |
+| **Min**             | Fixed minimum value for x-axis                                                    |
+| **Max**             | Fixed maximum value for x-axis                                                    |
 | **Range (seconds)** | Width of the panel viewport as it follows playback (in seconds); time series only |
 
-| Series           |                                                                                                                               |
-| ---------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| **Message path** | Message path containing Y values for the series                                                                               |
-| **Label**        | Label displayed in the legend for the series                                                                                  |
-| **Color**        | Color used to plot the series                                                                                                 |
+| Series           |                                                                                                                         |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| **Message path** | Message path containing Y values for the series                                                                         |
+| **Label**        | Label displayed in the legend for the series                                                                            |
+| **Color**        | Color used to plot the series                                                                                           |
+| **Line size**    | Width of line connecting data points                                                                                    |
+| **Show lines**   | Show line connecting data points                                                                                        |
 | **Timestamp**    | Timestamp used for [message ordering](/docs/visualization/playback#message-ordering) (`Receive Time` or `Header Stamp`) |
-
 
 ## User interactions
 

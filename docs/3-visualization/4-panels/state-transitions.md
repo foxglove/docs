@@ -19,9 +19,10 @@ Paths can point to any primitive value (numbers, booleans, enums, etc.), but wil
 
 ### General
 
-| field                   | description                                                        |
+| field                     | description                                             |
 | ------------------------- | ------------------------------------------------------- |
 | **Sync with other plots** | Sync zooming and panning with other plots in the layout |
+| **Show points**           | Display a point for every incoming message              |
 
 ### X Axis
 
@@ -33,18 +34,18 @@ Paths can point to any primitive value (numbers, booleans, enums, etc.), but wil
 
 ### Series
 
-| field            | description                                                                                                           |
-| ---------------- | --------------------------------------------------------------------------------------------------------------------- |
-| **Message path** | Message path containing values for the series                                                                         |
-| **Label**        | Label displayed in the legend for the series                                                                          |
+| field            | description                                                                                                             |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| **Message path** | Message path containing values for the series                                                                           |
+| **Label**        | Label displayed in the legend for the series                                                                            |
 | **Timestamp**    | Timestamp used for [message ordering](/docs/visualization/playback#message-ordering) (`Receive Time` or `Header Stamp`) |
 
 ## User interactions
 
 Scroll to zoom, and drag to pan. Double-click to reset the view.
 
-Hover over any point on a chart to see its details in a tooltip. You'll see a vertical yellow bar appear, as well as a corresponding yellow marker on the playback timeline.
+Hover over any point on a chart to see its details in a tooltip. You'll see a vertical yellow bar appear, as well as a corresponding yellow marker on the playback timeline. Clicking will seek playback to the yellow marker on the timeline.
 
 ![hover on state transitions panel](/img/docs/visualization/panels/state-transitions/hover.webp)
 
-Click to seek playback to the yellow marker on the timeline.
+Hover over topic message paths to edit or delete them.
