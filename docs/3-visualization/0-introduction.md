@@ -58,28 +58,16 @@ Open _Visualization settings_ from the user menu to configure the following sett
 
 ### General
 
-<<<<<<< HEAD
-| field                                                                                  | description                                                                                                                                                                      |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Color scheme**                                                                       | Choose between light or dark mode, or follow your OS settings                                                                                                                    |
-| **Display timestamps in**                                                              | Timezone used to display timestamps                                                                                                                                              |
-| **Timestamp format**                                                                   | Formatting used to display timestamps                                                                                                                                            |
-| **Message rate (Hz)**                                                                  | Message pipeline's frame rate; lowering frame rate will reduce CPU usage and redraw frequency for certain panels; rendering will continue at the usual 60fps for smooth playback |
-| **Language**                                                                           | App language ([contribute translations](https://github.com/foxglove/studio/blob/main/CONTRIBUTING.md#localization))                                                              |
-| **Updates**                                                                            | Toggle ability to automatically update the desktop app                                                                                                                           |
-| [**ROS_PACKAGE_PATH**](https://wiki.ros.org/ROS/EnvironmentVariables#ROS_PACKAGE_PATH) | Paths to search for ROS packages (local file paths or `package://` URLs); separate paths with standard OS path separator (e.g. ':' on Unix)                                      |
-| **Advanced**                                                                           | Enable features for debugging Foxglove                                                                                                                                           |
-=======
 | field                                                                                  | description                                                                                                                                                                                                 |
 | -------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Color scheme**                                                                       | Choose between light or dark mode, or follow your OS settings                                                                                                                                               |
 | **Display timestamps in**                                                              | Timezone used to display timestamps                                                                                                                                                                         |
 | **Timestamp format**                                                                   | Formatting used to display timestamps                                                                                                                                                                       |
 | **Message rate (Hz)**                                                                  | Message pipeline's frame rate; lowering frame rate will reduce CPU usage and redraw frequency for certain panels; rendering will continue at the usual 60fps for smooth playback                            |
-| **Language**                                                                           | App language                                                                                                                                                                                                |
+| **Language**                                                                           | App language ([contribute translations](https://github.com/foxglove/studio/blob/main/CONTRIBUTING.md#localization))                                                                                         |
 | **Updates**                                                                            | Toggle ability to automatically update the desktop app                                                                                                                                                      |
 | [**ROS_PACKAGE_PATH**](https://wiki.ros.org/ROS/EnvironmentVariables#ROS_PACKAGE_PATH) | Paths to search for ROS packages (local file paths or `package://` URLs); separate paths with standard OS path separator (e.g. ':' on Unix). <br/>_Example_: `/path/to/workspace/src:/opt/ros/noetic/share` |
->>>>>>> main
+| **Advanced**                                                                           | Enable features for debugging Foxglove                                                                                                                                                                      |
 
 ### Privacy
 
@@ -119,7 +107,7 @@ Set layout-wide [variables](/docs/visualization/variables) that can be used in d
 
 Display playback and data-streaming performance statistics. Displayed only when the "Enable panels and features for debugging Foxglove" setting is enabled in the app settings.
 
-![playback performance panel](/img/docs/visualization/panels/studio-playback-performance/panel.webp)
+![playback performance panel](/img/docs/visualization/panels/playback-performance/panel.webp)
 
 The following statistics are displayed for a given playback session. "Instantaneous" statistics are reported based on the most recent frame, and also are averaged over the last 5 seconds.
 
