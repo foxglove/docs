@@ -329,22 +329,12 @@ paths:
 
             client.get_recordings()
       parameters:
-        - in: query
-          name: start
+        - $ref: "ref/components/parameters.yaml#/start"
           description: |
-            Define the start of an inclusive time range. All recordings with data
-            overlapping this time-range will be returned.
-          schema:
-            type: string
-            format: date-time
-        - in: query
-          name: end
+            Start of inclusive time range: return all recordings with data on or after this value
+        - $ref: "ref/components/parameters.yaml#/end"
           description: |
-            Define the end of an inclusive time range. All recordings with data
-            overlapping this time-range will be returned.
-          schema:
-            type: string
-            format: date-time
+            End of inclusive time range: return all recordings with data on or before this value
         - in: query
           name: path
           description: Filter response to recordings with this path
@@ -552,18 +542,10 @@ paths:
           description: Filename to match
           schema:
             type: string
-        - in: query
-          name: start
+        - $ref: "ref/components/parameters.yaml#/start"
           description: Inclusive start of import time
-          schema:
-            type: string
-            format: date-time
-        - in: query
-          name: end
+        - $ref: "ref/components/parameters.yaml#/end"
           description: Inclusive end of import time
-          schema:
-            type: string
-            format: date-time
         - in: query
           name: dataStart
           description: Inclusive start of message log time
@@ -1327,9 +1309,11 @@ paths:
 
       parameters:
         - $ref: "ref/components/parameters.yaml#/start"
-          description: Filter response to topics appearing in recordings ending at or after `start`.
+          description: |
+            Return all topics appearing in recordings ending on or after `start`
         - $ref: "ref/components/parameters.yaml#/end"
-          description: Filter response to topics appearing in recordings starting before `end`.
+          description: |
+            Return all topics appearing in recordings starting on or before `end` (updated March 2024 to be `<=` instead of `<`)
         - in: query
           name: importId
           description: ID of the import from which to list topics
@@ -1712,14 +1696,14 @@ paths:
         - in: query
           name: createdAfter
           description: |
-            Start of exclusive time range: return all events created after this date and time
+            Return all events created after this date and time
           schema:
             type: string
             format: date-time
         - in: query
           name: updatedAfter
           description: |
-            Start of exclusive time range: return all events updated after this date and time
+            Return all events updated after this date and time
           schema:
             type: string
             format: date-time
