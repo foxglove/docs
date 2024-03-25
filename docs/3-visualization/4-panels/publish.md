@@ -26,4 +26,4 @@ Edit the template to customize the message you want to send back to your ROS sta
 
 ![publish panel](/img/docs/visualization/panels/publish/panel.webp)
 
-The "Publish" button will be disabled if Foxglove is not connected to a ROS source.
+The "Publish" button will be disabled if Foxglove is not connected to a data source that supports publishing. When connecting to a WebSocket server that implements the [Foxglove WebSocket protocol](/docs/2-connecting-to-data/4-frameworks/2-custom.mdx), the server must declare the [`clientPublish`](https://github.com/foxglove/ws-protocol/blob/main/docs/spec.md#server-info) capability in order to support publishing from Foxglove.
